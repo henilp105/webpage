@@ -25,12 +25,6 @@ The Fortran Programming Language
 
 .. div:: sd-fs-5 sd-font-weight-bold
 
-    High performance
-
-Fortran has been designed from the ground up for computationally intensive applications in science and engineering. Mature and battle-tested compilers and libraries allow you to write code that runs close to the metal, fast.
-
-.. div:: sd-fs-5 sd-font-weight-bold
-
     Statically and strongly typed
 
 Fortran is statically and strongly typed, which allows the compiler to catch many programming errors early on for you. This also allows the compiler to generate efficient binary code.
