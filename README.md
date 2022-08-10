@@ -60,17 +60,21 @@ Now, the precommit hooks have been successfully been installed into your clone.
 
 1. if pylint causes the issues in commiting to the repo, and it seems mandatory to `skip`
 the pre-commit hooks use: 
-`SKIP=pylint git commit -m"my important commit"` 
 
+```
+SKIP=pylint git commit -m"my commit"` 
+```
 2. if black causes the issues in commiting to the repo, and it seems mandatory to `skip`
 the pre-commit hooks use: 
-`SKIP=black git commit -m"my important commit"` .
 
+```
+SKIP=black git commit -m"my commit"
+```
 ### Translating via weblate
 
 Translations can be contributed via [weblate](https://hosted.weblate.org/projects/fortran-lang/webpage/).
 
-[![Translation status](https://hosted.weblate.org/widgets/fortran-lang/-/fpm/horizontal-auto.svg)](https://hosted.weblate.org/engage/fortran-lang/)
+[![Translation status](https://hosted.weblate.org/widgets/fortran-lang/-/webpage/horizontal-auto.svg)](https://hosted.weblate.org/engage/fortran-lang/)
 
 
 ### Update or add translations
