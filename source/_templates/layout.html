@@ -9,18 +9,15 @@
         if (window.location.href.indexOf("/pr/") > -1) {
             pr_number = window.location.href.split('/').indexOf("pr") + 1;
             document.getElementById("pr").innerHTML = "pull request " + window.location.href.split('/')[pr_number];
+            document.getElementById("pr").href = "https://github.com/fortran-lang/webpage/pull/" + window.location.href.split('/')[pr_number];
             var x = document.getElementById("banner");
             if (x.style.display === "none") {
                 x.style.display = "block";
             }
         }
     });
-    function redirect_pr() {
-        window.location = "https://github.com/fortran-lang/webpage/pull/" + window.location.href.split('/')[pr_number];
-    }
 </script>
 <div id="banner" style='display:none' class="container">
-    <p style="text-align: center">
     <h3>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -30,13 +27,7 @@
             <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
             <line x1="6" y1="9" x2="6" y2="21"></line>
         </svg>
-        <b>Site preview: </b>you are previewing unpublished changes for
-
-        <a href="javascript:redirect_pr();" id="pr">
-            <i class="devicon-github-plain colored"></i>
-
-        </a>
+        <b>Site preview: </b>you are previewing unpublished changes for <a id="pr"></a>
     </h3>
-    </p>
 </div>
 {%- endblock %}
