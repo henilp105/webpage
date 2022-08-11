@@ -11,6 +11,6 @@ updates:
       interval: "weekly" # check for action updates every week
       
   - package-ecosystem: "pip"
-    directory: "requirements.txt"
+    directory: "/"
     schedule:
       interval: "daily"
