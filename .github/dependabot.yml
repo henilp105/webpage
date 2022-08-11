@@ -9,3 +9,8 @@ updates:
     directory: "/" # search in .github/workflows 
     schedule:
       interval: "weekly" # check for action updates every week
+      
+  - package-ecosystem: "pip"
+    directory: "requirements.txt"
+    schedule:
+      interval: "daily"
