@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Fortran-lang.org website\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-29 18:22+0530\n"
+"POT-Creation-Date: 2022-09-03 11:55+0530\n"
 "PO-Revision-Date: 2022-08-27 14:19+0000\n"
 "Last-Translator: Ian Giestas Pauli <iangiestaspauli@gmail.com>\n"
 "Language: pt\n"
@@ -1960,66 +1960,70 @@ msgstr ""
 msgid "The Fortran Programming Language"
 msgstr ""
 
-#: ../../source/index.md:8
+#: ../../source/index.md:8 ../../source/learn/best_practices/type_casting.md
+msgid "Fortran"
+msgstr "Fortran"
+
+#: ../../source/index.md:12
 msgid "High-performance parallel programming language"
 msgstr ""
 
-#: ../../source/index.md:12
+#: ../../source/index.md:16
 msgid "{bdg-link-primary}`Get started <learn/>`"
 msgstr ""
 
-#: ../../source/index.md:16
+#: ../../source/index.md:20
 msgid "Features"
 msgstr "Recursos"
 
-#: ../../source/index.md:20
+#: ../../source/index.md:24
 msgid "High performance"
 msgstr "Alto desempenho"
 
-#: ../../source/index.md:23
+#: ../../source/index.md:27
 msgid ""
 "Fortran has been designed from the ground up for computationally intensive "
 "applications in science and engineering. Mature and battle-tested compilers "
 "and libraries allow you to write code that runs close to the metal, fast."
 msgstr ""
 
-#: ../../source/index.md:26
+#: ../../source/index.md:30
 msgid "Statically and strongly typed"
 msgstr ""
 
-#: ../../source/index.md:29
+#: ../../source/index.md:33
 msgid ""
 "Fortran is statically and strongly typed, which allows the compiler to catch "
 "many programming errors early on for you. This also allows the compiler to "
 "generate efficient binary code."
 msgstr ""
 
-#: ../../source/index.md:32
+#: ../../source/index.md:36
 msgid "Easy to learn and use"
 msgstr ""
 
-#: ../../source/index.md:35
+#: ../../source/index.md:39
 msgid ""
 "Fortran is a relatively small language that is surprisingly easy to learn and"
 " use. Expressing most mathematical and arithmetic operations over large "
 "arrays is as simple as writing them as equations on a whiteboard."
 msgstr ""
 
-#: ../../source/index.md:38
+#: ../../source/index.md:42
 msgid "Versatile"
 msgstr "Versátil"
 
-#: ../../source/index.md:41
+#: ../../source/index.md:45
 msgid ""
 "Fortran allows you to write code in a style that best fits your problem: "
 "imperative, procedural, array-oriented, object-oriented, or functional."
 msgstr ""
 
-#: ../../source/index.md:44
+#: ../../source/index.md:48
 msgid "Natively parallel"
 msgstr "Paralelismo nativo"
 
-#: ../../source/index.md:47
+#: ../../source/index.md:51
 msgid ""
 "Fortran is a natively parallel programming language with intuitive array-like"
 " syntax to communicate data between CPUs. You can run almost the same code on"
@@ -2029,19 +2033,19 @@ msgid ""
 " best fit your problem at hand."
 msgstr ""
 
-#: ../../source/index.md:50
+#: ../../source/index.md:54
 msgid "FAQ"
 msgstr "Perguntas Frequentes"
 
-#: ../../source/index.md:54
+#: ../../source/index.md:58
 msgid "What is the status of Fortran?"
 msgstr ""
 
-#: ../../source/index.md:57
+#: ../../source/index.md:61
 msgid "Fortran is still in active development. The latest revision of the language is"
 msgstr ""
 
-#: ../../source/index.md:59
+#: ../../source/index.md:63
 msgid ""
 "[Fortran "
 "2018](https://isotc.iso.org/livelink/livelink?func=ll&objId=19441669&objAction=Open),and"
@@ -2051,11 +2055,11 @@ msgid ""
 "Manager](https://github.com/fortran-lang/fpm) are in active development."
 msgstr ""
 
-#: ../../source/index.md:62
+#: ../../source/index.md:66
 msgid "What is Fortran used for?"
 msgstr ""
 
-#: ../../source/index.md:65
+#: ../../source/index.md:69
 msgid ""
 "Fortran is mostly used in domains that adopted computation early--science and"
 " engineering. These include numerical weather and ocean prediction, "
@@ -2064,37 +2068,37 @@ msgid ""
 "[benchmark the fastest supercomputers in the world](https://top500.org/)."
 msgstr ""
 
-#: ../../source/index.md:68
+#: ../../source/index.md:72
 msgid "Should I use Fortran for my new project?"
 msgstr ""
 
-#: ../../source/index.md:71
+#: ../../source/index.md:75
 msgid ""
 "If you're writing a program or a library to perform fast arithmetic "
 "computation over large numeric arrays, Fortran is the optimal tool for the "
 "job."
 msgstr ""
 
-#: ../../source/index.md:100
+#: ../../source/index.md:104
 msgid "Make Fortran better"
 msgstr "Torne o Fortran ainda melhor"
 
-#: ../../source/index.md:110
+#: ../../source/index.md:114
 msgid "Write proposals"
 msgstr "Escreva propostas"
 
-#: ../../source/index.md:113
+#: ../../source/index.md:117
 msgid ""
 "Have an idea about how to improve the language? You can write new proposals "
 "or contribute to existing proposals to the Fortran Standard Committee on "
 "[GitHub](https://github.com/j3-fortran/fortran_proposals)."
 msgstr ""
 
-#: ../../source/index.md:121
+#: ../../source/index.md:125
 msgid "Develop tools"
 msgstr "Ferramentas de desenvolvimento"
 
-#: ../../source/index.md:124
+#: ../../source/index.md:128
 msgid ""
 "You can also help make Fortran better by contributing to its suite of tools, "
 "such as [Standard Library](https://github.com/fortran-lang/stdlib) ,[Package "
@@ -2102,11 +2106,11 @@ msgid ""
 "website](https://github.com/fortran-lang/webpage)."
 msgstr ""
 
-#: ../../source/index.md:136
+#: ../../source/index.md:140
 msgid "Write Fortran software"
 msgstr "Escreva código em Fortran"
 
-#: ../../source/index.md:139
+#: ../../source/index.md:143
 msgid ""
 "Or just write Fortran software for your research, business, or schoolwork. "
 "You can learn how to [get started here.](learn)."
@@ -3557,10 +3561,6 @@ msgstr "`void *`"
 #: ../../source/learn/best_practices/type_casting.md
 msgid "<https://gist.github.com/1665641>"
 msgstr "<https://gist.github.com/1665641>"
-
-#: ../../source/learn/best_practices/type_casting.md
-msgid "Fortran"
-msgstr "Fortran"
 
 #: ../../source/learn/best_practices/type_casting.md
 msgid "`type(c_ptr)` &nbsp;"
@@ -38324,6 +38324,21 @@ msgstr ""
 #~ msgid "**Example:** a header for a new page `./learn/coarrays/background.md`"
 #~ msgstr ""
 
+#~ msgid "####### fortran-lang intrinsic descriptions (license: MIT) @urbanjost"
+#~ msgstr ""
+
+#~ msgid "####### fortran-lang intrinsic descriptions"
+#~ msgstr ""
+
+#~ msgid "####### fortran-lang intrinsic descriptions (license MIT) @urbanjost"
+#~ msgstr ""
+
+#~ msgid "####### fortran-lang intrinsic descriptions license: MIT) @urbanjost"
+#~ msgstr ""
+
+#~ msgid "####### fortran-lang intrinsic descriptions (license: MIT)"
+#~ msgstr ""
+
 #~ msgid "Fortran newsletter: August 2022"
 #~ msgstr ""
 
@@ -49821,20 +49836,5 @@ msgstr ""
 #~ "![last-commit](https://img.shields.io/github/last-"
 #~ "commit/szaghi/StringiFor?color=blue) "
 #~ "![issues](https://img.shields.io/github/issues/szaghi/StringiFor?color=yellow)"
-#~ msgstr ""
-
-#~ msgid "####### fortran-lang intrinsic descriptions (license: MIT) @urbanjost"
-#~ msgstr ""
-
-#~ msgid "####### fortran-lang intrinsic descriptions"
-#~ msgstr ""
-
-#~ msgid "####### fortran-lang intrinsic descriptions (license MIT) @urbanjost"
-#~ msgstr ""
-
-#~ msgid "####### fortran-lang intrinsic descriptions license: MIT) @urbanjost"
-#~ msgstr ""
-
-#~ msgid "####### fortran-lang intrinsic descriptions (license: MIT)"
 #~ msgstr ""
 
