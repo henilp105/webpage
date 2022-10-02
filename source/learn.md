@@ -160,4 +160,5 @@ learn/quickstart/index
 learn/building_programs/index
 learn/best_practices/index
 learn/intrinsics/index
+rosetta_stone
 :::
