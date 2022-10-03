@@ -1,10 +1,11 @@
 ## spread
-### __Name__
 
-__spread__(3) - \[ARRAY CONSTRUCTION\] Add a dimension to an array
+### **Name**
 
+**spread**(3) - \[ARRAY CONSTRUCTION\] Add a dimension to an array
 
-### __Syntax__
+### **Syntax**
+
 ```fortran
 result = spread(source, dim, ncopies)
 
@@ -14,34 +15,34 @@ result = spread(source, dim, ncopies)
    integer,intent(in) :: dim
    integer,intent(in) :: ncopies
 ```
-### __Description__
 
-Replicates a __source__ array __ncopies__ times along a specified
-dimension __dim__.
+### **Description**
 
-If SOURCE is scalar, the shape of the result is (MAX (NCOPIES, 0)).
-and each element of the result has a value equal to SOURCE.
+Replicates a **source** array **ncopies** times along a specified
+dimension **dim**.
 
-### __Arguments__
+If **source** is scalar, the shape of the result is (MAX (NCOPIES, 0)).
+and each element of the result has a value equal to **source**.
 
-  - __source__
-    : Shall be a scalar or an array of any type and a rank less than
-    fifteen.
+### **Arguments**
 
-  - __dim__
-    : Shall be a scalar of type _integer_ with a value in the range from
-    __1__ to __n+1__, where __n__ equals the rank of __source__.
+- **source**
+  : Shall be a scalar or an array of any type and a rank less than
+  fifteen.
 
-  - __ncopies__
-    : Shall be a scalar of type _integer_.
+- **dim**
+  : Shall be a scalar of type _integer_ with a value in the range from
+  **1** to **n+1**, where **n** equals the rank of **source**.
 
-### __Returns__
+- **ncopies**
+  : Shall be a scalar of type _integer_.
 
-The result is an array of the same type as __source__ and has rank __n+1__
-where __n__ equals the rank of __source__.
+### **Returns**
 
+The result is an array of the same type as **source** and has rank **n+1**
+where **n** equals the rank of **source**.
 
-### __Examples__
+### **Examples**
 
 Sample program:
 
@@ -112,16 +113,16 @@ integer ( kind = 4 ) v(4)
 end program example_spread
 ```
 
-### __Standard__
+### **Standard**
 
 Fortran 95 and later
 
-### __See Also__
+### **See Also**
 
-[__pack__(3)](PACK),
-[__unpack__(3)](UNPACK),
-[__merge__(3)](MERGE),
-[__pack__(3)](PACK),
-[__unpack__(3)](UNPACK)   
+[**pack**(3)](#pack),
+[**unpack**(3)](#unpack),
+[**merge**(3)](#merge),
+[**pack**(3)](#pack),
+[**unpack**(3)](#unpack)
 
-####### fortran-lang intrinsic descriptions
+###### fortran-lang intrinsic descriptions

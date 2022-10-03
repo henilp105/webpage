@@ -1,10 +1,11 @@
 ## cmplx
-### __Name__
 
-__cmplx__(3) - \[TYPE:NUMERIC\] Complex conversion function
+### **Name**
 
+**cmplx**(3) - \[TYPE:NUMERIC\] Complex conversion function
 
-### __Syntax__
+### **Syntax**
+
 ```fortran
 result = cmplx(x, y, kind)
 
@@ -13,41 +14,40 @@ result = cmplx(x, y, kind)
    TYPE(kind=KIND),intent(in),optional, y
    integer,intent(in),optional :: kind
 ```
-### __Description__
 
-To convert numeric variables to complex, use the __cmplx__(3) function.
+### **Description**
+
+To convert numeric variables to complex, use the **cmplx**(3) function.
 Constants can be used to define a complex variable using the syntax
 
 ```
       z8 = (1.2345678901234567d0, 1.2345678901234567d0)
 ```
 
-but this will not work for variables. You must use the __cmplx__(3) function.
+but this will not work for variables. You must use the **cmplx**(3) function.
 
-__cmplx(x \[, y \[, kind\]\])__ returns a complex number where __x__ is
-converted to the _real_ component. If __x__ is _complex_ then __y__ must not be
-present. If __y__ is present it is converted to the imaginary component. If
-__y__ is not present then the imaginary component is set to __0.0__.
+**cmplx(x \[, y \[, kind\]\])** returns a complex number where **x** is
+converted to the _real_ component. If **x** is _complex_ then **y** must not be
+present. If **y** is present it is converted to the imaginary component. If
+**y** is not present then the imaginary component is set to **0.0**.
 
-### __cmplx(3) and double precision__
+### **cmplx(3) and double precision**
 
-The Fortran 90 language defines __cmplx__(3) as always returning a result
-that is type __complex(kind=KIND(0.0))__.
+The Fortran 90 language defines **cmplx**(3) as always returning a result
+that is type **complex(kind=KIND(0.0))**.
 
-This means \`__cmplx(d1,d2)__', where __\`d1'__ and __\`d2'__ are
+This means **cmplx(d1,d2)**, where **d1** and **d2** are
 _doubleprecision_, is treated as:
-fortran
-```
+```fortran
       cmplx(sngl(d1), sngl(d2))
 ```
-
 _doubleprecision complex_ numbers require specifying a precision.
 
 It was necessary for Fortran 90 to specify this behavior for
 _doubleprecision_ arguments, since that is the behavior mandated by
 FORTRAN 77.
 
-So Fortran 90 extends the __cmplx__(3) intrinsic by adding an extra
+So Fortran 90 extends the **cmplx**(3) intrinsic by adding an extra
 argument used to specify the desired kind of complex result.
 
 ```fortran
@@ -76,11 +76,12 @@ can be accessed independently with a component-like syntax in f2018:
 
 A complex-part-designator is
 
-``fortran
-      designator % RE
-      or
-      designator % IM.
-```
+```fortran
+designator % RE
+or
+designator % IM.
+
+````
 
 Where the designator is of complex type.
 
@@ -95,28 +96,28 @@ The following are examples of complex part designators:
        impedance%re           !-- Same value as _real_(impedance)
        fft%im                 !-- Same value as AIMAG(fft)
        x%im = 0.0             !-- Sets the imaginary part of x to zero
-```
+````
 
-### __Arguments__
+### **Arguments**
 
-  - __x__
-    The type may be _integer_, _real_, or _complex_.
+- **x**
+  The type may be _integer_, _real_, or _complex_.
 
-  - __y__
-    (Optional; only allowed if __x__ is not _complex_.). May be _integer_ or
-    _real_.
+- **y**
+  (Optional; only allowed if **x** is not _complex_.). May be _integer_ or
+  _real_.
 
-  - __kind__
-    (Optional) An _integer_ initialization expression indicating the kind
-    parameter of the result.
+- **kind**
+  (Optional) An _integer_ initialization expression indicating the kind
+  parameter of the result.
 
-### __Returns__
+### **Returns**
 
-The return value is of _complex_ type, with a kind equal to __kind__ if it is
-specified. If __kind__ is not specified, the result is of the default
-_complex_ kind, regardless of the kinds of __x__ and __y__.
+The return value is of _complex_ type, with a kind equal to **kind** if it is
+specified. If **kind** is not specified, the result is of the default
+_complex_ kind, regardless of the kinds of **x** and **y**.
 
-### __Examples__
+### **Examples**
 
 Sample program:
 
@@ -134,7 +135,7 @@ complex(kind=dp) :: z8
    ! NOTE:
    ! The following is intuitive and works without calling cmplx(3)
    ! but does not work for variables just constants
-   z8 = (1.2345678901234567d0 , 1.2345678901234567d0 )
+   z8 = (1.2345678901234567d0, 1.2345678901234567d0 )
    print *, 'Z8 defined with constants=',z8
 end program demo_aimag
 ```
@@ -147,18 +148,18 @@ Typical Results:
     Z8 defined with constants= (1.2345678901234567,1.2345678901234567)
 ```
 
-### __See Also__
+### **See Also**
 
-  - [__aimag__(3)](AIMAG) - Imaginary part of complex number
+- [**aimag**(3)](#aimag) - Imaginary part of complex number
 
-  - [__cmplx__(3)](CMPLX) - Complex conversion function
+- [**cmplx**(3)](#cmplx) - Complex conversion function
 
-  - [__conjg__(3)](CONJG) - Complex conjugate function
+- [**conjg**(3)](#conjg) - Complex conjugate function
 
-  - [__real__(3)](REAL) - Convert to real type
+- [**real**(3)](#real) - Convert to real type
 
-### __Standard__
+### **Standard**
 
 FORTRAN 77 and later
 
-####### fortran-lang intrinsic descriptions
+###### fortran-lang intrinsic descriptions

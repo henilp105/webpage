@@ -8,13 +8,13 @@ The contents of this tutorial are shown in the navigation bar on the left with t
 
 Use the _Next_ button at the bottom to start the tutorial with a _Hello World_ example.
 
-````{toctree}
+```{toctree}
 :maxdepth: 2
 :hidden:
-Arrays and strings <arrays_strings>
-Derived Types <derived_types>
 Hello world <hello_world>
+Variables <variables>
+Arrays and strings <arrays_strings>
 Operators and flow control <operators_control_flow>
 Organising code structure <organising_code>
-Variables <variables>
-````
+Derived Types <derived_types>
+```

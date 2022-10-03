@@ -1,33 +1,35 @@
 ## ior
-### __Name__
 
-__ior__(3) - \[BIT:LOGICAL\] Bitwise logical inclusive or
+### **Name**
 
+**ior**(3) - \[BIT:LOGICAL\] Bitwise logical inclusive or
 
-### __Syntax__
+### **Syntax**
+
 ```fortran
    result = ior(i, j)
     integer,intent(in) :: i
     integer,intent(in) :: j
 ```
-### __Description__
 
-__ior__ returns the bit-wise Boolean inclusive-__or__ of __i__ and __j__.
+### **Description**
 
-### __Arguments__
+**ior** returns the bit-wise Boolean inclusive-**or** of **i** and **j**.
 
-  - __i__
-    : an _integer_ scalar or array.
+### **Arguments**
 
-  - __j__
-    : _integer_ scalar or array, of the same kind as __i__.
+- **i**
+  : an _integer_ scalar or array.
 
-### __Returns__
+- **j**
+  : _integer_ scalar or array, of the same kind as **i**.
+
+### **Returns**
 
 The return type is _integer_, of the same kind as the arguments. (If the
 argument kinds differ, it is of the same kind as the larger argument.)
 
-### __Examples__
+### **Examples**
 
 Sample program:
 
@@ -37,7 +39,7 @@ implicit none
 integer :: i, j, k
    i=53       ! i=00110101 binary (lowest order byte)
    j=45       ! j=00101101 binary (lowest order byte)
-   k=ior(i,j) ! k=00111101 binary (lowest order byte) , k=61 decimal
+   k=ior(i,j) ! k=00111101 binary (lowest order byte), k=61 decimal
    write(*,'(i8,1x,b8.8)')i,i,j,j,k,k
 end program demo_ior
 ```
@@ -50,21 +52,21 @@ Results:
          61 00111101
 ```
 
-### __Standard__
+### **Standard**
 
 Fortran 95 and later
 
-### __See Also__
+### **See Also**
 
-[__ieor__(3)](IEOR), 
-[__ibclr__(3)](IBCLR),
-[__not__(3)](NOT),
-[__btest__(3)](BTEST),
-[__ibclr__(3)](IBCLR),
-[__ibits__(3)](IBITS),
-[__ibset__(3)](IBSET),
-[__iand__(3)](IAND),
-[__ieor__(3)](IEOR),
-[__mvbits__(3)](MVBITS)
+[**ieor**(3)](#ieor),
+[**ibclr**(3)](#ibclr),
+[**not**(3)](#not),
+[**btest**(3)](#btest),
+[**ibclr**(3)](#ibclr),
+[**ibits**(3)](#ibits),
+[**ibset**(3)](#ibset),
+[**iand**(3)](#iand),
+[**ieor**(3)](#ieor),
+[**mvbits**(3)](#mvbits)
 
-####### fortran-lang intrinsic descriptions
+###### fortran-lang intrinsic descriptions

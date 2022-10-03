@@ -1,28 +1,30 @@
 ## trim
-### __Name__
 
-__trim__(3) - \[CHARACTER:WHITESPACE\] Remove trailing blank characters of a string
+### **Name**
 
+**trim**(3) - \[CHARACTER:WHITESPACE\] Remove trailing blank characters of a string
 
-### __Syntax__
+### **Syntax**
+
 ```fortran
 result = trim(string)
 ```
-### __Description__
+
+### **Description**
 
 Removes trailing blank characters of a string.
 
-### __Arguments__
+### **Arguments**
 
-  - __string__
-    : Shall be a scalar of type _character_.
+- **string**
+  : Shall be a scalar of type _character_.
 
-### __Returns__
+### **Returns**
 
-A scalar of type _character_ which length is that of __string__ less the
+A scalar of type _character_ which length is that of **string** less the
 number of trailing blanks.
 
-### __Examples__
+### **Examples**
 
 Sample program:
 
@@ -33,40 +35,43 @@ character(len=10), parameter :: s = "gfortran  "
    write(*,*) len(s), len(trim(s))  ! "10 8", with/without trailing blanks
 
    ! with/without trailing blanks
-   write(*,*) len(s), len(trim('   leading'))  
-   write(*,*) len(s), len(trim('   trailing    ')) 
-   write(*,*) len(s), len(trim('               ')) 
+   write(*,*) len(s), len(trim('   leading'))
+   write(*,*) len(s), len(trim('   trailing    '))
+   write(*,*) len(s), len(trim('               '))
 
 end program demo_trim
 ```
+
 Results:
+
 ```text
       10           8
       10          10
       10          11
       10           0
 ```
-### __Standard__
+
+### **Standard**
 
 Fortran 95 and later
 
-### __See Also__
+### **See Also**
 
 Functions that perform operations on character strings, return lengths
 of arguments, and search for certain arguments:
 
-  - __Elemental:__
- [__adjustl__(3)](ADJUSTL),
- [__adjustr__(3)](ADJUSTR),
- [__index__(3)](INDEX),
+- **Elemental:**
+  [**adjustl**(3)](#adjustl),
+  [**adjustr**(3)](#adjustr),
+  [**index**(3)](#index),
 
- [__scan__(3)](SCAN),
- [__verify__(3)](VERIFY)
+[**scan**(3)](#scan),
+[**verify**(3)](#verify)
 
-  - __Nonelemental:__
- [__len\_trim__(3)](LEN_TRIM),
- [__len__(3)](LEN),
- [__repeat__(3)](REPEAT),
- [__trim__(3)](TRIM)
+- **Nonelemental:**
+  [**len_trim**(3)](#len_trim),
+  [**len**(3)](#len),
+  [**repeat**(3)](#repeat),
+  [**trim**(3)](#trim)
 
-####### fortran-lang intrinsic descriptions
+###### fortran-lang intrinsic descriptions

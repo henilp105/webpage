@@ -1,45 +1,47 @@
 ## ieor
-### __Name__
 
-__ieor__(3) - \[BIT:LOGICAL\] Bitwise logical exclusive or
+### **Name**
 
+**ieor**(3) - \[BIT:LOGICAL\] Bitwise logical exclusive or
 
-### __Syntax__
+### **Syntax**
+
 ```fortran
 result = ieor(i, j)
 ```
-### __Description__
 
-__ieor__ returns the bitwise Boolean exclusive-__or__ of __i__ and __j__.
+### **Description**
 
-### __Arguments__
+**ieor** returns the bitwise Boolean exclusive-**or** of **i** and **j**.
 
-  - __i__
-    : The type shall be _integer_.
+### **Arguments**
 
-  - __j__
-    : The type shall be _integer_, of the same kind as __i__.
+- **i**
+  : The type shall be _integer_.
 
-### __Returns__
+- **j**
+  : The type shall be _integer_, of the same kind as **i**.
+
+### **Returns**
 
 The return type is _integer_, of the same kind as the arguments. (If the
 argument kinds differ, it is of the same kind as the larger argument.)
 
-### __Standard__
+### **Standard**
 
 Fortran 95 and later
 
-### __See Also__
+### **See Also**
 
-[__ieor__(3)](IEOR), 
-[__ibclr__(3)](IBCLR),
-[__not__(3)](NOT),
-[__btest__(3)](BTEST),
-[__ibclr__(3)](IBCLR),
-[__ibits__(3)](IBITS),
-[__ibset__(3)](IBSET),
-[__iand__(3)](IAND),
-[__ior__(3)](IOR),
-[__mvbits__(3)](MVBITS)
+[**ieor**(3)](#ieor),
+[**ibclr**(3)](#ibclr),
+[**not**(3)](#not),
+[**btest**(3)](#btest),
+[**ibclr**(3)](#ibclr),
+[**ibits**(3)](#ibits),
+[**ibset**(3)](#ibset),
+[**iand**(3)](#iand),
+[**ior**(3)](#ior),
+[**mvbits**(3)](#mvbits)
 
-####### fortran-lang intrinsic descriptions
+###### fortran-lang intrinsic descriptions

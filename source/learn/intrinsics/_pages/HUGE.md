@@ -1,9 +1,11 @@
 ## huge
-### __Name__
 
-__huge__(3) - \[NUMERIC MODEL\] Largest number of a type and kind
+### **Name**
 
-### __Syntax__
+**huge**(3) - \[NUMERIC MODEL\] Largest number of a type and kind
+
+### **Syntax**
+
 ```fortran
 result = huge(x)
 
@@ -11,27 +13,28 @@ result = huge(x)
    TYPE(kind=KIND),intent(in) :: x
    TYPE(kind=KIND) :: answer
 ```
-   where __TYPE__ may be _real_ or _integer_ and __KIND__ is any supported
-   associated _kind_.
 
-### __Description__
+where **TYPE** may be _real_ or _integer_ and **KIND** is any supported
+associated _kind_.
 
-__huge(x)__ returns the largest number that is not an infinity for the
-kind and type of __x__.
+### **Description**
 
-### __Arguments__
+**huge(x)** returns the largest number that is not an infinity for the
+kind and type of **x**.
 
-  - __x__
-    : Shall be an arbitrary value of type _real_ or _integer_.
-    The value is used merely to determine what _kind_ and _type_ of
-    scalar is being queried.
+### **Arguments**
 
-### __Returns__
+- **x**
+  : Shall be an arbitrary value of type _real_ or _integer_.
+  The value is used merely to determine what _kind_ and _type_ of
+  scalar is being queried.
+
+### **Returns**
 
 The return value is of the same type and kind as _x_ and is the
 largest value supported by the specified model.
 
-### __Examples__
+### **Examples**
 
 Sample program:
 
@@ -61,7 +64,9 @@ real :: v, w
    enddo
 end program demo_huge
 ```
+
 Results:
+
 ```
   2147483647  3.4028235E+38  1.797693134862316E+308
   1.1754944E-38  2.225073858507201E-308
@@ -81,27 +86,27 @@ Results:
     13     175792128  -2147483648   13060694016. F wrong for j and k and w
     14     1054752768 -2147483648   78364164096. F wrong for j and k and w
 ```
-### __Standard__
+
+### **Standard**
 
 Fortran 95 and later
 
-### __See Also__
+### **See Also**
 
-[__digits__(3)](DIGITS),
-[__epsilon__(3)](EPSILON),
-[__exponent__(3)](EXPONENT),
-[__fraction__(3)](FRACTION),
-[__maxexponent__(3)](MAXEXPONENT),
-[__minexponent__(3)](MINEXPONENT),
-[__nearest__(3)](NEAREST),
-[__precision__(3)](PRECISION),
-[__radix__(3)](RADIX),
-[__range__(3)](RANGE),
-[__rrspacing__(3)](RRSPACING),
-[__scale__(3)](SCALE),
-[__set\_exponent__(3)](SET_EXPONENT),
-[__spacing__(3)](SPACING),
-[__tiny__(3)](TINY)
+[**digits**(3)](#digits),
+[**epsilon**(3)](#epsilon),
+[**exponent**(3)](#exponent),
+[**fraction**(3)](#fraction),
+[**maxexponent**(3)](#maxexponent),
+[**minexponent**(3)](#minexponent),
+[**nearest**(3)](#nearest),
+[**precision**(3)](#precision),
+[**radix**(3)](#radix),
+[**range**(3)](#range),
+[**rrspacing**(3)](#rrspacing),
+[**scale**(3)](#scale),
+[**set_exponent**(3)](#set_exponent),
+[**spacing**(3)](#spacing),
+[**tiny**(3)](#tiny)
 
-####### fortran-lang intrinsic descriptions (license: MIT) @urbanjost
-
+###### fortran-lang intrinsic descriptions (license: MIT) @urbanjost

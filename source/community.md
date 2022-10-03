@@ -7,13 +7,13 @@ sd_hide_title: true
 <script type="text/javascript" src="https://unpkg.com/mustache@4.2.0/mustache.min.js"></script>
 <script type="text/javascript" src="https://unpkg.com/github-activity-feed@latest/dist/github-activity.min.js"></script>
 
-# Community - The Fortran Programming Language
+# Community
 
 :::{div} sd-text-center sd-fs-2 sd-font-weight-bold sd-text-primary
 Fortran-lang Community
 :::
 
-:::{div} sd-text-center sd-fs-3 
+:::{div} sd-text-center sd-fs-3
 Collaboration for the advancement of Fortran
 :::
 
@@ -27,21 +27,21 @@ Fortran-lang Community Projects
 :columns: 5
 :shadow: none
 
-:::{div} sd-text-left sd-fs-4 
+:::{div} sd-text-left sd-fs-4
 Fortran Standard Library (stdlib)
 :::
 
- A community-driven project for a de facto 'standard' library for Fortran. The stdlib project is both a specification and a reference implementation, developed in cooperation with the Fortran Standards Committee.
+A community-driven project for a de facto 'standard' library for Fortran. The stdlib project is both a specification and a reference implementation, developed in cooperation with the Fortran Standards Committee.
 [GitHub](https://github.com/fortran-lang/stdlib),[Documentation](https://stdlib.fortran-lang.org/),[Contributing](https://github.com/fortran-lang/stdlib/blob/HEAD/WORKFLOW.md).
 
-:::{div} sd-text-left sd-fs-4 
+:::{div} sd-text-left sd-fs-4
 Fortran Package Manager (fpm)
 :::
 
 A prototype project to develop a common build system for Fortran packages and their dependencies.
 [GitHub](https://github.com/fortran-lang/fpm),[Documentation](https://github.com/fortran-lang/fpm/blob/HEAD/PACKAGING.md),[Contributing](https://github.com/fortran-lang/fpm/blob/HEAD/CONTRIBUTING.md).
 
-:::{div} sd-text-left sd-fs-4 
+:::{div} sd-text-left sd-fs-4
 fortran-lang.org
 :::
 
@@ -70,14 +70,13 @@ limit: 20 // optional
 Get Involved
 :::
 
-
 :::::{grid} 2
 :gutter: 1
 
 ::::{grid-item-card}
 :shadow: none
 
-:::{div} sd-text-left sd-fs-4 
+:::{div} sd-text-left sd-fs-4
 Join the Discussion
 :::
 
@@ -88,14 +87,12 @@ repositories.
 Whether Fortran beginner or seasoned veteran, your feedback and comments are most
 welcome in guiding the future of Fortran-lang.
 
-
-
 ::::
 
 ::::{grid-item-card}
 :shadow: none
 
-:::{div} sd-text-left sd-fs-4 
+:::{div} sd-text-left sd-fs-4
 Build and Test
 :::
 
@@ -110,41 +107,38 @@ suggestion for documentation.
 ::::{grid-item-card}
 :shadow: none
 
-:::{div} sd-text-left sd-fs-4 
+:::{div} sd-text-left sd-fs-4
 Contributor Guide
 :::
 
 Want to contribute code and content?
 Check out the contributor guides in each repository for information
 on the project workflow and recommended practices.
-Contributor guide for stdlib   
 
 [Contributor guide for stdlib](https://github.com/fortran-lang/stdlib/blob/HEAD/WORKFLOW.md) <br>
 [Contributor guide for fpm](https://github.com/fortran-lang/fpm/blob/HEAD/CONTRIBUTING.md)<br>
-[Contributor guide for fortran-lang.org](contributing)
+[Contributor guide for fortran-lang.org](community/contributing)
 
 ::::
 ::::{grid-item-card}
 :shadow: none
 
-:::{div} sd-text-left sd-fs-4 
+:::{div} sd-text-left sd-fs-4
 Community Conduct
 :::
 
 As a community, we strive to make participation in our discussions and projects a friendly and harassment-free experience for everyone.
-See the full  [Code of Conduct](https://github.com/fortran-lang/stdlib/blob/HEAD/CODE_OF_CONDUCT.md).
+See the full [Code of Conduct](https://github.com/fortran-lang/.github/blob/main/CODE_OF_CONDUCT.md).
 
 ::::
 
 :::::
 
-
-
 :::{div} sd-text-left sd-fs-2 sd-text-primary
 Fortran-lang Contributors
 :::
 
-<iframe src="https://contributor-graph.vercel.app/?chart=contributorOverTime&repo=fortran-lang/fortran-lang.org,fortran-lang/fpm,fortran-lang/stdlib,j3-fortran/fortran_proposals" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:700px;width:100%;border:none;overflow:hidden;"></iframe>
+<iframe src="https://contributor-graph.vercel.app/?chart=contributorOverTime&repo=fortran-lang/fortran-lang.org,fortran-lang/fpm,fortran-lang/stdlib,j3-fortran/fortran_proposals,fortran-lang/webpage" onload='javascript:(function(o){o.style.height=o.contentWindow.document.body.scrollHeight+"px";}(this));' style="height:700px;width:100%;border:none;overflow:hidden;"></iframe>
 
 :::{div} sd-text-left sd-fs-3
 source: https://git-contributor.com/
@@ -159,11 +153,11 @@ Contributors:
 :::::{grid} 6
 :gutter: 1
 {% for j in contributor | batch(6, '&nbsp;') %}
-        
+
 {% for i in j %}
 {% if i != '&nbsp;' %}
 
-::::{grid-item-card} 
+::::{grid-item-card}
 :shadow: none
 
 :::{grid-item-card} [{{i}}]({{"https://github.com/"+i}})
@@ -181,7 +175,6 @@ Contributors:
 :::::
 
 ::::::
-
 
 :::{toctree}
 :hidden:

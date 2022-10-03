@@ -24,17 +24,21 @@ Getting Started
 ::::{grid} 1 1 1 1
 :gutter: 1
 
-:::{grid-item-card} {octicon}``info;1em;sd-text-info`` New to Fortran
+:::{grid-item-card} {octicon}`info;1em;sd-text-info` New to Fortran
 :shadow: none
 
 Try the quickstart Fortran tutorial, to get an overview of the language syntax and capabilities.
 
-```{button-link} quickstart/
-:color: primary
-:expand:
+```{card}
+:link-type: url
+:link: quickstart/
+:class-card: sd-btn
+:class-body: sd-p-1 sd-text-center sd-font-weight-bold sd-text-info sd-btn-primary sd-text-light sd-btn
+:shadow: none
 
 {octicon}``book;1em;sd-text-info`` Quickstart tutorial
 ```
+
 :::
 ::::
 :::::
@@ -44,22 +48,49 @@ Try the quickstart Fortran tutorial, to get an overview of the language syntax a
 ::::{grid} 1 1 1 1
 :gutter: 1
 
-:::{grid-item-card} {octicon}``bug;1em;sd-text-info`` Looking for help
+:::{grid-item-card} {octicon}`bug;1em;sd-text-info` Looking for help
 :shadow: none
 
 Ask a question in the Fortran-lang discourse - a forum for friendly discussion of all things Fortran.
 
-```{button-link} https://fortran-lang.discourse.group/
-:color: primary
-:expand:
+```{card}
+:link-type: url
+:link: https://fortran-lang.discourse.group/
+:class-card: sd-btn
+:class-body: sd-p-1 sd-text-center sd-font-weight-bold sd-text-info sd-btn-primary sd-text-light sd-btn
+:shadow: none
 
 {octicon}``check-circle;1em;sd-text-info`` Fortran-lang Discourse
 ```
+
+:::
+::::
+:::::
+
+:::::{grid-item}
+
+::::{grid} 1 1 1 1
+:gutter: 1
+
+:::{grid-item-card} {octicon}`play;1em;sd-text-info` Play with Fortran
+:shadow: none
+
+Get a taste of Fortran in an interactive playground in the browser.
+
+```{card}
+:link-type: url
+:link: https://play.fortran-lang.org/
+:class-card: sd-btn
+:class-body: sd-p-1 sd-text-center sd-font-weight-bold sd-text-info sd-btn-primary sd-text-light sd-btn
+:shadow: none
+
+{octicon}``play;1em;sd-text-info`` Fortran Playground
+```
+
 :::
 ::::
 :::::
 ::::::
-
 
 :::{div} sd-fs-3 sd-font-weight-bold sd-text-primary
 
@@ -84,7 +115,7 @@ Mini-book Tutorials
 
 :::{div} sd-fs-5 sd-font-weight-bold sd-text-primary
 
-{octicon}``book;1em;sd-text-info`` <a href='{{"../"+book.link[1:]+"/"}}'>{{book.title}}</a>
+{octicon}`book;1em;sd-text-info` <a href='{{"../"+book.link[1:]+"/"}}'>{{book.title}}</a>
 :::
 {{book.description}}
 ::::
@@ -107,24 +138,21 @@ On the web
 
 {% for link in reference_links %}
 
-* [{{link.name}}]({{link.url}}) {{link.description}}
+- [{{link.name}}]({{link.url}}) {{link.description}}
 
 {% endfor %}
 :::
-
-
 
 :::{div} sd-fs-4 sd-font-weight-bold sd-text-primary
 
 Online Courses
 :::
 
-
 :::{jinja} conf
 
 {% for course in reference_courses %}
 
-* [{{course.name}}]({{course.url}}) {{course.description}}
+- [{{course.name}}]({{course.url}}) {{course.description}}
 
 {% endfor %}
 :::
@@ -138,23 +166,22 @@ In print
 
 {% for book in reference_books %}
 
-* {{book.author}}
+- {{book.author}}
   {{book.year}}
   [{{book.title}}]({{book.url}})
   {{book.edition}}
-  {{book.location}}. 
+  {{book.location}}.
   {{book.publisher}}
 
 {% endfor %}
 :::
 
-
 :::{toctree}
 :hidden:
 
-learn/quickstart/index
-learn/best_practices/index
 learn/os_setup/index
+learn/quickstart/index
 learn/building_programs/index
+learn/best_practices/index
 learn/intrinsics/index
 :::

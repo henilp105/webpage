@@ -19,6 +19,7 @@ Fortran-lang webpage configuration file.
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 import json
+import yaml
 import sys
 import pathlib
 
@@ -28,6 +29,7 @@ data_files = {
     "fortran-learn": pathlib.Path(root, "_data", "fortran_learn.json"),
     "fortran-packages": pathlib.Path(root, "_data", "fortran_package.json"),
     "contributors": pathlib.Path(root, "_data", "contributor.json"),
+    "intrinsics": pathlib.Path(root, "data", "intrinsics.yml"),
 }
 
 if not all(data.exists() for data in data_files.values()):
@@ -41,11 +43,13 @@ with open(data_files["fortran-packages"], "r", encoding="utf-8") as f:
     fortran_tags = json.load(f)
 with open(data_files["contributors"], "r", encoding="utf-8") as f:
     contributors = json.load(f)
+with open(data_files["intrinsics"], "r", encoding="utf-8") as f:
+    intrinsics = yaml.safe_load(f)
 
 # -- Project information -----------------------------------------------------
 
 project = "Fortran-lang.org website"
-copyright = "2022, Fortran Community"
+copyright = "2020-2022, Fortran Community"
 author = "Fortran Community"
 
 # The full version, including alpha/beta/rc tags
@@ -70,6 +74,7 @@ myst_enable_extensions = [
     "colon_fence",
     "deflist",
     "substitution",
+    "dollarmath",
     "html_image",
 ]
 myst_heading_anchors = 3
@@ -84,8 +89,8 @@ locale_dirs = ["../locale/"]
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
 
-language = str(sys.argv[2][-2:])
-html_search_language = str(sys.argv[2][-2:])
+language = str(sys.argv[-1][11:])
+html_search_language = str(sys.argv[-1][11:])
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -98,6 +103,7 @@ jinja_contexts = {
     "conf": conf,
     "fortran_index": fortran_tags,
     "contributors": contributors,
+    "intrinsics": intrinsics,
 }
 
 
@@ -123,13 +129,18 @@ html_theme_options = {
         },
     ],
     "show_prev_next": False,
-    "show_nav_level": 4,
+    "show_nav_level": 1,
     "show_toc_level": 0,
     "footer_items": ["copyright"],
     "navbar_align": "right",
-    "navbar_start": ["navbar-logo"],
+    "navbar_start": ["navbar-logo","theme-switcher.html","version-switcher"],
+    "switcher": {
+        "json_url":"https://fortran-lang.org/",   
+        "version_match": language,
+    },
     "page_sidebar_items": ["inpage_toc.html"],
-    "navbar_end": ["theme-switcher.html", "navbar-icon-links"],
+    "navbar_end": ["navbar-icon-links",  "search-field.html"],
+    "search_bar_text": "Search",
     "icon_links": [
         {
             "name": "Discourse",
@@ -148,7 +159,7 @@ html_theme_options = {
         },
         {
             "name": "RSS",
-            "url": "https://fortran-lang.org/news.xml",
+            "url": "https://fortran-lang.org/en/news/atom.xml",
             "icon": "fas fa-rss",
         },
     ],

@@ -1,28 +1,30 @@
 ## exponent
-### __Name__
 
-__exponent__(3) - \[MODEL\_COMPONENTS\] Exponent function
+### **Name**
 
+**exponent**(3) - \[MODEL_COMPONENTS\] Exponent function
 
-### __Syntax__
+### **Syntax**
+
 ```fortran
 result = exponent(x)
 ```
-### __Description__
 
-__exponent__(x) returns the value of the exponent part of __x__. If __x__ is
+### **Description**
+
+**exponent**(x) returns the value of the exponent part of **x**. If **x** is
 zero the value returned is zero.
 
-### __Arguments__
+### **Arguments**
 
-  - __x__
-    : The type shall be _real_.
+- **x**
+  : The type shall be _real_.
 
-### __Returns__
+### **Returns**
 
 The return value is of type default _integer_.
 
-### __Examples__
+### **Examples**
 
 Sample program:
 
@@ -36,32 +38,34 @@ integer :: i
    print *, exponent(0.0)
 end program demo_exponent
 ```
-  Results:
+
+Results:
+
 ```text
               1
               0
 ```
-### __Standard__
+
+### **Standard**
 
 Fortran 95 and later
 
-### __See Also__
+### **See Also**
 
-[__digits__(3)](DIGITS),
-[__epsilon__(3)](EPSILON),
-[__fraction__(3)](FRACTION),
-[__huge__(3)](HUGE),
-[__maxexponent__(3)](MAXEXPONENT),
-[__minexponent__(3)](MINEXPONENT),
-[__nearest__(3)](NEAREST),
-[__precision__(3)](PRECISION),
-[__radix__(3)](RADIX),
-[__range__(3)](RANGE),
-[__rrspacing__(3)](RRSPACING),
-[__scale__(3)](SCALE),
-[__set\_exponent__(3)](SET_EXPONENT),
-[__spacing__(3)](SPACING),
-[__tiny__(3)](TINY)
+[**digits**(3)](#digits),
+[**epsilon**(3)](#epsilon),
+[**fraction**(3)](#fraction),
+[**huge**(3)](#huge),
+[**maxexponent**(3)](#maxexponent),
+[**minexponent**(3)](#minexponent),
+[**nearest**(3)](#nearest),
+[**precision**(3)](#precision),
+[**radix**(3)](#radix),
+[**range**(3)](#range),
+[**rrspacing**(3)](#rrspacing),
+[**scale**(3)](#scale),
+[**set_exponent**(3)](#set_exponent),
+[**spacing**(3)](#spacing),
+[**tiny**(3)](#tiny)
 
-
-####### fortran-lang intrinsic descriptions
+###### fortran-lang intrinsic descriptions
