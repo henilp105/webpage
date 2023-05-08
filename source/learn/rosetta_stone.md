@@ -1340,7 +1340,7 @@ function's namespace:
 def foo(a, b, c):                   
     def f(x):                                    
         return a*x**2 + b*x + c                    
-    print f(1), f(2), f(3) 
+    print(f(1), f(2), f(3))
 
 ```
 :::::
@@ -1432,8 +1432,8 @@ def simpson(f, a, b):
 def foo(a, k):                           
     def f(x):                                    
         return a*sin(k*x)                       
-    print simpson(f, 0., pi)                       
-    print simpson(f, 0., 2*pi)  
+    print(simpson(f, 0., pi))                       
+    print(simpson(f, 0., 2*pi))  
 
 ```
 :::::
