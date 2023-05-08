@@ -313,16 +313,16 @@ end program
    ```{code-block} Python
 :caption: Python
 
-from numpy import array, empty
-a = array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-b = empty(10)
-for i in range(len(a)):
-    if a[i] > 5:
-        b[i] = a[i] - 3
-    elif a[i] > 2:
-        b[i] = 1
-    else:
-        b[i] = 0
+from numpy import array, empty                     
+a = array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])     
+b = empty(10)                                  
+for i in range(len(a)):                 
+     if a[i] > 5:                            
+         b[i] = a[i] - 3                        
+     elif a[i] > 2:                     
+         b[i] = 1                 
+     else:                                      
+         b[i] = 0  
 
 ```
 :::::
@@ -429,8 +429,7 @@ end program
 from numpy import array, pi
 a = array([i for i in range(1, 7)])
 b = array([(2*i*pi+1)/2 for i in range(1, 7)])
-c = array([i for i in range(1, 7) 
-    for j in range(1, 4)])
+c = array([i for i in range(1, 7) for j in range(1, 4)])
 
 ```
 :::::
@@ -650,9 +649,9 @@ Loop over the whole array:
    ```{code-block} Python
 :caption: Python
 
-r = 1
-for i in range(len(a)):
-    r *= a[i]
+r = 1                                     
+for i in range(len(a)):            
+    r *= a[i]  
 
 ```
 :::::
@@ -679,9 +678,9 @@ Loop between index  3   and    7   (inclusive):
    ```{code-block} Python
 :caption: Python
 
-r = 1
-for i in range(3, 8):
-    r *= a[i]
+r = 1                                     
+for i in range(3,8):            
+    r *= a[i]  
 
 ```
 :::::
@@ -873,11 +872,11 @@ One creates the module:
 
 i = 5
 
-def f(x):
-    return x + 5
+def f(x):                            
+    return x + 5          
 
-def g(x):
-    return x - 5
+def g(x):                                 
+    return x - 5  
 
 ```
 :::::
@@ -982,11 +981,11 @@ __all__ = ["i", "f"]
 
 i = 5
 
-def f(x):
-    return x + 5
+def f(x):                            
+    return x + 5          
 
-def g(x):
-    return x - 5
+def g(x):                                 
+    return x - 5  
 
 ```
 :::::
@@ -1338,10 +1337,10 @@ function's namespace:
    ```{code-block} Python
 :caption: Python
 
-def foo(a, b, c):
-    def f(x):
-        return a*x**2 + b*x + c
-    print(f(1), f(2), f(3))
+def foo(a, b, c):                   
+    def f(x):                                    
+        return a*x**2 + b*x + c                    
+    print f(1), f(2), f(3) 
 
 ```
 :::::
@@ -1427,14 +1426,14 @@ You can use the nested functions in callbacks to pass context:
    ```{code-block} Python
 :caption: Python
 
-def simpson(f, a, b):
-    return (b-a) / 6 * (f(a) + 4*f((a+b)/2) + f(b))
-
-def foo(a, k):
-    def f(x):
-        return a*sin(k*x)
-    print(simpson(f, 0., pi))
-    print(simpson(f, 0., 2*pi))
+def simpson(f, a, b):                       
+    return (b-a) / 6 * (f(a) + 4*f((a+b)/2) + f(b))    
+                                                
+def foo(a, k):                           
+    def f(x):                                    
+        return a*sin(k*x)                       
+    print simpson(f, 0., pi)                       
+    print simpson(f, 0., 2*pi)  
 
 ```
 :::::
@@ -1554,9 +1553,9 @@ interactive session.
    ```{code-block} Python
 :caption: Python
 
-for i in range(1, 9):
-    if i>2:
-        break
+for i in range(1, 9):                  
+    if i>2:                                       
+        break                       
     print(i)
 
 ```
@@ -1590,9 +1589,9 @@ affected by appending its name to the `cycle` statement.
    ```{code-block} Python
 :caption: Python
 
-for i in range(1, 9):
-    if i%2 == 0:
-        continue
+for i in range(1, 9):                 
+    if i%2 == 0:                   
+        continue                   
     print(i)
 
 ```
@@ -1638,11 +1637,11 @@ z = c.copy()
 fractal = np.zeros(z.shape, dtype=np.uint8) + 255
 
 for n in range(ITERATIONS):
-    print "Iteration %d" % n
+    print("Iteration %d" % n)
     mask = abs(z) <= 10
     z[mask] *= z[mask]
     z[mask] += c[mask]
-    fractal[(fractal == 255) & (-mask)] = 254. * n / ITERATIONS
+    fractal[(fractal == 255) & (~mask)] = 254. * n / ITERATIONS
 
 print("Saving...")
 np.savetxt("fractal.dat", np.log(fractal))
