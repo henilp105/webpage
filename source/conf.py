@@ -68,6 +68,7 @@ extensions = [
     "sphinx_copybutton",
     "sphinx.ext.intersphinx",
     "sphinx_jinja",
+    "sphinx_favicon",
 ]
 
 myst_enable_extensions = [
@@ -124,14 +125,15 @@ html_static_path = ["_static"]
 html_css_files = ["custom.css"]
 html_canonical_url = None
 
-html_theme_options = {
-    "favicons": [
-        {
+favicons = [
+    {
             "rel": "icon",
             "sizes": "256x256",
             "href": "images/favicon.ico",
         },
-    ],
+]
+
+html_theme_options = {
     "show_prev_next": False,
     "show_nav_level": 1,
     "show_toc_level": 0,
