@@ -123,6 +123,7 @@ html_theme = "pydata_sphinx_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
+html_canonical_url = None
 
 favicons = [
     {
@@ -199,7 +200,7 @@ fontawesome_link_cdn = True
 blog_path = "news"
 blog_post_pattern = "news/**"
 blog_baseurl = "https://fortran-lang.org/en/"
-html_baseurl = "https://fortran-lang.org/"
+html_baseurl = "https://fortran-lang.org/en/"
 post_redirect_refresh = 1
 post_auto_image = 1
 post_auto_excerpt = 2
