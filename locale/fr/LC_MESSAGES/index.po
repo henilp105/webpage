@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: Fortran-lang.org website\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 16:02+0200\n"
-"PO-Revision-Date: 2022-09-29 13:58+0000\n"
+"PO-Revision-Date: 2023-03-01 08:25+0000\n"
 "Last-Translator: Vincent Magnin <vinmagpub@yahoo.fr>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/fortran-lang/"
+"webpage/fr/>\n"
 "Language: fr\n"
-"Language-Team: French <https://hosted.weblate.org/projects/fortran-"
-"lang/webpage/fr/>\n"
-"Plural-Forms: nplurals=2; plural=n > 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.16-rc\n"
 "Generated-By: Babel 2.10.3\n"
 
 #: ../../source/community.md:10
@@ -34922,26 +34923,33 @@ msgid ""
 "Package for producing pointwise and multigroup nuclear cross sections and "
 "related quantities from evaluated nuclear data in the ENDF format"
 msgstr ""
+"Paquet pour produire des sections efficaces nucléaires ponctuelles et "
+"multigroupes et des quantités associées, à partir de données nucléaires "
+"évaluées disponibles au format ENDF"
 
 #: ../../source/packages/libraries.md:256
 msgid "yaFyaml"
-msgstr ""
+msgstr "yaFyaml"
 
 #: ../../source/packages/libraries.md:264
 msgid "Yet another Fortran YAML library"
-msgstr ""
+msgstr "Yet another Fortran YAML library"
 
 #: ../../source/packages/libraries.md:267
 msgid "Tags:  {bdg-light}`configuration`  {bdg-light}`yaml`"
 msgstr ""
 
 #: ../../source/packages/numerical.md:16 ../../source/packages/scientific.md:16
+#, fuzzy
 msgid "2DECOMP&FFT"
-msgstr ""
+msgstr "2DECOMP&FFT"
 
 #: ../../source/packages/numerical.md:19 ../../source/packages/scientific.md:19
+#, fuzzy
 msgid "Library for 2D pencil decomposition and distributed Fast Fourier Transform"
 msgstr ""
+"Bibliothèque pour la décomposition en crayon 2D et la transformée de Fourier "
+"rapide distribuée"
 
 #: ../../source/packages/numerical.md:22 ../../source/packages/scientific.md:22
 msgid ""
@@ -34951,13 +34959,15 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:32
 msgid "ARPACK"
-msgstr ""
+msgstr "ARPACK"
 
 #: ../../source/packages/numerical.md:40
 msgid ""
 "Collection of Fortran77 subroutines designed to solve large scale eigenvalue "
 "problems."
 msgstr ""
+"Collection de sous-routines Fortran77 conçues pour résoudre des problèmes de "
+"valeurs propres à grande échelle."
 
 #: ../../source/packages/numerical.md:43
 msgid ""
@@ -34973,6 +34983,8 @@ msgstr ""
 #: ../../source/packages/numerical.md:61
 msgid "Multidimensional B-Spline interpolation of data on a regular grid"
 msgstr ""
+"Interpolation B-Spline multidimensionnelle de données sur une grille "
+"régulière"
 
 #: ../../source/packages/numerical.md:64
 msgid ""
@@ -35001,6 +35013,7 @@ msgstr ""
 #: ../../source/packages/numerical.md:103
 msgid "Modern Fortran implementation of the DDEABM Adams-Bashforth algorithm"
 msgstr ""
+"Implémentation en Fortran moderne de l’algorithme DDEABM Adams-Bashforth"
 
 #: ../../source/packages/numerical.md:106
 msgid "Tags:  {bdg-light}`ode`  {bdg-light}`adams-bashforth`"
@@ -35013,6 +35026,8 @@ msgstr ""
 #: ../../source/packages/numerical.md:124
 msgid "A fast domain decomposition based implementation of the COSMO solvation model"
 msgstr ""
+"Une implémentation rapide basée sur la décomposition de domaine du modèle de "
+"solvatation COSMO"
 
 #: ../../source/packages/numerical.md:127
 msgid ""
@@ -35040,7 +35055,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:166
 msgid "Modern Fortran Edition of Hairer's DOP853 ODE Solver"
-msgstr ""
+msgstr "Édition en Fortran moderne du solveur ODE DOP853 de Hairer"
 
 #: ../../source/packages/numerical.md:169 ../../source/packages/numerical.md:266
 msgid "Tags:  {bdg-light}`ode`  {bdg-light}`runge`  {bdg-light}`kutta`"
@@ -35055,6 +35070,8 @@ msgid ""
 "Finite element software for numerical solution of partial differential "
 "equations"
 msgstr ""
+"Logiciel d’éléments finis pour la résolution numérique d’équations aux "
+"dérivées partielles"
 
 #: ../../source/packages/numerical.md:190
 msgid "Tags:  {bdg-light}`pde`  {bdg-light}`fe`"
@@ -35066,7 +35083,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:203
 msgid "Eigenvalue Solvers for Petaflop Applications"
-msgstr ""
+msgstr "Solveurs de valeurs propres pour applications Petaflop"
 
 #: ../../source/packages/numerical.md:206
 msgid "Tags:  {bdg-light}`mpi`  {bdg-light}`gpu`"
@@ -35077,10 +35094,13 @@ msgid "FATODE"
 msgstr ""
 
 #: ../../source/packages/numerical.md:224 ../../source/packages/scientific.md:450
+#, fuzzy
 msgid ""
 "A Fortran library for the integration of ordinary differential equations with"
 " direct and adjoint sensitivity analysis capabilities"
 msgstr ""
+"Une bibliothèque Fortran pour l’intégration d’équations différentielles "
+"ordinaires avec des capacités d’analyse de sensibilité directe et adjointe"
 
 #: ../../source/packages/numerical.md:227 ../../source/packages/scientific.md:453
 msgid "Tags:  {bdg-light}`ode-solver`"
@@ -35093,6 +35113,8 @@ msgstr ""
 #: ../../source/packages/numerical.md:263
 msgid "Fortran Library for numerical INTegration of differential equations"
 msgstr ""
+"Bibliothèque Fortran pour l’INTegration numérique des équations "
+"différentielles"
 
 #: ../../source/packages/numerical.md:276
 msgid "fmm2d"
@@ -35104,6 +35126,9 @@ msgid ""
 "to a specified precision, in two dimensions, on a multi-core shared-memory "
 "machine."
 msgstr ""
+"Calcule les interactions à N corps régies par les équations de Laplace et de "
+"Helmholtz, avec une précision donnée, en deux dimensions, sur une machine "
+"multi-cœurs à mémoire partagée."
 
 #: ../../source/packages/numerical.md:287 ../../source/packages/numerical.md:308
 msgid "Tags:  {bdg-light}`fast-multipole-method`"
@@ -35119,6 +35144,9 @@ msgid ""
 "to a specified precision, in three dimensions, on a multi-core shared-memory "
 "machine."
 msgstr ""
+"Calcule les interactions à N corps régies par les équations de Laplace et de "
+"Helmholtz, avec une précision spécifiée, en trois dimensions, sur une "
+"machine multicœur à mémoire partagée."
 
 #: ../../source/packages/numerical.md:318
 msgid "FOODIE"
@@ -35127,6 +35155,8 @@ msgstr ""
 #: ../../source/packages/numerical.md:326
 msgid "Fortran Object-Oriented Differential-equations Integration Environment"
 msgstr ""
+"Environnement orienté objet d'intégration d'équations différentielles en "
+"Fortran"
 
 #: ../../source/packages/numerical.md:329
 msgid ""
@@ -35140,7 +35170,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:386
 msgid "Modules for nonlinear optimization"
-msgstr ""
+msgstr "Modules pour l'optimisation non linéaire"
 
 #: ../../source/packages/numerical.md:389
 msgid ""
@@ -35156,7 +35186,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:407 ../../source/packages/scientific.md:603
 msgid "Open source stochastic quantum chemistry"
-msgstr ""
+msgstr "Chimie quantique stochastique (open source)"
 
 #: ../../source/packages/numerical.md:410 ../../source/packages/scientific.md:606
 msgid "Tags:  {bdg-light}`qmc`  {bdg-light}`electronic-structure`"
@@ -35168,7 +35198,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:428
 msgid "Solver for the incompressible Navier-Stokes equations"
-msgstr ""
+msgstr "Solveur pour les équations incompressibles de Navier-Stokes"
 
 #: ../../source/packages/numerical.md:438
 msgid "LAPACK"
@@ -35176,7 +35206,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:446
 msgid "Routines for numerical linear algebra"
-msgstr ""
+msgstr "Routines numériques pour l'algèbre linéaire"
 
 #: ../../source/packages/numerical.md:449 ../../source/packages/numerical.md:659
 msgid "Tags:  {bdg-light}`blas`  {bdg-light}`linear-algebra`"
@@ -35188,7 +35218,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:467
 msgid "A general library for Non Equilibrium Green's Functions"
-msgstr ""
+msgstr "Une bibliothèque générale pour les fonctions de Green de non-équilibre"
 
 #: ../../source/packages/numerical.md:470
 msgid "Tags:  {bdg-light}`transport`  {bdg-light}`electronic-structure`"
@@ -35203,6 +35233,8 @@ msgid ""
 "a library of user callable tools that provide mesh generation, mesh "
 "optimization and dynamic mesh maintenance"
 msgstr ""
+"Une bibliothèque d'outils pour la génération de maillage, l'optimisation de "
+"maillage et la maintenance dynamique de maillage"
 
 #: ../../source/packages/numerical.md:514
 msgid "MapTran3D"
@@ -35210,7 +35242,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:522
 msgid "Geodesy, 3D coordinate conversions for ECEF, ENU, ECI, ..."
-msgstr ""
+msgstr "Géodésie, conversions de coordonnées 3D pour ECEF, ENU, ECI..."
 
 #: ../../source/packages/numerical.md:532
 msgid "neural-fortran"
@@ -35218,7 +35250,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:540
 msgid "A parallel neural net microframework."
-msgstr ""
+msgstr "Un cadriciel parallèle de réseaux neuronaux."
 
 #: ../../source/packages/numerical.md:543
 msgid "Tags:  {bdg-light}`back`  {bdg-light}`propagation`  {bdg-light}`coarray`"
@@ -51261,4 +51293,3 @@ msgstr ""
 
 #~ msgid "**Example:** C-interoperable `kind`s"
 #~ msgstr ""
-
