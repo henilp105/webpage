@@ -97,14 +97,14 @@ def build_redirects(redirects: Dict[str, str], language: str) -> None:
     language : str
         The language to build the redirects for.
     """
-
-    for source, target in redirects.items():
-        source_path = outdir / source
-        redirect = template.format(target.format(language))
-        if not source_path.parent.exists():
-            source_path.parent.mkdir(parents=True)
-        with open(source_path, "w", encoding="utf-8") as fp:
-            fp.write(redirect)
+    pass
+    # for source, target in redirects.items():
+    #     source_path = outdir / source
+    #     redirect = template.format(target.format(language))
+    #     if not source_path.parent.exists():
+    #         source_path.parent.mkdir(parents=True)
+    #     with open(source_path, "w", encoding="utf-8") as fp:
+    #         fp.write(redirect)
 
 
 def build_all(redirects: Dict[str, str], languages: List[str]) -> None:
