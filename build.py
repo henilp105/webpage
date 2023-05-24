@@ -62,7 +62,7 @@ If you are not redirected automatically, follow the <a href='{0}'>link</a>.
 """
 
 
-def build_docs(language: str) -> None:
+def build_docs(language: str, root: bool) -> None:
     """
     Build the documentation for a single language.
 
@@ -78,7 +78,7 @@ def build_docs(language: str) -> None:
             "-b",
             "dirhtml",
             str(srcdir),
-            str(outdir / language),
+            str(outdir) if root else str(outdir / language),
             f"-Dlanguage={language}",
         ],
         cwd=root,
@@ -120,7 +120,7 @@ def build_all(redirects: Dict[str, str], languages: List[str]) -> None:
     """
 
     for language in languages:
-        build_docs(language)
+        build_docs(language, language == languages[0])
 
     build_redirects(redirects, languages[0])
 
