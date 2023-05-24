@@ -48,9 +48,6 @@ jobs:
         env:
           BING_TOKEN: ${{ secrets.BING_TOKEN }}
 
-      - name: Move the English build to the root directory
-        run: cp -a build/html/en/. build/html && rm -Rf build/html/en
-
       - name: Deploy documentation sphinx
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
