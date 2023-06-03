@@ -11,7 +11,7 @@ Consider for example the following code snippets:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import array, size, shape, min, max, sum
@@ -26,7 +26,7 @@ print(sum(a))
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 integer :: a(3)
@@ -93,7 +93,7 @@ Everything else is the same, in particular:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import array, size, shape, min, max, sum
@@ -108,7 +108,7 @@ print(sum(a))
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 integer :: a(3)
@@ -124,7 +124,7 @@ end program
 :::::
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import reshape
@@ -140,7 +140,7 @@ print(b[1, :])
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 integer :: a(2, 3), b(2, 3)
@@ -157,7 +157,7 @@ end program
 :::::
 
 :::::{grid-item}
-   ```{code-block} text
+```{code-block} text
 :caption: Python
 
 [1 2 3]
@@ -170,7 +170,7 @@ end program
 :::::
 
 :::::{grid-item}
-   ```{code-block} text
+```{code-block} text
 :caption: Fortran
 
 1           2           3
@@ -183,7 +183,7 @@ end program
 :::::
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import array, size, shape, max, min
@@ -201,7 +201,7 @@ print(a)
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 integer :: a(2, 3)
@@ -220,7 +220,7 @@ end program
 :::::
 
 :::::{grid-item}
-   ```{code-block} text
+```{code-block} text
 :caption: Python
 
 (2, 3)
@@ -254,7 +254,7 @@ end program
 :::::
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import array, all, any
@@ -266,7 +266,7 @@ any(i == [2, 2, 3])
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 integer :: i(3)
@@ -278,7 +278,7 @@ any(i == [2, 2, 3])
 :::::
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import array, empty
@@ -292,7 +292,7 @@ b[a > 5] = a[a > 5] - 3
 :::::
 
 :::::{grid-item}
-   ```{code-block} fortran
+```{code-block} Fortran
 :caption: Fortran
 
 integer :: a(10), b(10)
@@ -310,7 +310,7 @@ end program
 :::::
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import array, empty                     
@@ -328,7 +328,7 @@ for i in range(len(a)):
 :::::
 
 :::::{grid-item}
-   ```{code-block} fortran
+```{code-block} Fortran
 :caption: Fortran
 
 integer :: a(10), b(10)
@@ -346,7 +346,7 @@ end program
 :::::
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import array, sum, ones, size
@@ -360,7 +360,7 @@ print(sum(o[(a > 2) & (a < 6)]))
 :::::
 
 :::::{grid-item}
-   ```{code-block} fortran
+```{code-block} Fortran
 :caption: Fortran
 
 integer :: a(10)
@@ -374,7 +374,7 @@ end program
 :::::
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import array, dot
@@ -387,7 +387,7 @@ print(dot(a, b))
 :::::
 
 :::::{grid-item}
-   ```{code-block} fortran
+```{code-block} Fortran
 :caption: Fortran
 
 integer :: a(2, 2), b(2, 2)
@@ -423,7 +423,7 @@ end program
 :::::
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import array, pi
@@ -435,7 +435,7 @@ c = array([i for i in range(1, 7) for j in range(1, 4)])
 :::::
 
 :::::{grid-item}
-   ```{code-block} fortran
+```{code-block} Fortran
 :caption: Fortran
 
 use types, only: dp
@@ -457,7 +457,7 @@ c = [ ((i, j = 1, 3), i = 1, 6) ]
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import array
@@ -472,7 +472,7 @@ print(b[:2])
 :::::
 
 :::::{grid-item}
-   ```{code-block} fortran
+```{code-block} Fortran
 :caption: Fortran
 
 integer :: a(3), b(-1:1)
@@ -523,7 +523,7 @@ First  n   elements:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 a[:n]
@@ -532,7 +532,7 @@ a[:n]
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 a(:n)     ! assuming starting index 1 (default)
@@ -548,7 +548,7 @@ Last  n   elements:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 a[-n:] # equivalent to a[size(a)-n:]
@@ -557,7 +557,7 @@ a[-n:] # equivalent to a[size(a)-n:]
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 a(size(a)-n+1:)
@@ -572,7 +572,7 @@ Select elements between  i   and    j   (inclusive):
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 a[i:j+1]
@@ -581,7 +581,7 @@ a[i:j+1]
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 a(i:j)
@@ -596,7 +596,7 @@ Select  n   elements starting with index i:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 a[i:i+n]
@@ -606,7 +606,7 @@ a[i:i+n]
 
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 a(i:i+n-1)
@@ -622,7 +622,7 @@ Select elements between  -n, ..., n
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 # Not possible (arrays start at 0 index)
@@ -631,7 +631,7 @@ Select elements between  -n, ..., n
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 a(-n:n)
@@ -646,7 +646,7 @@ Loop over the whole array:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 r = 1                                     
@@ -657,7 +657,7 @@ for i in range(len(a)):
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 r = 1
@@ -675,7 +675,7 @@ Loop between index  3   and    7   (inclusive):
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 r = 1                                     
@@ -686,7 +686,7 @@ for i in range(3,8):
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 r = 1
@@ -704,7 +704,7 @@ Loop between  3  -th and    7  -th elements (inclusive):
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 r = 1
@@ -715,7 +715,7 @@ for i in range(3, 8):
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 r = 1
@@ -734,7 +734,7 @@ parts are:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 a[ :i]
@@ -745,7 +745,7 @@ a[j: ]
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 a( :i-1)
@@ -762,7 +762,7 @@ Laplace update:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 u[1:-1,1:-1] = ((u[2:,1:-1]+u[:-2,1:-1])*dy2 +
@@ -772,7 +772,7 @@ u[1:-1,1:-1] = ((u[2:,1:-1]+u[:-2,1:-1])*dy2 +
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 nx = size(u, 1)
@@ -792,7 +792,7 @@ Comparison of Fortran and Python import statements:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from A import foo
@@ -803,7 +803,7 @@ from A import *
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 use A, only: foo
@@ -820,7 +820,7 @@ The following Python statements have no equivalent in Fortran:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 import A
@@ -830,7 +830,7 @@ import ALongName as A
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 
@@ -867,7 +867,7 @@ One creates the module:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python a.py
 
 i = 5
@@ -882,7 +882,7 @@ def g(x):
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran a.f90
 
 module a
@@ -914,7 +914,7 @@ And uses it from the main program as follows:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python main.py
 
 from a import f, i
@@ -926,7 +926,7 @@ print(i)
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran main.f90
 
 program main
@@ -974,7 +974,7 @@ In order to specify which symbols are public and private, one would use:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 __all__ = ["i", "f"]
@@ -991,7 +991,7 @@ def g(x):
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 module a
@@ -1040,7 +1040,7 @@ documentation.
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import float32
@@ -1050,7 +1050,7 @@ f = float32(1.1)
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 real :: f
@@ -1076,7 +1076,7 @@ f = float(5)       # 5.0
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 integer, parameter :: dp=kind(0.d0)
@@ -1101,7 +1101,7 @@ corruption), so one *always* needs to specify the precision.
 In all Fortran code snippets below, it is assumed, that you did
 `use types, only: dp`. The `types.f90` module is:
 
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 module types
@@ -1126,7 +1126,7 @@ Otherwise the usage is identical.
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from math import cos, pi, e
@@ -1140,7 +1140,7 @@ print(4 + 5*I)
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 use constants, only: pi, e
@@ -1183,7 +1183,7 @@ print *, 4 + 5*I
 
 Fortran module `constants.f90`:
 
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 module constants
@@ -1214,7 +1214,7 @@ There are three general ways to print formatted strings:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 print("Integer", 5, "and float", 5.5, "works fine.")
@@ -1226,7 +1226,7 @@ print("Integer %d and float %f." % (5, 5.5))
 
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 use utils, only: str
@@ -1269,7 +1269,7 @@ And here are some of the frequently used formats:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 print("%3d" % 5)
@@ -1282,7 +1282,7 @@ print("%23.16e" % -5.5)
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 print '(i3)', 5
@@ -1334,7 +1334,7 @@ function's namespace:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 def foo(a, b, c):                   
@@ -1346,7 +1346,7 @@ def foo(a, b, c):
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 subroutine foo(a, b, c)
@@ -1372,7 +1372,7 @@ Use it like:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 foo(1, 2, 1)
@@ -1382,7 +1382,7 @@ foo(2, 2, 1)
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 call foo(1._dp, 2._dp, 1._dp)
@@ -1423,7 +1423,7 @@ You can use the nested functions in callbacks to pass context:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 def simpson(f, a, b):                       
@@ -1439,7 +1439,7 @@ def foo(a, k):
 :::::
 
 :::::{grid-item}
-   ```{code-block} fortran
+```{code-block} Fortran
 :caption: Fortran
 
 real(dp) function simpson(f, a, b) result(s)
@@ -1480,7 +1480,7 @@ And use it like:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 foo(0.5, 1.)
@@ -1490,7 +1490,7 @@ foo(0.5, 2.)
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 call foo(0.5_dp, 1._dp)
@@ -1550,7 +1550,7 @@ interactive session.
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 for i in range(1, 9):                  
@@ -1562,7 +1562,7 @@ for i in range(1, 9):
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 loop_name: do i = 1, 8
@@ -1586,7 +1586,7 @@ affected by appending its name to the `cycle` statement.
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 for i in range(1, 9):                 
@@ -1598,7 +1598,7 @@ for i in range(1, 9):
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 loop_name: do i = 1, 8
@@ -1620,7 +1620,7 @@ Here is a real world program written in NumPy and translated to Fortran.
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 import numpy as np
@@ -1651,7 +1651,7 @@ np.savetxt("coord.dat", [x_min, x_max, y_min, y_max])
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 program Mandelbrot
@@ -1739,7 +1739,7 @@ create a module `find_fit_module` with a function `find_fit`:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import array
@@ -1759,7 +1759,7 @@ def find_fit(data_x, data_y, expr, pars):
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 module find_fit_module
@@ -1821,7 +1821,7 @@ a list of primes:
 :gutter: 0
 
 :::::{grid-item}
-   ```{code-block} Python
+```{code-block} Python
 :caption: Python
 
 from numpy import size, log
@@ -1841,7 +1841,7 @@ print(pars)
 :::::
 
 :::::{grid-item}
-   ```{code-block} Fortran
+```{code-block} Fortran
 :caption: Fortran
 
 program example_primes
