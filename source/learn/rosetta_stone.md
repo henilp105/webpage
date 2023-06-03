@@ -317,12 +317,12 @@ from numpy import array, empty
 a = array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])     
 b = empty(10)                                  
 for i in range(len(a)):                 
-     if a[i] > 5:                            
-         b[i] = a[i] - 3                        
-     elif a[i] > 2:                     
-         b[i] = 1                 
-     else:                                      
-         b[i] = 0  
+    if a[i] > 5:                            
+        b[i] = a[i] - 3                        
+    elif a[i] > 2:                     
+        b[i] = 1                 
+    else:                                      
+        b[i] = 0  
 
 ```
 :::::
