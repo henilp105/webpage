@@ -68,6 +68,7 @@ extensions = [
     "sphinx_copybutton",
     "sphinx.ext.intersphinx",
     "sphinx_jinja",
+    "sphinx_favicon",
 ]
 
 myst_enable_extensions = [
@@ -91,6 +92,9 @@ locale_dirs = ["../locale/"]
 
 language = str(sys.argv[-1][11:])
 html_search_language = str(sys.argv[-1][11:])
+
+if language == "en":
+    extensions.append("sphinx_sitemap")
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -119,15 +123,17 @@ html_theme = "pydata_sphinx_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 html_css_files = ["custom.css"]
+html_canonical_url = None
 
-html_theme_options = {
-    "favicons": [
-        {
+favicons = [
+    {
             "rel": "icon",
             "sizes": "256x256",
             "href": "images/favicon.ico",
         },
-    ],
+]
+
+html_theme_options = {
     "show_prev_next": False,
     "show_nav_level": 1,
     "show_toc_level": 0,
@@ -194,6 +200,8 @@ fontawesome_link_cdn = True
 blog_path = "news"
 blog_post_pattern = "news/**"
 blog_baseurl = "https://fortran-lang.org/en/"
+html_baseurl = "https://fortran-lang.org/en/"
+sitemap_url_scheme = "{link}"
 post_redirect_refresh = 1
 post_auto_image = 1
 post_auto_excerpt = 2
