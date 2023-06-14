@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Fortran-lang.org website\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 16:02+0200\n"
-"PO-Revision-Date: 2023-05-29 20:49+0000\n"
+"PO-Revision-Date: 2023-06-12 19:49+0000\n"
 "Last-Translator: Nathan Gurgel <nathan_gurgel@hotmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/fortran-lang/"
 "webpage/pt/>\n"
@@ -5840,12 +5840,19 @@ msgid ""
 "source file. We can give the general program to a user and they provide a "
 "specific source code."
 msgstr ""
+"nós queremos fazer o programa generalista, então mantenha o código fonte "
+"específico - a implementação da função `f` - separado do código fonte geral. "
+"Há várias formas de se conseguir isso, uma sendo colocar em um arquivo fonte "
+"diferente. Podemos dar o código generalista para um usuário e eles proverão "
+"um código fonte específico."
 
 #: ../../source/learn/building_programs/linking_pieces.md:36
 msgid ""
 "Assume for the sake of the example that the function is implemented in a "
 "source file \"functions.f90\" as:"
 msgstr ""
+"Presuma para o contexto do exemplo que a função é implementada em um código "
+"fonte \"functions.f90\" como:"
 
 #: ../../source/learn/building_programs/linking_pieces.md:52
 msgid ""
@@ -5855,6 +5862,11 @@ msgid ""
 "to compile the source file containing our module first. A sequence of "
 "commands to do this is:"
 msgstr ""
+"Para construir o programa com a função específica, precisamos compilar dois "
+"códigos fontes e combiná-los com a fase de link em um programa executável. "
+"Por conta do programa \"tabulate\" depender de um módulo \"function\", "
+"precisamos compilar o código fonte contendo o nosso módulo primeiro. Uma "
+"sequência de comandos para fazer isso é:"
 
 #: ../../source/learn/building_programs/linking_pieces.md:63
 msgid ""
@@ -5867,14 +5879,22 @@ msgid ""
 " function with two arguments instead of one. If the compiler does not know "
 "anything about the function's interface, then it cannot check anything."
 msgstr ""
+"O primeiro passo compila o módulo, resultando em um arquivo objeto "
+"\"functions.o\" e um arquivo módulo intermediário, \"user_functions.mod\". "
+"Esse arquivo módulo contém toda a informação que o compilador precisa para "
+"determinar que a função `f` é definida nesse módulo e qual é sua interface. "
+"Essa informação é importante: Isso permite que o compilador cheque que você "
+"chama a função da forma correta. Pode ser que você tenha cometido um erro e "
+"chamado a função com dois argumentos ao invés de um. Se o compilador sabe "
+"nada sobre a interface da função, então ele pode checar nada."
 
 #: ../../source/learn/building_programs/linking_pieces.md:73
 msgid "The second step invokes the compiler in such a way that:"
-msgstr ""
+msgstr "O segundo passo invoca o compilador de tal forma que:"
 
 #: ../../source/learn/building_programs/linking_pieces.md:75
 msgid "it compiles the file \"tabulate.f90\" (using the module file);"
-msgstr ""
+msgstr "ele compila o arquivo \"tabulate.f90\" (usando o arquivo módulo);"
 
 #: ../../source/learn/building_programs/linking_pieces.md:76
 msgid ""
@@ -5882,6 +5902,9 @@ msgid ""
 "into an executable program — with the default name \"a.out\" or \"a.exe\" (if"
 " you want a different name, use the option \"-o\")."
 msgstr ""
+"isso invoca o linker para combinar os arquivos objeto tabulate.o e "
+"functions.o em um programa executável - com o nome padrão \"a.out\" ou \"a."
+"exe\" (se você quer um nome diferente, use a opção \"-o\")."
 
 #: ../../source/learn/building_programs/linking_pieces.md:80
 msgid ""
@@ -5890,12 +5913,19 @@ msgid ""
 "contain all the \"standard\" stuff — low-level routines that do the input and"
 " output to screen, the `sin` function and much more."
 msgstr ""
+"O que você não vê no geral é que o linker também adiciona um número de "
+"arquivos extra nessa fase de link, as bibliotecas de tempo de execução. "
+"Essas bibliotecas de tempo de execução contém todas as \"coisas padrão\" - "
+"rotinas de baixo nível que fazem a entrada e saída da tela, a função `sin` e "
+"muito mais."
 
 #: ../../source/learn/building_programs/linking_pieces.md:85
 msgid ""
 "If you want to see the gory details, add the option \"-v\". This instructs "
 "the compiler to report all the steps that are in detail."
 msgstr ""
+"Se você quer ver mais detalhes, adicione a opção \"-v\". Isso instrui o "
+"compilador a apresentar todos os passos em detalhe."
 
 #: ../../source/learn/building_programs/linking_pieces.md:88
 msgid ""
@@ -5905,6 +5935,12 @@ msgid ""
 "objects or shared libraries). Without these run-time libraries the program "
 "will not start."
 msgstr ""
+"O resultado final, o programa executável, contém o código fonte compilado e "
+"várias rotinas auxiliares que o fazem funcionar. Ele também contém "
+"referências para as chamadas bibliotecas de tempo de execução dinâmicas (no "
+"Windows, DLLs, no Linux: objetos compartilhados ou bibliotecas "
+"compartilhadas). Sem essas bibliotecas de tempo de execução o programa não "
+"iniciará."
 
 #: ../../source/learn/building_programs/managing_libraries.md:3
 msgid ""
@@ -5913,12 +5949,19 @@ msgid ""
 "be very long indeed. This soon becomes tedious or even impossible to "
 "maintain. So a different solution is called for: create your own libraries."
 msgstr ""
+"Se você precisa gerenciar um programa com dúzias de arquivos fonte (e isso "
+"não é incomum!), o comando em linha necessário para especificar todos os "
+"arquivos objeto será bem grande. Isso logo fica tedioso ou até mesmo "
+"impossível de manter. Então uma solução diferente é necessária: criar suas "
+"próprias bibliotecas."
 
 #: ../../source/learn/building_programs/managing_libraries.md:9
 msgid ""
 "Libraries contain any number of object files in a compact form, so that the "
 "command-line becomes far shorter:"
 msgstr ""
+"Bibliotecas contêm qualquer quantidade de arquivos objeto de uma forma "
+"compactada, para que os comandos em linha se tornem bem menores:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:16
 msgid ""
@@ -5926,16 +5969,21 @@ msgid ""
 "compiled and then put into a library. The extension \".a\" is used by Linux "
 "and Linux-like platforms. On Windows the extension \".lib\" is used."
 msgstr ""
+"onde \"supportlib.a\" é uma coleção de um, dois ou mais arquivos objetos, "
+"todos compilados e adicionados em uma biblioteca. A extensão \".a\" é usa no "
+"Linux e plataformas semelhantes. No Windows é usada a extensão \".lib\"."
 
 #: ../../source/learn/building_programs/managing_libraries.md:20
 msgid ""
 "Creating your own libraries is not that complicated: on Linux, you can "
 "achieve this using a utility like `ar`:"
 msgstr ""
+"Criar suas próprias bibliotecas não é complicado: no Linux, você consegue "
+"usando um utilitário como `ar`:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:30
 msgid "or on Windows using the `lib` utility:"
-msgstr ""
+msgstr "ou no Windows usando o utilitário `lib`:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:39
 msgid "Note:"
@@ -5947,6 +5995,9 @@ msgid ""
 "appears after the option) or adds new object files to the library (or "
 "replaces any existing ones)."
 msgstr ""
+"O comando `ar` com a opção `r` ou cria a biblioteca (o nome aparece depois "
+"da opção) ou adiciona novos arquivos objeto para a biblioteca (ou substitui "
+"qualquer existente)."
 
 #: ../../source/learn/building_programs/managing_libraries.md:44
 msgid ""
@@ -5954,6 +6005,9 @@ msgid ""
 "`/out:` with the name of the new library next to it. To add object files to "
 "an existing library, leave out the `/out:` bit."
 msgstr ""
+"O comando `lib` criará uma nova biblioteca se você específica a opção `/out:`"
+" com o nome de uma nova biblioteca próxima a ela. Para adicionar arquivos "
+"objetos para uma biblioteca existente, não use `/out:`."
 
 #: ../../source/learn/building_programs/managing_libraries.md:47
 msgid ""
@@ -5961,6 +6015,10 @@ msgid ""
 "If you name your library like \"libname.a\" (note the \"lib\" prefix), then "
 "you can refer to it as `-lname` in the link step."
 msgstr ""
+"Nas plataformas semelhantes ao Linux há a convenção particular de nomear "
+"bibliotecas. Se você nomear sua biblioteca como \"libname.a\" (note o "
+"prefixo \"lib\"), então você pode se referir a ela como `-lname` na fase de "
+"link."
 
 #: ../../source/learn/building_programs/managing_libraries.md:50
 msgid ""
@@ -5968,12 +6026,17 @@ msgid ""
 "`/LIBPATH`. This saves you from having to specify the exact path for every "
 "library."
 msgstr ""
+"Bibliotecas são frequentemente buscadas em diretórios indicados por uma "
+"opção `-L` ou `/LIBPATH`. Isso te poupa de ter que especificar o caminho "
+"exato para cada biblioteca."
 
 #: ../../source/learn/building_programs/managing_libraries.md:54
 msgid ""
 "Using libraries you can build very large programs without having to resort to"
 " extremely long command lines."
 msgstr ""
+"Usando bibliotecas você pode construir programas gigantes sem ter que "
+"depender de linhas de comando extremamente longas."
 
 #: ../../source/learn/building_programs/managing_libraries.md:57
 msgid "Static versus dynamic libraries"
@@ -6002,12 +6065,21 @@ msgid ""
 "consider dynamic libraries as a sort of executable programs that need a bit "
 "of help to be run."
 msgstr ""
+"Uma alternativa flexível é usar as chamadas bibliotecas dinâmicas. Essas "
+"bibliotecas permanecem fora do código executável e como consequência podem "
+"ser substituídas sem refazer o build do programa completamente. Compiladores "
+"e o próprio sistema operacional são altamente dependentes de bibliotecas "
+"dinâmicas. Você pode considerar bibliotecas dinâmicas como programas "
+"executáveis que precisam de um pouco de ajuda para rodar."
 
 #: ../../source/learn/building_programs/managing_libraries.md:72
 msgid ""
 "Building dynamic libraries works slightly differently from building static "
 "libraries: you use the compiler/linker instead of a tool like `ar` or `lib`."
 msgstr ""
+"Construir bibliotecas dinâmicas funciona de forma ligeiramente diferente de "
+"construir bibliotecas estáticas: você usa o compilador/linker ao invés de "
+"uma ferramenta como `ar` ou `lib`."
 
 #: ../../source/learn/building_programs/managing_libraries.md:76
 msgid "On Linux:"
@@ -6015,17 +6087,19 @@ msgstr "No Linux:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:84
 msgid "On Windows, with the Intel Fortran compiler:"
-msgstr ""
+msgstr "No Windows, com o compilador Intel Fortran:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:92
 msgid "The differences are that:"
-msgstr ""
+msgstr "As diferenças são que:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:94
 msgid ""
 "You need to specify a compile option on Linux, for gfortran that is `-fpic`, "
 "because the object code is slightly different."
 msgstr ""
+"Você precisa especificar a opção de compilação no Linux, no gfortran é "
+"`-fpic`, porque o código objeto é ligeiramente diferente."
 
 #: ../../source/learn/building_programs/managing_libraries.md:96
 msgid ""
@@ -6033,6 +6107,9 @@ msgid ""
 "a shared object/library, hence the extension \".so\"; on Windows: a dynamic "
 "link library)"
 msgstr ""
+"Você precisa informar na fase de link que você quer uma biblioteca dinâmica ("
+"no Linux: um objeto/biblioteca compartilhado, por isso a extensão \".so\"; "
+"no Windows: um link de biblioteca dinâmico)"
 
 #: ../../source/learn/building_programs/managing_libraries.md:100
 msgid ""
@@ -6041,14 +6118,21 @@ msgid ""
 "library. There are several ways — depending on the compiler you use — to "
 "achieve this. One method is via a so-called compiler directive:"
 msgstr ""
+"Há mais de uma coisa para se manter atento: No Windows você precisa "
+"especificar explicitamente que um procedimento é _exported_, p.ex. é visível "
+"na biblioteca dinâmica. Há várias formas - dependendo do compilador que você "
+"usa - para conseguir isso. Um método é através da chamada diretiva do "
+"compilador:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:111
 msgid "Or, with the Intel Fortran compiler:"
-msgstr ""
+msgstr "Ou, com o compilador Intel Fortran:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:118
 msgid "Besides a dynamic library (DLL), a so-called import library may be generated."
 msgstr ""
+"Além da biblioteca dinâmica (DLL), a chamada biblioteca de importação pode "
+"ser gerada."
 
 #: ../../source/learn/building_programs/managing_libraries.md:121
 msgid ""
@@ -6056,6 +6140,9 @@ msgid ""
 "Cygwin and Intel Fortran on Windows. In both cases we look at the `tabulate` "
 "program in the file \"tabulate.f90\"."
 msgstr ""
+"Por conta dos detalhes serem diferentes em cada compilador, aqui dois "
+"exemplos: gfortran no Cygwin e Intel Fortran no Windows. Em ambos os casos, "
+"olharemos o programa `tabulate` no arquivo \"tabulate.f90\"."
 
 #: ../../source/learn/building_programs/managing_libraries.md:125
 msgid "GNU/Linux and gfortran"
@@ -6068,6 +6155,10 @@ msgid ""
 " implementation of the function by putting another dynamic library in the "
 "directory. No need to rebuild the program as such."
 msgstr ""
+"O programa `tabulate` requer uma rotina definida pelo usuário `f`. Se "
+"deixarmos numa biblioteca dinâmica, digamos \"functions.dll\", nós podemos "
+"simplesmente substituir a implementação da função colocando outra biblioteca "
+"dinâmica no diretório. Não precisa refazer o build do programa."
 
 #: ../../source/learn/building_programs/managing_libraries.md:132
 msgid ""
@@ -6075,28 +6166,37 @@ msgid ""
 "publically visible routines are exported when you build a dynamic library. "
 "Also, no import library is generated."
 msgstr ""
+"No Cygwin não é necessário exportar explicitamente um procedimento - todas "
+"as rotinas publicamente visíveis são exportadas quando você constrói uma "
+"biblioteca dinâmica. Além disso, nenhuma biblioteca de importação é gerada."
 
 #: ../../source/learn/building_programs/managing_libraries.md:136
 msgid ""
 "Since our dynamic library can be built from a single source file, we can take"
 " a shortcut:"
 msgstr ""
+"Já que nossa biblioteca dinâmica pode ser construída de um único arquivo "
+"fonte, nós podemos tomar um atalho:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:143
 msgid ""
 "This produces the files \"functions.dll\" and \"user_functions.mod\". The "
 "utility `nm` tells us the exact name of the function `f`:"
 msgstr ""
+"Isso produz os arquivos \"functions.dll\" e \"user_functions.mod\". O "
+"utilitário `nm` nos diz o nome exato da função `f`:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:158
 msgid ""
 "It has received a prefix `__function_MOD_` to distinguish it from any other "
 "routine \"f\" that might be defined in another module."
 msgstr ""
+"Ele recebeu um prefixo `__function_MOD_` para distingui-lo de qualquer outra "
+"rotina \"f\" que possa ser definida em outro módulo."
 
 #: ../../source/learn/building_programs/managing_libraries.md:161
 msgid "The next step is to build the program:"
-msgstr ""
+msgstr "O próximo passo é realizar o build do programa:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:167
 msgid ""
@@ -6104,6 +6204,9 @@ msgid ""
 "checks on the function's interface, the right name and the reference to \"a\""
 " DLL, called \"functions.dll\"."
 msgstr ""
+"O DLL é o arquivo .mod são usadas para realizar o build do programa "
+"executável com checagem na interface da função, o nome correto e a "
+"referência para \"uma\" DLL, chamada \"functions.dll\"."
 
 #: ../../source/learn/building_programs/managing_libraries.md:171
 msgid ""
@@ -6112,10 +6215,14 @@ msgid ""
 " use the correct interface for this function. The compiler/linker are not "
 "invoked anymore, so they can do no checking."
 msgstr ""
+"Você pode substituir a biblioteca compartilhada \"functions.dll\" por outra, "
+"implementando uma função diferente \"f\". Claro, você precisa ter cuidado ao "
+"usar a interface correta para essa função. O compilador/linker não é mais "
+"invocado, então não podem fazer checagem."
 
 #: ../../source/learn/building_programs/managing_libraries.md:176
 msgid "Windows and Intel Fortran"
-msgstr ""
+msgstr "Windows e Intel Fortran"
 
 #: ../../source/learn/building_programs/managing_libraries.md:178
 msgid ""
@@ -6123,16 +6230,21 @@ msgid ""
 "explicitly export the routines. And an import library is generated — this is "
 "the library that should be used in the link step."
 msgstr ""
+"O setup é o mesmo do Linux, mas no Windows é necessário exportar "
+"explicitamente as rotinas. E uma biblioteca de importação é gerada - essa é "
+"a biblioteca que deve ser usada na fase de link."
 
 #: ../../source/learn/building_programs/managing_libraries.md:182
 msgid ""
 "The source file must contain the compiler directive, otherwise the function "
 "`f` is not exported:"
 msgstr ""
+"O arquivo fonte deve conter a diretiva do compilador, ou a função `f` não é "
+"exportada:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:190
 msgid "Again we take a shortcut:"
-msgstr ""
+msgstr "De novo, tomamos um atalho:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:196
 msgid ""
@@ -6142,16 +6254,25 @@ msgid ""
 "\"f\" is `FUNCTION_mp_F`. It is also exported, so that it can be found by the"
 " linker in the next step:"
 msgstr ""
+"Isso produz os arquivos \"functions.dll\", \"user_functions.mod\" assim como "
+"\"functions.lib\" (e outros dois arquivos sem importância para cá). O "
+"programa \"andador de dependências\" nos diz que o nome exato da função \"f\""
+" é `FUNCTION_mp_F`. Isso também é exportado para que também possa ser "
+"encontrado pelo linker na próxima fase:"
 
 #: ../../source/learn/building_programs/managing_libraries.md:205
 msgid "Note that we need to specify the name of the export library, not the DLL!"
 msgstr ""
+"Note que precisamos especificar o nome da biblioteca de exportação, não a "
+"DLL!"
 
 #: ../../source/learn/building_programs/managing_libraries.md:207
 msgid ""
 "(Note also: the Intel Fortran compiler uses the name of the first source file"
 " as the name for the executable — here we do without the `-exe` option.)"
 msgstr ""
+"(Note também: o compilador Intel Fortran usa o nome do primeiro arquivo "
+"fonte como o nome do executável - aqui fazemos sem a opção `-exe`.)"
 
 #: ../../source/learn/building_programs/managing_libraries.md:210
 msgid ""
@@ -6159,6 +6280,9 @@ msgid ""
 "executable program with checks on the function's interface, the right name "
 "and the reference to \"a\" DLL, called \"functions.dll\"."
 msgstr ""
+"No Cygwin, a DLL e o arquivo .mod são usados para o build do programa "
+"executável com checagem na interface da função, no nome correto e na "
+"referência para \"uma\" DLL, chamada \"functions.dll\"."
 
 #: ../../source/learn/building_programs/managing_libraries.md:214
 msgid ""
@@ -6166,16 +6290,21 @@ msgid ""
 "same caution is required: while the implementation can be quite different, "
 "the function's interface must be the same."
 msgstr ""
+"Você pode substituir a biblioteca compartilhada \"functions.dll\" por outra, "
+"mas a mesma atenção é necessária: enquanto que a implementação pode ser "
+"diferente, a interface da função deve ser a mesma."
 
 #: ../../source/learn/building_programs/project_make.md:3
 msgid ""
 "We briefly discussed the basics of `make`. This chapter gives ideas and "
 "strategies to scale `make` for larger projects."
 msgstr ""
+"Discutimos brevemente o básico do `make`. Esse capítulos dá ideias e "
+"estratégias de escalas `make` para projetos maiores."
 
 #: ../../source/learn/building_programs/project_make.md:6
 msgid "Before going into detail with `make`, consider a few points:"
-msgstr ""
+msgstr "Antes de irmos aos detalhes com `make`, considere alguns pontos:"
 
 #: ../../source/learn/building_programs/project_make.md:8
 msgid ""
@@ -6183,6 +6312,9 @@ msgid ""
 " platforms. That said, there are also different flavors of `make` available, "
 "not all might support the features you want to use."
 msgstr ""
+"`make` é uma ferramenta Unix e pode te dar algum trabalho quando portando "
+"para plataformas não Unix. Dito isso, há outros sabores de `make` "
+"disponíveis, mas nem todos podem ter as funcionalidades que você queira usar."
 
 #: ../../source/learn/building_programs/project_make.md:11
 msgid ""
@@ -6192,6 +6324,11 @@ msgid ""
 "significant amount of time writing and maintaining your `Makefile` instead of"
 " developing your source code."
 msgstr ""
+"`make` te dá controle total do processo de geração de build, isso significa "
+"que você é responsável por todo o processo, e deverá especificar as regras "
+"para cada detalhe do seu projeto. Você poderá se encontrar gastando um tempo "
+"significativo escrevendo e mantendo seu `Makefile` ao invés de desenvolver "
+"seu código fonte."
 
 #: ../../source/learn/building_programs/project_make.md:15
 msgid ""
@@ -6200,6 +6337,10 @@ msgid ""
 " to spend learning your `Makefile` and would they be able to debug or add "
 "features?"
 msgstr ""
+"Você pode trabalhar com seu `Makefile`, mas lembre dos outros "
+"desenvolvedores no seu projeto que podem não ser familiares com `make`. "
+"Quanto tempo você espera que eles gastem para aprender seu `Makefile` e eles "
+"serão capazes de debugar ou adicionar funcionalidades?"
 
 #: ../../source/learn/building_programs/project_make.md:18
 msgid ""
@@ -6208,6 +6349,10 @@ msgid ""
 "dependencies and possible sources of errors. The effort needed to test and "
 "document those tools should not be underestimated."
 msgstr ""
+"`make` puro não irá escalar. Cedo você adicionará programas auxiliares para "
+"gerar dinamicamente ou estaticamente seu `Makefile`. Eles introduzem "
+"dependências e possíveis fontes de erros. O esforço necessário para testar e "
+"documentar essas ferramentas não deve ser subestimada."
 
 #: ../../source/learn/building_programs/project_make.md:23
 msgid ""
@@ -6217,6 +6362,12 @@ msgid ""
 "`make`. This guide should present a general recommended style to write "
 "`make`, but also serve as demonstration of useful and interesting features."
 msgstr ""
+"Se você acha `make` adequado para suas necessidades, então você pode começar "
+"escrevendo seu `Makefile`. Para esse curso nós iremos usar exemplos do mundo "
+"real vindo do pacote de índice, o qual (no momento dessa escrita) usa "
+"sistemas de geração de build fora o `make`. Esse guia apresenta uma "
+"recomendação de estilo geral para escrever `make`, mas também serve como "
+"demonstração de funcionalidades úteis e interessantes."
 
 #: ../../source/learn/building_programs/project_make.md:30
 msgid ""
@@ -6224,6 +6375,9 @@ msgid ""
 " automate workflows defined by files. Maybe you can leverage its power in a "
 "different context."
 msgstr ""
+"Mesmo se você achar `make` inadequado para gerar o build do seu projeto, "
+"essa é _a_ ferramenta para automatizar fluxos de trabalho definidos pelos "
+"arquivos. Talvez você possa utilizar de seu poder em um contexto diferente."
 
 #: ../../source/learn/building_programs/project_make.md:35
 msgid ""
@@ -6232,6 +6386,11 @@ msgid ""
 "Fortran CSV module (v1.2.0)</a>. Our goal is to write a `Makefile` to compile"
 " this project to a static library. Start by cloning the repository"
 msgstr ""
+"Para essa parte, trabalharemos com <a href=\"https://github.com/"
+"jacobwilliams/fortran-csv-module/tree/1.2.0\" target=\"_blank\" rel="
+"\"noopener\"> o Fortran CSV module (v1.2.0)</a>. Nosso objetivo é criar um "
+"`Makefile` para compilar esse projeto em uma biblioteca estática. Comece "
+"clonando o repositório"
 
 #: ../../source/learn/building_programs/project_make.md:46
 msgid ""
@@ -6239,6 +6398,9 @@ msgid ""
 "reproducible as possible. Feel free to use the latest version or another "
 "project instead."
 msgstr ""
+"Para essa parte trabalharemos com o código da tag `1.2.0` para fazê-lo o "
+"mais reprodutível o possível. Sinta-se a vontade de usar a última versão ou "
+"outro projeto."
 
 #: ../../source/learn/building_programs/project_make.md:49
 msgid ""
@@ -6246,6 +6408,10 @@ msgid ""
 " options used with FoBiS. We are about to write a `Makefile` for this "
 "project. First, we check the directory structure and the source files"
 msgstr ""
+"Esse projeto usa FoBiS como sistema de geração de build, e você pode chegar "
+"o `build.sh` para opções com FoBiS. Nós agora iremos escrever o `Makefile` "
+"para esse projeto. Primeiro, checamos a estrutura do diretório e os arquivos "
+"fonte"
 
 #: ../../source/learn/building_programs/project_make.md:71
 msgid ""
@@ -6253,16 +6419,22 @@ msgid ""
 "compiled and added to a static library while the three in `src/tests` contain"
 " individual programs that depend on this static library."
 msgstr ""
+"Nós encontramos sete arquivos fonte Fortran diferentes; os quatros no `src` "
+"devem ser compilados e adicionados na biblioteca estática enquanto que os "
+"três em `src/tests` contém programas individuais que dependem da biblioteca "
+"estática."
 
 #: ../../source/learn/building_programs/project_make.md:75
 msgid "Start by creating a simple `Makefile`:"
-msgstr ""
+msgstr "Comece criando um `Makefile` simples:"
 
 #: ../../source/learn/building_programs/project_make.md:141
 msgid ""
 "Invoking `make` should build the static library and the test executables as "
 "expected:"
 msgstr ""
+"Invocando `make` deve construir a biblioteca estática e os executáveis dos "
+"testes como esperado:"
 
 #: ../../source/learn/building_programs/project_make.md:156
 msgid ""
@@ -6272,6 +6444,11 @@ msgid ""
 "dependencies are specified explicitly, which results in several additional "
 "lines even for such a simple project."
 msgstr ""
+"Há algumas coisas para notar aqui, o build `make` geralmente interlaça os "
+"artefatos do build e o código fonte, a não ser que você implemente o "
+"diretório de build. Além disso, os arquivos fonte e dependências são "
+"especificadas explicitamente, o que resulta em diversas linhas adicionais "
+"mesmo para tal projeto simples."
 
 #: ../../source/learn/building_programs/project_make.md:162
 msgid "Automatically generated dependencies"
@@ -6285,6 +6462,11 @@ msgid ""
 " compilers (like the Intel Fortran compiler) also offer to generate "
 "dependencies in `make` format."
 msgstr ""
+"A principal desvantagem do `make` para Fortran é a falta da capacidade de "
+"determinar dependências de módulo. Isso é geralmente resolvido seja "
+"adicionando à mão ou escaneando automaticamente o código fonte com uma "
+"ferramenta externa. Alguns compiladores (como o compilador Intel Fortran) "
+"também oferece a geração de dependências no formato `make`."
 
 #: ../../source/learn/building_programs/project_make.md:169
 msgid ""
@@ -6295,6 +6477,13 @@ msgid ""
 " the name of the source file and the module files are known, and no "
 "information on the object file names should be required."
 msgstr ""
+"Antes de aprofundar na geração de dependências, vamos delinear o conceito de "
+"uma medida robusta para o problema de dependência. Primeiro, queremos uma "
+"abordagem que consiga processar todos os arquivos fonte independentemente, "
+"enquanto cada arquivo fonte fornece (`module`) ou requer (`use`) módulos. "
+"Quando gerando as dependências apenas o nome do arquivo fonte e os arquivos "
+"módulo são conhecidos, e nenhuma informação dos nomes dos arquivos objeto "
+"deve ser necessária."
 
 #: ../../source/learn/building_programs/project_make.md:177
 msgid ""
@@ -6302,6 +6491,10 @@ msgid ""
 " are defined between object files rather than source files. To change this, "
 "we can generate a map from the source files their respective object files:"
 msgstr ""
+"Se você checar a seção de dependência acima você notará que todas as "
+"dependências são definidas entre arquivos objeto ao invés de arquivos fonte. "
+"Para mudar isso, podemos gerar uma relação dos arquivos fonte com seus "
+"respectivos arquivos objeto:"
 
 #: ../../source/learn/building_programs/project_make.md:187
 msgid ""
@@ -6311,24 +6504,35 @@ msgid ""
 "allows us to generate `make` statements and evaluate them for this "
 "`Makefile`."
 msgstr ""
+"Note a declaração do `obj` como uma variável recursivamente expandida, "
+"efetivamente usamos esse mecanismo para definir a função em `make`. A função "
+"`foreach` nos permite fazer um laço em todos os arquivos fonte, enquanto que "
+"a função `eval` nos permite gerar as declarações `make` e avalia-las para "
+"esse `Makefile`."
 
 #: ../../source/learn/building_programs/project_make.md:192
 msgid ""
 "We adjust the dependencies accordingly as we can now define the name of the "
 "object files through the source file names:"
 msgstr ""
+"Ajustamos as dependências de acordo como definimos o nome dos arquivos "
+"objeto através dos nomes dos arquivos fonte:"
 
 #: ../../source/learn/building_programs/project_make.md:212
 msgid ""
 "The same strategy of creating a map is already used for the module files, now"
 " it is just expanded to the object files as well."
 msgstr ""
+"A mesma estratégia de criar uma relação já é usada para os arquivos módulo, "
+"agora é apenas expandida para os arquivos objeto também."
 
 #: ../../source/learn/building_programs/project_make.md:215
 msgid ""
 "To generate the respective dependency map automatically we will use an `awk` "
 "script here"
 msgstr ""
+"Para gerar a respectiva relação de dependências automaticamente usaremos um "
+"script `awk` aqui"
 
 #: ../../source/learn/building_programs/project_make.md:277
 msgid ""
@@ -6336,6 +6540,9 @@ msgid ""
 "will not work with all Fortran code (namely submodules are not supported), "
 "but for this example it will suffice."
 msgstr ""
+"Esse script tem algumas premissas sobre o código fonte analisado, então não "
+"funcionará para todo código Fortran (declaradamente submódulos não são "
+"suportados), mas para esse exemplo bastará."
 
 #: ../../source/learn/building_programs/project_make.md:282
 msgid "Using awk"
@@ -6350,6 +6557,12 @@ msgid ""
 "href=\"https://en.wikipedia.org/wiki/Regular_expression\" target=\"_blank\" "
 "rel=\"noopener\"> regular expression</a>."
 msgstr ""
+"O script acima usa a linguagem `awk`, a qual é projetada com o propósito de "
+"processar fluxos de texto e usa uma síntaxe C-like. Em `awk` você pode "
+"definir grupos que são avaliados em certos eventos, _p.ex._ quando uma linha "
+"corresponde a um padrão específico, geralmente espressada por uma <a href="
+"\"https://en.wikipedia.org/wiki/Regular_expression\" target=\"_blank\" rel="
+"\"noopener\">expressão regular</a>."
 
 #: ../../source/learn/building_programs/project_make.md:290
 msgid ""
@@ -6360,6 +6573,12 @@ msgid ""
 "the special variable `FILENAME` to determine which file we are currently "
 "parsing and to allow processing multiple files at once."
 msgstr ""
+"O script `awk` define cinco grupos, dois usam o padrão especial `BEGIN` e "
+"`END` os quais rodam antes do script iniciar e depois do script finalizar, "
+"respectivamente. Antes do script iniciar fazemos o script insensitivo à "
+"caixa já que estamos lidando com código fonte Fortran aqui. Também usamos a "
+"variável especial `FILENAME` para determinar qual arquivo nós estamos "
+"avaliado atualmente e permitir processar múltiplos arquivos de uma vez."
 
 #: ../../source/learn/building_programs/project_make.md:298
 msgid ""
@@ -6368,12 +6587,19 @@ msgid ""
 "pattern not all valid Fortran code will be parsed correctly. A failing "
 "example would be:"
 msgstr ""
+"Com os três padrões definidos buscaremos as declarações `module`, `use` e "
+"`include` como as primeiras entradas delimitadas por espaço. Com o padrão "
+"usado nem todo código Fortran válido será avaliada corretamente. Um exemplo "
+"de falha seria:"
 
 #: ../../source/learn/building_programs/project_make.md:307
 msgid ""
 "To make this parsable by the `awk` script we can add another group directly "
 "after the `BEGIN` group, modifying the stream while processing it with"
 msgstr ""
+"Para faze-lo avaliável pelo script `awk` adicionaremos outro grupo "
+"diretamente depois do grupo `BEGIN`, modificando o fluxo enquanto processa "
+"ele com"
 
 #: ../../source/learn/building_programs/project_make.md:316
 msgid ""
@@ -6381,6 +6607,9 @@ msgid ""
 "lines and other difficulties. This might be possible to implement in `awk` "
 "but would require a huge script in the end."
 msgstr ""
+"Na teoria você precisaria de um avaliador Fortran completo para lidar com as "
+"linhas de continuação e outras dificuldades. Isso pode ser possível de "
+"implementar no `awk` mas iria requerer um script enorme no final."
 
 #: ../../source/learn/building_programs/project_make.md:320
 msgid ""
@@ -6390,12 +6619,19 @@ msgid ""
 "simplify and speed up this step, but also introduces an error source in your "
 "build tools."
 msgstr ""
+"Além disso, tenha em mente que gerar as dependências deve ser rápido, um "
+"avaliador caro pode produzir uma despesa adicional quando gerando "
+"dependências para uma base de código grande. Tomar premissas razoáveis pode "
+"simplificar e acelerar esse passo, mas também introduzir fontes de erro nas "
+"suas ferramentas de geração de build."
 
 #: ../../source/learn/building_programs/project_make.md:327
 msgid ""
 "Make the script executable (`chmod +x gen-deps.awk`) and test it with `./gen-"
 "deps.awk $(find src -name '*.[fF]90')`. You should see output like this:"
 msgstr ""
+"Faça o script executável (`chmod +x gen-deps.awk`) e teste-o com `.gen-"
+"deps.awk $(find src -name `*.[fF]90`)`. Você deve ver uma saída como isto:"
 
 #: ../../source/learn/building_programs/project_make.md:349
 msgid ""
@@ -6407,12 +6643,21 @@ msgid ""
 "`iso_fortran_env.mod`, since it is an undefined variable it will just expand "
 "to an empty string and not introduce any further dependencies."
 msgstr ""
+"No que a saída do script usará variáveis recursivamente expandidas e não "
+"define nenhuma dependência ainda, por causa que a declaração de variáveis "
+"fora de ordem pode ser necessária e não queremos que crie qualquer coisa por "
+"acidente. Você pode verificar que a mesma informação como no snippet escrito "
+"acima é presente. A única exceção é a dependência adicional no "
+"`iso_fortran_env.mod`, já que é uma variável indefinida e irá apenas "
+"expandir em um string vazia e não introduzirá qualquer dependência."
 
 #: ../../source/learn/building_programs/project_make.md:357
 msgid ""
 "Now, you can finally include this piece in your `Makefile` to automate the "
 "dependency generation:"
 msgstr ""
+"Agora, você pode finalmente incluir este pedaço no seu `Makefile` para "
+"automatizar a geração de dependência:"
 
 #: ../../source/learn/building_programs/project_make.md:428
 msgid ""
@@ -6424,6 +6669,13 @@ msgid ""
 "because it is not necessary to recompile an object file in case dependencies "
 "are regenerated and potentially unchanged."
 msgstr ""
+"Aqui arquivos de dependência adicionais são gerados para cada arquivo fonte "
+"individualmente e então incluídos no `Makefile` principal. Al[em disso, os "
+"arquivos de dependência são adicionados como dependência para os arquivos "
+"objeto para garantir que serão gerados antes do objeto ser compilado. O "
+"carácter pipe nas dependências define a ordem de regras sem uma dependência "
+"temporal, porque não é necessário recompilar um arquivo de objeto no caso de "
+"dependências serem gerem e potencialmente não modificadas."
 
 #: ../../source/learn/building_programs/project_make.md:436
 msgid ""
@@ -6432,22 +6684,32 @@ msgid ""
 "object files in the dependency files, expanding `dep` once yields the object "
 "file name, expanding it again yields the object files it depends on."
 msgstr ""
+"De novo, faremos uso da função `eval` para gerar as dependências em um laço "
+"`foreach` em todos os arquivos objeto. Note que criamos uma relação entre os "
+"arquivos objeto e os arquivos de dependência, expandindo `dep` uma vez rende "
+"o nome do arquivo objeto, expandir novamente rende os arquivos de objeto que "
+"ele depende."
 
 #: ../../source/learn/building_programs/project_make.md:441
 msgid "Building your project with `make` should give an output similar to"
-msgstr ""
+msgstr "Construindo seu projeto com `make` deve dar uma saída similar a"
 
 #: ../../source/learn/building_programs/project_make.md:462
 msgid ""
 "Once the dependency files are generated, `make` will only update them if the "
 "source changes and not require to rebuild them again for every invocation."
 msgstr ""
+"Uma vez que os arquivos de dependência são gerados, `make` irá apenas "
+"atualizá-los se a fonte mudar e não requer regerar o build novamente para "
+"cada invocação."
 
 #: ../../source/learn/building_programs/project_make.md:466
 msgid ""
 "With correct dependencies you can leverage parallel execution of your "
 "`Makefile`, just use the `-j` flag to create multiple `make` processes."
 msgstr ""
+"Com dependências corretas você pode alavancar a execução paralela no seu "
+"`Makefile`, apenas use a flag `-j` para criar múltiplos processos `make`."
 
 #: ../../source/learn/building_programs/project_make.md:469
 msgid ""
@@ -6455,6 +6717,9 @@ msgid ""
 "specify the source files explicitly, the `wildcard` function can be used to "
 "determine them dynamically:"
 msgstr ""
+"Já que dependências podem ser geradas automaticamente, não precisa "
+"especificar os arquivos fonte explicitamente, a função `wildcard` pode ser "
+"usada para determiná-los dinamicamente:"
 
 #: ../../source/learn/building_programs/runtime_libraries.md:3
 msgid ""
@@ -6462,6 +6727,9 @@ msgid ""
 "libraries, here is the output from the `ldd` utility that reports such "
 "dependencies:"
 msgstr ""
+"Para ilustrar que até programas simples dependem de bibliotecas de tempo de "
+"execução externas, aqui a saída do utilitário `ldd` que apresenta tais "
+"dependências:"
 
 #: ../../source/learn/building_programs/runtime_libraries.md:18
 msgid ""
@@ -6471,6 +6739,12 @@ msgid ""
 " no problem. However, when such a library cannot be found, you will get "
 "(hopefully) an error message and the program stops immediately."
 msgstr ""
+"Outros compiladores ou outras versões do mesmo compilador provavelmente "
+"requererá diferentes bibliotecas dinâmicas. Desde que você rode o programa "
+"no mesmo computador - ou, mais especificamente, dentro do mesmo ambiente - "
+"não haverá problemas. Contudo, quando tal biblioteca não pode ser "
+"encontrada, você irá (assim esperado) uma mensagem de erro e o programa para "
+"imediatamente."
 
 #: ../../source/learn/building_programs/runtime_libraries.md:25
 msgid ""
@@ -6480,6 +6754,10 @@ msgid ""
 "nicely with Windows 10, is found here: "
 "<https://github.com/lucasg/Dependencies>)"
 msgstr ""
+"Portanto é bom sabe quais bibliotecas são requeridas. Nos ambientes Linux e "
+"semelhantes, o utilitário `ldd` é de grande ajuda. No Windows, você pode "
+"usar o `dependency walker` (a última versão, o qual funciona muito bem no "
+"Windows 10, é encontrado aqui: <https://github.com/lucasg/Dependencies>)"
 
 #: ../../source/learn/building_programs/runtime_libraries.md:30
 msgid ""
@@ -6487,6 +6765,9 @@ msgid ""
 "libraries. That is a vast subject in its own right and full of complications "
 "and history. Here we merely scratch the surface:"
 msgstr ""
+"Outra coisa que você deve saber é onde o programa tenta achar essas "
+"bibliotecas. Isso é um tópico vasto por si só e cheio de complicações e "
+"história. Aqui meramente arranhamos a superfície:"
 
 #: ../../source/learn/building_programs/runtime_libraries.md:34
 msgid "_On Linux:_"
@@ -6498,16 +6779,22 @@ msgid ""
 "directories to be searched, each directory separated via colons (:) from the "
 "others. For instance: `/usr/lib:/usr/local/lib` — typical system directories."
 msgstr ""
+"A biblioteca de ambiente `LD_LIBRARY_PATH` é usada. Ela consiste em uma "
+"lista de diretórios à ser vasculhada, cada diretório separado por dois "
+"pontos (:) dos outros. Por instância: `usr/lib:/usr/local/lib` - tipo "
+"sistema de diretórios."
 
 #: ../../source/learn/building_programs/runtime_libraries.md:40
 msgid ""
 "At the link step you can also use an option to set `RPATH`, a list of "
 "directories that is put into the executable file itself."
 msgstr ""
+"Na fase de link você pode usar também a opção de definir `RPATH`, uma lista "
+"de diretórios que é adicionada ao próprio arquivo executável."
 
 #: ../../source/learn/building_programs/runtime_libraries.md:42
 msgid "Then there are several system directories that are searched."
-msgstr ""
+msgstr "Então há diversos diretórios do sistemas que serão vasculhados."
 
 #: ../../source/learn/building_programs/runtime_libraries.md:44
 msgid "_On Windows:_"
@@ -6518,16 +6805,21 @@ msgid ""
 "The directory containing the executable program may also contain dynamic "
 "libraries."
 msgstr ""
+"O diretório contendo o programa executável pode conter também bibliotecas "
+"dinâmicas."
 
 #: ../../source/learn/building_programs/runtime_libraries.md:48
 msgid ""
 "The environment variable \"PATH\" is used. Again a list of directories to be "
 "searched, but now the separating character is the semicolon (;)."
 msgstr ""
+"A variável de ambiente \"PATH\" é usada. De novo uma lista de diretórios "
+"para serem vasculhadas, mas agora o carácter de separação é o ponto-e-"
+"vírgula (;)."
 
 #: ../../source/learn/building_programs/runtime_libraries.md:50
 msgid "A set of system directories is searched."
-msgstr ""
+msgstr "Um conjunto de diretórios de sistema é vasculhado."
 
 #: ../../source/learn/building_programs/runtime_libraries.md:52
 msgid ""
@@ -6536,6 +6828,10 @@ msgid ""
 "\"ldd\" or \"dependency walker\" to find out what libraries are loaded and "
 "where they are found."
 msgstr ""
+"Infelizmente, os detalhes podem mudar de uma versão do sistema operação para "
+"outra. O supracitado é meramente uma indicação - use ferramentas como \"ldd\""
+" ou \"dependency walker\" para descobrir quais bibliotecas são carregas e "
+"onde serão encontradas."
 
 #: ../../source/learn/building_programs/runtime_libraries.md:57
 msgid ""
@@ -6544,10 +6840,14 @@ msgid ""
 " also distribute the libraries it depends on. For more information: see "
 "below."
 msgstr ""
+"Se você quer compartilhar seu programa com colegas ou clientes ou "
+"simplesmente usuários ao redor do mundo, você terá que ter cuidado com, além "
+"do programa, as distribuição das bibliotecas que seu programa depende. Para "
+"mais informações: veja abaixo."
 
 #: ../../source/learn/intrinsics/array.md:1
 msgid "Properties and attributes of arrays"
-msgstr ""
+msgstr "Propriedades e atributos das matrizes"
 
 #: ../../source/learn/intrinsics/_pages/MERGE.md:2
 msgid "merge"
@@ -6753,11 +7053,11 @@ msgstr "merge"
 #: ../../source/learn/intrinsics/_pages/UNPACK.md:4
 #: ../../source/learn/intrinsics/_pages/VERIFY.md:4
 msgid "**Name**"
-msgstr ""
+msgstr "**Nome**"
 
 #: ../../source/learn/intrinsics/_pages/MERGE.md:6
 msgid "**merge**(3) - \\[ARRAY CONSTRUCTION\\] Merge variables"
-msgstr ""
+msgstr "**merge**(3) - \\[ARRAY CONSTRUCTION\\] Mescla variáveis"
 
 #: ../../source/learn/intrinsics/_pages/ABS.md:8
 #: ../../source/learn/intrinsics/_pages/ACHAR.md:8
@@ -6959,7 +7259,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/UNPACK.md:9
 #: ../../source/learn/intrinsics/_pages/VERIFY.md:8
 msgid "**Syntax**"
-msgstr ""
+msgstr "**Síntaxe**"
 
 #: ../../source/learn/intrinsics/_pages/ABS.md:26
 #: ../../source/learn/intrinsics/_pages/ACHAR.md:21
@@ -7169,10 +7469,14 @@ msgid ""
 "**tsource** where the corresponding element of **mask** is **.true.**, or an "
 "element of **fsource** when it is .false. ."
 msgstr ""
+"A função elementar **merge**(3) seleciona valores de duas matrizes ou "
+"escalares de acordo com a máscara lógica. O resultado é igual ao elemento do "
+"**tsource** onde o elemento correspondente do **mask** é **.true.**, ou um "
+"elemento de **fsource** quando é .false. ."
 
 #: ../../source/learn/intrinsics/_pages/MERGE.md:21
 msgid "Multi-dimensional arrays are supported."
-msgstr ""
+msgstr "Matrizes multidimensionais são suportadas."
 
 #: ../../source/learn/intrinsics/_pages/MERGE.md:23
 msgid ""
@@ -7182,22 +7486,32 @@ msgid ""
 "being generated; as **1.0/x** may be evaluated for all values of **x** before"
 " the mask is used to select which value to retain:"
 msgstr ""
+"Note que as expressões de argumento para **merge**(3) não são necessárias de "
+"serem curto circuitadas então (como um exemplo) se a matriz **x** contém "
+"valores zero na declaração abaixo o padrão não previne divisão de ponto "
+"flutuante por zero; como **1.0/x** pode ser avaliada para todos os valores "
+"de **x** antes da máscara ser usada para selecionar quais valores reter:"
 
 #: ../../source/learn/intrinsics/_pages/MERGE.md:33
 msgid ""
 "Note the compiler is also free to short-circuit or to generate an infinity so"
 " this may work in many programming environments but is not recommended."
 msgstr ""
+"Note que o compilador também é livre para curto circuitar ou gerar um "
+"infinito então isso pode funcionar em muitos ambientes de programação mas "
+"isso não é recomendado."
 
 #: ../../source/learn/intrinsics/_pages/MERGE.md:37
 msgid ""
 "For cases like this one may instead use masked assignment via the **where** "
 "construct:"
 msgstr ""
+"Para casos como esse pode usar atribuição mascarada por meio do construto "
+"**where**:"
 
 #: ../../source/learn/intrinsics/_pages/MERGE.md:48
 msgid "instead of the more obscure"
-msgstr ""
+msgstr "ao invés do mais obscuro"
 
 #: ../../source/learn/intrinsics/_pages/ABS.md:37
 #: ../../source/learn/intrinsics/_pages/ACHAR.md:36
@@ -8240,13 +8554,15 @@ msgstr "Fortran 95 e posterior"
 #: ../../source/learn/intrinsics/_pages/UNPACK.md:111
 #: ../../source/learn/intrinsics/_pages/VERIFY.md:257
 msgid "**See Also**"
-msgstr ""
+msgstr "**Veja Também**"
 
 #: ../../source/learn/intrinsics/_pages/MERGE.md:156
 msgid ""
 "[**pack**(3)](#pack), [**unpack**(3)](#unpack), [**pack**(3)](#pack), "
 "[**spread**(3)](#spread), [**unpack**(3)](#unpack)"
 msgstr ""
+"[**pack**(3)](#pack), [**unpack**(3)](#unpack), [**pack**(3)](#pack), "
+"[**spread**(3)](#spread), [**unpack**(3)](#unpack)"
 
 #: ../../source/learn/intrinsics/_pages/ABS.md:123
 #: ../../source/learn/intrinsics/_pages/ACHAR.md:174
@@ -8296,7 +8612,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/TRAILZ.md:118
 #: ../../source/learn/intrinsics/_pages/VERIFY.md:275
 msgid "fortran-lang intrinsic descriptions (license: MIT) @urbanjost"
-msgstr ""
+msgstr "Descrições intrínsecas de fortran-lang (licença: MIT) @urbanjost"
 
 #: ../../source/learn/intrinsics/_pages/PACK.md:2
 msgid "pack"
@@ -8305,6 +8621,8 @@ msgstr "pack"
 #: ../../source/learn/intrinsics/_pages/PACK.md:6
 msgid "**pack**(3) - \\[ARRAY CONSTRUCTION\\] Pack an array into an array of rank one"
 msgstr ""
+"**pack**(3) - \\[ARRAY CONSTRUCTION\\] Empacota uma matriz em uma matriz de "
+"primeira ordem"
 
 #: ../../source/learn/intrinsics/_pages/PACK.md:19
 msgid ""
@@ -8312,10 +8630,13 @@ msgid ""
 " returned value must by of the same type. **mask** may be a scalar as well an"
 " an array."
 msgstr ""
+"onde TYPE(kind=KIND) pode ser de qualquer tipo, onde **array** e **vector** "
+"e o valor retornado deve ser do mesmo tipo. **mask** pode ser um escalar ou "
+"uma matriz."
 
 #: ../../source/learn/intrinsics/_pages/PACK.md:25
 msgid "Stores the elements of ARRAY in an array of rank one."
-msgstr ""
+msgstr "Guarda os elementos de ARRAY em uma matriz de primeira ordem."
 
 #: ../../source/learn/intrinsics/_pages/PACK.md:27
 msgid ""
@@ -8323,6 +8644,9 @@ msgid ""
 "equals **.true.**. Afterwards, positions are filled with elements taken from "
 "**vector**."
 msgstr ""
+"O começo da matriz resultante é constituída dos elementos onde **mask** é "
+"igual **.true.**. Depois, as posições são preenchidas com os elementos "
+"obtidos de **vector**."
 
 #: ../../source/learn/intrinsics/_pages/ALLOCATED.md:27
 #: ../../source/learn/intrinsics/_pages/CO_LBOUND.md:21
@@ -8358,6 +8682,8 @@ msgid ""
 "Shall be an array of type _logical_ and of the same size as **array**. "
 "Alternatively, it may be a _logical_ scalar."
 msgstr ""
+"Deve ser um array do tipo _logical_ e do mesmo tamanho que **array**. "
+"Alternativamente, pode ser um escalar _logical_."
 
 #: ../../source/learn/intrinsics/_pages/PACK.md:40
 #: ../../source/learn/intrinsics/_pages/UNPACK.md:30
@@ -9344,7 +9670,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/LBOUND.md:118
 msgid "[**ubound**(3)](#ubound), [**co_lbound**(3)](#co_lbound)"
-msgstr ""
+msgstr "[**ubound**(3)](#ubound), [**co_lbound**(3)](#co_lbound)"
 
 #: ../../source/learn/intrinsics/_pages/RANK.md:2
 msgid "rank"
@@ -9422,7 +9748,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SHAPE.md:69
 msgid "[**reshape**(3)](#reshape), [**size**(3)](#size)"
-msgstr ""
+msgstr "[**reshape**(3)](#reshape), [**size**(3)](#size)"
 
 #: ../../source/learn/intrinsics/_pages/SIZE.md:2
 msgid "size"
@@ -9466,7 +9792,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SIZE.md:190
 msgid "[**shape**(3)](#shape), [__reshape__(3)])(RESHAPE)"
-msgstr ""
+msgstr "[**shape**(3)](#shape), [__reshape__(3)])(RESHAPE)"
 
 #: ../../source/learn/intrinsics/_pages/UBOUND.md:2
 msgid "ubound"
@@ -9602,7 +9928,7 @@ msgstr "exemplo de programa"
 
 #: ../../source/learn/intrinsics/_pages/MAXLOC.md:105
 msgid "[**max**(3)](#max), [**maxval**(3)](#maxval)"
-msgstr ""
+msgstr "[**max**(3)](#max), [**maxval**(3)](#maxval)"
 
 #: ../../source/learn/intrinsics/_pages/MINLOC.md:2
 msgid "minloc"
@@ -9636,7 +9962,7 @@ msgstr "exemplo de programa:"
 
 #: ../../source/learn/intrinsics/_pages/MINLOC.md:93
 msgid "[**min**(3)](#min), [**minval**(3)](#minval)"
-msgstr ""
+msgstr "[**min**(3)](#min), [**minval**(3)](#minval)"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:2
 msgid "findloc"
@@ -10078,7 +10404,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MAXVAL.md:88
 msgid "[**max**(3)](#max), [**maxloc**(3)](#maxloc)"
-msgstr ""
+msgstr "[**max**(3)](#max), [**maxloc**(3)](#maxloc)"
 
 #: ../../source/learn/intrinsics/_pages/MINVAL.md:2
 msgid "minval"
@@ -10130,7 +10456,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MINVAL.md:149
 msgid "[**min**(3)](#min), [**minloc**(3)](#minloc)"
-msgstr ""
+msgstr "[**min**(3)](#min), [**minloc**(3)](#minloc)"
 
 #: ../../source/learn/intrinsics/_pages/PRODUCT.md:2
 msgid "product"
@@ -10862,7 +11188,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MVBITS.md:29
 msgid "**from**"
-msgstr ""
+msgstr "**from**"
 
 #: ../../source/learn/intrinsics/_pages/MVBITS.md:30
 msgid "An _integer_ to read bits from."
@@ -10893,7 +11219,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/MVBITS.md:39
 #: ../../source/learn/intrinsics/_pages/MVBITS.md:44
 msgid "**to**"
-msgstr ""
+msgstr "**to**"
 
 #: ../../source/learn/intrinsics/_pages/MVBITS.md:40
 msgid ""
@@ -10912,7 +11238,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MVBITS.md:51
 msgid "**topos**"
-msgstr ""
+msgstr "**topos**"
 
 #: ../../source/learn/intrinsics/_pages/MVBITS.md:52
 msgid ""
@@ -11074,7 +11400,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MASKL.md:101
 msgid "[**maskr**(3)](#maskr)"
-msgstr ""
+msgstr "[**maskr**(3)](#maskr)"
 
 #: ../../source/learn/intrinsics/_pages/MASKR.md:2
 msgid "maskr"
@@ -11096,7 +11422,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MASKR.md:109
 msgid "[**maskl**(3)](#maskl)"
-msgstr ""
+msgstr "[**maskl**(3)](#maskl)"
 
 #: ../../source/learn/intrinsics/_pages/IPARITY.md:2
 msgid "iparity"
@@ -11310,7 +11636,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/NOT.md:62
 msgid "[**ibclr**(3)](#ibclr)"
-msgstr ""
+msgstr "[**ibclr**(3)](#ibclr)"
 
 #: ../../source/learn/intrinsics/_pages/ISHFTC.md:2
 msgid "ishftc"
@@ -11390,7 +11716,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SHIFTA.md:41
 msgid "[**shiftl**(3)](#shiftl), [**shiftr**(3)](#shiftr)"
-msgstr ""
+msgstr "[**shiftl**(3)](#shiftl), [**shiftr**(3)](#shiftr)"
 
 #: ../../source/learn/intrinsics/_pages/SHIFTL.md:2
 msgid "shiftl"
@@ -11410,7 +11736,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SHIFTL.md:39
 msgid "[**shifta**(3)](#shifta), [**shiftr**(3)](#shiftr)"
-msgstr ""
+msgstr "[**shifta**(3)](#shifta), [**shiftr**(3)](#shiftr)"
 
 #: ../../source/learn/intrinsics/_pages/SHIFTR.md:2
 msgid "shiftr"
@@ -11430,7 +11756,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SHIFTR.md:39
 msgid "[**shifta**(3)](#shifta), [**shiftl**(3)](#shiftl)"
-msgstr ""
+msgstr "[**shifta**(3)](#shifta), [**shiftl**(3)](#shiftl)"
 
 #: ../../source/learn/intrinsics/cfi.md:1
 msgid "Procedures for binding to C interfaces"
@@ -11452,7 +11778,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/C_ASSOCIATED.md:22
 msgid "**c_ptr_1**"
-msgstr ""
+msgstr "**c_ptr_1**"
 
 #: ../../source/learn/intrinsics/_pages/C_ASSOCIATED.md:23
 msgid "Scalar of the type c_ptr or c_funptr."
@@ -11460,7 +11786,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/C_ASSOCIATED.md:25
 msgid "**c_ptr_2**"
-msgstr ""
+msgstr "**c_ptr_2**"
 
 #: ../../source/learn/intrinsics/_pages/C_ASSOCIATED.md:26
 msgid "(Optional) Scalar of the same type as c_ptr_1."
@@ -11496,7 +11822,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/C_F_POINTER.md:2
 msgid "c_f_pointer"
-msgstr ""
+msgstr "c_f_pointer"
 
 #: ../../source/learn/intrinsics/_pages/C_F_POINTER.md:6
 msgid "**c_f_pointer**(3) - \\[ISO_C_BINDING\\] Convert C into Fortran pointer"
@@ -11511,7 +11837,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/C_F_POINTER.md:21
 #: ../../source/learn/intrinsics/_pages/C_F_PROCPOINTER.md:21
 msgid "**cptr**"
-msgstr ""
+msgstr "**cptr**"
 
 #: ../../source/learn/intrinsics/_pages/C_F_POINTER.md:22
 msgid "scalar of the type c_ptr. It is **intent(in)**."
@@ -11520,7 +11846,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/C_F_POINTER.md:24
 #: ../../source/learn/intrinsics/_pages/C_F_PROCPOINTER.md:24
 msgid "**fptr**"
-msgstr ""
+msgstr "**fptr**"
 
 #: ../../source/learn/intrinsics/_pages/C_F_POINTER.md:25
 msgid "pointer interoperable with **cptr**. it is **intent(out)**."
@@ -11541,7 +11867,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/C_F_PROCPOINTER.md:2
 msgid "c_f_procpointer"
-msgstr ""
+msgstr "c_f_procpointer"
 
 #: ../../source/learn/intrinsics/_pages/C_F_PROCPOINTER.md:6
 msgid ""
@@ -11638,7 +11964,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/TANH.md:20
 #: ../../source/learn/intrinsics/_pages/TINY.md:25
 msgid "**x**"
-msgstr ""
+msgstr "**x**"
 
 #: ../../source/learn/intrinsics/_pages/C_FUNLOC.md:21
 msgid "Interoperable function or pointer to such function."
@@ -11659,11 +11985,11 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/C_FUNLOC.md:69
 #: ../../source/learn/intrinsics/_pages/C_LOC.md:56
 msgid "[**c_f_procpointer**(3)](#c_f_procpointer), **iso_c_binding**(3)"
-msgstr ""
+msgstr "[**c_f_procpointer**(3)](#c_f_procpointer), **iso_c_binding**(3)"
 
 #: ../../source/learn/intrinsics/_pages/C_LOC.md:2
 msgid "c_loc"
-msgstr ""
+msgstr "c_loc"
 
 #: ../../source/learn/intrinsics/_pages/C_LOC.md:6
 msgid "**c_loc**(3) - \\[ISO_C_BINDING\\] Obtain the C address of an object"
@@ -11734,7 +12060,7 @@ msgstr "Fortran 2008"
 
 #: ../../source/learn/intrinsics/_pages/C_SIZEOF.md:62
 msgid "[**storage_size**(3)](#storage_size)"
-msgstr ""
+msgstr "[**storage_size**(3)](#storage_size)"
 
 #: ../../source/learn/intrinsics/character.md:1
 msgid "Basic procedures for manipulating _character_ variables"
@@ -11778,7 +12104,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/TRIM.md:20
 #: ../../source/learn/intrinsics/_pages/VERIFY.md:45
 msgid "**string**"
-msgstr ""
+msgstr "**string**"
 
 #: ../../source/learn/intrinsics/_pages/LEN.md:35
 msgid "Shall be a scalar or array of type _character_."
@@ -11845,7 +12171,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/NEW_LINE.md:2
 msgid "new_line"
-msgstr ""
+msgstr "new_line"
 
 #: ../../source/learn/intrinsics/_pages/NEW_LINE.md:6
 msgid "**new_line**(3) - \\[CHARACTER\\] new-line character"
@@ -11897,7 +12223,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/NEW_LINE.md:40
 msgid "**C**"
-msgstr ""
+msgstr "**C**"
 
 #: ../../source/learn/intrinsics/_pages/NEW_LINE.md:41
 msgid "The argument shall be a scalar or array of the type _character_."
@@ -12005,7 +12331,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/IACHAR.md:69
 #: ../../source/learn/intrinsics/_pages/ICHAR.md:74
 msgid "**Note**"
-msgstr ""
+msgstr "**Nota**"
 
 #: ../../source/learn/intrinsics/_pages/ACHAR.md:136
 msgid "The ADEs (ASCII Decimal Equivalents) for ASCII are"
@@ -12108,7 +12434,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/IACHAR.md:21
 #: ../../source/learn/intrinsics/_pages/ICHAR.md:30
 msgid "**c**"
-msgstr ""
+msgstr "**c**"
 
 #: ../../source/learn/intrinsics/_pages/IACHAR.md:22
 msgid "Shall be a scalar _character_, with _intent(in)_"
@@ -12183,7 +12509,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/LLE.md:105
 #: ../../source/learn/intrinsics/_pages/TRIM.md:69
 msgid "[**scan**(3)](#scan), [**verify**(3)](#verify)"
-msgstr ""
+msgstr "[**scan**(3)](#scan), [**verify**(3)](#verify)"
 
 #: ../../source/learn/intrinsics/_pages/INDEX.md:2
 msgid "index"
@@ -12206,7 +12532,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/INDEX.md:31
 msgid "**substring**"
-msgstr ""
+msgstr "**substring**"
 
 #: ../../source/learn/intrinsics/_pages/INDEX.md:32
 msgid "string to attempt to locate in **string**"
@@ -12220,7 +12546,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/INDEX.md:44
 msgid "**START**"
-msgstr ""
+msgstr "**INÍCIO**"
 
 #: ../../source/learn/intrinsics/_pages/INDEX.md:50
 msgid "Example program"
@@ -12258,7 +12584,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/SCAN.md:28
 #: ../../source/learn/intrinsics/_pages/VERIFY.md:48
 msgid "**set**"
-msgstr ""
+msgstr "**set**"
 
 #: ../../source/learn/intrinsics/_pages/SCAN.md:32
 msgid "(Optional) shall be of type _logical_."
@@ -12360,7 +12686,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/LGT.md:30
 #: ../../source/learn/intrinsics/_pages/LLT.md:30
 msgid "**string_a**"
-msgstr ""
+msgstr "**string_a**"
 
 #: ../../source/learn/intrinsics/_pages/LGE.md:31
 #: ../../source/learn/intrinsics/_pages/LGE.md:34
@@ -12375,7 +12701,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/LGT.md:33
 #: ../../source/learn/intrinsics/_pages/LLT.md:33
 msgid "**string_b**"
-msgstr ""
+msgstr "**string_b**"
 
 #: ../../source/learn/intrinsics/_pages/LGE.md:38
 msgid ""
@@ -12443,7 +12769,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/LLE.md:36
 msgid "**str_a**"
-msgstr ""
+msgstr "**str_a**"
 
 #: ../../source/learn/intrinsics/_pages/LLE.md:37
 #: ../../source/learn/intrinsics/_pages/LLE.md:40
@@ -12452,7 +12778,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/LLE.md:39
 msgid "**str_b**"
-msgstr ""
+msgstr "**str_b**"
 
 #: ../../source/learn/intrinsics/_pages/LLE.md:42
 msgid "if **str_a** and **str_b** are both arrays they must be of the same shape."
@@ -12523,7 +12849,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ADJUSTL.md:70
 msgid "[**adjustr**(3)](#adjustr)"
-msgstr ""
+msgstr "[**adjustr**(3)](#adjustr)"
 
 #: ../../source/learn/intrinsics/_pages/ADJUSTR.md:2
 msgid "adjustr"
@@ -12549,11 +12875,11 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ADJUSTR.md:81
 msgid "[**adjustl**(3)](#adjustl)"
-msgstr ""
+msgstr "[**adjustl**(3)](#adjustl)"
 
 #: ../../source/learn/intrinsics/_pages/LEN_TRIM.md:2
 msgid "len_trim"
-msgstr ""
+msgstr "len_trim"
 
 #: ../../source/learn/intrinsics/_pages/LEN_TRIM.md:6
 msgid ""
@@ -12633,7 +12959,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/COMPILER_OPTIONS.md:61
 msgid "[**compiler_version**(3)](#compiler_version), **iso_fortran_env**(7)"
-msgstr ""
+msgstr "[**compiler_version**(3)](#compiler_version), **iso_fortran_env**(7)"
 
 #: ../../source/learn/intrinsics/_pages/COMPILER_VERSION.md:2
 msgid "compiler_version"
@@ -12657,7 +12983,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/COMPILER_VERSION.md:61
 msgid "[**compiler_options**(3)](#compiler_options), **iso_fortran_env**(7)"
-msgstr ""
+msgstr "[**compiler_options**(3)](#compiler_options), **iso_fortran_env**(7)"
 
 #: ../../source/learn/intrinsics/index.md:12
 msgid "GNU Free Documentation License"
@@ -12930,7 +13256,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/REDUCE.md:102
 #: ../../source/learn/intrinsics/_pages/SIN.md:36
 msgid "**result**"
-msgstr ""
+msgstr "**result**"
 
 #: ../../source/learn/intrinsics/_pages/ASIN.md:37
 msgid ""
@@ -13054,7 +13380,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/DPROD.md:38
 #: ../../source/learn/intrinsics/_pages/HYPOT.md:34
 msgid "**y**"
-msgstr ""
+msgstr "**y**"
 
 #: ../../source/learn/intrinsics/_pages/ATAN.md:32
 msgid ""
@@ -13078,7 +13404,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ATAN.md:86
 msgid "[**atan2**(3)](#atan2), [**tan**(3)](#tan)"
-msgstr ""
+msgstr "[**atan2**(3)](#atan2), [**tan**(3)](#tan)"
 
 #: ../../source/learn/intrinsics/_pages/ATAN2.md:2
 msgid "atan2"
@@ -13285,7 +13611,7 @@ msgstr "O tipo será _real_ ou _complex em radianos."
 
 #: ../../source/learn/intrinsics/_pages/SIN.md:51
 msgid "**Haversine Formula**"
-msgstr ""
+msgstr "**Fórmula Haversine**"
 
 #: ../../source/learn/intrinsics/_pages/SIN.md:53
 msgid "From the article on \"Haversine formula\" in Wikipedia:"
@@ -13391,11 +13717,11 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/TANH.md:61
 msgid "[**atanh**(3)](#atanh)"
-msgstr ""
+msgstr "[**atanh**(3)](#atanh)"
 
 #: ../../source/learn/intrinsics/_pages/RANDOM_NUMBER.md:2
 msgid "random_number"
-msgstr ""
+msgstr "random_number"
 
 #: ../../source/learn/intrinsics/_pages/RANDOM_NUMBER.md:6
 msgid "**random_number**(3) - \\[MATHEMATICS:RANDOM\\] Pseudo-random number"
@@ -13409,7 +13735,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/RANDOM_NUMBER.md:21
 msgid "**harvest**"
-msgstr ""
+msgstr "**harvest**"
 
 #: ../../source/learn/intrinsics/_pages/RANDOM_NUMBER.md:22
 msgid "Shall be a scalar or an array of type _real_."
@@ -13417,7 +13743,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/RANDOM_NUMBER.md:92
 msgid "[**random_seed**(3)](#random_seed)"
-msgstr ""
+msgstr "[**random_seed**(3)](#random_seed)"
 
 #: ../../source/learn/intrinsics/_pages/RANDOM_SEED.md:2
 msgid "random_seed"
@@ -13450,7 +13776,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/RANDOM_SEED.md:29
 msgid "**put**"
-msgstr ""
+msgstr "**put**"
 
 #: ../../source/learn/intrinsics/_pages/RANDOM_SEED.md:30
 msgid ""
@@ -13461,7 +13787,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/RANDOM_SEED.md:34
 msgid "**get**"
-msgstr ""
+msgstr "**get**"
 
 #: ../../source/learn/intrinsics/_pages/RANDOM_SEED.md:35
 msgid ""
@@ -13472,7 +13798,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/RANDOM_SEED.md:70
 msgid "[**random_number**(3)](#random_number)"
-msgstr ""
+msgstr "[**random_number**(3)](#random_number)"
 
 #: ../../source/learn/intrinsics/_pages/EXP.md:2
 msgid "exp"
@@ -13512,7 +13838,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/EXP.md:94
 msgid "[**log**(3)](#log)"
-msgstr ""
+msgstr "[**log**(3)](#log)"
 
 #: ../../source/learn/intrinsics/_pages/EXP.md:96
 msgid ""
@@ -13690,7 +14016,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_J0.md:2
 msgid "bessel_j0"
-msgstr ""
+msgstr "bessel_j0"
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_J0.md:6
 msgid ""
@@ -13719,7 +14045,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_J1.md:2
 msgid "bessel_j1"
-msgstr ""
+msgstr "bessel_j1"
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_J1.md:6
 msgid ""
@@ -13748,7 +14074,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_JN.md:2
 msgid "bessel_jn"
-msgstr ""
+msgstr "bessel_jn"
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_JN.md:6
 msgid "**bessel_jn**(3) - \\[MATHEMATICS\\] Bessel function of the first kind"
@@ -13770,7 +14096,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/BESSEL_JN.md:27
 #: ../../source/learn/intrinsics/_pages/BESSEL_YN.md:27
 msgid "**n**"
-msgstr ""
+msgstr "**n**"
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_JN.md:28
 #: ../../source/learn/intrinsics/_pages/BESSEL_YN.md:28
@@ -13780,7 +14106,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/BESSEL_JN.md:30
 #: ../../source/learn/intrinsics/_pages/BESSEL_YN.md:30
 msgid "**n1**"
-msgstr ""
+msgstr "**n1**"
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_JN.md:31
 #: ../../source/learn/intrinsics/_pages/BESSEL_JN.md:34
@@ -13792,7 +14118,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/BESSEL_JN.md:33
 #: ../../source/learn/intrinsics/_pages/BESSEL_YN.md:33
 msgid "**n2**"
-msgstr ""
+msgstr "**n2**"
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_JN.md:37
 msgid ""
@@ -13813,7 +14139,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_Y0.md:2
 msgid "bessel_y0"
-msgstr ""
+msgstr "bessel_y0"
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_Y0.md:6
 msgid ""
@@ -13840,7 +14166,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_Y1.md:2
 msgid "bessel_y1"
-msgstr ""
+msgstr "bessel_y1"
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_Y1.md:6
 msgid ""
@@ -13868,7 +14194,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_YN.md:2
 msgid "bessel_yn"
-msgstr ""
+msgstr "bessel_yn"
 
 #: ../../source/learn/intrinsics/_pages/BESSEL_YN.md:6
 msgid "**bessel_yn**(3) - \\[MATHEMATICS\\] Bessel function of the second kind"
@@ -13931,7 +14257,7 @@ msgstr "Veja também"
 
 #: ../../source/learn/intrinsics/_pages/ERF.md:58
 msgid "[**erfc**(3)](#erfc)"
-msgstr ""
+msgstr "[**erfc**(3)](#erfc)"
 
 #: ../../source/learn/intrinsics/_pages/ERF.md:60
 #: ../../source/learn/intrinsics/_pages/ERFC.md:77
@@ -14047,7 +14373,7 @@ msgstr "[Wikipedia: função Gama](https://pt.wikipedia.org/wiki/Fun%C3%A7%C3%A3
 
 #: ../../source/learn/intrinsics/_pages/LOG_GAMMA.md:2
 msgid "log_gamma"
-msgstr ""
+msgstr "log_gamma"
 
 #: ../../source/learn/intrinsics/_pages/LOG_GAMMA.md:6
 msgid "**log_gamma**(3) - \\[MATHEMATICS\\] Logarithm of the Gamma function"
@@ -14208,7 +14534,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/NEAREST.md:24
 msgid "**s**"
-msgstr ""
+msgstr "**s**"
 
 #: ../../source/learn/intrinsics/_pages/NEAREST.md:25
 msgid "Shall be of type _real_ and not equal to zero."
@@ -14304,7 +14630,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SET_EXPONENT.md:2
 msgid "set_exponent"
-msgstr ""
+msgstr "set_exponent"
 
 #: ../../source/learn/intrinsics/_pages/SET_EXPONENT.md:6
 msgid "**set_exponent**(3) - \\[MODEL_COMPONENTS\\] Set the exponent of the model"
@@ -14836,7 +15162,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/CEILING.md:74
 msgid "[**floor**(3)](#floor), [**nint**(3)](#nint)"
-msgstr ""
+msgstr "[**floor**(3)](#floor), [**nint**(3)](#nint)"
 
 #: ../../source/learn/intrinsics/_pages/CEILING.md:77
 #: ../../source/learn/intrinsics/_pages/FLOOR.md:89
@@ -14881,7 +15207,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/AIMAG.md:24
 #: ../../source/learn/intrinsics/_pages/CONJG.md:35
 msgid "**z**"
-msgstr ""
+msgstr "**z**"
 
 #: ../../source/learn/intrinsics/_pages/CONJG.md:36
 msgid "The type shall be _complex_."
@@ -15006,7 +15332,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/FLOOR.md:86
 msgid "[**ceiling**(3)](#ceiling), [**nint**(3)](#nint)"
-msgstr ""
+msgstr "[**ceiling**(3)](#ceiling), [**nint**(3)](#nint)"
 
 #: ../../source/learn/intrinsics/_pages/MAX.md:2
 msgid "max"
@@ -15023,7 +15349,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/MAX.md:20
 #: ../../source/learn/intrinsics/_pages/MIN.md:20
 msgid "**a1**"
-msgstr ""
+msgstr "**a1**"
 
 #: ../../source/learn/intrinsics/_pages/MAX.md:21
 #: ../../source/learn/intrinsics/_pages/MIN.md:21
@@ -15032,7 +15358,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MAX.md:23
 msgid "**a2,a3,...**"
-msgstr ""
+msgstr "**a2,a3,...**"
 
 #: ../../source/learn/intrinsics/_pages/MAX.md:24
 #: ../../source/learn/intrinsics/_pages/MIN.md:24
@@ -15107,7 +15433,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/MODULO.md:23
 #: ../../source/learn/intrinsics/_pages/SELECTED_REAL_KIND.md:22
 msgid "**p**"
-msgstr ""
+msgstr "**p**"
 
 #: ../../source/learn/intrinsics/_pages/MOD.md:24
 msgid "Shall be a scalar of the same type and kind as **a** and not equal to zero."
@@ -15122,7 +15448,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MOD.md:81
 msgid "[**modulo**(3)](#modulo)"
-msgstr ""
+msgstr "[**modulo**(3)](#modulo)"
 
 #: ../../source/learn/intrinsics/_pages/MODULO.md:2
 msgid "modulo"
@@ -15164,7 +15490,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MODULO.md:75
 msgid "[**mod**(3)](#mod)"
-msgstr ""
+msgstr "[**mod**(3)](#mod)"
 
 #: ../../source/learn/intrinsics/_pages/SIGN.md:2
 msgid "sign"
@@ -15196,7 +15522,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/SAME_TYPE_AS.md:24
 #: ../../source/learn/intrinsics/_pages/SIGN.md:38
 msgid "**b**"
-msgstr ""
+msgstr "**b**"
 
 #: ../../source/learn/intrinsics/_pages/SIGN.md:39
 msgid ""
@@ -15325,7 +15651,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/EOSHIFT.md:41
 msgid "**boundary**"
-msgstr ""
+msgstr "**boundary**"
 
 #: ../../source/learn/intrinsics/_pages/EOSHIFT.md:42
 msgid "Same type as ARRAY."
@@ -15452,7 +15778,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/OUT_OF_RANGE.md:28
 #: ../../source/learn/intrinsics/_pages/TRANSFER.md:28
 msgid "**mold**"
-msgstr ""
+msgstr "**mold**"
 
 #: ../../source/learn/intrinsics/_pages/NULL.md:27
 msgid "(Optional) shall be a pointer of any association status and of any type."
@@ -15464,7 +15790,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/NULL.md:121
 msgid "[**associated**(3)](#associated)"
-msgstr ""
+msgstr "[**associated**(3)](#associated)"
 
 #: ../../source/learn/intrinsics/parallel.md:1
 msgid "Parallel programming using co\\_arrays and co\\_indexed arrays"
@@ -15472,7 +15798,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/CO_BROADCAST.md:2
 msgid "co_broadcast"
-msgstr ""
+msgstr "co_broadcast"
 
 #: ../../source/learn/intrinsics/_pages/CO_BROADCAST.md:6
 msgid ""
@@ -15499,7 +15825,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/CO_BROADCAST.md:30
 msgid "**source_image**"
-msgstr ""
+msgstr "**source_image**"
 
 #: ../../source/learn/intrinsics/_pages/CO_BROADCAST.md:31
 msgid ""
@@ -15525,7 +15851,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/CO_SUM.md:36
 #: ../../source/learn/intrinsics/_pages/EVENT_QUERY.md:32
 msgid "**stat**"
-msgstr ""
+msgstr "**stat**"
 
 #: ../../source/learn/intrinsics/_pages/CO_BROADCAST.md:35
 #: ../../source/learn/intrinsics/_pages/CO_MAX.md:37
@@ -15541,7 +15867,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/CO_REDUCE.md:56
 #: ../../source/learn/intrinsics/_pages/CO_SUM.md:39
 msgid "**errmsg**"
-msgstr ""
+msgstr "**errmsg**"
 
 #: ../../source/learn/intrinsics/_pages/CO_BROADCAST.md:38
 #: ../../source/learn/intrinsics/_pages/CO_MAX.md:40
@@ -15588,11 +15914,11 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/CO_LBOUND.md:45
 msgid "[**co_ubound**(3)](#co_ubound), [**lbound**(3)](#lbound)"
-msgstr ""
+msgstr "[**co_ubound**(3)](#co_ubound), [**lbound**(3)](#lbound)"
 
 #: ../../source/learn/intrinsics/_pages/CO_MAX.md:2
 msgid "co_max"
-msgstr ""
+msgstr "co_max"
 
 #: ../../source/learn/intrinsics/_pages/CO_MAX.md:6
 msgid "**co_max**(3) - \\[COLLECTIVE\\] Maximal value on the current set of images"
@@ -15622,7 +15948,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/CO_REDUCE.md:47
 #: ../../source/learn/intrinsics/_pages/CO_SUM.md:31
 msgid "**result_image**"
-msgstr ""
+msgstr "**result_image**"
 
 #: ../../source/learn/intrinsics/_pages/CO_MAX.md:32
 #: ../../source/learn/intrinsics/_pages/CO_MIN.md:32
@@ -15658,7 +15984,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/CO_MIN.md:2
 msgid "co_min"
-msgstr ""
+msgstr "co_min"
 
 #: ../../source/learn/intrinsics/_pages/CO_MIN.md:6
 msgid "**co_min**(3) - \\[COLLECTIVE\\] Minimal value on the current set of images"
@@ -15684,7 +16010,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/CO_REDUCE.md:2
 msgid "co_reduce"
-msgstr ""
+msgstr "co_reduce"
 
 #: ../../source/learn/intrinsics/_pages/CO_REDUCE.md:6
 msgid ""
@@ -15718,7 +16044,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/CO_REDUCE.md:38
 #: ../../source/learn/intrinsics/_pages/REDUCE.md:52
 msgid "**operation**"
-msgstr ""
+msgstr "**operation**"
 
 #: ../../source/learn/intrinsics/_pages/CO_REDUCE.md:39
 msgid ""
@@ -15798,7 +16124,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/EVENT_QUERY.md:2
 msgid "event_query"
-msgstr ""
+msgstr "event_query"
 
 #: ../../source/learn/intrinsics/_pages/EVENT_QUERY.md:6
 msgid ""
@@ -15818,7 +16144,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/EVENT_QUERY.md:24
 msgid "**event**"
-msgstr ""
+msgstr "**event**"
 
 #: ../../source/learn/intrinsics/_pages/EVENT_QUERY.md:25
 msgid ""
@@ -15842,7 +16168,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/IMAGE_INDEX.md:2
 msgid "image_index"
-msgstr ""
+msgstr "image_index"
 
 #: ../../source/learn/intrinsics/_pages/IMAGE_INDEX.md:6
 msgid "**image_index**(3) - \\[COLLECTIVE\\] Cosubscript to image index conversion"
@@ -15855,7 +16181,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/IMAGE_INDEX.md:20
 #: ../../source/learn/intrinsics/_pages/THIS_IMAGE.md:33
 msgid "**coarray**"
-msgstr ""
+msgstr "**coarray**"
 
 #: ../../source/learn/intrinsics/_pages/IMAGE_INDEX.md:21
 msgid "Coarray of any type."
@@ -15863,7 +16189,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/IMAGE_INDEX.md:23
 msgid "**sub**"
-msgstr ""
+msgstr "**sub**"
 
 #: ../../source/learn/intrinsics/_pages/IMAGE_INDEX.md:24
 msgid "default integer rank-1 array of a size equal to the corank of **coarray**."
@@ -15877,11 +16203,11 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/IMAGE_INDEX.md:52
 msgid "[**this_image**(3)](#this_image), [**num_images**(3)](#num_images)"
-msgstr ""
+msgstr "[**this_image**(3)](#this_image), [**num_images**(3)](#num_images)"
 
 #: ../../source/learn/intrinsics/_pages/NUM_IMAGES.md:2
 msgid "num_images"
-msgstr ""
+msgstr "num_images"
 
 #: ../../source/learn/intrinsics/_pages/NUM_IMAGES.md:6
 msgid "**num_images**(3) - \\[COLLECTIVE\\] Number of images"
@@ -15894,7 +16220,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/NUM_IMAGES.md:20
 #: ../../source/learn/intrinsics/_pages/THIS_IMAGE.md:29
 msgid "**distance**"
-msgstr ""
+msgstr "**distance**"
 
 #: ../../source/learn/intrinsics/_pages/NUM_IMAGES.md:21
 msgid "(optional, **intent(in)**) Nonnegative scalar integer"
@@ -15902,7 +16228,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/NUM_IMAGES.md:23
 msgid "**failed**"
-msgstr ""
+msgstr "**failed**"
 
 #: ../../source/learn/intrinsics/_pages/NUM_IMAGES.md:24
 msgid "(optional, **intent(in)**) Scalar logical expression"
@@ -15927,11 +16253,11 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/NUM_IMAGES.md:65
 msgid "[**this_image**(3)](#this_image), [**image_index**(3)](#this_index)"
-msgstr ""
+msgstr "[**this_image**(3)](#this_image), [**image_index**(3)](#this_index)"
 
 #: ../../source/learn/intrinsics/_pages/THIS_IMAGE.md:2
 msgid "this_image"
-msgstr ""
+msgstr "this_image"
 
 #: ../../source/learn/intrinsics/_pages/THIS_IMAGE.md:6
 msgid "**this_image**(3) - \\[COLLECTIVE\\] Cosubscript index of this image"
@@ -15979,10 +16305,11 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/THIS_IMAGE.md:86
 msgid "[**num\\_images**(3)](#num_images), [**image\\_index**(3)](#image_index)"
 msgstr ""
+"[**num\\_images**(3)](#num_images), [**image\\_index**(3)](#image_index)"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_AND.md:2
 msgid "atomic_and"
-msgstr ""
+msgstr "atomic_and"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_AND.md:6
 msgid "**atomic_and**(3) - \\[ATOMIC:BIT MANIPULATION\\] Atomic bitwise AND operation"
@@ -16011,7 +16338,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/ATOMIC_REF.md:30
 #: ../../source/learn/intrinsics/_pages/ATOMIC_XOR.md:26
 msgid "**atom**"
-msgstr ""
+msgstr "**atom**"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_ADD.md:27
 #: ../../source/learn/intrinsics/_pages/ATOMIC_AND.md:27
@@ -16065,7 +16392,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_AND.md:2
 msgid "atomic_fetch_and"
-msgstr ""
+msgstr "atomic_fetch_and"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_AND.md:6
 msgid ""
@@ -16091,7 +16418,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_OR.md:35
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_XOR.md:35
 msgid "**old**"
-msgstr ""
+msgstr "**old**"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_CAS.md:34
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_ADD.md:36
@@ -16112,16 +16439,18 @@ msgid ""
 "[**atomic_fetch_add**(3)](#atomic_fetch_add), "
 "[**atomic_fetch_or**(3)](#atomic_fetch_or),"
 msgstr ""
+"[**atomic_fetch_add**(3)](#atomic_fetch_add), "
+"[**atomic_fetch_or**(3)](#atomic_fetch_or),"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_ADD.md:67
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_AND.md:67
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_OR.md:67
 msgid "[**atomic_fetch_xor**(3)](#atomic_fetch_xor)"
-msgstr ""
+msgstr "[**atomic_fetch_xor**(3)](#atomic_fetch_xor)"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_OR.md:2
 msgid "atomic_fetch_or"
-msgstr ""
+msgstr "atomic_fetch_or"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_OR.md:6
 msgid ""
@@ -16153,10 +16482,12 @@ msgid ""
 "[**atomic_fetch_add**(3)](#atomic_fetch_add), "
 "[**atomic_fetch_and**(3)](#atomic_fetch_and),"
 msgstr ""
+"[**atomic_fetch_add**(3)](#atomic_fetch_add), "
+"[**atomic_fetch_and**(3)](#atomic_fetch_and),"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_XOR.md:2
 msgid "atomic_fetch_xor"
-msgstr ""
+msgstr "atomic_fetch_xor"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_XOR.md:6
 msgid ""
@@ -16184,11 +16515,11 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_XOR.md:67
 msgid "[**atomic_fetch_or**(3)](#atomic_fetch_or)"
-msgstr ""
+msgstr "[**atomic_fetch_or**(3)](#atomic_fetch_or)"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_OR.md:2
 msgid "atomic_or"
-msgstr ""
+msgstr "atomic_or"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_OR.md:6
 msgid "**atomic_or**(3) - \\[ATOMIC:BIT MANIPULATION\\] Atomic bitwise OR operation"
@@ -16210,6 +16541,8 @@ msgid ""
 "[**atomic_define**(3)](#atomic_define), "
 "[**atomic_fetch_or**(3)](#atomic_fetch),"
 msgstr ""
+"[**atomic_define**(3)](#atomic_define), "
+"[**atomic_fetch_or**(3)](#atomic_fetch),"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_OR.md:59
 msgid ""
@@ -16219,11 +16552,11 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_OR.md:63
 msgid "[**atomic_xor**(3)](#atomic_xor)"
-msgstr ""
+msgstr "[**atomic_xor**(3)](#atomic_xor)"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_XOR.md:2
 msgid "atomic_xor"
-msgstr ""
+msgstr "atomic_xor"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_XOR.md:6
 msgid "**atomic_xor**(3) - \\[ATOMIC:BIT MANIPULATION\\] Atomic bitwise OR operation"
@@ -16250,7 +16583,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_ADD.md:2
 msgid "atomic_add"
-msgstr ""
+msgstr "atomic_add"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_ADD.md:6
 msgid "**atomic_add**(3) - \\[ATOMIC\\] Atomic ADD operation"
@@ -16277,7 +16610,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_CAS.md:2
 msgid "atomic_cas"
-msgstr ""
+msgstr "atomic_cas"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_CAS.md:6
 msgid "**atomic_cas**(3) - \\[ATOMIC\\] Atomic compare and swap"
@@ -16306,7 +16639,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_CAS.md:36
 msgid "**compare**"
-msgstr ""
+msgstr "**compare**"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_CAS.md:37
 msgid "Scalar variable of the same type and kind as **atom**."
@@ -16314,7 +16647,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_CAS.md:39
 msgid "**new**"
-msgstr ""
+msgstr "**new**"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_CAS.md:40
 msgid ""
@@ -16330,7 +16663,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_DEFINE.md:2
 msgid "atomic_define"
-msgstr ""
+msgstr "atomic_define"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_DEFINE.md:6
 msgid "**atomic_define**(3) - \\[ATOMIC\\] Setting a variable atomically"
@@ -16361,7 +16694,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_ADD.md:2
 msgid "atomic_fetch_add"
-msgstr ""
+msgstr "atomic_fetch_add"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_ADD.md:6
 msgid "**atomic_fetch_add**(3) - \\[ATOMIC\\] Atomic ADD operation with prior fetch"
@@ -16396,10 +16729,12 @@ msgid ""
 "[**atomic_fetch_and**(3)](#atomic_fetch_and), "
 "[**atomic_fetch_or**(3)](#atomic_fetch_or),"
 msgstr ""
+"[**atomic_fetch_and**(3)](#atomic_fetch_and), "
+"[**atomic_fetch_or**(3)](#atomic_fetch_or),"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_REF.md:2
 msgid "atomic_ref"
-msgstr ""
+msgstr "atomic_ref"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_REF.md:6
 msgid "**atomic_ref**(3) - \\[ATOMIC\\] Obtaining the value of a variable atomically"
@@ -16431,10 +16766,13 @@ msgid ""
 "[**atomic_fetch_add**(3)](#atomic_add), "
 "[**atomic_fetch_and**(3)](#atomic_and),"
 msgstr ""
+"[**atomic_fetch_add**(3)](#atomic_add), "
+"[**atomic_fetch_and**(3)](#atomic_and),"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_REF.md:70
 msgid "[**atomic_fetch_or**(3)](#atomic_or), [**atomic_fetch_xor**(3)](#atomic_xor)"
 msgstr ""
+"[**atomic_fetch_or**(3)](#atomic_or), [**atomic_fetch_xor**(3)](#atomic_xor)"
 
 #: ../../source/learn/intrinsics/state.md:1
 msgid "General and miscellaneous intrinsics"
@@ -16456,7 +16794,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ASSOCIATED.md:21
 msgid "**pointer**"
-msgstr ""
+msgstr "**pointer**"
 
 #: ../../source/learn/intrinsics/_pages/ASSOCIATED.md:22
 msgid "**pointer** shall have the _pointer_ attribute and it can be of any type."
@@ -16464,7 +16802,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ASSOCIATED.md:24
 msgid "**target**"
-msgstr ""
+msgstr "**target**"
 
 #: ../../source/learn/intrinsics/_pages/ASSOCIATED.md:25
 msgid ""
@@ -16537,11 +16875,11 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ASSOCIATED.md:89
 msgid "[**null**(3)](#null)"
-msgstr ""
+msgstr "[**null**(3)](#null)"
 
 #: ../../source/learn/intrinsics/_pages/EXTENDS_TYPE_OF.md:2
 msgid "extends_type_of"
-msgstr ""
+msgstr "extends_type_of"
 
 #: ../../source/learn/intrinsics/_pages/EXTENDS_TYPE_OF.md:6
 msgid ""
@@ -16584,7 +16922,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/IS_IOSTAT_END.md:2
 msgid "is_iostat_end"
-msgstr ""
+msgstr "is_iostat_end"
 
 #: ../../source/learn/intrinsics/_pages/IS_IOSTAT_END.md:6
 msgid "**is_iostat_end**(3) - \\[STATE\\] Test for end-of-file value"
@@ -16615,7 +16953,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/IS_IOSTAT_EOR.md:2
 msgid "is_iostat_eor"
-msgstr ""
+msgstr "is_iostat_eor"
 
 #: ../../source/learn/intrinsics/_pages/IS_IOSTAT_EOR.md:6
 msgid "**is_iostat_eor**(3) - \\[STATE\\] Test for end-of-record value"
@@ -16655,7 +16993,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MOVE_ALLOC.md:21
 msgid "**src**"
-msgstr ""
+msgstr "**src**"
 
 #: ../../source/learn/intrinsics/_pages/MOVE_ALLOC.md:22
 msgid "allocatable, **intent(inout)**, may be of any type and kind."
@@ -16663,7 +17001,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MOVE_ALLOC.md:24
 msgid "**dest**"
-msgstr ""
+msgstr "**dest**"
 
 #: ../../source/learn/intrinsics/_pages/MOVE_ALLOC.md:25
 msgid ""
@@ -16677,7 +17015,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MOVE_ALLOC.md:75
 msgid "[**allocated**(3)](#allocated)"
-msgstr ""
+msgstr "[**allocated**(3)](#allocated)"
 
 #: ../../source/learn/intrinsics/_pages/PRESENT.md:2
 msgid "present"
@@ -16708,7 +17046,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SAME_TYPE_AS.md:2
 msgid "same_type_as"
-msgstr ""
+msgstr "same_type_as"
 
 #: ../../source/learn/intrinsics/_pages/SAME_TYPE_AS.md:6
 msgid "**same_type_as**(3) - \\[STATE\\] Query dynamic types for equality"
@@ -16731,7 +17069,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SAME_TYPE_AS.md:39
 msgid "[**extends_type_of**(3)](#extends_type_of)"
-msgstr ""
+msgstr "[**extends_type_of**(3)](#extends_type_of)"
 
 #: ../../source/learn/intrinsics/system.md:1
 msgid "Accessing external system information"
@@ -16739,7 +17077,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/COMMAND_ARGUMENT_COUNT.md:2
 msgid "command_argument_count"
-msgstr ""
+msgstr "command_argument_count"
 
 #: ../../source/learn/intrinsics/_pages/COMMAND_ARGUMENT_COUNT.md:6
 msgid ""
@@ -16772,10 +17110,12 @@ msgid ""
 "[**get_command**(3)](#get_command), "
 "[**get_command_argument**(3)](#get_command_argument)"
 msgstr ""
+"[**get_command**(3)](#get_command), "
+"[**get_command_argument**(3)](#get_command_argument)"
 
 #: ../../source/learn/intrinsics/_pages/GET_COMMAND.md:2
 msgid "get_command"
-msgstr ""
+msgstr "get_command"
 
 #: ../../source/learn/intrinsics/_pages/GET_COMMAND.md:6
 msgid "**get_command**(3) - \\[SYSTEM:COMMAND LINE\\] Get the entire command line"
@@ -16797,7 +17137,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/EXECUTE_COMMAND_LINE.md:44
 #: ../../source/learn/intrinsics/_pages/GET_COMMAND.md:32
 msgid "**command**"
-msgstr ""
+msgstr "**command**"
 
 #: ../../source/learn/intrinsics/_pages/GET_COMMAND.md:33
 msgid ""
@@ -16810,7 +17150,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/GET_COMMAND_ARGUMENT.md:47
 #: ../../source/learn/intrinsics/_pages/GET_ENVIRONMENT_VARIABLE.md:45
 msgid "**length**"
-msgstr ""
+msgstr "**length**"
 
 #: ../../source/learn/intrinsics/_pages/GET_COMMAND.md:38
 msgid ""
@@ -16822,7 +17162,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/GET_COMMAND_ARGUMENT.md:51
 #: ../../source/learn/intrinsics/_pages/GET_ENVIRONMENT_VARIABLE.md:51
 msgid "**status**"
-msgstr ""
+msgstr "**status**"
 
 #: ../../source/learn/intrinsics/_pages/GET_COMMAND.md:42
 msgid ""
@@ -16836,10 +17176,12 @@ msgid ""
 "[**get_command_argument**(3)](#get_command_argument), "
 "[**command_argument_count**(3)](#command_argument_count)"
 msgstr ""
+"[**get_command_argument**(3)](#get_command_argument), "
+"[**command_argument_count**(3)](#command_argument_count)"
 
 #: ../../source/learn/intrinsics/_pages/GET_COMMAND_ARGUMENT.md:2
 msgid "get_command_argument"
-msgstr ""
+msgstr "get_command_argument"
 
 #: ../../source/learn/intrinsics/_pages/GET_COMMAND_ARGUMENT.md:6
 msgid ""
@@ -16863,7 +17205,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/GET_COMMAND_ARGUMENT.md:32
 msgid "**number**"
-msgstr ""
+msgstr "**number**"
 
 #: ../../source/learn/intrinsics/_pages/GET_COMMAND_ARGUMENT.md:33
 msgid ""
@@ -16901,10 +17243,12 @@ msgid ""
 "[**get_command**(3)](#get_command), "
 "[**command_argument_count**(3)](#command_argument_count)"
 msgstr ""
+"[**get_command**(3)](#get_command), "
+"[**command_argument_count**(3)](#command_argument_count)"
 
 #: ../../source/learn/intrinsics/_pages/CPU_TIME.md:2
 msgid "cpu_time"
-msgstr ""
+msgstr "cpu_time"
 
 #: ../../source/learn/intrinsics/_pages/CPU_TIME.md:6
 msgid "**cpu_time**(3) - \\[SYSTEM:TIME\\] return CPU processor time in seconds"
@@ -16944,7 +17288,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/CPU_TIME.md:36
 #: ../../source/learn/intrinsics/_pages/DATE_AND_TIME.md:31
 msgid "**time**"
-msgstr ""
+msgstr "**time**"
 
 #: ../../source/learn/intrinsics/_pages/CPU_TIME.md:37
 msgid ""
@@ -16964,10 +17308,11 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/CPU_TIME.md:76
 msgid "[**system_clock**(3)](#system_clock), [**date_and_time**(3)](#date_and_time)"
 msgstr ""
+"[**system_clock**(3)](#system_clock), [**date_and_time**(3)](#date_and_time)"
 
 #: ../../source/learn/intrinsics/_pages/DATE_AND_TIME.md:2
 msgid "date_and_time"
-msgstr ""
+msgstr "date_and_time"
 
 #: ../../source/learn/intrinsics/_pages/DATE_AND_TIME.md:6
 msgid "**date_and_time**(3) - \\[SYSTEM:TIME\\] gets current time"
@@ -16985,7 +17330,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/DATE_AND_TIME.md:28
 msgid "**date**"
-msgstr ""
+msgstr "**date**"
 
 #: ../../source/learn/intrinsics/_pages/DATE_AND_TIME.md:29
 msgid ""
@@ -17001,7 +17346,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/DATE_AND_TIME.md:34
 msgid "**zone**"
-msgstr ""
+msgstr "**zone**"
 
 #: ../../source/learn/intrinsics/_pages/DATE_AND_TIME.md:35
 msgid ""
@@ -17012,7 +17357,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/DATE_AND_TIME.md:38
 msgid "**values**"
-msgstr ""
+msgstr "**values**"
 
 #: ../../source/learn/intrinsics/_pages/DATE_AND_TIME.md:39
 msgid "An _integer_ array of eight elements that contains:"
@@ -17052,7 +17397,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/DATE_AND_TIME.md:101
 msgid "[**cpu_time**(3)](#cpu_time), [**system_clock**(3)](#system_clock)"
-msgstr ""
+msgstr "[**cpu_time**(3)](#cpu_time), [**system_clock**(3)](#system_clock)"
 
 #: ../../source/learn/intrinsics/_pages/DATE_AND_TIME.md:106
 msgid "date and time conversion, formatting and computation"
@@ -17125,7 +17470,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SYSTEM_CLOCK.md:53
 msgid "**count_rate**"
-msgstr ""
+msgstr "**count_rate**"
 
 #: ../../source/learn/intrinsics/_pages/SYSTEM_CLOCK.md:54
 msgid ""
@@ -17136,7 +17481,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SYSTEM_CLOCK.md:58
 msgid "**count_max**"
-msgstr ""
+msgstr "**count_max**"
 
 #: ../../source/learn/intrinsics/_pages/SYSTEM_CLOCK.md:59
 msgid ""
@@ -17156,11 +17501,11 @@ msgstr "define"
 
 #: ../../source/learn/intrinsics/_pages/SYSTEM_CLOCK.md:107
 msgid "[**date_and_time**(3)](#date_and_time), [**cpu_time**(3)](#cpu_time)"
-msgstr ""
+msgstr "[**date_and_time**(3)](#date_and_time), [**cpu_time**(3)](#cpu_time)"
 
 #: ../../source/learn/intrinsics/_pages/EXECUTE_COMMAND_LINE.md:2
 msgid "execute_command_line"
-msgstr ""
+msgstr "execute_command_line"
 
 #: ../../source/learn/intrinsics/_pages/EXECUTE_COMMAND_LINE.md:6
 msgid "**execute_command_line**(3) - \\[SYSTEM:PROCESSES\\] Execute a shell command"
@@ -17205,7 +17550,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/EXECUTE_COMMAND_LINE.md:48
 msgid "**wait**"
-msgstr ""
+msgstr "**wait**"
 
 #: ../../source/learn/intrinsics/_pages/EXECUTE_COMMAND_LINE.md:49
 msgid ""
@@ -17217,7 +17562,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/EXECUTE_COMMAND_LINE.md:54
 msgid "**exitstat**"
-msgstr ""
+msgstr "**exitstat**"
 
 #: ../../source/learn/intrinsics/_pages/EXECUTE_COMMAND_LINE.md:55
 msgid ""
@@ -17228,7 +17573,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/EXECUTE_COMMAND_LINE.md:60
 msgid "**cmdstat**"
-msgstr ""
+msgstr "**cmdstat**"
 
 #: ../../source/learn/intrinsics/_pages/EXECUTE_COMMAND_LINE.md:61
 msgid ""
@@ -17248,7 +17593,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/EXECUTE_COMMAND_LINE.md:72
 msgid "**cmdmsg**"
-msgstr ""
+msgstr "**cmdmsg**"
 
 #: ../../source/learn/intrinsics/_pages/EXECUTE_COMMAND_LINE.md:73
 msgid ""
@@ -17268,7 +17613,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/GET_ENVIRONMENT_VARIABLE.md:2
 msgid "get_environment_variable"
-msgstr ""
+msgstr "get_environment_variable"
 
 #: ../../source/learn/intrinsics/_pages/GET_ENVIRONMENT_VARIABLE.md:6
 msgid ""
@@ -17290,7 +17635,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/GET_ENVIRONMENT_VARIABLE.md:30
 #: ../../source/learn/intrinsics/_pages/SELECTED_CHAR_KIND.md:24
 msgid "**name**"
-msgstr ""
+msgstr "**name**"
 
 #: ../../source/learn/intrinsics/_pages/GET_ENVIRONMENT_VARIABLE.md:31
 msgid "The name of the environment variable to query."
@@ -17333,7 +17678,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/GET_ENVIRONMENT_VARIABLE.md:59
 msgid "**trim_name**"
-msgstr ""
+msgstr "**trim_name**"
 
 #: ../../source/learn/intrinsics/_pages/GET_ENVIRONMENT_VARIABLE.md:60
 msgid ""
@@ -17503,7 +17848,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/REDUCE.md:182
 msgid "[co_reduce(3)](CO_REDUCE)"
-msgstr ""
+msgstr "[co_reduce(3)](CO_REDUCE)"
 
 #: ../../source/learn/intrinsics/_pages/REDUCE.md:183
 msgid "[associative:wipipedia](https://en.wikipedia.org/wiki/Associative_property)"
@@ -17797,7 +18142,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/INT.md:37
 msgid "**Case**:"
-msgstr ""
+msgstr "**Caso**:"
 
 #: ../../source/learn/intrinsics/_pages/INT.md:39
 msgid "If **a** is of type _integer_, **int**(a) = a"
@@ -17877,7 +18222,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/NINT.md:42
 msgid "**answer**"
-msgstr ""
+msgstr "**answer**"
 
 #: ../../source/learn/intrinsics/_pages/NINT.md:43
 msgid ""
@@ -17937,7 +18282,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/REAL.md:74
 msgid "[**dble**(3)](#dble), [**float**(3)](#float)"
-msgstr ""
+msgstr "[**dble**(3)](#dble), [**float**(3)](#float)"
 
 #: ../../source/learn/intrinsics/_pages/DBLE.md:2
 msgid "dble"
@@ -17970,7 +18315,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/DBLE.md:62
 msgid "[**float**(3)](#float), [**real**(3)](#real)"
-msgstr ""
+msgstr "[**float**(3)](#float), [**real**(3)](#real)"
 
 #: ../../source/learn/intrinsics/_pages/TRANSFER.md:2
 msgid "transfer"
@@ -18030,7 +18375,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/TRANSFER.md:86
 msgid "**Comments**"
-msgstr ""
+msgstr "**Comentários**"
 
 #: ../../source/learn/intrinsics/_pages/TRANSFER.md:88
 msgid "_Joe Krahn_: Fortran uses **molding** rather than **casting**."
@@ -18085,7 +18430,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/LOGICAL.md:24
 msgid "**l**"
-msgstr ""
+msgstr "**l**"
 
 #: ../../source/learn/intrinsics/_pages/LOGICAL.md:33
 msgid ""
@@ -18120,7 +18465,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/OUT_OF_RANGE.md:2
 msgid "out_of_range"
-msgstr ""
+msgstr "out_of_range"
 
 #: ../../source/learn/intrinsics/_pages/OUT_OF_RANGE.md:5
 msgid ""
@@ -18214,7 +18559,7 @@ msgstr "Fortran 2018 e posterior"
 
 #: ../../source/learn/intrinsics/_pages/SELECTED_CHAR_KIND.md:2
 msgid "selected_char_kind"
-msgstr ""
+msgstr "selected_char_kind"
 
 #: ../../source/learn/intrinsics/_pages/SELECTED_CHAR_KIND.md:6
 msgid ""
@@ -18237,7 +18582,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SELECTED_INT_KIND.md:2
 msgid "selected_int_kind"
-msgstr ""
+msgstr "selected_int_kind"
 
 #: ../../source/learn/intrinsics/_pages/SELECTED_INT_KIND.md:6
 msgid "**selected_int_kind**(3) - \\[KIND\\] Choose integer kind"
@@ -18254,7 +18599,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/SELECTED_INT_KIND.md:23
 #: ../../source/learn/intrinsics/_pages/SELECTED_REAL_KIND.md:25
 msgid "**r**"
-msgstr ""
+msgstr "**r**"
 
 #: ../../source/learn/intrinsics/_pages/SELECTED_INT_KIND.md:24
 msgid "Shall be a scalar and of type _integer_."
@@ -18268,7 +18613,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SELECTED_REAL_KIND.md:2
 msgid "selected_real_kind"
-msgstr ""
+msgstr "selected_real_kind"
 
 #: ../../source/learn/intrinsics/_pages/SELECTED_REAL_KIND.md:6
 msgid "**selected_real_kind**(3) - \\[KIND\\] Choose real kind"
@@ -18289,7 +18634,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SELECTED_REAL_KIND.md:28
 msgid "**radix**"
-msgstr ""
+msgstr "**radix**"
 
 #: ../../source/learn/intrinsics/_pages/SELECTED_REAL_KIND.md:31
 msgid ""
@@ -20814,7 +21159,7 @@ msgstr ""
 
 #: ../../source/news/2020/05-01-Fortran-Newsletter-May-2020.md:74
 msgid "WG5 Convenor candidates"
-msgstr ""
+msgstr "candidatos Coordenador WG5"
 
 #: ../../source/news/2020/05-01-Fortran-Newsletter-May-2020.md:76
 msgid ""
@@ -21028,7 +21373,7 @@ msgstr ""
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:57
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:44
 msgid "Fortran Standard Library"
-msgstr ""
+msgstr "Biblioteca Padrão Fortran (Fortran Standard Library)"
 
 #: ../../source/news/2020/06-01-Fortran-Newsletter-June-2020.md:49
 msgid ""
@@ -21613,7 +21958,7 @@ msgstr ""
 
 #: ../../source/news/2020/08-01-Fortran-Newsletter-August-2020.md:41
 msgid "Main ongoing discussions:"
-msgstr ""
+msgstr "Principais discussões em curso:"
 
 #: ../../source/news/2020/08-01-Fortran-Newsletter-August-2020.md:43
 msgid ""
@@ -22235,7 +22580,7 @@ msgstr ""
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:55
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:110
 msgid "Work in progress:"
-msgstr ""
+msgstr "Trabalhos em andamento:"
 
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:44
 #: ../../source/news/2020/11-01-Fortran-Newsletter-November-2020.md:49
@@ -22502,7 +22847,7 @@ msgstr ""
 
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:160
 msgid "Further parser improvements"
-msgstr ""
+msgstr "Melhorias adicionais no parser"
 
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:161
 msgid "Initial Fortran modules support"
@@ -22882,7 +23227,7 @@ msgstr ""
 
 #: ../../source/news/2020/11-01-Fortran-Newsletter-November-2020.md:159
 msgid "Improvements to AST"
-msgstr ""
+msgstr "Melhorias no AST"
 
 #: ../../source/news/2020/11-01-Fortran-Newsletter-November-2020.md:160
 msgid ""
@@ -23419,7 +23764,7 @@ msgstr ""
 
 #: ../../source/news/2020/12-01-Fortran-Newsletter-December-2020.md:144
 msgid "Recent updates include:"
-msgstr ""
+msgstr "Atualizações recentes inclusas:"
 
 #: ../../source/news/2020/12-01-Fortran-Newsletter-December-2020.md:146
 msgid ""
@@ -28969,12 +29314,10 @@ msgid "fir.box_rank, fir.box_addr, fir.box_dims, fir.box_elesize"
 msgstr ""
 
 #: ../../source/news/2021/12-01-Fortran-Newsletter-December-2021.md:177
-#, fuzzy
 msgid "fir.convert"
 msgstr "fir.convert"
 
 #: ../../source/news/2021/12-01-Fortran-Newsletter-December-2021.md:178
-#, fuzzy
 msgid "fir.call"
 msgstr "fir.call"
 
@@ -29153,7 +29496,6 @@ msgid ""
 msgstr ""
 
 #: ../../source/news/2021/12-29-Fortran-lang-2021-in-review.md:7
-#, fuzzy
 msgid "=(Fortran-lang-2021-in-review)"
 msgstr "=(Fortran-lang-2021-in-review)"
 
@@ -29490,7 +29832,6 @@ msgid ""
 msgstr ""
 
 #: ../../source/news/2021/12-29-Fortran-lang-2021-in-review.md:195
-#, fuzzy
 msgid "fftpack"
 msgstr "fftpack"
 
@@ -30409,7 +30750,7 @@ msgstr "[fortran-lang/fpm-docs](https://github.com/fortran-lang/fpm-docs)"
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:392
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:502
 msgid "[fortran-lang/test-drive](https://github.com/fortran-lang/test-drive)"
-msgstr ""
+msgstr "[fortran-lang/test-drive](https://github.com/fortran-lang/test-drive)"
 
 #: ../../source/news/2022/02-01-Fortran-Newsletter-February-2022.md:7
 msgid "Fortran newsletter: February 2022"
@@ -30722,7 +31063,7 @@ msgstr ""
 #: ../../source/news/2022/02-01-Fortran-Newsletter-February-2022.md:207
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:321
 msgid "**`libasr`**"
-msgstr ""
+msgstr "**`libasr`**"
 
 #: ../../source/news/2022/02-01-Fortran-Newsletter-February-2022.md:209
 msgid ""
@@ -34124,9 +34465,8 @@ msgstr ""
 "fortran-support)"
 
 #: ../../source/packages.md:5
-#, fuzzy
 msgid "Packages"
-msgstr "pack"
+msgstr "Pacotes"
 
 #: ../../source/packages.md:8
 msgid "Fortran Packages"
@@ -34322,9 +34662,8 @@ msgstr ""
 
 #: ../../source/packages/data-types.md:16 ../../source/packages/libraries.md:16
 #: ../../source/packages/programming.md:58 ../../source/packages/strings.md:16
-#, fuzzy
 msgid "coretran"
-msgstr "Fortran"
+msgstr "coretran"
 
 #: ../../source/packages/data-types.md:13 ../../source/packages/data-types.md:34
 #: ../../source/packages/data-types.md:55 ../../source/packages/data-types.md:76
@@ -35075,7 +35414,7 @@ msgstr ""
 
 #: ../../source/packages/data-types.md:37
 msgid "datetime-fortran"
-msgstr ""
+msgstr "datetime-fortran"
 
 #: ../../source/packages/data-types.md:45
 msgid "Date and time manipulation"
@@ -35089,7 +35428,7 @@ msgstr ""
 
 #: ../../source/packages/data-types.md:58
 msgid "fdict"
-msgstr ""
+msgstr "fdict"
 
 #: ../../source/packages/data-types.md:66
 msgid "Variable and type-free dictionary"
@@ -35116,9 +35455,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/data-types.md:100
-#, fuzzy
 msgid "FyCollections"
-msgstr "Compiladores"
+msgstr "FyCollections"
 
 #: ../../source/packages/data-types.md:103
 msgid "generic collection templates for Fortran"
@@ -35126,7 +35464,7 @@ msgstr ""
 
 #: ../../source/packages/data-types.md:113
 msgid "kdtree2"
-msgstr ""
+msgstr "kdtree2"
 
 #: ../../source/packages/data-types.md:121
 msgid "A kd-tree implementation in fortran"
@@ -35156,9 +35494,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/data-types.md:170 ../../source/packages/numerical.md:727
-#, fuzzy
 msgid "PENF"
-msgstr "OpenMP"
+msgstr "PENF"
 
 #: ../../source/packages/data-types.md:178 ../../source/packages/numerical.md:735
 msgid "Provides portable kind-parameters and many useful procedures to deal with them"
@@ -35173,7 +35510,7 @@ msgstr ""
 
 #: ../../source/packages/data-types.md:191 ../../source/packages/numerical.md:785
 msgid "PSBLAS"
-msgstr ""
+msgstr "PSBLAS"
 
 #: ../../source/packages/data-types.md:199 ../../source/packages/numerical.md:793
 msgid "Parallel Sparse BLAS"
@@ -35185,7 +35522,7 @@ msgstr "Tags:  {bdg-light}`linear-algebra`  {bdg-light}`mpi`"
 
 #: ../../source/packages/data-types.md:212
 msgid "qContainers"
-msgstr ""
+msgstr "qContainers"
 
 #: ../../source/packages/data-types.md:220
 msgid "Store any intrinsic or derived data type to a container"
@@ -35200,9 +35537,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/examples.md:17
-#, fuzzy
 msgid "Blocktran"
-msgstr "Fortran"
+msgstr "Blocktran"
 
 #: ../../source/packages/examples.md:25
 msgid "Object-oriented Fortran falling block game using Curses console graphics"
@@ -35210,12 +35546,11 @@ msgstr ""
 
 #: ../../source/packages/examples.md:28
 msgid "Tags:  {bdg-light}`game`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`game`"
 
 #: ../../source/packages/examples.md:38
-#, fuzzy
 msgid "Fortran 2018 examples"
-msgstr "Fortran 2008"
+msgstr "exemplos Fortran 2018"
 
 #: ../../source/packages/examples.md:46
 msgid ""
@@ -35231,9 +35566,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/examples.md:59
-#, fuzzy
 msgid "Fortran patterns"
-msgstr "Funções Intrínsecas do Fortran"
+msgstr "Padrões Fortran"
 
 #: ../../source/packages/examples.md:67
 msgid "Popular design patterns implemented in Fortran"
@@ -35255,16 +35589,15 @@ msgstr ""
 
 #: ../../source/packages/examples.md:98 ../../source/packages/interfaces.md:629
 msgid "tcp-client-server"
-msgstr ""
+msgstr "tcp-client-server"
 
 #: ../../source/packages/examples.md:106 ../../source/packages/interfaces.md:637
 msgid "A minimal Fortran TCP client and server demonstrating c interoperability"
 msgstr ""
 
 #: ../../source/packages/examples.md:116
-#, fuzzy
 msgid "Tsunami"
-msgstr "sum"
+msgstr "Tsunami"
 
 #: ../../source/packages/examples.md:124
 msgid "A parallel shallow water equations solver"
@@ -35272,7 +35605,7 @@ msgstr ""
 
 #: ../../source/packages/graphics.md:16 ../../source/packages/interfaces.md:93
 msgid "f03gl"
-msgstr ""
+msgstr "f03gl"
 
 #: ../../source/packages/graphics.md:19 ../../source/packages/interfaces.md:96
 msgid "Fortran 2003 interface to OpenGL"
@@ -35283,9 +35616,8 @@ msgid "Tags:  {bdg-light}`graphics`  {bdg-light}`interface`  {bdg-light}`opengl`
 msgstr ""
 
 #: ../../source/packages/graphics.md:32 ../../source/packages/interfaces.md:272
-#, fuzzy
 msgid "fortran-sdl2"
-msgstr "fortran-lang.org"
+msgstr "fortran-sdl2"
 
 #: ../../source/packages/graphics.md:40 ../../source/packages/interfaces.md:280
 msgid ""
@@ -35294,9 +35626,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/graphics.md:50 ../../source/packages/interfaces.md:290
-#, fuzzy
 msgid "fortran-xlib"
-msgstr "fortran-lang.org"
+msgstr "fortran-xlib"
 
 #: ../../source/packages/graphics.md:58 ../../source/packages/interfaces.md:298
 msgid "A collection of ISO C binding interfaces to Xlib for Fortran 2003"
@@ -35309,9 +35640,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/graphics.md:71 ../../source/packages/interfaces.md:366
-#, fuzzy
 msgid "gtk-fortran"
-msgstr "Fortran"
+msgstr "gtk-fortran"
 
 #: ../../source/packages/graphics.md:79 ../../source/packages/interfaces.md:374
 msgid "A cross-platform library to build Graphical User Interfaces (GUI)"
@@ -35325,7 +35655,7 @@ msgstr ""
 
 #: ../../source/packages/graphics.md:92
 msgid "Illustrate"
-msgstr ""
+msgstr "Illustrate"
 
 #: ../../source/packages/graphics.md:100
 msgid "Biomolecular Illustration Tool"
@@ -35333,11 +35663,11 @@ msgstr ""
 
 #: ../../source/packages/graphics.md:103
 msgid "Tags:  {bdg-light}`pdb`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`pdb`"
 
 #: ../../source/packages/graphics.md:113
 msgid "M_draw"
-msgstr ""
+msgstr "M_draw"
 
 #: ../../source/packages/graphics.md:121
 msgid "Low-level vector graphics library"
@@ -35345,7 +35675,7 @@ msgstr ""
 
 #: ../../source/packages/graphics.md:131 ../../source/packages/interfaces.md:515
 msgid "ogpf"
-msgstr ""
+msgstr "ogpf"
 
 #: ../../source/packages/graphics.md:139 ../../source/packages/interfaces.md:523
 msgid "Object based interface to GnuPlot for Fortran"
@@ -35358,9 +35688,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/graphics.md:152 ../../source/packages/interfaces.md:552
-#, fuzzy
 msgid "PLplot"
-msgstr "llt"
+msgstr "PLplot"
 
 #: ../../source/packages/graphics.md:155 ../../source/packages/interfaces.md:555
 msgid "Library for scientific plotting"
@@ -35374,7 +35703,7 @@ msgstr ""
 
 #: ../../source/packages/graphics.md:168 ../../source/packages/interfaces.md:568
 msgid "pyplot-fortran"
-msgstr ""
+msgstr "pyplot-fortran"
 
 #: ../../source/packages/graphics.md:176 ../../source/packages/interfaces.md:576
 msgid "For generating plots from Fortran using Python's matplotlib.pyplot"
@@ -35387,9 +35716,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/interfaces.md:16
-#, fuzzy
 msgid "aotus"
-msgstr "acos"
+msgstr "aotus"
 
 #: ../../source/packages/interfaces.md:19
 msgid "Fortran wrapper around the C-API of the Lua scripting language"
@@ -35398,11 +35726,11 @@ msgstr ""
 #: ../../source/packages/interfaces.md:22 ../../source/packages/interfaces.md:178
 #: ../../source/packages/interfaces.md:262 ../../source/packages/interfaces.md:409
 msgid "Tags:  {bdg-light}`lua`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`lua`"
 
 #: ../../source/packages/interfaces.md:32
 msgid "arrayfire-fortran"
-msgstr ""
+msgstr "arrayfire-fortran"
 
 #: ../../source/packages/interfaces.md:40
 msgid "Fortran binding to the ArrayFire general purpose GPU library"
@@ -35413,9 +35741,8 @@ msgid "Tags:  {bdg-light}`cpp`  {bdg-light}`gpu`  {bdg-light}`opencl`"
 msgstr ""
 
 #: ../../source/packages/interfaces.md:53
-#, fuzzy
 msgid "clfortran"
-msgstr "Fortran"
+msgstr "clfortran"
 
 #: ../../source/packages/interfaces.md:61
 msgid "Fortran interfaces to Khronos OpenCL 1.2 API"
@@ -35427,7 +35754,7 @@ msgstr ""
 
 #: ../../source/packages/interfaces.md:74
 msgid "ELSI"
-msgstr ""
+msgstr "ELSI"
 
 #: ../../source/packages/interfaces.md:81
 msgid ""
@@ -35442,7 +35769,7 @@ msgstr "Tags:  {bdg-light}`electronic-structure`  {bdg-light}`mpi`  {bdg-light}`
 
 #: ../../source/packages/interfaces.md:109 ../../source/packages/numerical.md:237
 msgid "fgsl"
-msgstr ""
+msgstr "fgsl"
 
 #: ../../source/packages/interfaces.md:117 ../../source/packages/numerical.md:245
 msgid "Fortran interface to the GNU Scientific Library"
@@ -35450,7 +35777,7 @@ msgstr ""
 
 #: ../../source/packages/interfaces.md:127
 msgid "FKB"
-msgstr ""
+msgstr "FKB"
 
 #: ../../source/packages/interfaces.md:135
 msgid ""
@@ -35468,7 +35795,7 @@ msgstr ""
 
 #: ../../source/packages/interfaces.md:148
 msgid "flibcpp"
-msgstr ""
+msgstr "flibcpp"
 
 #: ../../source/packages/interfaces.md:156
 msgid "Fortran bindings to the C++ Standard Library"
@@ -35476,17 +35803,15 @@ msgstr ""
 
 #: ../../source/packages/interfaces.md:159
 msgid "Tags:  {bdg-light}`cpp`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`cpp`"
 
 #: ../../source/packages/interfaces.md:169
-#, fuzzy
 msgid "flook"
-msgstr "floor"
+msgstr "flook"
 
 #: ../../source/packages/interfaces.md:188
-#, fuzzy
 msgid "Focal"
-msgstr "logical"
+msgstr "Focal"
 
 #: ../../source/packages/interfaces.md:196
 msgid ""
@@ -35495,9 +35820,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/interfaces.md:209
-#, fuzzy
 msgid "forpy"
-msgstr "forks"
+msgstr "forpy"
 
 #: ../../source/packages/interfaces.md:217
 msgid "allows you to use Python features in Fortran"
@@ -35511,9 +35835,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/interfaces.md:230
-#, fuzzy
 msgid "fortran-curl"
-msgstr "fortran-lang.org"
+msgstr "fortran-curl"
 
 #: ../../source/packages/interfaces.md:238
 msgid "Fortran 2008 interface bindings to libcurl"
@@ -35526,9 +35849,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/interfaces.md:251
-#, fuzzy
 msgid "fortran-lua53"
-msgstr "fortran-lang.org"
+msgstr "fortran-lua53"
 
 #: ../../source/packages/interfaces.md:259
 msgid "Fortran 2008 interface bindings to Lua 5.3"
@@ -35536,9 +35858,8 @@ msgstr ""
 
 #: ../../source/packages/interfaces.md:311 ../../source/packages/io.md:179
 #: ../../source/packages/libraries.md:115 ../../source/packages/numerical.md:339
-#, fuzzy
 msgid "fortranlib"
-msgstr "Fortran"
+msgstr "fortranlib"
 
 #: ../../source/packages/interfaces.md:319 ../../source/packages/io.md:187
 #: ../../source/packages/libraries.md:123 ../../source/packages/numerical.md:347
@@ -35557,7 +35878,7 @@ msgstr ""
 
 #: ../../source/packages/interfaces.md:332 ../../source/packages/programming.md:195
 msgid "fortyxima"
-msgstr ""
+msgstr "fortyxima"
 
 #: ../../source/packages/interfaces.md:335 ../../source/packages/programming.md:198
 msgid "File system manipulation and unit testing framework"
@@ -35572,7 +35893,7 @@ msgstr ""
 #: ../../source/packages/programming.md:274 ../../source/packages/scientific.md:559
 #: ../../source/packages/strings.md:58
 msgid "Futility"
-msgstr ""
+msgstr "Futility"
 
 #: ../../source/packages/interfaces.md:356 ../../source/packages/io.md:226
 #: ../../source/packages/libraries.md:165 ../../source/packages/numerical.md:368
@@ -35587,7 +35908,7 @@ msgstr ""
 #: ../../source/packages/interfaces.md:387 ../../source/packages/numerical.md:480
 #: ../../source/packages/scientific.md:692
 msgid "librsb"
-msgstr ""
+msgstr "librsb"
 
 #: ../../source/packages/interfaces.md:390 ../../source/packages/numerical.md:483
 #: ../../source/packages/scientific.md:695
@@ -35603,7 +35924,7 @@ msgstr "Tags:  {bdg-light}`linear-algebra`  {bdg-light}`openmp`"
 
 #: ../../source/packages/interfaces.md:403
 msgid "LuaF"
-msgstr ""
+msgstr "LuaF"
 
 #: ../../source/packages/interfaces.md:406
 msgid "Fortran 2003/2008 bindings to Lua 5.1"
@@ -35611,16 +35932,15 @@ msgstr ""
 
 #: ../../source/packages/interfaces.md:419
 msgid "M_process"
-msgstr ""
+msgstr "M_process"
 
 #: ../../source/packages/interfaces.md:427
 msgid "Read and write lines to or from a process from Fortran via a C wrapper"
 msgstr ""
 
 #: ../../source/packages/interfaces.md:437
-#, fuzzy
 msgid "M_system"
-msgstr "system_clock"
+msgstr "M_system"
 
 #: ../../source/packages/interfaces.md:445
 msgid "Call C system routines from Fortran"
@@ -35635,9 +35955,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/interfaces.md:458
-#, fuzzy
 msgid "mpifx"
-msgstr "cmplx"
+msgstr "mpifx"
 
 #: ../../source/packages/interfaces.md:466
 msgid "Modern Fortran wrappers around MPI routines"
@@ -35648,27 +35967,24 @@ msgid "Tags:  {bdg-light}`mpi`  {bdg-light}`fypp`"
 msgstr ""
 
 #: ../../source/packages/interfaces.md:479
-#, fuzzy
 msgid "node-fortran"
-msgstr "Fortran"
+msgstr "node-fortran"
 
 #: ../../source/packages/interfaces.md:487
 msgid "Fortran bridge for Node.js which allows you to run Fortran code from Node.js"
 msgstr ""
 
 #: ../../source/packages/interfaces.md:497
-#, fuzzy
 msgid "node.fortran"
-msgstr "Fortran"
+msgstr "node.fortran"
 
 #: ../../source/packages/interfaces.md:505
 msgid "Execute Node.js in your Fortran programs"
 msgstr ""
 
 #: ../../source/packages/interfaces.md:536 ../../source/packages/numerical.md:669
-#, fuzzy
 msgid "OpenFFT"
-msgstr "popcnt"
+msgstr "OpenFFT"
 
 #: ../../source/packages/interfaces.md:539 ../../source/packages/numerical.md:672
 msgid ""
@@ -35686,7 +36002,7 @@ msgstr ""
 
 #: ../../source/packages/interfaces.md:589
 msgid "scalapackfx"
-msgstr ""
+msgstr "scalapackfx"
 
 #: ../../source/packages/interfaces.md:597
 msgid "Modern Fortran wrappers around ScaLAPACK routines"
@@ -35700,7 +36016,7 @@ msgstr ""
 
 #: ../../source/packages/interfaces.md:610
 msgid "sqliteff"
-msgstr ""
+msgstr "sqliteff"
 
 #: ../../source/packages/interfaces.md:617
 msgid "A thin wrapper around the SQLite library"
@@ -35711,9 +36027,8 @@ msgid "Tags:  {bdg-light}`sql`  {bdg-light}`database`"
 msgstr ""
 
 #: ../../source/packages/io.md:16
-#, fuzzy
 msgid "atomsk"
-msgstr "Watcom"
+msgstr "atomsk"
 
 #: ../../source/packages/io.md:24
 msgid "A Tool For Manipulating And Converting Atomic Data Files"
@@ -35725,7 +36040,7 @@ msgstr "Tags:  {bdg-light}`file-formats`"
 
 #: ../../source/packages/io.md:37
 msgid "config_fortran"
-msgstr ""
+msgstr "config_fortran"
 
 #: ../../source/packages/io.md:45
 msgid "Configuration file parser for Fortran"
@@ -35733,7 +36048,7 @@ msgstr ""
 
 #: ../../source/packages/io.md:55
 msgid "FEconv"
-msgstr ""
+msgstr "FEconv"
 
 #: ../../source/packages/io.md:63
 msgid ""
@@ -35748,9 +36063,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/io.md:76
-#, fuzzy
 msgid "FiNeR"
-msgstr "ieor"
+msgstr "FiNeR"
 
 #: ../../source/packages/io.md:84
 msgid "INI ParseR and generator"
@@ -35758,12 +36072,11 @@ msgstr ""
 
 #: ../../source/packages/io.md:87
 msgid "Tags:  {bdg-light}`config`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`config`"
 
 #: ../../source/packages/io.md:97
-#, fuzzy
 msgid "FortJSON"
-msgstr "fraction"
+msgstr "FortJSON"
 
 #: ../../source/packages/io.md:104
 msgid "A JSON library designed with portability across HPC architectures in mind"
@@ -35774,9 +36087,8 @@ msgid "Tags:  {bdg-light}`json`  {bdg-light}`hpc`"
 msgstr ""
 
 #: ../../source/packages/io.md:116 ../../source/packages/strings.md:37
-#, fuzzy
 msgid "Fortran Equation Parser"
-msgstr "Tags: equation parser"
+msgstr "Fortran Equation Parser"
 
 #: ../../source/packages/io.md:124 ../../source/packages/strings.md:45
 msgid ""
@@ -35790,7 +36102,7 @@ msgstr ""
 
 #: ../../source/packages/io.md:137
 msgid "fortran-csv-module"
-msgstr ""
+msgstr "fortran-csv-module"
 
 #: ../../source/packages/io.md:145
 msgid "Read and write CSV Files using modern Fortran"
@@ -35798,12 +36110,11 @@ msgstr ""
 
 #: ../../source/packages/io.md:148
 msgid "Tags:  {bdg-light}`csv`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`csv`"
 
 #: ../../source/packages/io.md:158 ../../source/packages/libraries.md:94
-#, fuzzy
 msgid "fortran-utils"
-msgstr "fortran-lang.org"
+msgstr "fortran-utils"
 
 #: ../../source/packages/io.md:166 ../../source/packages/libraries.md:102
 msgid "Various utilities for Fortran programs"
@@ -35818,16 +36129,15 @@ msgstr ""
 
 #: ../../source/packages/io.md:200
 msgid "fox"
-msgstr ""
+msgstr "fox"
 
 #: ../../source/packages/io.md:208
 msgid "A Fortran XML library"
 msgstr ""
 
 #: ../../source/packages/io.md:236
-#, fuzzy
 msgid "h5fortran"
-msgstr "Fortran"
+msgstr "h5fortran"
 
 #: ../../source/packages/io.md:244
 msgid "Simple, robust, thin HDF5 polymorphic read/write interface"
@@ -35835,12 +36145,11 @@ msgstr ""
 
 #: ../../source/packages/io.md:247
 msgid "Tags:  {bdg-light}`hdf5`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`hdf5`"
 
 #: ../../source/packages/io.md:257
-#, fuzzy
 msgid "json-fortran"
-msgstr "Fortran"
+msgstr "json-fortran"
 
 #: ../../source/packages/io.md:265
 msgid "A Fortran 2008 JSON API"
@@ -35848,20 +36157,19 @@ msgstr ""
 
 #: ../../source/packages/io.md:268 ../../source/packages/io.md:288
 msgid "Tags:  {bdg-light}`json`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`json`"
 
 #: ../../source/packages/io.md:278
 msgid "jsonff"
-msgstr ""
+msgstr "jsonff"
 
 #: ../../source/packages/io.md:285
 msgid "Routines for building JSON structures in Fortran"
 msgstr ""
 
 #: ../../source/packages/io.md:297
-#, fuzzy
 msgid "M_IO"
-msgstr "minloc"
+msgstr "M_IO"
 
 #: ../../source/packages/io.md:305
 msgid "Fortran module for common I/O tasks"
@@ -35874,9 +36182,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/io.md:318
-#, fuzzy
 msgid "nc4fortran"
-msgstr "Fortran"
+msgstr "nc4fortran"
 
 #: ../../source/packages/io.md:326
 msgid "Object-oriented interface for NetCDF4 in Fortran"
@@ -35884,11 +36191,11 @@ msgstr ""
 
 #: ../../source/packages/io.md:329 ../../source/packages/io.md:350
 msgid "Tags:  {bdg-light}`netcdf`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`netcdf`"
 
 #: ../../source/packages/io.md:339
 msgid "netCDF-Fortran"
-msgstr ""
+msgstr "netCDF-Fortran"
 
 #: ../../source/packages/io.md:347
 msgid "Fortran interfaces for netCDF C library."
@@ -35904,12 +36211,11 @@ msgstr ""
 
 #: ../../source/packages/io.md:371
 msgid "Tags:  {bdg-light}`python`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`python`"
 
 #: ../../source/packages/io.md:381
-#, fuzzy
 msgid "os"
-msgstr "cos"
+msgstr "os"
 
 #: ../../source/packages/io.md:389
 msgid "Selected routines from python's os module (meant for stdlib)"
@@ -35923,7 +36229,7 @@ msgstr ""
 
 #: ../../source/packages/io.md:402
 msgid "parff"
-msgstr ""
+msgstr "parff"
 
 #: ../../source/packages/io.md:409
 msgid "The foundations of a functional style parser combinator library"
@@ -35931,12 +36237,11 @@ msgstr ""
 
 #: ../../source/packages/io.md:412 ../../source/packages/programming.md:222
 msgid "Tags:  {bdg-light}`parser`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`parser`"
 
 #: ../../source/packages/io.md:421
-#, fuzzy
 msgid "pFlogger"
-msgstr "floor"
+msgstr "pFlogger"
 
 #: ../../source/packages/io.md:429
 msgid "A parallel Fortran logger (based on the design of the Python logger)"
@@ -35948,7 +36253,7 @@ msgstr ""
 
 #: ../../source/packages/io.md:442
 msgid "Serialbox"
-msgstr ""
+msgstr "Serialbox"
 
 #: ../../source/packages/io.md:450
 msgid "A serialization library and tools for C/C++, Python3 and Fortran"
@@ -35960,7 +36265,7 @@ msgstr "Tags:  {bdg-light}`validation`"
 
 #: ../../source/packages/io.md:463
 msgid "toml-f"
-msgstr ""
+msgstr "toml-f"
 
 #: ../../source/packages/io.md:471
 msgid ""
@@ -35970,12 +36275,11 @@ msgstr ""
 
 #: ../../source/packages/io.md:474
 msgid "Tags:  {bdg-light}`toml`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`toml`"
 
 #: ../../source/packages/io.md:484
-#, fuzzy
 msgid "VTKFortran"
-msgstr "Fortran"
+msgstr "VTKFortran"
 
 #: ../../source/packages/io.md:492
 msgid "Library to parse and emit files conforming VTK (XML) standard"
@@ -35983,7 +36287,7 @@ msgstr ""
 
 #: ../../source/packages/libraries.md:37
 msgid "FLAP"
-msgstr ""
+msgstr "FLAP"
 
 #: ../../source/packages/libraries.md:45
 msgid "Fortran command Line Arguments Parser"
@@ -36009,7 +36313,7 @@ msgstr ""
 
 #: ../../source/packages/libraries.md:136
 msgid "functional-fortran"
-msgstr ""
+msgstr "functional-fortran"
 
 #: ../../source/packages/libraries.md:144
 msgid "Functional programming for modern Fortran"
@@ -36023,7 +36327,7 @@ msgstr ""
 
 #: ../../source/packages/libraries.md:175
 msgid "M_CLI"
-msgstr ""
+msgstr "M_CLI"
 
 #: ../../source/packages/libraries.md:183
 msgid "Unix-like command line argument parsing"
@@ -36035,7 +36339,7 @@ msgstr ""
 
 #: ../../source/packages/libraries.md:196
 msgid "M_history"
-msgstr ""
+msgstr "M_history"
 
 #: ../../source/packages/libraries.md:204
 msgid "Subroutine to give a line-mode command history to interactive programs"
@@ -36043,12 +36347,11 @@ msgstr ""
 
 #: ../../source/packages/libraries.md:207
 msgid "Tags:  {bdg-light}`redo`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`redo`"
 
 #: ../../source/packages/libraries.md:217
-#, fuzzy
 msgid "Open Coarrays"
-msgstr "OpenCoarrays"
+msgstr "Open Coarrays"
 
 #: ../../source/packages/libraries.md:225
 msgid "A parallel application binary interface for Fortran 2018 compilers."
@@ -36070,7 +36373,7 @@ msgstr ""
 
 #: ../../source/packages/libraries.md:256
 msgid "yaFyaml"
-msgstr ""
+msgstr "yaFyaml"
 
 #: ../../source/packages/libraries.md:264
 msgid "Yet another Fortran YAML library"
@@ -36082,7 +36385,7 @@ msgstr "Tags:  {bdg-light}`configuration`  {bdg-light}`yaml`"
 
 #: ../../source/packages/numerical.md:16 ../../source/packages/scientific.md:16
 msgid "2DECOMP&FFT"
-msgstr ""
+msgstr "2DECOMP&FFT"
 
 #: ../../source/packages/numerical.md:19 ../../source/packages/scientific.md:19
 msgid "Library for 2D pencil decomposition and distributed Fast Fourier Transform"
@@ -36097,9 +36400,8 @@ msgstr ""
 "memory`  {bdg-light}`openmpi`"
 
 #: ../../source/packages/numerical.md:32
-#, fuzzy
 msgid "ARPACK"
-msgstr "pack"
+msgstr "ARPACK"
 
 #: ../../source/packages/numerical.md:40
 msgid ""
@@ -36116,7 +36418,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:53
 msgid "bspline-fortran"
-msgstr ""
+msgstr "bspline-fortran"
 
 #: ../../source/packages/numerical.md:61
 msgid "Multidimensional B-Spline interpolation of data on a regular grid"
@@ -36131,9 +36433,8 @@ msgstr ""
 "light}`extrapolation`  {bdg-light}`integration`  {bdg-light}`integral`"
 
 #: ../../source/packages/numerical.md:74
-#, fuzzy
 msgid "DBCSR"
-msgstr "ibclr"
+msgstr "DBCSR"
 
 #: ../../source/packages/numerical.md:82
 msgid "Distributed block compresseed sparse row matrix library"
@@ -36147,7 +36448,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:95
 msgid "ddeabm"
-msgstr ""
+msgstr "ddeabm"
 
 #: ../../source/packages/numerical.md:103
 msgid "Modern Fortran implementation of the DDEABM Adams-Bashforth algorithm"
@@ -36159,7 +36460,7 @@ msgstr "Tags:  {bdg-light}`ode`  {bdg-light}`adams-bashforth`"
 
 #: ../../source/packages/numerical.md:116
 msgid "ddPCM"
-msgstr ""
+msgstr "ddPCM"
 
 #: ../../source/packages/numerical.md:124
 msgid "A fast domain decomposition based implementation of the COSMO solvation model"
@@ -36173,7 +36474,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:137
 msgid "DelaunaySparse"
-msgstr ""
+msgstr "DelaunaySparse"
 
 #: ../../source/packages/numerical.md:145
 msgid ""
@@ -36187,7 +36488,7 @@ msgstr "Tags:  {bdg-light}`interpolation`  {bdg-light}`openmp`  {bdg-light}`acm-
 
 #: ../../source/packages/numerical.md:158
 msgid "dop853"
-msgstr ""
+msgstr "dop853"
 
 #: ../../source/packages/numerical.md:166
 msgid "Modern Fortran Edition of Hairer's DOP853 ODE Solver"
@@ -36198,9 +36499,8 @@ msgid "Tags:  {bdg-light}`ode`  {bdg-light}`runge`  {bdg-light}`kutta`"
 msgstr ""
 
 #: ../../source/packages/numerical.md:179
-#, fuzzy
 msgid "ElmerFEM"
-msgstr "merge"
+msgstr "ElmerFEM"
 
 #: ../../source/packages/numerical.md:187
 msgid ""
@@ -36213,9 +36513,8 @@ msgid "Tags:  {bdg-light}`pde`  {bdg-light}`fe`"
 msgstr ""
 
 #: ../../source/packages/numerical.md:200
-#, fuzzy
 msgid "ELPA"
-msgstr "repeat"
+msgstr "ELPA"
 
 #: ../../source/packages/numerical.md:203
 msgid "Eigenvalue Solvers for Petaflop Applications"
@@ -36227,7 +36526,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:216 ../../source/packages/scientific.md:442
 msgid "FATODE"
-msgstr ""
+msgstr "FATODE"
 
 #: ../../source/packages/numerical.md:224 ../../source/packages/scientific.md:450
 msgid ""
@@ -36240,9 +36539,8 @@ msgid "Tags:  {bdg-light}`ode-solver`"
 msgstr "Tags:  {bdg-light}`ode-solver`"
 
 #: ../../source/packages/numerical.md:255
-#, fuzzy
 msgid "FLINT"
-msgstr "int"
+msgstr "FLINT"
 
 #: ../../source/packages/numerical.md:263
 msgid "Fortran Library for numerical INTegration of differential equations"
@@ -36250,7 +36548,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:276
 msgid "fmm2d"
-msgstr ""
+msgstr "fmm2d"
 
 #: ../../source/packages/numerical.md:284
 msgid ""
@@ -36265,7 +36563,7 @@ msgstr "Tags:  {bdg-light}`fast-multipole-method`"
 
 #: ../../source/packages/numerical.md:297
 msgid "FMM3D"
-msgstr ""
+msgstr "FMM3D"
 
 #: ../../source/packages/numerical.md:305
 msgid ""
@@ -36276,7 +36574,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:318
 msgid "FOODIE"
-msgstr ""
+msgstr "FOODIE"
 
 #: ../../source/packages/numerical.md:326
 msgid "Fortran Object-Oriented Differential-equations Integration Environment"
@@ -36290,7 +36588,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:378
 msgid "GALAHAD"
-msgstr ""
+msgstr "GALAHAD"
 
 #: ../../source/packages/numerical.md:386
 msgid "Modules for nonlinear optimization"
@@ -36305,9 +36603,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/numerical.md:399 ../../source/packages/scientific.md:595
-#, fuzzy
 msgid "HANDE"
-msgstr "iand"
+msgstr "HANDE"
 
 #: ../../source/packages/numerical.md:407 ../../source/packages/scientific.md:603
 msgid "Open source stochastic quantum chemistry"
@@ -36319,16 +36616,15 @@ msgstr "Tags:  {bdg-light}`qmc`  {bdg-light}`electronic-structure`"
 
 #: ../../source/packages/numerical.md:420
 msgid "Incompact3d"
-msgstr ""
+msgstr "Incompact3d"
 
 #: ../../source/packages/numerical.md:428
 msgid "Solver for the incompressible Navier-Stokes equations"
 msgstr ""
 
 #: ../../source/packages/numerical.md:438
-#, fuzzy
 msgid "LAPACK"
-msgstr "pack"
+msgstr "LAPACK"
 
 #: ../../source/packages/numerical.md:446
 msgid "Routines for numerical linear algebra"
@@ -36340,7 +36636,7 @@ msgstr "Tags:  {bdg-light}`blas`  {bdg-light}`linear-algebra`"
 
 #: ../../source/packages/numerical.md:459
 msgid "libnegf"
-msgstr ""
+msgstr "libnegf"
 
 #: ../../source/packages/numerical.md:467
 msgid "A general library for Non Equilibrium Green's Functions"
@@ -36361,9 +36657,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/numerical.md:514
-#, fuzzy
 msgid "MapTran3D"
-msgstr "atan"
+msgstr "MapTran3D"
 
 #: ../../source/packages/numerical.md:522
 msgid "Geodesy, 3D coordinate conversions for ECEF, ENU, ECI, ..."
@@ -36371,7 +36666,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:532
 msgid "neural-fortran"
-msgstr ""
+msgstr "neural-fortran"
 
 #: ../../source/packages/numerical.md:540
 msgid "A parallel neural net microframework."
@@ -36383,7 +36678,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:553
 msgid "NTPoly"
-msgstr ""
+msgstr "NTPoly"
 
 #: ../../source/packages/numerical.md:561
 msgid "A massively parallel library for computing the functions of sparse matrices."
@@ -36391,11 +36686,11 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:564 ../../source/packages/numerical.md:817
 msgid "Tags:  {bdg-light}`mpi`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`mpi`"
 
 #: ../../source/packages/numerical.md:574
 msgid "NUFFT"
-msgstr ""
+msgstr "NUFFT"
 
 #: ../../source/packages/numerical.md:577
 msgid "Non-Uniform Fast Fourier Transforms"
@@ -36407,7 +36702,7 @@ msgstr "Tags:  {bdg-light}`non-uniform-fft`  {bdg-light}`fft`"
 
 #: ../../source/packages/numerical.md:590
 msgid "NumDiff"
-msgstr ""
+msgstr "NumDiff"
 
 #: ../../source/packages/numerical.md:598
 msgid ""
@@ -36420,9 +36715,8 @@ msgid "Tags:  {bdg-light}`finite`  {bdg-light}`difference`"
 msgstr ""
 
 #: ../../source/packages/numerical.md:632
-#, fuzzy
 msgid "ODEPACK"
-msgstr "pack"
+msgstr "ODEPACK"
 
 #: ../../source/packages/numerical.md:635
 msgid "A Systematized Collection of ODE Solvers (FORTRAN 77)"
@@ -36436,7 +36730,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:648
 msgid "OpenBLAS"
-msgstr ""
+msgstr "OpenBLAS"
 
 #: ../../source/packages/numerical.md:656
 msgid "Optimized BLAS library based on GotoBLAS2"
@@ -36444,7 +36738,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:685
 msgid "ParaMonte"
-msgstr ""
+msgstr "ParaMonte"
 
 #: ../../source/packages/numerical.md:693
 msgid ""
@@ -36465,7 +36759,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:706
 msgid "PCHIP"
-msgstr ""
+msgstr "PCHIP"
 
 #: ../../source/packages/numerical.md:714
 msgid "Piecewise Cubic Hermite Interpolation Package"
@@ -36480,9 +36774,8 @@ msgstr ""
 "  {bdg-light}`integration`  {bdg-light}`integral`"
 
 #: ../../source/packages/numerical.md:748
-#, fuzzy
 msgid "PoisFFT"
-msgstr "ishft"
+msgstr "PoisFFT"
 
 #: ../../source/packages/numerical.md:756
 msgid ""
@@ -36495,9 +36788,8 @@ msgid "Tags:  {bdg-light}`fft`  {bdg-light}`poisson`"
 msgstr ""
 
 #: ../../source/packages/numerical.md:769
-#, fuzzy
 msgid "PROPACK"
-msgstr "pack"
+msgstr "PROPACK"
 
 #: ../../source/packages/numerical.md:772
 msgid ""
@@ -36515,7 +36807,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:806
 msgid "QMD-PROGRESS"
-msgstr ""
+msgstr "QMD-PROGRESS"
 
 #: ../../source/packages/numerical.md:814
 msgid "Parallel, Rapid O(N) and Graph-based Recursive Electronic Structure Solver."
@@ -36523,7 +36815,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:827
 msgid "QNSTOP"
-msgstr ""
+msgstr "QNSTOP"
 
 #: ../../source/packages/numerical.md:835
 msgid "Quasi-Newton Algorithm for Stochastic Optimization."
@@ -36539,7 +36831,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:848
 msgid "quaff"
-msgstr ""
+msgstr "quaff"
 
 #: ../../source/packages/numerical.md:855
 msgid "Quantities for Fortran. Make math with units more convenient"
@@ -36547,7 +36839,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:864
 msgid "regridpack"
-msgstr ""
+msgstr "regridpack"
 
 #: ../../source/packages/numerical.md:872
 msgid ""
@@ -36561,9 +36853,8 @@ msgid "Tags:  {bdg-light}`linear`  {bdg-light}`cubic`  {bdg-light}`interpolation
 msgstr ""
 
 #: ../../source/packages/numerical.md:885
-#, fuzzy
 msgid "rng_fortran"
-msgstr "Aprenda Fortran"
+msgstr "rng_fortran"
 
 #: ../../source/packages/numerical.md:893
 msgid "Pseudo random number generator in Fortran, internally using xoroshiro128+"
@@ -36577,25 +36868,23 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:906
 msgid "RPNcalc"
-msgstr ""
+msgstr "RPNcalc"
 
 #: ../../source/packages/numerical.md:914
 msgid "Reverse Polish Notation calculator for interactive console use"
 msgstr ""
 
 #: ../../source/packages/numerical.md:924
-#, fuzzy
 msgid "SciFortran"
-msgstr "Fortran"
+msgstr "SciFortran"
 
 #: ../../source/packages/numerical.md:932
 msgid "collection of fortran modules and procedures for scientific calculations."
 msgstr ""
 
 #: ../../source/packages/numerical.md:942
-#, fuzzy
 msgid "SHTOOLS"
-msgstr "shiftl"
+msgstr "SHTOOLS"
 
 #: ../../source/packages/numerical.md:950
 msgid ""
@@ -36612,7 +36901,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:963 ../../source/packages/scientific.md:1103
 msgid "SLICOT"
-msgstr ""
+msgstr "SLICOT"
 
 #: ../../source/packages/numerical.md:971 ../../source/packages/scientific.md:1111
 msgid "A Fortran subroutines library for systems and control"
@@ -36620,7 +36909,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:981
 msgid "slsqp"
-msgstr ""
+msgstr "slsqp"
 
 #: ../../source/packages/numerical.md:989
 msgid "SLSQP nonlinear constrained optimizer"
@@ -36636,7 +36925,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:1002 ../../source/packages/programming.md:455
 msgid "Tapenade"
-msgstr ""
+msgstr "Tapenade"
 
 #: ../../source/packages/numerical.md:1005 ../../source/packages/programming.md:458
 msgid ""
@@ -36650,7 +36939,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:1018
 msgid "VTMOP"
-msgstr ""
+msgstr "VTMOP"
 
 #: ../../source/packages/numerical.md:1026
 msgid "Solver for Blackbox Multiobjective Optimization Problems."
@@ -36665,9 +36954,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/programming.md:16
-#, fuzzy
 msgid "camfort"
-msgstr "Import"
+msgstr "camfort"
 
 #: ../../source/packages/programming.md:24
 msgid "Light-weight verification and transformation tools for Fortran"
@@ -36679,7 +36967,7 @@ msgstr "Tags:  {bdg-light}`refactoring`"
 
 #: ../../source/packages/programming.md:37
 msgid "convert_FORTRAN_case"
-msgstr ""
+msgstr "convert_FORTRAN_case"
 
 #: ../../source/packages/programming.md:45
 msgid "Case conversion of files written in fixed form Fortran"
@@ -36690,9 +36978,8 @@ msgid "Tags:  {bdg-light}`formatter`  {bdg-light}`converter`"
 msgstr "Tags:  {bdg-light}`formatter`  {bdg-light}`converter`"
 
 #: ../../source/packages/programming.md:79
-#, fuzzy
 msgid "erloff"
-msgstr "erf"
+msgstr "erloff"
 
 #: ../../source/packages/programming.md:86
 msgid "Errors and logging for fortran"
@@ -36704,7 +36991,7 @@ msgstr ""
 
 #: ../../source/packages/programming.md:98
 msgid "f90wrap"
-msgstr ""
+msgstr "f90wrap"
 
 #: ../../source/packages/programming.md:106
 msgid "F90 to Python interface generator with derived type support"
@@ -36715,18 +37002,16 @@ msgid "Tags:  {bdg-light}`interface-generator`  {bdg-light}`python`"
 msgstr "Tags:  {bdg-light}`interface-generator`  {bdg-light}`python`"
 
 #: ../../source/packages/programming.md:119
-#, fuzzy
 msgid "findent"
-msgstr "index"
+msgstr "findent"
 
 #: ../../source/packages/programming.md:122
 msgid "Indents/beautifies/converts Fortran sources"
 msgstr ""
 
 #: ../../source/packages/programming.md:135
-#, fuzzy
 msgid "FORD"
-msgstr "ou"
+msgstr "FORD"
 
 #: ../../source/packages/programming.md:143
 msgid "Automatic documentation generator for modern Fortran programs"
@@ -36738,7 +37023,7 @@ msgstr "Tags:  {bdg-light}`documentation`"
 
 #: ../../source/packages/programming.md:156
 msgid "fortran-error-handler"
-msgstr ""
+msgstr "fortran-error-handler"
 
 #: ../../source/packages/programming.md:164
 msgid "Comprehensive error handling framework for Modern Fortran"
@@ -36750,16 +37035,15 @@ msgstr ""
 
 #: ../../source/packages/programming.md:177
 msgid "FortranCallGraph"
-msgstr ""
+msgstr "FortranCallGraph"
 
 #: ../../source/packages/programming.md:185
 msgid "Static source code analysis tool for Fortran"
 msgstr ""
 
 #: ../../source/packages/programming.md:211
-#, fuzzy
 msgid "fparser"
-msgstr "Tags: parser"
+msgstr "fparser"
 
 #: ../../source/packages/programming.md:219
 msgid ""
@@ -36769,7 +37053,7 @@ msgstr ""
 
 #: ../../source/packages/programming.md:232
 msgid "fpm"
-msgstr ""
+msgstr "fpm"
 
 #: ../../source/packages/programming.md:243
 msgid "Tags:  {bdg-light}`build-system`  {bdg-light}`package-manager`"
@@ -36777,7 +37061,7 @@ msgstr "Tags:  {bdg-light}`build-system`  {bdg-light}`package-manager`"
 
 #: ../../source/packages/programming.md:253
 msgid "fprettify"
-msgstr ""
+msgstr "fprettify"
 
 #: ../../source/packages/programming.md:261
 msgid "auto-formatter for modern fortran source code"
@@ -36789,7 +37073,7 @@ msgstr "Tags:  {bdg-light}`formatter`"
 
 #: ../../source/packages/programming.md:292
 msgid "fypp"
-msgstr ""
+msgstr "fypp"
 
 #: ../../source/packages/programming.md:300
 msgid "Python powered Fortran preprocessor"
@@ -36800,9 +37084,8 @@ msgid "Tags:  {bdg-light}`metaprogramming`"
 msgstr "Tags:  {bdg-light}`metaprogramming`"
 
 #: ../../source/packages/programming.md:313
-#, fuzzy
 msgid "fytest"
-msgstr "btest"
+msgstr "fytest"
 
 #: ../../source/packages/programming.md:316
 msgid "a lightweight unit testing framework for Fortran"
@@ -36814,9 +37097,8 @@ msgid "Tags:  {bdg-light}`unit`  {bdg-light}`testing`"
 msgstr ""
 
 #: ../../source/packages/programming.md:329
-#, fuzzy
 msgid "gFTL"
-msgstr "shiftl"
+msgstr "gFTL"
 
 #: ../../source/packages/programming.md:337
 msgid ""
@@ -36831,16 +37113,15 @@ msgstr "Tags:  {bdg-light}`container`  {bdg-light}`template`"
 
 #: ../../source/packages/programming.md:350
 msgid "gFTL-shared"
-msgstr ""
+msgstr "gFTL-shared"
 
 #: ../../source/packages/programming.md:358
 msgid "Instantiations of gFTL templates of common containers for intrinsic types"
 msgstr ""
 
 #: ../../source/packages/programming.md:371
-#, fuzzy
 msgid "hipfort"
-msgstr "hypot"
+msgstr "hipfort"
 
 #: ../../source/packages/programming.md:379
 msgid "Fortran interfaces for ROCm libraries"
@@ -36851,9 +37132,8 @@ msgid "Tags:  {bdg-light}`hip`  {bdg-light}`rocm`"
 msgstr ""
 
 #: ../../source/packages/programming.md:392
-#, fuzzy
 msgid "pFUnit"
-msgstr "nint"
+msgstr "pFUnit"
 
 #: ../../source/packages/programming.md:400
 msgid "Parallel Fortran Unit Testing Framework"
@@ -36861,7 +37141,7 @@ msgstr ""
 
 #: ../../source/packages/programming.md:413
 msgid "shroud"
-msgstr ""
+msgstr "shroud"
 
 #: ../../source/packages/programming.md:421
 msgid "generate Fortran and Python wrappers for C and C++ libraries"
@@ -36873,9 +37153,8 @@ msgid "Tags:  {bdg-light}`interface-generator`  {bdg-light}`c++`"
 msgstr "Tags:  {bdg-light}`interface-generator`  {bdg-light}`c++`"
 
 #: ../../source/packages/programming.md:434
-#, fuzzy
 msgid "SWIG-Fortran"
-msgstr "Fortran"
+msgstr "SWIG-Fortran"
 
 #: ../../source/packages/programming.md:442
 msgid "SWIG for C++ to Fortran interface generation"
@@ -36883,7 +37162,7 @@ msgstr ""
 
 #: ../../source/packages/programming.md:471
 msgid "vegetables"
-msgstr ""
+msgstr "vegetables"
 
 #: ../../source/packages/programming.md:478
 msgid "A Fortran testing framework written using functional programming principles."
@@ -36894,9 +37173,8 @@ msgid "Tags:  {bdg-light}`testing`  {bdg-light}`assert`"
 msgstr ""
 
 #: ../../source/packages/scientific.md:32
-#, fuzzy
 msgid "ABINIT"
-msgstr "aint"
+msgstr "ABINIT"
 
 #: ../../source/packages/scientific.md:40
 msgid ""
@@ -36914,7 +37192,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:53
 msgid "ADflow"
-msgstr ""
+msgstr "ADflow"
 
 #: ../../source/packages/scientific.md:61
 msgid ""
@@ -36931,27 +37209,24 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/scientific.md:74
-#, fuzzy
 msgid "aenet"
-msgstr "aint"
+msgstr "aenet"
 
 #: ../../source/packages/scientific.md:82
 msgid "Atomic interaction potentials based on artificial neural networks"
 msgstr ""
 
 #: ../../source/packages/scientific.md:92
-#, fuzzy
 msgid "BandUP"
-msgstr "iand"
+msgstr "BandUP"
 
 #: ../../source/packages/scientific.md:100
 msgid "Band Unfolding code for Plane-wave based calculations"
 msgstr ""
 
 #: ../../source/packages/scientific.md:110
-#, fuzzy
 msgid "BigDFT"
-msgstr "bgt"
+msgstr "BigDFT"
 
 #: ../../source/packages/scientific.md:117
 msgid "fast, precise, and flexible DFT code for ab-initio atomistic simulation"
@@ -36966,9 +37241,8 @@ msgstr ""
 "}`density-functional-theory`"
 
 #: ../../source/packages/scientific.md:129
-#, fuzzy
 msgid "CaNS"
-msgstr "scan"
+msgstr "CaNS"
 
 #: ../../source/packages/scientific.md:137
 msgid ""
@@ -36985,16 +37259,15 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:150
 msgid "Cantera"
-msgstr ""
+msgstr "Cantera"
 
 #: ../../source/packages/scientific.md:158
 msgid "Chemical kinetics, thermodynamics, and transport tool suite"
 msgstr ""
 
 #: ../../source/packages/scientific.md:168
-#, fuzzy
 msgid "Castro"
-msgstr "adjustr"
+msgstr "Castro"
 
 #: ../../source/packages/scientific.md:176
 msgid "An adaptive mesh, astrophysical radiation hydrodynamics simulation code"
@@ -37010,7 +37283,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:189
 msgid "CFL3D"
-msgstr ""
+msgstr "CFL3D"
 
 #: ../../source/packages/scientific.md:197
 msgid ""
@@ -37020,7 +37293,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:207
 msgid "CompDam_DGD"
-msgstr ""
+msgstr "CompDam_DGD"
 
 #: ../../source/packages/scientific.md:215
 msgid ""
@@ -37030,7 +37303,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:225
 msgid "cp2k"
-msgstr ""
+msgstr "cp2k"
 
 #: ../../source/packages/scientific.md:233
 msgid ""
@@ -37049,16 +37322,14 @@ msgstr ""
 "light}`cuda`"
 
 #: ../../source/packages/scientific.md:246
-#, fuzzy
 msgid "crest"
-msgstr "present"
+msgstr "crest"
 
 #: ../../source/packages/scientific.md:254
 msgid "Conformer-rotamer ensemble search tool"
 msgstr ""
 
 #: ../../source/packages/scientific.md:257
-#, fuzzy
 msgid ""
 "Tags:  {bdg-light}`computational-chemistry`  {bdg-light}`atomistic-"
 "simulations`  {bdg-light}`conformational-analysis`  {bdg-light}`metadynamics`"
@@ -37067,39 +37338,34 @@ msgstr ""
 "simulations`  {bdg-light}`conformational-analysis`  {bdg-light}`metadynamics`"
 
 #: ../../source/packages/scientific.md:267
-#, fuzzy
 msgid "CTSM"
-msgstr "sum"
+msgstr "CTSM"
 
 #: ../../source/packages/scientific.md:275
 msgid "The Community Terrestrial Systems Model"
 msgstr ""
 
 #: ../../source/packages/scientific.md:285
-#, fuzzy
 msgid "Dalton"
-msgstr "atan"
+msgstr "Dalton"
 
 #: ../../source/packages/scientific.md:292
 msgid "Powerful molecular electronic structure program"
 msgstr ""
 
 #: ../../source/packages/scientific.md:295 ../../source/packages/scientific.md:718
-#, fuzzy
 msgid "Tags:  {bdg-light}`electronic-structure`  {bdg-light}`relativistic`"
 msgstr "Tags:  {bdg-light}`electronic-structure`  {bdg-light}`relativistic`"
 
 #: ../../source/packages/scientific.md:304
-#, fuzzy
 msgid "DAMASK"
-msgstr "maskr"
+msgstr "DAMASK"
 
 #: ../../source/packages/scientific.md:312
 msgid "A unified multi-physics crystal plasticity simulation package"
 msgstr ""
 
 #: ../../source/packages/scientific.md:315
-#, fuzzy
 msgid ""
 "Tags:  {bdg-light}`plasticity`  {bdg-light}`simulation`  {bdg-"
 "light}`material`  {bdg-light}`multi-physics`"
@@ -37109,41 +37375,37 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:325
 msgid "DFT-D4"
-msgstr ""
+msgstr "DFT-D4"
 
 #: ../../source/packages/scientific.md:333
 msgid "A Generally Applicable Atomic-Charge Dependent London Dispersion Correction"
 msgstr ""
 
 #: ../../source/packages/scientific.md:336
-#, fuzzy
 msgid "Tags:  {bdg-light}`dft-d`  {bdg-light}`dispersion-correction`"
 msgstr "Tags:  {bdg-light}`dft-d`  {bdg-light}`dispersion-correction`"
 
 #: ../../source/packages/scientific.md:346
-#, fuzzy
 msgid "dftatom"
-msgstr "Watcom"
+msgstr "dftatom"
 
 #: ../../source/packages/scientific.md:354
 msgid "Routines for Radial Integration of Dirac, Schrödinger, and Poisson Equations"
 msgstr ""
 
 #: ../../source/packages/scientific.md:357
-#, fuzzy
 msgid "Tags:  {bdg-light}`electronic-structure`  {bdg-light}`atomic`"
 msgstr "Tags:  {bdg-light}`electronic-structure`  {bdg-light}`atomic`"
 
 #: ../../source/packages/scientific.md:367
 msgid "DFTB+"
-msgstr ""
+msgstr "DFTB+"
 
 #: ../../source/packages/scientific.md:375
 msgid "DFTB+ general package for performing fast atomistic simulations"
 msgstr ""
 
 #: ../../source/packages/scientific.md:378
-#, fuzzy
 msgid ""
 "Tags:  {bdg-light}`tight-binding`  {bdg-light}`quantum-mechanics`  {bdg-light"
 "}`density-functional-theory`"
@@ -37153,20 +37415,19 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:388
 msgid "DL_POLY_4"
-msgstr ""
+msgstr "DL_POLY_4"
 
 #: ../../source/packages/scientific.md:395
 msgid "classical molecular dynamics code developed at Daresbury Laboratory since 1992"
 msgstr ""
 
 #: ../../source/packages/scientific.md:398
-#, fuzzy
 msgid "Tags:  {bdg-light}`molecular-dynamics`  {bdg-light}`mpi`"
 msgstr "Tags:  {bdg-light}`molecular-dynamics`  {bdg-light}`mpi`"
 
 #: ../../source/packages/scientific.md:407
 msgid "Elk"
-msgstr ""
+msgstr "Elk"
 
 #: ../../source/packages/scientific.md:410
 msgid ""
@@ -37175,14 +37436,12 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/scientific.md:413
-#, fuzzy
 msgid "Tags:  {bdg-light}`density-functional-theory`"
 msgstr "Tags:  {bdg-light}`density-functional-theory`"
 
 #: ../../source/packages/scientific.md:423
-#, fuzzy
 msgid "eT"
-msgstr "Texto"
+msgstr "eT"
 
 #: ../../source/packages/scientific.md:430
 msgid ""
@@ -37191,13 +37450,12 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/scientific.md:433
-#, fuzzy
 msgid "Tags:  {bdg-light}`electronic-structure`  {bdg-light}`coupled-cluster`"
 msgstr "Tags:  {bdg-light}`electronic-structure`  {bdg-light}`coupled-cluster`"
 
 #: ../../source/packages/scientific.md:463
 msgid "fds"
-msgstr ""
+msgstr "fds"
 
 #: ../../source/packages/scientific.md:471
 msgid ""
@@ -37207,7 +37465,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:481
 msgid "flexi"
-msgstr ""
+msgstr "flexi"
 
 #: ../../source/packages/scientific.md:489
 msgid ""
@@ -37217,7 +37475,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:499
 msgid "fluidity"
-msgstr ""
+msgstr "fluidity"
 
 #: ../../source/packages/scientific.md:507
 msgid "Computational fluid dynamics code with adaptive unstructured mesh capabilities"
@@ -37233,7 +37491,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:520
 msgid "FMS"
-msgstr ""
+msgstr "FMS"
 
 #: ../../source/packages/scientific.md:528
 msgid "Flexible Modeling System"
@@ -37241,7 +37499,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:538
 msgid "freeCappuccino"
-msgstr ""
+msgstr "freeCappuccino"
 
 #: ../../source/packages/scientific.md:546
 msgid ""
@@ -37257,16 +37515,15 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:577
 msgid "Gemini3D"
-msgstr ""
+msgstr "Gemini3D"
 
 #: ../../source/packages/scientific.md:585
 msgid "3D ionospheric model covering local (> 10 gyroradii) to global scales."
 msgstr ""
 
 #: ../../source/packages/scientific.md:616
-#, fuzzy
 msgid "ICAR"
-msgstr "ichar"
+msgstr "ICAR"
 
 #: ../../source/packages/scientific.md:624
 msgid "The Intermediate Complexity Atmospheric Research model"
@@ -37274,37 +37531,35 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:634
 msgid "LATTE"
-msgstr ""
+msgstr "LATTE"
 
 #: ../../source/packages/scientific.md:642
 msgid "Open source density functional tight binding molecular dynamics"
 msgstr ""
 
 #: ../../source/packages/scientific.md:645
-#, fuzzy
 msgid "Tags:  {bdg-light}`tight-binding`  {bdg-light}`molecular-dynamics`"
 msgstr "Tags:  {bdg-light}`tight-binding`  {bdg-light}`molecular-dynamics`"
 
 #: ../../source/packages/scientific.md:655
 msgid "lesgo"
-msgstr ""
+msgstr "lesgo"
 
 #: ../../source/packages/scientific.md:671
 msgid "libmbd"
-msgstr ""
+msgstr "libmbd"
 
 #: ../../source/packages/scientific.md:679
 msgid "Many-body dispersion library"
 msgstr ""
 
 #: ../../source/packages/scientific.md:682
-#, fuzzy
 msgid "Tags:  {bdg-light}`dispersion-correction`"
 msgstr "Tags:  {bdg-light}`dispersion-correction`"
 
 #: ../../source/packages/scientific.md:708
 msgid "LSDalton"
-msgstr ""
+msgstr "LSDalton"
 
 #: ../../source/packages/scientific.md:715
 msgid "Linear scaling molecular electronic structure program"
@@ -37312,20 +37567,19 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:727
 msgid "MESA"
-msgstr ""
+msgstr "MESA"
 
 #: ../../source/packages/scientific.md:730
 msgid "Modules for Experiments in Stellar Astrophysics"
 msgstr ""
 
 #: ../../source/packages/scientific.md:733
-#, fuzzy
 msgid "Tags:  {bdg-light}`stellar`  {bdg-light}`astrophysics`"
 msgstr "Tags:  {bdg-light}`stellar`  {bdg-light}`astrophysics`"
 
 #: ../../source/packages/scientific.md:743
 msgid "MITgcm"
-msgstr ""
+msgstr "MITgcm"
 
 #: ../../source/packages/scientific.md:751
 msgid "M.I.T General Circulation Model master code and documentation repository"
@@ -37333,7 +37587,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:761
 msgid "MOM6"
-msgstr ""
+msgstr "MOM6"
 
 #: ../../source/packages/scientific.md:769
 msgid "Modular Ocean Model"
@@ -37341,7 +37595,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:779
 msgid "MPAS-Model"
-msgstr ""
+msgstr "MPAS-Model"
 
 #: ../../source/packages/scientific.md:787
 msgid ""
@@ -37352,7 +37606,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:797
 msgid "NASTRAN 93"
-msgstr ""
+msgstr "NASTRAN 93"
 
 #: ../../source/packages/scientific.md:805
 msgid ""
@@ -37366,7 +37620,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:818
 msgid "NASTRAN 95"
-msgstr ""
+msgstr "NASTRAN 95"
 
 #: ../../source/packages/scientific.md:826
 msgid ""
@@ -37382,7 +37636,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:839
 msgid "Nek5000"
-msgstr ""
+msgstr "Nek5000"
 
 #: ../../source/packages/scientific.md:847
 msgid "MPI parallel higher-order spectral element CFD solver"
@@ -37398,7 +37652,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:860
 msgid "NWChem"
-msgstr ""
+msgstr "NWChem"
 
 #: ../../source/packages/scientific.md:868
 msgid "Open Source High-Performance Computational Chemistry"
@@ -37413,22 +37667,20 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/scientific.md:881
-#, fuzzy
 msgid "Octopus"
-msgstr "cos"
+msgstr "Octopus"
 
 #: ../../source/packages/scientific.md:888
 msgid "Real-space Time-Dependent Density Functional Theory code"
 msgstr ""
 
 #: ../../source/packages/scientific.md:891 ../../source/packages/scientific.md:1247
-#, fuzzy
 msgid "Tags:  {bdg-light}`electronic-structure`"
 msgstr "Tags:  {bdg-light}`electronic-structure`"
 
 #: ../../source/packages/scientific.md:900
 msgid "OFF"
-msgstr ""
+msgstr "OFF"
 
 #: ../../source/packages/scientific.md:908
 msgid "Finite volume fluid dynamics"
@@ -37442,7 +37694,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:921
 msgid "OpenMolcas"
-msgstr ""
+msgstr "OpenMolcas"
 
 #: ../../source/packages/scientific.md:928
 msgid ""
@@ -37460,7 +37712,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:940
 msgid "OpenSWPC"
-msgstr ""
+msgstr "OpenSWPC"
 
 #: ../../source/packages/scientific.md:948
 msgid "A Seismic Wave Propagation Code by Parallel Finite Difference Method"
@@ -37468,7 +37720,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:958
 msgid "pencil-code"
-msgstr ""
+msgstr "pencil-code"
 
 #: ../../source/packages/scientific.md:966
 msgid ""
@@ -37477,7 +37729,6 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/scientific.md:969
-#, fuzzy
 msgid ""
 "Tags:  {bdg-light}`finite-difference`  {bdg-light}`hydrodynamics`  {bdg-light"
 "}`magnetic-field`  {bdg-light}`particles`"
@@ -37487,14 +37738,13 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:979
 msgid "qcxms"
-msgstr ""
+msgstr "qcxms"
 
 #: ../../source/packages/scientific.md:987
 msgid "Quantum mechanic mass spectrometry calculation program"
 msgstr ""
 
 #: ../../source/packages/scientific.md:990
-#, fuzzy
 msgid ""
 "Tags:  {bdg-light}`computational-chemistry`  {bdg-light}`molecular-dynamics`"
 "  {bdg-light}`mass-spectrometry`"
@@ -37504,7 +37754,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:1000
 msgid "Quantum ESPRESSO"
-msgstr ""
+msgstr "Quantum ESPRESSO"
 
 #: ../../source/packages/scientific.md:1008
 msgid ""
@@ -37514,7 +37764,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:1021
 msgid "QUICK"
-msgstr ""
+msgstr "QUICK"
 
 #: ../../source/packages/scientific.md:1029
 msgid "A GPU-enabled ab initio quantum chemistry software package"
@@ -37522,7 +37772,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:1042
 msgid "QUIP"
-msgstr ""
+msgstr "QUIP"
 
 #: ../../source/packages/scientific.md:1050
 msgid ""
@@ -37531,7 +37781,6 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/scientific.md:1053
-#, fuzzy
 msgid ""
 "Tags:  {bdg-light}`electronic-structure`  {bdg-light}`quantum-chemistry`  "
 "{bdg-light}`physics`  {bdg-light}`molecular-dynamics`  {bdg-light}`mpi`  "
@@ -37543,7 +37792,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:1063
 msgid "SeisSol"
-msgstr ""
+msgstr "SeisSol"
 
 #: ../../source/packages/scientific.md:1071
 msgid ""
@@ -37552,7 +37801,6 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/scientific.md:1074
-#, fuzzy
 msgid ""
 "Tags:  {bdg-light}`hpc`  {bdg-light}`earthquakes`  {bdg-light}`dynamic-"
 "rupture`"
@@ -37561,16 +37809,14 @@ msgstr ""
 "rupture`"
 
 #: ../../source/packages/scientific.md:1084
-#, fuzzy
 msgid "siesta"
-msgstr "shifta"
+msgstr "siesta"
 
 #: ../../source/packages/scientific.md:1091
 msgid "A first-principles materials simulation code using DFT"
 msgstr ""
 
 #: ../../source/packages/scientific.md:1094
-#, fuzzy
 msgid ""
 "Tags:  {bdg-light}`electronic-structure`  {bdg-light}`density-functional-"
 "theory`  {bdg-light}`molecular-dynamics`  {bdg-light}`mpi`"
@@ -37579,9 +37825,8 @@ msgstr ""
 "theory`  {bdg-light}`molecular-dynamics`  {bdg-light}`mpi`"
 
 #: ../../source/packages/scientific.md:1121
-#, fuzzy
 msgid "SNaC"
-msgstr "unpack"
+msgstr "SNaC"
 
 #: ../../source/packages/scientific.md:1129
 msgid ""
@@ -37590,9 +37835,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/scientific.md:1142
-#, fuzzy
 msgid "SNAP"
-msgstr "shape"
+msgstr "SNAP"
 
 #: ../../source/packages/scientific.md:1150
 msgid ""
@@ -37602,7 +37846,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:1160
 msgid "Specfem3D"
-msgstr ""
+msgstr "Specfem3D"
 
 #: ../../source/packages/scientific.md:1168
 msgid ""
@@ -37612,22 +37856,20 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/scientific.md:1178
-#, fuzzy
 msgid "tinker"
-msgstr "tiny"
+msgstr "tinker"
 
 #: ../../source/packages/scientific.md:1186
 msgid "Software Tools for Molecular Design"
 msgstr ""
 
 #: ../../source/packages/scientific.md:1189
-#, fuzzy
 msgid "Tags:  {bdg-light}`molecular-modeling`"
 msgstr "Tags:  {bdg-light}`molecular-modeling`"
 
 #: ../../source/packages/scientific.md:1199
 msgid "Tracmass"
-msgstr ""
+msgstr "Tracmass"
 
 #: ../../source/packages/scientific.md:1207
 msgid "Lagrangian particle tracking code"
@@ -37635,7 +37877,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:1217
 msgid "Truchas"
-msgstr ""
+msgstr "Truchas"
 
 #: ../../source/packages/scientific.md:1224
 msgid "3D Multiphysics Simulation of Metal Casting and Processing"
@@ -37651,7 +37893,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:1236
 msgid "Wannier90"
-msgstr ""
+msgstr "Wannier90"
 
 #: ../../source/packages/scientific.md:1244
 msgid "The Maximally-Localised Generalised Wannier Functions Code"
@@ -37659,7 +37901,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:1257
 msgid "WHIZARD"
-msgstr ""
+msgstr "WHIZARD"
 
 #: ../../source/packages/scientific.md:1260
 msgid "Particle Physics Monte Carlo Event Generator"
@@ -37673,9 +37915,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/scientific.md:1273
-#, fuzzy
 msgid "WRF"
-msgstr "erf"
+msgstr "WRF"
 
 #: ../../source/packages/scientific.md:1281
 msgid "Weather Research and Forecasting model"
@@ -37683,7 +37924,7 @@ msgstr ""
 
 #: ../../source/packages/scientific.md:1291
 msgid "xtb"
-msgstr ""
+msgstr "xtb"
 
 #: ../../source/packages/scientific.md:1299
 msgid "Semiempirical Extended Tight-Binding Program Package"
@@ -37699,7 +37940,7 @@ msgstr ""
 
 #: ../../source/packages/strings.md:76
 msgid "iso_varying_string"
-msgstr ""
+msgstr "iso_varying_string"
 
 #: ../../source/packages/strings.md:83
 msgid ""
@@ -37714,7 +37955,6 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/strings.md:95
-#, fuzzy
 msgid "M_strings"
 msgstr "M_strings"
 
@@ -37731,9 +37971,8 @@ msgid ""
 msgstr ""
 
 #: ../../source/packages/strings.md:116
-#, fuzzy
 msgid "strff"
-msgstr "stars"
+msgstr "strff"
 
 #: ../../source/packages/strings.md:123
 msgid "Strings for Fortran - A library of string functions for Fortran."
@@ -37748,7 +37987,6 @@ msgid "Fortran strings manipulator"
 msgstr ""
 
 #: ../../source/packages/strings.md:143
-#, fuzzy
 msgid ""
 "Tags:  {bdg-light}`split`  {bdg-light}`join`  {bdg-light}`basename`  {bdg-"
 "light}`search`  {bdg-light}`concat`"
