@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Fortran-lang.org website\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-29 16:02+0200\n"
-"PO-Revision-Date: 2023-06-14 19:50+0000\n"
+"PO-Revision-Date: 2023-07-07 20:52+0000\n"
 "Last-Translator: Nathan Gurgel <nathan_gurgel@hotmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/fortran-lang/"
 "webpage/pt/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.0-dev\n"
 "Generated-By: Babel 2.10.3\n"
 
 #: ../../source/community.md:10
@@ -9346,24 +9346,36 @@ msgid ""
 "equal to FIELD if FIELD is scalar or to the corresponding element of FIELD if"
 " it is an array."
 msgstr ""
+"O elemento do resultado que corresponde ao i-ésimo elmeento de MASK, em "
+"ordem de elemento da matriz, tem o valor VECTOR (i) para i = 1, 2, . . ., t, "
+"onde t é o número de valores true em MASK. Cada outro elementos tem um valor "
+"igual a FIELD se FIELD é escalar ou o elemento correspondente de FIELD se "
+"esse for uma matriz."
 
 #: ../../source/learn/intrinsics/_pages/UNPACK.md:53
 msgid ""
 "The resulting array corresponds to **field** with **.true.** elements of "
 "**mask** replaced by values from **vector** in array element order."
 msgstr ""
+"A matriz resultante corresponde a **field** com elementos **.true.** de "
+"**mask** substituído pelos valores de **vector** em ordem de elemento da "
+"matriz."
 
 #: ../../source/learn/intrinsics/_pages/UNPACK.md:59
 msgid ""
 "Particular values may be \"scattered\" to particular positions in an array by"
 " using"
 msgstr ""
+"Valores particulares podem ser \"distribuídos\" para posições particular em "
+"uma matriz usando"
 
 #: ../../source/learn/intrinsics/_pages/UNPACK.md:113
 msgid ""
 "[**pack**(3)](#pack), [**merge**(3)](#merge), [**pack**(3)](#pack), "
 "[**spread**(3)](#spread), [**unpack**(3)](#unpack)"
 msgstr ""
+"[**pack**(3)](#pack), [**merge**(3)](#merge), [**pack**(3)](#pack), "
+"[**spread**(3)](#spread), [**unpack**(3)](#unpack)"
 
 #: ../../source/learn/intrinsics/_pages/ALLOCATED.md:2
 msgid "allocated"
@@ -9371,7 +9383,7 @@ msgstr "allocated"
 
 #: ../../source/learn/intrinsics/_pages/ALLOCATED.md:6
 msgid "**allocated**(3) - \\[ARRAY INQUIRY\\] Status of an allocatable entity"
-msgstr ""
+msgstr "**allocated**(3) - \\[ARRAY INQUIRY\\] Estado de uma entidade alocável"
 
 #: ../../source/learn/intrinsics/_pages/AINT.md:18
 #: ../../source/learn/intrinsics/_pages/ALLOCATED.md:14
@@ -9387,10 +9399,12 @@ msgid ""
 "**allocated(array)** and **allocated(scalar)** check the allocation status of"
 " **array** and **scalar**, respectively."
 msgstr ""
+"**allocated(array)** e **allocated(scalar)** checa o estado da alocação de "
+"**array** e **scalar**, respectivamente."
 
 #: ../../source/learn/intrinsics/_pages/ALLOCATED.md:28
 msgid "the argument shall be an _allocatable_ array."
-msgstr ""
+msgstr "o argumento deve ser uma matriz _allocatable_."
 
 #: ../../source/learn/intrinsics/_pages/ALLOCATED.md:30
 msgid "**scalar**"
@@ -9398,7 +9412,7 @@ msgstr "**scalar**"
 
 #: ../../source/learn/intrinsics/_pages/ALLOCATED.md:31
 msgid "the argument shall be an _allocatable_ scalar."
-msgstr ""
+msgstr "o argumento deve ser um escalar _allocatable_."
 
 #: ../../source/learn/intrinsics/_pages/ALLOCATED.md:35
 msgid ""
@@ -9406,12 +9420,16 @@ msgid ""
 "parameter. If the argument is allocated then the result is .true.; otherwise,"
 " it returns .false.."
 msgstr ""
+"O valor retornado é um escalar _logical_ com o parâmetro lógico padrão. Se o "
+"argumento é alocado então o resultado é .true.; se não, ele retorna .false.."
 
 #: ../../source/learn/intrinsics/_pages/ALLOCATED.md:86
 msgid ""
 "Fortran 95 and later. Note, the scalar= keyword and allocatable scalar "
 "entities are available in Fortran 2003 and later."
 msgstr ""
+"Fortran 95 e posteriores. Note, o scalar= keyword e entidades escalares "
+"alocáveis estão disponíveis em Fortran 2003 e disponíveis."
 
 #: ../../source/learn/intrinsics/_pages/ALLOCATED.md:91
 msgid "[**move_alloc**(3)](#move_alloc)"
@@ -9423,101 +9441,113 @@ msgstr "is_contiguous"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:6
 msgid "**is_contiguous**(3) - \\[ARRAY INQUIRY\\] test if object is contiguous"
-msgstr ""
+msgstr "**is_contiguous**(3) - \\[ARRAY INQUIRY\\] testa se o objeto é contíguo"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:16
 msgid "True if and only if an object is contiguous."
-msgstr ""
+msgstr "True se e somente se um objeto é contíguo."
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:18
 msgid "An object is contiguous if it is"
-msgstr ""
+msgstr "Um objeto é contíguo se ele for"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:20
 msgid "**(1)** an object with the CONTIGUOUS attribute,"
-msgstr ""
+msgstr "**(1)** um objeto com o atributo CONTIGUOUS,"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:23
 msgid "**(2)** a nonpointer whole array that is not assumed-shape,"
-msgstr ""
+msgstr "**(2)** uma matriz cheia sem ponteiro que não é assumed-shape,"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:26
 msgid ""
 "**(3)** an assumed-shape array that is argument associated with an array that"
 " is contiguous,"
 msgstr ""
+"**(3)** uma matriz assumed-shape que é associada por argumento com uma "
+"matriz que é contígua,"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:30
 msgid "**(4)** an array allocated by an ALLOCATE statement,"
-msgstr ""
+msgstr "**(4)** uma matriz alocada por uma declaração ALLOCATE,"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:33
 msgid "**(5)** a pointer associated with a contiguous target, or"
-msgstr ""
+msgstr "**(5)** um ponteiro associado a um destino contíguo, ou"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:36
 msgid "**(6)** a nonzero-sized array section provided that"
-msgstr ""
+msgstr "**(6)** uma seção de matriz não nula fornecida que"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:39
 msgid "**(a)** its base object is contiguous,"
-msgstr ""
+msgstr "**(a)** seu objeto base é contíguo,"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:42
 msgid "**(b)** it does not have a vector subscript,"
-msgstr ""
+msgstr "**(b)** não tem um vetor subscrito,"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:45
 msgid ""
 "**(c)** the elements of the section, in array element order, are a subset of "
 "the base object elements that are consecutive in array element order,"
 msgstr ""
+"**(c)** os elemento da seção, em ordem de elemento da matriz, são um "
+"subconjunto dos elemento do objeto base que são sucessivos em ordem de "
+"elemento de matriz,"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:50
 msgid ""
 "**(d)** if the array is of type character and a substring-range appears, the "
 "substring-range specifies all of the characters of the parent-string,"
 msgstr ""
+"**(d)** se a matriz é do tipo character e um tamanho de substring aparece, o "
+"tamanho do substring especifica todos os caracteres da string pai,"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:55
 msgid "**(e)** only its final part-ref has nonzero rank, and"
-msgstr ""
+msgstr "**(e)** somente a parte referenciada final tem uma ordem não zero, e"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:58
 msgid "**(f)** it is not the real or imaginary part of an array of type complex."
 msgstr ""
+"**(f)** não é a parte real ou imaginária de uma matriz de tipo complexo."
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:62
 msgid "An object is not contiguous if it is an array subobject, and"
-msgstr ""
+msgstr "Um objeto é não contíguo se ele for um subobjeto de matriz, e"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:64
 msgid "the object has two or more elements,"
-msgstr ""
+msgstr "o objeto tiver dois ou mais elementos,"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:66
 msgid ""
 "the elements of the object in array element order are not consecutive in the "
 "elements of the base object,"
 msgstr ""
+"os elementos do objeto em ordem de elemento de matriz não forem consecutivos "
+"nos elementos do objeto base,"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:69
 msgid "the object is not of type character with length zero, and"
-msgstr ""
+msgstr "o objeto não é do tipo character com tamanho zero, e"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:71
 msgid ""
 "the object is not of a derived type that has no ultimate components other "
 "than zero-sized arrays and"
 msgstr ""
+"o objeto não é de um tipo derivado que não tem componentes últimos além de "
+"matriz de tamanho zero e"
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:74
 msgid "characters with length zero."
-msgstr ""
+msgstr "caracteres tem tamanho zero."
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:76
 msgid "It is processor-dependent whether any other object is contiguous."
-msgstr ""
+msgstr "É dependente de processamento se qualquer outro objeto é contíguo."
 
 #: ../../source/learn/intrinsics/_pages/ABS.md:39
 #: ../../source/learn/intrinsics/_pages/ANINT.md:20
@@ -9547,6 +9577,8 @@ msgid ""
 "may be of any type. It shall be an array. If it is a pointer it shall be "
 "associated."
 msgstr ""
+"pode ser de qualquer tipo. Deve ser uma matriz. Se esse for um ponteiro ele "
+"deve ser associado."
 
 #: ../../source/learn/intrinsics/_pages/IS_CONTIGUOUS.md:86
 msgid "**Result**"
@@ -9557,6 +9589,8 @@ msgid ""
 "of type Default logical scalar. The result has the value true if **a** is "
 "contiguous, and false otherwise."
 msgstr ""
+"do tipo escalar logical padrão. O resultado tem o valor true se **a** é "
+"contíguo, e falso para o contrário."
 
 #: ../../source/learn/intrinsics/_pages/ACOSH.md:60
 #: ../../source/learn/intrinsics/_pages/ASINH.md:58
@@ -9601,7 +9635,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/STORAGE_SIZE.md:60
 #: ../../source/learn/intrinsics/_pages/TRAILZ.md:109
 msgid "Fortran 2008 and later"
-msgstr ""
+msgstr "Fortran 2008 e posterior"
 
 #: ../../source/learn/intrinsics/_pages/LBOUND.md:2
 msgid "lbound"
@@ -9610,21 +9644,25 @@ msgstr "lbound"
 #: ../../source/learn/intrinsics/_pages/LBOUND.md:6
 msgid "**lbound**(3) - \\[ARRAY INQUIRY\\] Lower dimension bounds of an array"
 msgstr ""
+"**lbound**(3) - \\[ARRAY INQUIRY\\] Limites inferiores das dimensões de uma "
+"matriz"
 
 #: ../../source/learn/intrinsics/_pages/LBOUND.md:21
 msgid ""
 "Returns the lower bounds of an array, or a single lower bound along the "
 "**dim** dimension."
 msgstr ""
+"Retorna os limites inferiores de uma matriz, ou um único limite inferior ao "
+"longo de uma dimensão **dim**."
 
 #: ../../source/learn/intrinsics/_pages/LBOUND.md:27
 #: ../../source/learn/intrinsics/_pages/UBOUND.md:22
 msgid "Shall be an array, of any type."
-msgstr ""
+msgstr "Deve ser uma matriz, de qualquer tipo."
 
 #: ../../source/learn/intrinsics/_pages/LBOUND.md:30
 msgid "Shall be a scalar _integer_."
-msgstr ""
+msgstr "Deve ser um escalar _integer_."
 
 #: ../../source/learn/intrinsics/_pages/ACHAR.md:42
 #: ../../source/learn/intrinsics/_pages/AINT.md:38
@@ -9668,6 +9706,8 @@ msgid ""
 "An _integer_ initialization expression indicating the kind parameter of the "
 "result."
 msgstr ""
+"Um expressão de inicialização de _integer_ indicando o tipo de parâmetro do "
+"resultado."
 
 #: ../../source/learn/intrinsics/_pages/LBOUND.md:38
 msgid ""
@@ -9679,6 +9719,14 @@ msgid ""
 "array or array structure component, or if it has a zero extent along the "
 "relevant dimension, the lower bound is taken to be 1."
 msgstr ""
+"O valor retornado é do tipo _integer_ e do tipo **kind**. Se **kind** "
+"estiver ausente, o valor retornado é do tipo integer por padrão. Se **dim** "
+"estiver ausente, o resultado é uma matriz com os limites inferiores de "
+"**array**. Se **dim** estiver presente, o resultado é um escalar "
+"correspondendo ao limite inferior da matriz ao longo dessa dimensão. Se "
+"**array** for uma uma expressão ao invés de uma matriz cheia ou um "
+"componente de estrutura de matriz, ou contém um zero ao longo da dimensão em "
+"questão, o limite inferior é dado por 1."
 
 #: ../../source/learn/intrinsics/_pages/LBOUND.md:48
 msgid ""
@@ -9686,6 +9734,9 @@ msgid ""
 "arrays or in any function without an explicit interface. Errors can occur if "
 "there is no interface defined."
 msgstr ""
+"Note que em minha opinião essa função não deveria ser usada em matrizes "
+"assumed-size ou em qualquer função sem uma interface explícita. Erros podem "
+"acontecer se não houver interface definida."
 
 #: ../../source/learn/intrinsics/_pages/LBOUND.md:52
 #: ../../source/learn/intrinsics/_pages/LEN.md:52
@@ -9703,7 +9754,7 @@ msgstr "Exemplo de programa"
 #: ../../source/learn/intrinsics/_pages/LBOUND.md:114
 #: ../../source/learn/intrinsics/_pages/SCAN.md:66
 msgid "Fortran 95 and later, with KIND argument - Fortran 2003 and later"
-msgstr ""
+msgstr "Fortran 95 e posterior, com argumento KIND - Fortran 2003 e posterior"
 
 #: ../../source/learn/intrinsics/_pages/LBOUND.md:118
 msgid "[**ubound**(3)](#ubound), [**co_lbound**(3)](#co_lbound)"
@@ -9715,21 +9766,23 @@ msgstr "classificação"
 
 #: ../../source/learn/intrinsics/_pages/RANK.md:6
 msgid "**rank**(3) - \\[ARRAY INQUIRY\\] Rank of a data object"
-msgstr ""
+msgstr "**rank**(3) - \\[ARRAY INQUIRY\\] Ordem de um objeto de dados"
 
 #: ../../source/learn/intrinsics/_pages/RANK.md:16
 msgid "**rank(a)** returns the rank of a scalar or array data object."
-msgstr ""
+msgstr "**rank(a)** retorna a ordem de um escalar ou de uma matriz."
 
 #: ../../source/learn/intrinsics/_pages/RANK.md:21
 msgid "can be of any type"
-msgstr ""
+msgstr "pode ser de qualquer tipo"
 
 #: ../../source/learn/intrinsics/_pages/RANK.md:25
 msgid ""
 "The return value is of type _integer_ and of the default integer kind. For "
 "arrays, their rank is returned; for scalars zero is returned."
 msgstr ""
+"O valor retornado é do tipo _integer_ e do tipo integer padrão. Para "
+"matrizes, sua ordem é retornada; para escalares é retornado zero."
 
 #: ../../source/learn/intrinsics/_pages/RANK.md:50
 msgid "TS 29113"
@@ -9741,17 +9794,19 @@ msgstr "shape"
 
 #: ../../source/learn/intrinsics/_pages/SHAPE.md:6
 msgid "**shape**(3) - \\[ARRAY INQUIRY\\] Determine the shape of an array"
-msgstr ""
+msgstr "**shape**(3) - \\[ARRAY INQUIRY\\] Determina a forma de uma matriz"
 
 #: ../../source/learn/intrinsics/_pages/SHAPE.md:16
 msgid "Determines the shape of an array."
-msgstr ""
+msgstr "Determina a forma de uma matriz."
 
 #: ../../source/learn/intrinsics/_pages/SHAPE.md:21
 msgid ""
 "Shall be an array or scalar of any type. If **source** is a pointer it must "
 "be associated and allocatable arrays must be allocated."
 msgstr ""
+"Deve ser uma matriz ou escalar de qualquer tipo. Se **source** for um "
+"ponteiro deve ser associado e matrizes alocáveis devem ser alocadas."
 
 #: ../../source/learn/intrinsics/_pages/CHAR.md:28
 #: ../../source/learn/intrinsics/_pages/COUNT.md:30
@@ -9769,6 +9824,8 @@ msgid ""
 "(Optional) An _integer_ initialization expression indicating the kind "
 "parameter of the result."
 msgstr ""
+"(Opcional) Uma expressão de inicialização de _integer_ indicando o tipo de "
+"parâmetro do resultado."
 
 #: ../../source/learn/intrinsics/_pages/SHAPE.md:30
 msgid ""
@@ -9778,10 +9835,16 @@ msgid ""
 "result is the rank one array of size zero. If **kind** is absent, the return "
 "value has the default integer kind otherwise the specified kind."
 msgstr ""
+"Uma matriz de _integer_ de ordem um com tanto elementos quanto **source** "
+"tem dimensões. Os elementos da matriz resultante corresponde à extensão de "
+"**source** ao longo das respectivas dimensões. Se **source** for um escalar, "
+"o resultado é uma matriz de primeira ordem com tamanho zero. Se **kind** for "
+"ausente, o valor retornado tem o tipo integer padrão, se não tem o tipo "
+"especificado."
 
 #: ../../source/learn/intrinsics/_pages/SHAPE.md:65
 msgid "Fortran 95 and later; with KIND argument Fortran 2003 and later"
-msgstr ""
+msgstr "Fortran 95 e posterior; com argumento KIND Fortran 2003 e posterior"
 
 #: ../../source/learn/intrinsics/_pages/SHAPE.md:69
 msgid "[**reshape**(3)](#reshape), [**size**(3)](#size)"
@@ -9793,25 +9856,31 @@ msgstr "size"
 
 #: ../../source/learn/intrinsics/_pages/SIZE.md:6
 msgid "**size**(3) - \\[ARRAY INQUIRY\\] Determine the size of an array"
-msgstr ""
+msgstr "**size**(3) - \\[ARRAY INQUIRY\\] Determina o tamanho de uma matriz"
 
 #: ../../source/learn/intrinsics/_pages/SIZE.md:16
 msgid ""
 "Determine the extent of **array** along a specified dimension **dim**, or the"
 " total number of elements in **array** if **dim** is absent."
 msgstr ""
+"Determina a extensão de **array** ao longo da dimensão especificada **dim**, "
+"ou o número total de elementos em **array** se **dim** não for especificado."
 
 #: ../../source/learn/intrinsics/_pages/SIZE.md:22
 msgid ""
 "be an array of any type. If **array** is a pointer it must be associated and "
 "allocatable arrays must be allocated."
 msgstr ""
+"é uma matriz de qualquer tipo. Se **array** é um ponteiro ele deve ser "
+"associado e matrizes alocáveis devem estar alocadas."
 
 #: ../../source/learn/intrinsics/_pages/SIZE.md:26
 msgid ""
 "shall be a scalar of type _integer_ and its value shall be in the range from "
 "1 to n, where n equals the rank of **array**."
 msgstr ""
+"deve ser um escalar do tipo _integer_ e seus valores deve estar entre 1 a n, "
+"onde n igual à ordem de **array**."
 
 #: ../../source/learn/intrinsics/_pages/ICHAR.md:39
 #: ../../source/learn/intrinsics/_pages/LEN_TRIM.md:35
@@ -9820,12 +9889,15 @@ msgid ""
 "The return value is of type _integer_ and of kind **kind**. If **kind** is "
 "absent, the return value is of default _integer_ kind."
 msgstr ""
+"O valor retornado é do tipo _integer_ e do tipo **kind**. Se **kind** não "
+"for especificado, o valor retornado é do tipo _integer_ padrão."
 
 #: ../../source/learn/intrinsics/_pages/LEN_TRIM.md:75
 #: ../../source/learn/intrinsics/_pages/SIZE.md:186
 #: ../../source/learn/intrinsics/_pages/VERIFY.md:255
 msgid "Fortran 95 and later, with **kind** argument - Fortran 2003 and later"
 msgstr ""
+"Fortran 95 e posterior, com argumento **kind** - Fortran 2003 e posterior"
 
 #: ../../source/learn/intrinsics/_pages/SIZE.md:190
 msgid "[**shape**(3)](#shape), [__reshape__(3)])(RESHAPE)"
@@ -9838,18 +9910,22 @@ msgstr "ubound"
 #: ../../source/learn/intrinsics/_pages/UBOUND.md:6
 msgid "**ubound**(3) - \\[ARRAY INQUIRY\\] Upper dimension bounds of an array"
 msgstr ""
+"**ubound**(3) - \\[ARRAY INQUIRY\\] limites superiores das dimensões de uma "
+"matriz"
 
 #: ../../source/learn/intrinsics/_pages/UBOUND.md:16
 msgid ""
 "Returns the upper bounds of an array, or a single upper bound along the "
 "**dim** dimension."
 msgstr ""
+"Retorna os limites superiores de uma matriz, ou um único limite superior ao "
+"longo da dimensão **dim**."
 
 #: ../../source/learn/intrinsics/_pages/CO_LBOUND.md:25
 #: ../../source/learn/intrinsics/_pages/CO_UBOUND.md:25
 #: ../../source/learn/intrinsics/_pages/UBOUND.md:25
 msgid "(Optional) Shall be a scalar _integer_."
-msgstr ""
+msgstr "(Opcional) Deve ser um escalar _integer_."
 
 #: ../../source/learn/intrinsics/_pages/IACHAR.md:30
 #: ../../source/learn/intrinsics/_pages/INDEX.md:45
@@ -9861,16 +9937,22 @@ msgid ""
 "The return value is of type _integer_ and of kind **kind**. If **kind** is "
 "absent, the return value is of default integer kind."
 msgstr ""
+"O valor retornado é do tipo _integer_ e do tipo **kind**. Se **kind** não "
+"for especificado, o valor retornado é do tipo inteiro padrão."
 
 #: ../../source/learn/intrinsics/_pages/UBOUND.md:36
 msgid "If **dim** is absent, the result is an array of the upper bounds of **array**."
 msgstr ""
+"Se **dim** não for especificado, o resultado é uma matriz dos limites "
+"superiores de **array**."
 
 #: ../../source/learn/intrinsics/_pages/UBOUND.md:39
 msgid ""
 "If **dim** is present, the result is a scalar corresponding to the upper "
 "bound of the array along that dimension."
 msgstr ""
+"Se **dim** estiver presente, o resultado é um escalar correspondendo ao "
+"limite superior da matriz ao longo daquela dimensão."
 
 #: ../../source/learn/intrinsics/_pages/UBOUND.md:42
 msgid ""
@@ -9878,6 +9960,10 @@ msgid ""
 "component, or if it has a zero extent along the relevant dimension, the upper"
 " bound is taken to be the number of elements along the relevant dimension."
 msgstr ""
+"Se **array** é uma expressão ao invés de uma matriz cheia ou um componente "
+"de estrutura de matriz, ou tem um zero ao longo da dimensão de interesse, o "
+"limite superior é dado pelo número de elementos ao longo da dimensão de "
+"interesse."
 
 #: ../../source/learn/intrinsics/_pages/UBOUND.md:49
 msgid ""
@@ -9885,16 +9971,21 @@ msgid ""
 "function without an explicit interface. Errors can occur if there is no "
 "interface defined."
 msgstr ""
+"Note que essa função não deve ser usada em matrizes assumed-size ou em "
+"qualquer função sem interface explícita. Erros podem acontecer se não houver "
+"interface definida."
 
 #: ../../source/learn/intrinsics/_pages/UBOUND.md:114
 msgid "Fortran 95 and later, with KIND argument Fortran 2003 and later"
-msgstr ""
+msgstr "Fortran 95 e posterior, com argumento KING Fortran 2003 e posterior"
 
 #: ../../source/learn/intrinsics/_pages/UBOUND.md:119
 msgid ""
 "[**lbound**(3)](#lbound), [**co_ubound**(3)](#co_ubound), "
 "[__co\\_lbound__(3)(co_lbound)]"
 msgstr ""
+"[**lbound**(3)](#lbound), [**co_ubound**(3)](#co_ubound), [__co\\_lbound__"
+"(3)(co_lbound)]"
 
 #: ../../source/learn/intrinsics/_pages/MAXLOC.md:2
 msgid "maxloc"
@@ -9905,6 +9996,8 @@ msgid ""
 "**maxloc**(3) - \\[ARRAY:LOCATION\\] Location of the maximum value within an "
 "array"
 msgstr ""
+"**maxloc**(3) - \\[ARRAY:LOCATION\\] Localização do maior valor dentro de "
+"uma matriz"
 
 #: ../../source/learn/intrinsics/_pages/MAXLOC.md:16
 msgid ""
@@ -9919,13 +10012,23 @@ msgid ""
 "all of the elements of **mask** along a given row are zero, the result value "
 "for that row is zero."
 msgstr ""
+"Determina a localização do elemento dentro de uma matriz com o valor máximo, "
+"ou, se o argumento **dim** for fornecido, determina as localizações do "
+"elemento máximo de cada linha da matriz na direção **dim**. Se **mask** é "
+"presente, apenas os elementos para os quais **mask** é **.true.** são "
+"considerados. Se mais de um elemento na matriz tem o valor máximo, a "
+"localização retornada é do primeiro elemento em ordem de elemento de matriz. "
+"Se a matriz tem tamanho zero, ou todos os elementos de **mask** for .false., "
+"então o resultado é uma matriz de zeros. De forma semelhante, se **dim** é "
+"fornecido e todos os elementos de **mask** ao longo da linhas forem zero, o "
+"valor resultante para aquela linha é zero."
 
 #: ../../source/learn/intrinsics/_pages/MAXLOC.md:30
 #: ../../source/learn/intrinsics/_pages/MAXVAL.md:33
 #: ../../source/learn/intrinsics/_pages/MINLOC.md:36
 #: ../../source/learn/intrinsics/_pages/MINVAL.md:30
 msgid "Shall be an array of type _integer_, _real_, or _character_."
-msgstr ""
+msgstr "Pode ser uma matriz do tipo _integer_, _real_ ou _character_."
 
 #: ../../source/learn/intrinsics/_pages/MAXLOC.md:33
 #: ../../source/learn/intrinsics/_pages/MAXVAL.md:36
@@ -9934,12 +10037,15 @@ msgid ""
 "(Optional) Shall be a scalar of type _integer_, with a value between one and "
 "the rank of **array**, inclusive. It may not be an optional dummy argument."
 msgstr ""
+"(Opcional) Deve ser um escalar do tipo _integer_, com o valor entre um e a "
+"ordem do **array**, inclusivo. Ele não pode ser um argumento ficcional "
+"opcional."
 
 #: ../../source/learn/intrinsics/_pages/MAXLOC.md:38
 #: ../../source/learn/intrinsics/_pages/MINLOC.md:44
 #: ../../source/learn/intrinsics/_pages/MINVAL.md:38
 msgid "Shall be an array of type _logical_, and conformable with **array**."
-msgstr ""
+msgstr "Deve ser uma matriz do tipo _logical_, e conformável com **array**."
 
 #: ../../source/learn/intrinsics/_pages/MAXLOC.md:42
 #: ../../source/learn/intrinsics/_pages/MINLOC.md:48
@@ -9951,6 +10057,13 @@ msgid ""
 "and **array** has a rank of one, the result is a scalar. In all cases, the "
 "result is of default _integer_ type."
 msgstr ""
+"Se **dim** for ausente, o resultado é uma matriz de primeira ordem com "
+"tamanho igual à ordem de **array**. Se **dim** estiver presente, o resultado "
+"é uma matriz com uma ordem um nível inferior à ordem de **array**, e um "
+"tamanho correspondente ao tamanho de **array** com a dimensão **dim** "
+"removida. Se **dim** estiver presente** e **array** é de primeira ordem, o "
+"resultado é um escalar. Em todos os casos, o resultado é por padrão do tipo "
+"_integer_."
 
 #: ../../source/learn/intrinsics/_pages/MAXLOC.md:49
 msgid ""
@@ -9958,6 +10071,9 @@ msgid ""
 "array, not necessarily the subscript value if the array subscripts do not "
 "start with one."
 msgstr ""
+"O valor retornado é referência para o deslocamento desde o início da matriz, "
+"não necessariamente o valor subscrito se os subscritos da matriz não iniciam "
+"com um."
 
 #: ../../source/learn/intrinsics/_pages/MAXLOC.md:55
 msgid "sample program"
@@ -9976,6 +10092,8 @@ msgid ""
 "**minloc**(3) - \\[ARRAY:LOCATION\\] Location of the minimum value within an "
 "array"
 msgstr ""
+"**minloc**(3) - \\[ARRAY:LOCATION\\] Localização do menor valor dentro de "
+"uma matriz"
 
 #: ../../source/learn/intrinsics/_pages/MINLOC.md:22
 msgid ""
@@ -9990,6 +10108,16 @@ msgid ""
 "all of the elements of **mask** along a given row are zero, the result value "
 "for that row is zero."
 msgstr ""
+"Determina a localização do elemento dentro de uma matriz com o valor mínimo, "
+"ou, se o argumento **dim** é fornecido, determina as localizações dos menos "
+"elementos ao longo de cada linha da matriz na direção de **dim**. Se **mask**"
+" estiver presente, apenas os elementos de **mask** que são **.true.** são "
+"considerados. Se mais de um elemento em cada matriz tiver o valor mínimo, a "
+"localização retornada é a do primeiro elemento em ordem de elemento de "
+"matriz. Se a matriz tem tamanho zero, ou todos os elementos de **mask** "
+"forem .false., então o resultado é uma matriz de zeros. De forma semelhante, "
+"se **dim** é fornecido e todos os elementos ao longo de **mask** forem zero, "
+"o valor resultando para aquela linha é zero."
 
 #: ../../source/learn/intrinsics/_pages/MAXVAL.md:54
 #: ../../source/learn/intrinsics/_pages/MINLOC.md:57
@@ -10010,12 +10138,16 @@ msgid ""
 "**findloc**(3) - \\[ARRAY:LOCATION\\] Location of first element of ARRAY "
 "identified by MASK along dimension DIM having a value"
 msgstr ""
+"**findloc**(3) - \\[ARRAY:LOCATION\\] Localização do primeiro elemento de "
+"ARRAY identificado por MASK ao longo da dimensão DIM tendo um valor"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:20
 msgid ""
 "Location of the first element of **array** identified by **mask** along "
 "dimension **dim** having a value equal to **value**."
 msgstr ""
+"Localização do primeiro elemento de **array** identificado por **mask** ao "
+"longo da dimensão **dim** tendo o valor igual a **value**."
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:23
 msgid ""
@@ -10024,6 +10156,10 @@ msgid ""
 " with the == operator. If the value of the comparison is true, that element "
 "of **array** matches **value**."
 msgstr ""
+"Se ambos **array** e **value** forem do tipo logical, a comparação é feita "
+"com o operador **.eqv.**; caso contrário, a comparação é feita com o "
+"operador ==. Se o valor da comparação for true, o elemento de **array** "
+"corresponde a **value**."
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:28
 msgid ""
@@ -10034,6 +10170,13 @@ msgid ""
 " is present with the value true, the element whose subscripts are returned is"
 " the last such element, taken in array element order."
 msgstr ""
+"Se apenas um elemento corresponde à **value**, os subscritos daquele "
+"elemento são retornados. Caso contrário, se mais de um elemento corresponde "
+"à **value** e **back** estiver ausente ou presente com o valor false, o "
+"elemento cujo subscritos são retornados é o primeiro elemento obtido em "
+"ordem de elemento de matriz. Se **back** é presente com o valor true, o "
+"elemento cujo subscritos são retornados é o último elemento obtido em ordem "
+"de elemento de matriz."
 
 #: ../../source/learn/intrinsics/_pages/EXTENDS_TYPE_OF.md:19
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:36
@@ -10044,7 +10187,7 @@ msgstr "**Opções**"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:39
 msgid "shall be an array of intrinsic type."
-msgstr ""
+msgstr "deve ser uma matriz do tipo intrínseco."
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_ADD.md:30
 #: ../../source/learn/intrinsics/_pages/ATOMIC_AND.md:30
@@ -10068,6 +10211,8 @@ msgid ""
 "shall be scalar and in type conformance with **array**, as specified in Table"
 " 7.3 for relational intrinsic operations 7.1.5.5.2)."
 msgstr ""
+"deve ser escalar e em concordância com o tipo de **array**, como "
+"especificado na Tabela 7.3 para operações intrínsecas relacionais 7.1.5.5.2)."
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:46
 msgid ""
@@ -10075,15 +10220,20 @@ msgid ""
 "the rank of **array**. The corresponding actual argument shall not be an "
 "optional dummy argument."
 msgstr ""
+"deve ser um escalar inteiro com um valor na faixa 1 **DIM** n, onde n é a "
+"ordem da matriz **aray**. O argumento correspondente atual não deve ser um "
+"argumento fictício opcional."
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:51
 #: ../../source/learn/intrinsics/_pages/REDUCE.md:80
 msgid "(optional) shall be of type logical and shall be conformable with **array**."
 msgstr ""
+"(opcional) deve ser do tipo logical e deve estar em concordância com "
+"**array**."
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:55
 msgid "(optional) shall be a scalar integer initialization expression."
-msgstr ""
+msgstr "(opcional) deve ser uma expressão de inicialização de escalar inteiro."
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:57
 #: ../../source/learn/intrinsics/_pages/INDEX.md:34
@@ -10094,7 +10244,7 @@ msgstr "**back**"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:58
 msgid "(optional) shall be a logical scalar."
-msgstr ""
+msgstr "(opcional) deve ser um escalar lógico."
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:62
 msgid ""
@@ -10104,6 +10254,11 @@ msgid ""
 "result is an array of rank one and of size equal to the rank of **array**; "
 "otherwise, the result is of rank n - 1 and shape"
 msgstr ""
+"Características do resultado. Inteiro. Se **kind** estiver presente, o "
+"parâmetro do tipo kind é o especificado pelo valor de **kind**; caso contr["
+"ario o tipo do parâmetro kind é tipo inteiro padrão. Se **dim** não estiver "
+"presente, o resultado é uma matriz de primeira ordem e com tamanho igual à "
+"ordem de **array**; caso contrário, o resultado é de ordem n - 1 e forma"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:72
 msgid "where"
@@ -10111,7 +10266,7 @@ msgstr "where"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:78
 msgid "is the shape of **array**."
-msgstr ""
+msgstr "é a forma de **array**."
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:82
 msgid ""
@@ -10122,6 +10277,13 @@ msgid ""
 "ith dimension of **array**. If no elements match **value** or **array** has "
 "size zero, all elements of the result are zero."
 msgstr ""
+"**Caso (i):** O resultado de **findlock (array, value)** é uma matriz de "
+"primeira ordem cujo valores dos elementos são os valores dos subscritos de "
+"um elemento em **array** cujo valor corresponde à **value**. Se não houver "
+"tal valor, o i-ésimo subscrito retornado estará na faixa de 1 à ei, onde ei "
+"é a extensão da i-ésima dimensão de **array**. Se nenhum elemento "
+"corresponder à **value** ou **array** tiver tamanho zero, todos os elementos "
+"do resultado serão zero."
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:90
 msgid ""
@@ -10133,30 +10295,38 @@ msgid ""
 "**array**. If no elements match **value**, **array** has size zero, or every "
 "element of **mask** has the value false, all elements of the result are zero."
 msgstr ""
+"**Caso (ii):** O resultado de **findlock (array, value, mask = mask)** é uma "
+"matriz de primeira ordem cujos valores do elemento são os valores dos "
+"subscritos de um elemento de **array**, correspondente ao elemento "
+"verdadeiro de **mask**, cujo valor corresponde à **value**. Se não houver "
+"tal valor, o i-ésimo subscrito retornado estará na faixa de 1 a ei, onde ei "
+"é a extensão da i-ésima dimensão de **array**. Se nenhum elemento "
+"corresponde à **value**, **array** tiver tamanho zero, ou todo elemento de "
+"**mask** for falso, todos os elementos do resultado serão zero."
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:100
 msgid "**Case (iii):** If **array** has rank one, the result of"
-msgstr ""
+msgstr "**Caso (iii):** Se **array** tiver ordem um, o resultado de"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:107
 msgid "is a scalar whose value is equal to that of the first element of"
-msgstr ""
+msgstr "é um escalar cujo valor é igual ao do primeiro elemento de"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:113
 msgid "Otherwise, the value of element"
-msgstr ""
+msgstr "Se não, o valor do elemento"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:119
 msgid "of the result is equal to"
-msgstr ""
+msgstr "do resultado é igual a"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:129
 msgid "**Case (i):** The value of"
-msgstr ""
+msgstr "**Caso (i)** O valor de"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:136
 msgid "is \\[2\\], and the value of"
-msgstr ""
+msgstr "é \\[2\\], e o valor de"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:142
 msgid "is \\[4\\]."
@@ -10164,43 +10334,47 @@ msgstr "é \\[4\\]."
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:144
 msgid "**Case (ii):** If **a** has the value"
-msgstr ""
+msgstr "**Caso (ii):** Se **a** tem o valor"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:153
 msgid "and **m** has the value"
-msgstr ""
+msgstr "e **m** tem o valor"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:163
 msgid "has the value \\[1, 4\\] and"
-msgstr ""
+msgstr "tem valor \\[1, 4\\] e"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:169
 msgid ""
 "has the value \\[3, 4\\]. This is independent of the declared lower bounds "
 "for **a** ."
 msgstr ""
+"tem o valor \\[3, 4\\]. Isso é independente dos limites inferiores "
+"declarados para **a**."
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:172
 msgid "**Case (iii):** The value of"
-msgstr ""
+msgstr "**Caso (iii):** O valor de"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:179
 msgid "is 2. If **b** has the value"
-msgstr ""
+msgstr "é 2. Se **b** tem o valor"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:186
 msgid "findloc (b, **value** = 2, dim = 1)"
-msgstr ""
+msgstr "findloc (b, **value** = 2, dim = 1)"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:188
 msgid "has the value \\[2, 1, 0\\] and"
-msgstr ""
+msgstr "tem valor \\[2, 1, 0\\] e"
 
 #: ../../source/learn/intrinsics/_pages/FINDLOC.md:194
 msgid ""
 "has the value \\[2, 1\\]. This is independent of the declared lower bounds "
 "for **b**."
 msgstr ""
+"tem o valor \\[2, 1\\]. Isso é independente dos limites inferiores "
+"declarados para **b**."
 
 #: ../../source/learn/intrinsics/_pages/TRANSPOSE.md:2
 msgid "transpose"
@@ -10209,12 +10383,15 @@ msgstr "transpose"
 #: ../../source/learn/intrinsics/_pages/TRANSPOSE.md:6
 msgid "**transpose**(3) - \\[ARRAY MANIPULATION\\] Transpose an array of rank two"
 msgstr ""
+"**transpose**(3) - \\[ARRAY MANIPULATION\\] Transpõe uma matriz de ordem dois"
 
 #: ../../source/learn/intrinsics/_pages/TRANSPOSE.md:16
 msgid ""
 "Transpose an array of rank two. Element (i, j) of the result has the value "
 "**matrix(j, i)**, for all i, j."
 msgstr ""
+"Transpõe uma matriz de ordem dois. Elemento (i, j) do resultado tem o valor "
+"**matrix(j, i)** para todo i, j."
 
 #: ../../source/learn/intrinsics/_pages/TRANSPOSE.md:21
 msgid "**matrix**"
@@ -10222,13 +10399,15 @@ msgstr "**matrix**"
 
 #: ../../source/learn/intrinsics/_pages/TRANSPOSE.md:22
 msgid "Shall be an array of any type and have a rank of two."
-msgstr ""
+msgstr "Deve ser uma matriz de qualquer tipo e ter ordem dois."
 
 #: ../../source/learn/intrinsics/_pages/TRANSPOSE.md:26
 msgid ""
 "The result has the same type as **matrix**, and has shape \\[ m, n \\] if "
 "**matrix** has shape \\[ n, m \\]."
 msgstr ""
+"O resultado tem o mesmo tipo que **matrix** e formato \\[ m, n \\] se "
+"**matrix** tiver formato \\[ n, m \\]."
 
 #: ../../source/learn/intrinsics/_pages/ALL.md:2
 msgid "all"
@@ -10237,22 +10416,28 @@ msgstr "all"
 #: ../../source/learn/intrinsics/_pages/ALL.md:6
 msgid "**all**(3) - \\[ARRAY REDUCTION\\] determines if all the values are true"
 msgstr ""
+"**all**(3) - \\[ARRAY REDUCTION\\] determina se todos os valores são true"
 
 #: ../../source/learn/intrinsics/_pages/ALL.md:16
 msgid "Logical conjunction of elements of **mask** along dimension **dim**."
 msgstr ""
+"Conjunção lógica dos elementos de **mask** ao longo da dimensão **dim**."
 
 #: ../../source/learn/intrinsics/_pages/ALL.md:18
 msgid ""
 "\"**all(mask, dim)**\" determines if all the values are true in **mask** in "
 "the array along dimension **dim**."
 msgstr ""
+"\"**all(mask, dim)**\" determina se todos os valores são true em **mask** na "
+"matriz ao longo da dimensão **dim**."
 
 #: ../../source/learn/intrinsics/_pages/ALL.md:24
 msgid ""
 "shall be a logical array. That is, the type of the argument shall be "
 "_logical_ and it shall not be scalar."
 msgstr ""
+"deve ser uma matriz de lógicos. Isso é, o tipo do argumento deve ser "
+"_logical_ e não deve ser escalar."
 
 #: ../../source/learn/intrinsics/_pages/ALL.md:28
 msgid ""
@@ -10260,6 +10445,9 @@ msgid ""
 "one and the rank of **mask**. The corresponding actual argument shall not be "
 "an optional dummy argument."
 msgstr ""
+"(opcional) **dim** deve ser um inteiro escalar com um valor que esteja entre "
+"um e a ordem de **mask**. O argumento atual correspondente não deve ser um "
+"argumento fictício opcional."
 
 #: ../../source/learn/intrinsics/_pages/ALL.md:34
 msgid ""
@@ -10269,12 +10457,20 @@ msgid ""
 "**mask** minus 1. The shape is determined from the shape of **mask** where "
 "the **dim** dimension is elided."
 msgstr ""
+"**all(mask)** retorna um valor escalar do tipo _logical_ onde o tipo do "
+"parâmetro é o mesmo do tipo do parâmetro de **mask**. Se **dim** estiver "
+"presente, então **all(mask, dim)** retorna uma matriz com a ordem de **mask**"
+" menos 1. O formato é determinado a partir do formato de **mask** onde a "
+"dimensão **dim** é omitida."
 
 #: ../../source/learn/intrinsics/_pages/ALL.md:40
 msgid ""
 "**all(mask)** is true if all elements of **mask** are true. It also is true "
 "if **mask** has zero size; otherwise, it is false."
 msgstr ""
+"**all(mask)** é verdadeiro se todos os elementos de **mask** forem "
+"verdadeiros. Também será verdadeiro se **mask** tiver tamanho zero; se não, "
+"será falso."
 
 #: ../../source/learn/intrinsics/_pages/ALL.md:43
 msgid ""
@@ -10282,6 +10478,9 @@ msgid ""
 "**all(mask)**. If the rank is greater than one, then **all(mask, dim)** is "
 "determined by applying **all()** to the array sections."
 msgstr ""
+"Se a ordem de **mask** é um, então **all(mask, dim)** é equivalente à "
+"**all(mask)**. Se a ordem é maior que um, então **all(mask, dim)** é "
+"determinado aplicando **all()** às seções da matriz."
 
 #: ../../source/learn/intrinsics/_pages/ALL.md:47
 msgid ""
@@ -10291,6 +10490,11 @@ msgid ""
 "dDIM-1, dDIM+1, . . ., dn \\]** where **\\[d1, d2, . . ., dn \\]** is the "
 "shape of **mask**."
 msgstr ""
+"Características do Resultado. O resultado é do tipo _logical_ com o mesmo "
+"tipo de parâmetro que **mask**. Será escalar se **dim** estiver ausente ou "
+"**n=1**; senão, o resultado terá ordem **n-1** e formato **\\[d1, d2, . . ., "
+"dDIM-1, dDIM+1, . . ., dn \\]** where **\\[d1, d2, . . ., dn \\]** é o "
+"formato de **mask**."
 
 #: ../../source/learn/intrinsics/_pages/ALL.md:53
 msgid "Result Value."
@@ -10307,6 +10511,9 @@ msgid ""
 "are true or if **mask** has size zero, and the result has value false if any "
 "element of **mask** is false."
 msgstr ""
+"O resultado de **all(mask)** tem o valor true se todos os elementos de "
+"**mask** forem true ou se **mask** tiver tamanho zero, e o resultado terá "
+"valor false se todos os elementos de **mask** forem false."
 
 #: ../../source/learn/intrinsics/_pages/ALL.md:61
 #: ../../source/learn/intrinsics/_pages/ALL.md:107
@@ -10320,6 +10527,10 @@ msgid ""
 ")** of all **(mask, dim)** is equal to **all(mask (s1, s2, . . ., sdim-1, :, "
 "sdim+1, . . ., sn ))**."
 msgstr ""
+"Se **mask** tiver ordem um, **all(mask, dim)** é igual à **all(mask)**. Caso "
+"contrário, o valor do elemento **(s1, s2, . . ., sdim-1, sdim+1, . . ., sn "
+")** de toda **(mask, dim)** é igual à **all(mask (s1, s2, . . ., sdim-1, :, "
+"sdim+1, . . ., sn ))**."
 
 #: ../../source/learn/intrinsics/_pages/ANY.md:2
 msgid "any"
@@ -10330,22 +10541,28 @@ msgid ""
 "**any**(3) - \\[ARRAY REDUCTION\\] determines if any of the values in the "
 "logical array are true."
 msgstr ""
+"**any**(3) - \\[ARRAY REDUCTION\\] determina se qualquer um dos valores na "
+"matriz lógica é true."
 
 #: ../../source/learn/intrinsics/_pages/ANY.md:16
 msgid ""
 "**any(mask, dim)** determines if any of the values in the logical array "
 "**mask** along dimension **dim** are **.true.**."
 msgstr ""
+"**any(mask, dim)** determina se qualquer um dos valores na matriz lógica "
+"**mask** ao longo da dimensão **dim** é **.true.**."
 
 #: ../../source/learn/intrinsics/_pages/ANY.md:22
 msgid "the type of the argument shall be _logical_ and it shall not be scalar."
-msgstr ""
+msgstr "o tipo do argumento deve ser _logical_ e não deve ser escalar."
 
 #: ../../source/learn/intrinsics/_pages/ANY.md:26
 msgid ""
 "(optional) dim shall be a scalar integer with a value that lies between one "
 "and the rank of mask."
 msgstr ""
+"(opcional) dim deve ser um inteiro escalar com um valor que esteja entre um "
+"e a ordem da máscara."
 
 #: ../../source/learn/intrinsics/_pages/ANY.md:31
 msgid ""
@@ -10355,12 +10572,19 @@ msgid ""
 "minus 1. The shape is determined from the shape of **mask** where the **dim**"
 " dimension is elided."
 msgstr ""
+"**any(mask)** retorna um valor escalar do tipo _logical_ onde o tipo do "
+"parâmetro é do mesmo tipo do parâmetro de **mask**. Se **dim** estiver "
+"presente, então **any(mask, dim)** retorna uma matriz com a ordem de **mask**"
+" menos 1. O formato é determinado pelo formato de **mask** onde a dimensão "
+"**dim** é omitida."
 
 #: ../../source/learn/intrinsics/_pages/ANY.md:37
 msgid ""
 "**any(mask)** is true if any element of **mask** is true; otherwise, it is "
 "**.false.**. It also is false if **mask** has zero size."
 msgstr ""
+"**any(mask)** é verdadeiro se qualquer elemento de **mask** for verdadeiro; "
+"se não, será **.false.**. Também será falso se **mask** tiver tamanho zero."
 
 #: ../../source/learn/intrinsics/_pages/ANY.md:40
 msgid ""
@@ -10368,6 +10592,9 @@ msgid ""
 "**any(mask)**. If the rank is greater than one, then **any(mask, dim)** is "
 "determined by applying **any()** to the array sections."
 msgstr ""
+"Se a ordem de **mask** for um, então **any(mask, dim)** é equivalente à "
+"**any(mask)**. Se a ordem for maior que um, então **any(mask, dim)** é "
+"determinado aplicando **any()** para as seções da matriz."
 
 #: ../../source/learn/intrinsics/_pages/COUNT.md:2
 msgid "count"
@@ -10375,7 +10602,7 @@ msgstr "count"
 
 #: ../../source/learn/intrinsics/_pages/COUNT.md:6
 msgid "**count**(3) - \\[ARRAY REDUCTION\\] Count function"
-msgstr ""
+msgstr "**count**(3) - \\[ARRAY REDUCTION\\] Função contar"
 
 #: ../../source/learn/intrinsics/_pages/COUNT.md:16
 msgid ""
@@ -10384,15 +10611,19 @@ msgid ""
 " the array in the **dim** direction. If the array has zero size, or all of "
 "the elements of **mask** are false, then the result is **0**."
 msgstr ""
+"Conta o número de elementos **.true.** em uma **mask** lógica, ou, se o "
+"argumento **dim** é fornecido, conta o número de elementos ao logo de cada "
+"linha da matriz na direção **dim**. Se a matriz tiver tamanho zero, ou todos "
+"os elementos de **mask** forem falsos, então o resultado será **0**."
 
 #: ../../source/learn/intrinsics/_pages/COUNT.md:24
 #: ../../source/learn/intrinsics/_pages/LOGICAL.md:25
 msgid "The type shall be _logical_."
-msgstr ""
+msgstr "O tipo deve ser _logical_."
 
 #: ../../source/learn/intrinsics/_pages/COUNT.md:27
 msgid "(Optional) The type shall be _integer_."
-msgstr ""
+msgstr "(Opcional) O tipo deve ser _integer_."
 
 #: ../../source/learn/intrinsics/_pages/COUNT.md:35
 msgid ""
@@ -10402,6 +10633,11 @@ msgid ""
 " size corresponding to the shape of **array** with the **dim** dimension "
 "removed."
 msgstr ""
+"O valor retornado é do tipo _integer_ e do tipo **kind**. Se **kind** "
+"estiver ausente, então o valor retornado é do tipo integer padrão. Se **dim**"
+" estiver presente, o resultado é uma matriz uma ordem menor que a ordem de "
+"**array**, e com tamanho correspondente ao formato de **array** com a "
+"dimensão **dim** removida."
 
 #: ../../source/learn/intrinsics/_pages/MAXVAL.md:2
 msgid "maxval"
@@ -10412,6 +10648,8 @@ msgid ""
 "**maxval**(3) - \\[ARRAY REDUCTION\\] determines the maximum value in an "
 "array or row"
 msgstr ""
+"**maxval**(3) - \\[ARRAY REDUCTION\\] determina o valor máximo em uma matriz "
+"ou linha"
 
 #: ../../source/learn/intrinsics/_pages/MAXVAL.md:22
 msgid ""
@@ -10423,12 +10661,21 @@ msgid ""
 "negative number of the type and kind of **array** if **array** is numeric, or"
 " a string of nulls if **array** is of character type."
 msgstr ""
+"Determina o valor máximo dos elementos em uma matriz, se o argumento **dim** "
+"for fornecido, determina o valor máximo ao longo de cada linha da matriz na "
+"direção **dim**. se **mask** estiver presente, apenas os elementos onde "
+"**mask** for **.true.** serão considerados. Se a matriz tiver tamanho zero, "
+"ou todos os elementos em **mask** forem .false., então o resultado é número "
+"mais negativo do tipo de **array** se **array** for numérico, ou uma string "
+"de nulls se **array** for do tipo character."
 
 #: ../../source/learn/intrinsics/_pages/MAXVAL.md:41
 msgid ""
 "(Optional) Shall be an array of type _logical_, and conformable with "
 "**array**."
 msgstr ""
+"(Opcional) Deve ser uma matriz do tipo _logical_, e em conformidade com "
+"**array**."
 
 #: ../../source/learn/intrinsics/_pages/MAXVAL.md:46
 msgid ""
@@ -10438,6 +10685,11 @@ msgid ""
 " with the **dim** dimension removed. In all cases, the result is of the same "
 "type and kind as **array**."
 msgstr ""
+"Se **dim** estiver ausente, ou se **array** for de primeira ordem, o "
+"resultado é um escalar. Se **dim** estiver presente, o resultado é uma "
+"matriz de ordem um nível menor que a ordem de **array**, e um tamanho "
+"correspondente ao andar de **array** com a dimensão **dim** removida. Em "
+"todas os casos, o resultado é do mesmo tipo que **array**."
 
 #: ../../source/learn/intrinsics/_pages/MAXVAL.md:88
 msgid "[**max**(3)](#max), [**maxloc**(3)](#maxloc)"
@@ -10449,7 +10701,7 @@ msgstr "minval"
 
 #: ../../source/learn/intrinsics/_pages/MINVAL.md:6
 msgid "**minval**(3) - \\[ARRAY REDUCTION\\] Minimum value of an array"
-msgstr ""
+msgstr "**minval**(3) - \\[ARRAY REDUCTION\\] Menor valor de uma matriz"
 
 #: ../../source/learn/intrinsics/_pages/MINVAL.md:16
 msgid ""
@@ -10457,12 +10709,17 @@ msgid ""
 "**dim** argument is supplied, determines the minimum value along each row of "
 "the array in the **dim** direction."
 msgstr ""
+"Determina o menor valor entre os elementos nos valores de uma matriz, ou, se "
+"o argumento **dim** for fornecido, determina o menor valor ao longo de cada "
+"linha da matriz na direção **dim**."
 
 #: ../../source/learn/intrinsics/_pages/MINVAL.md:20
 msgid ""
 "If **mask** is present, only the elements for which **mask** is **.true.** "
 "are considered."
 msgstr ""
+"Se **mask** estiver presente, apenas os elementos onde **mask** for **."
+"true.** são considerados."
 
 #: ../../source/learn/intrinsics/_pages/MINVAL.md:23
 msgid ""
@@ -10470,18 +10727,26 @@ msgid ""
 "then the result is **huge(array)** if **array** is numeric, or a string of "
 "**char(len=255)** characters if **array** is of character type."
 msgstr ""
+"Se a matriz tiver tamanho zero, ou todos os elementos de **mask** forem ."
+"false., então o resultado é **huge(array)** se **array** for numérico, ou "
+"uma string de **char(len=255)** caracteres se **array** for do tipo "
+"character."
 
 #: ../../source/learn/intrinsics/_pages/MINVAL.md:33
 msgid ""
 "(Optional) Shall be a scalar of type _integer_, with a value between one and "
 "the rank of ARRAY, inclusive. It may not be an optional dummy argument."
 msgstr ""
+"(Opcional) Deve ser um escalar do tipo _integer_, com um valor entre um e a "
+"ordem de ARRAY, inclusivo. Este não pode ser um argumento fictício opcional."
 
 #: ../../source/learn/intrinsics/_pages/MINVAL.md:42
 msgid ""
 "If **dim** is absent, or if **array** has a rank of one, the result is a "
 "scalar."
 msgstr ""
+"Se **dim** estiver ausente, ou se **array** for de primeira ordem, o "
+"resultado é um escalar."
 
 #: ../../source/learn/intrinsics/_pages/MINVAL.md:44
 msgid ""
@@ -10490,6 +10755,10 @@ msgid ""
 " **dim** dimension removed. In all cases, the result is of the same type and "
 "kind as **array**."
 msgstr ""
+"Se **dim** estiver presente, o resultado é uma matriz com uma ordem menor "
+"que a de **array**, e um tamanho correspondente ao tamanho de **array** com "
+"a dimensão **dim** removida. Em todos os casos, o resultado é do mesmo tipo "
+"que **array**."
 
 #: ../../source/learn/intrinsics/_pages/MINVAL.md:149
 msgid "[**min**(3)](#min), [**minloc**(3)](#minloc)"
@@ -10501,23 +10770,29 @@ msgstr "product"
 
 #: ../../source/learn/intrinsics/_pages/PRODUCT.md:6
 msgid "**product**(3) - \\[ARRAY REDUCTION\\] Product of array elements"
-msgstr ""
+msgstr "**product**(3) - \\[ARRAY REDUCTION\\] Produto de elementos de matriz"
 
 #: ../../source/learn/intrinsics/_pages/PRODUCT.md:18
 msgid "where **NUMERIC** is any numeric type"
-msgstr ""
+msgstr "onde **NUMERIC** é qualquer tipo numérico"
 
 #: ../../source/learn/intrinsics/_pages/PRODUCT.md:22
 msgid ""
 "Multiplies together all the selected elements of **array**, or along "
 "dimension **dim** if the corresponding element in **mask** is **.true.**."
 msgstr ""
+"Multiplica entre si todos os elementos selecionados de **array**, ou ao "
+"longo da dimensão **dim** se o elemento correspondente em **mask** for **."
+"true.**."
 
 #: ../../source/learn/intrinsics/_pages/PRODUCT.md:25
 msgid ""
 "If **dim** is absent, a scalar with the product of all elements in **array** "
 "is returned. (Note a zero-sized **array** returns **1**)."
 msgstr ""
+"Se **dim** estiver ausente, um escalar com o produto de todos os elementos "
+"em **array** é retornado. (Note que um **array** de tamanho zero retorna "
+"**1**)."
 
 #: ../../source/learn/intrinsics/_pages/PRODUCT.md:28
 msgid ""
@@ -10526,23 +10801,31 @@ msgid ""
 "**n** equals the rank of **array**, and a shape similar to that of **array** "
 "with dimension **dim** dropped is returned."
 msgstr ""
+"Quando **dim** estiver presente, se a matriz de máscara tiver dimensão de um "
+"(e.x.: for um vetor) o resultado é um escalar. Caso contrário, uma matriz de "
+"ordem **n-1**, onde **n** é igual à ordem de **array**, e um formato "
+"semelhante ao de **array** com dimensão **dim** removida é retornado."
 
 #: ../../source/learn/intrinsics/_pages/PRODUCT.md:36
 #: ../../source/learn/intrinsics/_pages/SUM.md:23
 msgid "Shall be an array of type _integer_, _real_ or _complex_."
-msgstr ""
+msgstr "Deve ser uma matriz do tipo _integer_, _real_ ou _complexo_."
 
 #: ../../source/learn/intrinsics/_pages/PRODUCT.md:39
 msgid ""
 "shall be a scalar of type _integer_ with a value in the range from **1 to "
 "n**, where **n** equals the rank of **array**."
 msgstr ""
+"deve ser um escalar do tipo _integer_ com um valor no limite entre **1 a n**"
+", onde **n** é igual à ordem de **array**."
 
 #: ../../source/learn/intrinsics/_pages/PRODUCT.md:43
 msgid ""
 "shall be of type _logical_ and either be a scalar or an array of the same "
 "shape as **array**."
 msgstr ""
+"deve ser do tipo _logical_ e ser tanto um escalar ou uma matriz com o mesmo "
+"formato de **array**."
 
 #: ../../source/learn/intrinsics/_pages/IALL.md:38
 #: ../../source/learn/intrinsics/_pages/IANY.md:38
@@ -10550,13 +10833,15 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/NORM2.md:35
 #: ../../source/learn/intrinsics/_pages/PRODUCT.md:48
 msgid "The result is of the same type as **array**."
-msgstr ""
+msgstr "O resultado é do mesmo tipo de **array**."
 
 #: ../../source/learn/intrinsics/_pages/PRODUCT.md:232
 msgid ""
 "[**sum**(3)](#sum), note that an element by element multiplication is done "
 "directly using the star character."
 msgstr ""
+"[**sum**(3)](#sum), note que uma multiplicação elemento por elemento é feita "
+"diretamente usando o caractere estrela."
 
 #: ../../source/learn/intrinsics/_pages/SUM.md:2
 msgid "sum"
@@ -10564,29 +10849,35 @@ msgstr "sum"
 
 #: ../../source/learn/intrinsics/_pages/SUM.md:6
 msgid "**sum**(3) - \\[ARRAY REDUCTION\\] sum the elements of an array"
-msgstr ""
+msgstr "**sum**(3) - \\[ARRAY REDUCTION\\] soma dos elementos em um array"
 
 #: ../../source/learn/intrinsics/_pages/SUM.md:17
 msgid ""
 "Adds the elements of ARRAY along dimension DIM if the corresponding element "
 "in MASK is TRUE."
 msgstr ""
+"Adiciona os elementos de ARRAY ao longo da dimensão DIM se o elemento "
+"correspondente em MASK é TRUE."
 
 #: ../../source/learn/intrinsics/_pages/SUM.md:26
 msgid ""
 "(Optional) shall be a scalar of type _integer_ with a value in the range from"
 " 1 to n, where n equals the rank of ARRAY."
 msgstr ""
+"(Opcional) deve ser um escalar do tipo _integer_ com um valor na faixa de 1 "
+"a n, onde n é igual à ordem de ARRAY."
 
 #: ../../source/learn/intrinsics/_pages/SUM.md:30
 msgid ""
 "(Optional) shall be of type _logical_ and either be a scalar or an array of "
 "the same shape as ARRAY."
 msgstr ""
+"(Opcional) deve ser do tipo _logical_ e ser ou um escalar ou uma matriz do "
+"mesmo formato que ARRAY."
 
 #: ../../source/learn/intrinsics/_pages/SUM.md:35
 msgid "The result is of the same type as ARRAY."
-msgstr ""
+msgstr "O resultado é do mesmo tipo que ARRAY."
 
 #: ../../source/learn/intrinsics/_pages/SUM.md:37
 msgid ""
@@ -10594,10 +10885,14 @@ msgid ""
 "returned. Otherwise, an array of rank n-1, where n equals the rank of ARRAY, "
 "and a shape similar to that of ARRAY with dimension DIM dropped is returned."
 msgstr ""
+"Se **dim**(3) estiver ausente, um escalar com a soma de todos elementos em "
+"ARRAY é retornado. Caso contrário, uma matriz de ordem n-1, onde n é igual à "
+"ordem de ARRAY, e um formato semelhante ao de ARRAY com dimensão DIM "
+"removido é retornado."
 
 #: ../../source/learn/intrinsics/_pages/SUM.md:55
 msgid "Demonstrate Fortran 90 SUM function with MASK option"
-msgstr ""
+msgstr "Demonstra a função SUM do Fortran 90 com opção MASK"
 
 #: ../../source/learn/intrinsics/_pages/SUM.md:90
 msgid "intrinsics"
@@ -10609,7 +10904,7 @@ msgstr "reshape"
 
 #: ../../source/learn/intrinsics/_pages/RESHAPE.md:6
 msgid "**reshape**(3) - \\[ARRAY RESHAPE\\] Function to reshape an array"
-msgstr ""
+msgstr "**reshape**(3) - \\[ARRAY RESHAPE\\] Função para remodelar uma matriz"
 
 #: ../../source/learn/intrinsics/_pages/RESHAPE.md:16
 msgid ""
@@ -10617,10 +10912,13 @@ msgid ""
 "array may be padded with elements from **pad** or permuted as defined by "
 "**order**."
 msgstr ""
+"Remodela a matriz **source** para corresponder a **shape**. Se necessário, a "
+"nova matriz pode ser preenchido com elementos de **pad** ou permutado como "
+"definido por **order**."
 
 #: ../../source/learn/intrinsics/_pages/RESHAPE.md:23
 msgid "an array of any type."
-msgstr ""
+msgstr "uma matriz de qualquer tipo."
 
 #: ../../source/learn/intrinsics/_pages/C_F_POINTER.md:27
 #: ../../source/learn/intrinsics/_pages/RESHAPE.md:25
@@ -10630,6 +10928,8 @@ msgstr "**shape**"
 #: ../../source/learn/intrinsics/_pages/RESHAPE.md:26
 msgid "an array of rank one and type _integer_. Its values must be positive or zero."
 msgstr ""
+"uma matriz de primeira ordem e tipo _integer_. Seus valores devem ser "
+"positivos ou zero."
 
 #: ../../source/learn/intrinsics/_pages/RESHAPE.md:29
 msgid "**pad**"
@@ -10637,7 +10937,7 @@ msgstr "**pad**"
 
 #: ../../source/learn/intrinsics/_pages/RESHAPE.md:30
 msgid "(Optional) an array of the same type as **source**."
-msgstr ""
+msgstr "(Opcional) uma matriz do mesmo tipo de **source**."
 
 #: ../../source/learn/intrinsics/_pages/RESHAPE.md:32
 msgid "**order**"
@@ -10649,10 +10949,15 @@ msgid ""
 "values shall be a permutation of the numbers from 1 to n, where n is the size"
 " of **shape**. If **order** is absent, the natural ordering shall be assumed."
 msgstr ""
+"(Opcional) uma matriz do tipo _integer_ e com mesmo formato de **shape**. "
+"Seus valores deverão ser uma permutação dos numéricos de 1 a n, onde n é o "
+"tamanho de **shape**. Se **order** estiver ausente, o ordenamento natural "
+"será adotado."
 
 #: ../../source/learn/intrinsics/_pages/RESHAPE.md:40
 msgid "The result is an array of shape **shape** with the same type as **source**."
 msgstr ""
+"O resultado é uma matriz de formato **shape** com o mesmo tipo de **source**."
 
 #: ../../source/learn/intrinsics/_pages/RESHAPE.md:78
 msgid "[**shape**(3)](#shape)"
@@ -10660,7 +10965,7 @@ msgstr "[**shape**(3)](#shape)"
 
 #: ../../source/learn/intrinsics/bit.md:1
 msgid "Bit-level inquiry and manipulation"
-msgstr ""
+msgstr "manipulação e consulta à nível de bit"
 
 #: ../../source/learn/intrinsics/_pages/BGE.md:2
 msgid "bge"
@@ -10668,11 +10973,11 @@ msgstr "bge"
 
 #: ../../source/learn/intrinsics/_pages/BGE.md:6
 msgid "**bge**(3) - \\[BIT:COMPARE\\] Bitwise greater than or equal to"
-msgstr ""
+msgstr "**bge**(3) - \\[BIT:COMPARE\\] Maior ou igual a bit a bit"
 
 #: ../../source/learn/intrinsics/_pages/BGE.md:16
 msgid "Determines whether an integer is bitwise greater than or equal to another."
-msgstr ""
+msgstr "Determina se um inteiro é maior ou igual à outro bit a bit."
 
 #: ../../source/learn/intrinsics/_pages/ACHAR.md:38
 #: ../../source/learn/intrinsics/_pages/BGE.md:21
@@ -10714,7 +11019,7 @@ msgstr "**i**"
 #: ../../source/learn/intrinsics/_pages/BLE.md:21
 #: ../../source/learn/intrinsics/_pages/BLT.md:21
 msgid "Shall be of _integer_ type."
-msgstr ""
+msgstr "Deve ser do tipo _integer_."
 
 #: ../../source/learn/intrinsics/_pages/BGE.md:24
 #: ../../source/learn/intrinsics/_pages/BGT.md:23
@@ -10733,17 +11038,17 @@ msgstr "**j**"
 #: ../../source/learn/intrinsics/_pages/BLE.md:24
 #: ../../source/learn/intrinsics/_pages/BLT.md:24
 msgid "Shall be of _integer_ type, and of the same kind as **i**."
-msgstr ""
+msgstr "Deve ser do tipo _integer_, e do mesmo tipo que **i**."
 
 #: ../../source/learn/intrinsics/_pages/BGE.md:29
 #: ../../source/learn/intrinsics/_pages/BLE.md:28
 #: ../../source/learn/intrinsics/_pages/BLT.md:28
 msgid "The return value is of type _logical_ and of the default kind."
-msgstr ""
+msgstr "O valor retornado é do tipo _logical_ e do tipo padrão."
 
 #: ../../source/learn/intrinsics/_pages/BGE.md:37
 msgid "[**bgt**(3)](#bgt), [**ble**(3)](#ble), [**blt**(3)](#bit)"
-msgstr ""
+msgstr "[**bgt**(3)](#bgt), [**ble**(3)](#ble), [**blt**(3)](#bit)"
 
 #: ../../source/learn/intrinsics/_pages/BGT.md:2
 msgid "bgt"
@@ -10751,21 +11056,23 @@ msgstr "bgt"
 
 #: ../../source/learn/intrinsics/_pages/BGT.md:6
 msgid "**bgt**(3) - \\[BIT:COMPARE\\] Bitwise greater than"
-msgstr ""
+msgstr "**bgt**(3) - \\[BIT:COMPARE\\] maior que bit a bit"
 
 #: ../../source/learn/intrinsics/_pages/BGT.md:16
 msgid "Determines whether an integer is bitwise greater than another."
-msgstr ""
+msgstr "Determina se um inteiro é maior que outro bit a bit."
 
 #: ../../source/learn/intrinsics/_pages/BGT.md:21
 msgid "Shall be of _integer_ type or a BOZ literal constant."
-msgstr ""
+msgstr "Deve ser do tipo _integer_ ou uma constante literal BOZ."
 
 #: ../../source/learn/intrinsics/_pages/BGT.md:24
 msgid ""
 "Shall be of _integer_ type, and of the same kind as **i**; or a BOZ literal "
 "constant."
 msgstr ""
+"Deve ser do tipo _integer_, e do mesmo tipo que **i**; ou uma constante "
+"literal BOZ."
 
 #: ../../source/learn/intrinsics/_pages/BGT.md:29
 msgid ""
@@ -10773,10 +11080,14 @@ msgid ""
 "true if the sequence of bits represented by _i_ is greater than the sequence "
 "of bits represented by _j_, otherwise the result is false."
 msgstr ""
+"o valor retornado é do tipo _logical_ e do tipo padrão. O resultado é "
+"verdadeiro se a sequência de bits representada por _i_ é maior que a "
+"sequência de bits representada por _j_, caso contrário o resultado será "
+"falso."
 
 #: ../../source/learn/intrinsics/_pages/BGT.md:39
 msgid "[**bge**(3)](#bge), [**ble**(3)](#ble), [**blt**(3)](#blt)"
-msgstr ""
+msgstr "[**bge**(3)](#bge), [**ble**(3)](#ble), [**blt**(3)](#blt)"
 
 #: ../../source/learn/intrinsics/_pages/BLE.md:2
 msgid "ble"
@@ -10784,15 +11095,15 @@ msgstr "ble"
 
 #: ../../source/learn/intrinsics/_pages/BLE.md:6
 msgid "**ble**(3) - \\[BIT:COMPARE\\] Bitwise less than or equal to"
-msgstr ""
+msgstr "**ble**(3) - \\[BIT:COMPARE\\] menor ou igual a bit a bit"
 
 #: ../../source/learn/intrinsics/_pages/BLE.md:16
 msgid "Determines whether an integer is bitwise less than or equal to another."
-msgstr ""
+msgstr "Determina se um inteiro é menor ou igual à outro bit a bit."
 
 #: ../../source/learn/intrinsics/_pages/BLE.md:36
 msgid "[**bge**(3)](#bge), [**bgt**(3)](#bgt), [**blt**(3)](#blt)"
-msgstr ""
+msgstr "[**bge**(3)](#bge), [**bgt**(3)](#bgt), [**blt**(3)](#blt)"
 
 #: ../../source/learn/intrinsics/_pages/BLT.md:2
 msgid "blt"
@@ -10800,15 +11111,15 @@ msgstr "blt"
 
 #: ../../source/learn/intrinsics/_pages/BLT.md:6
 msgid "**blt**(3) - \\[BIT:COMPARE\\] Bitwise less than"
-msgstr ""
+msgstr "**blt**(3) - \\[BIT:COMPARE\\] Menor que bit a bit"
 
 #: ../../source/learn/intrinsics/_pages/BLT.md:16
 msgid "Determines whether an integer is bitwise less than another."
-msgstr ""
+msgstr "Determina se um inteiro é menor que outro bit a bit."
 
 #: ../../source/learn/intrinsics/_pages/BLT.md:36
 msgid "[**bge**(3)](#bge), [**bgt**(3)](#bgt), [**ble**(3)](#ble)"
-msgstr ""
+msgstr "[**bge**(3)](#bge), [**bgt**(3)](#bgt), [**ble**(3)](#ble)"
 
 #: ../../source/learn/intrinsics/_pages/BIT_SIZE.md:2
 msgid "bit_size"
@@ -10816,7 +11127,7 @@ msgstr "bit_size"
 
 #: ../../source/learn/intrinsics/_pages/BIT_SIZE.md:6
 msgid "**bit_size**(3) - \\[BIT:INQUIRY\\] Bit size inquiry function"
-msgstr ""
+msgstr "**bit_size**(3) - \\[BIT:INQUIRY\\] Função consulta de tamanho de bit"
 
 #: ../../source/learn/intrinsics/_pages/BIT_SIZE.md:19
 msgid ""
@@ -10824,18 +11135,26 @@ msgid ""
 "represented by the type of the _integer_ **i**. **i** can be a scalar or an "
 "array."
 msgstr ""
+"**bit_size**(3) - \\[BIT:INQUIRY\\] retorna o número de bits (precisão de "
+"inteiro mais bit de sinal) representado pelo tipo do _integer_ **i**. **i** "
+"pode ser um escalar ou uma matriz."
 
 #: ../../source/learn/intrinsics/_pages/BIT_SIZE.md:26
 msgid ""
 "An _integer_ value of any kind to determine the size of in bits. Because only"
 " the type of the argument is examined, the argument need not be defined."
 msgstr ""
+"Um valor _integer_ de qualquer tipo para determinar o tamanho de bits in. "
+"Devido a apenas o tipo do argumento ser examinado, o argumento não precisa "
+"ser definido."
 
 #: ../../source/learn/intrinsics/_pages/BIT_SIZE.md:32
 msgid ""
 "Returns the number of bits used to represent a value of the type of __i__.  "
 "The result is a _integer_ scalar of the same kind as __i__."
 msgstr ""
+"Retorna o número de bits usado para representar o valor do tipo de __i__. O "
+"resultado é um escalar _integer_ do mesmo tipo que __i__."
 
 #: ../../source/learn/intrinsics/_pages/BIT_SIZE.md:56
 #: ../../source/learn/intrinsics/_pages/CMPLX.md:144
@@ -10850,17 +11169,21 @@ msgstr "btest"
 
 #: ../../source/learn/intrinsics/_pages/BTEST.md:6
 msgid "**btest**(3) - \\[BIT:INQUIRY\\] Tests a bit of an _integer_ value."
-msgstr ""
+msgstr "**btest**(3) - \\[BIT:INQUIRY\\] Testa o bit de um valor _integer_."
 
 #: ../../source/learn/intrinsics/_pages/BTEST.md:18
 msgid "where **KIND** is any _integer_ kind supported by the programming environment."
 msgstr ""
+"onde **KIND** é qualquer tipo _integer_ suportado pelo ambiente de "
+"programação."
 
 #: ../../source/learn/intrinsics/_pages/BTEST.md:22
 msgid ""
 "**btest(i,pos)** returns logical **.true.** if the bit at **pos** in **i** is"
 " set."
 msgstr ""
+"**btest(i,pos)** retorna logical **.true.** se o bit na **pos** em **i** "
+"estiver definido."
 
 #: ../../source/learn/intrinsics/_pages/BTEST.md:27
 #: ../../source/learn/intrinsics/_pages/CHAR.md:25
@@ -10886,7 +11209,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/SHIFTR.md:24
 #: ../../source/learn/intrinsics/_pages/SHIFTR.md:27
 msgid "The type shall be _integer_."
-msgstr ""
+msgstr "O tipo deve ser _integer_."
 
 #: ../../source/learn/intrinsics/_pages/BTEST.md:29
 #: ../../source/learn/intrinsics/_pages/IBCLR.md:23
@@ -10900,10 +11223,12 @@ msgid ""
 "The bit position to query. it must be a valid position for the value **i**; "
 "ie. **0 <= pos <= bit_size(i)** ."
 msgstr ""
+"A posição do bit para acessar. Deve ser uma posição válida para o valor "
+"**i**; ex. **0 <= pos <= bit_size(i)**."
 
 #: ../../source/learn/intrinsics/_pages/BTEST.md:33
 msgid "A value of zero refers to the least significant bit."
-msgstr ""
+msgstr "O valor zero se refere ao bit menos significativo."
 
 #: ../../source/learn/intrinsics/_pages/BTEST.md:37
 msgid ""
@@ -10911,6 +11236,9 @@ msgid ""
 "**pos** of **i** has the value **1** and the value **.false.** if bit **pos**"
 " of **i** has the value **0**."
 msgstr ""
+"O resultado é um _logical_ que tem o valor **.true.** se a posição do bit "
+"**pos** de **i** tem o valor **1** e o valor **.false.** se posição do bit "
+"**pos** de **i** tem o valor **0**."
 
 #: ../../source/learn/intrinsics/_pages/BTEST.md:126
 msgid ""
@@ -10919,6 +11247,10 @@ msgid ""
 "[**iand**(3)](#iand), [**ior**(3)](#ior), [**ieor**(3)](#ieor), "
 "[**mvbits**(3)](#mvbits)"
 msgstr ""
+"[**ieor**(3)](#ieor), [**ibclr**(3)](#ibclr), [**not**(3)](#not), "
+"[**ibclr**(3)](#ibclr), [**ibits**(3)](#ibits), [**ibset**(3)](#ibset), "
+"[**iand**(3)](#iand), [**ior**(3)](#ior), [**ieor**(3)](#ieor), "
+"[**mvbits**(3)](#mvbits)"
 
 #: ../../source/learn/intrinsics/_pages/STORAGE_SIZE.md:2
 msgid "storage_size"
@@ -10927,18 +11259,19 @@ msgstr "storage_size"
 #: ../../source/learn/intrinsics/_pages/STORAGE_SIZE.md:6
 msgid "**storage_size**(3) - \\[BIT:INQUIRY\\] Storage size in bits"
 msgstr ""
+"**storage_size**(3) - \\[BIT:INQUIRY\\] Tamanho de armazenamento em bits"
 
 #: ../../source/learn/intrinsics/_pages/STORAGE_SIZE.md:16
 msgid "Returns the storage size of argument **a** in bits."
-msgstr ""
+msgstr "Retorna o tamanho do armazenamento do argumento **a** em bits."
 
 #: ../../source/learn/intrinsics/_pages/STORAGE_SIZE.md:21
 msgid "Shall be a scalar or array of any type."
-msgstr ""
+msgstr "Deve ser um escalar ou matriz de qualquer tipo."
 
 #: ../../source/learn/intrinsics/_pages/STORAGE_SIZE.md:24
 msgid "(Optional) shall be a scalar integer constant expression."
-msgstr ""
+msgstr "(Opcional) deve ser uma expressão de constante inteiro escalar."
 
 #: ../../source/learn/intrinsics/_pages/STORAGE_SIZE.md:28
 msgid ""
@@ -10947,6 +11280,10 @@ msgid ""
 "is the size expressed in bits for an element of an array that has the dynamic"
 " type and type parameters of **a**."
 msgstr ""
+"O resultado é um inteiro escalar com o tipo de parâmetro especificado por "
+"**kind** (ou tipo padrão de inteiro se **kind** estiver ausente). O valor "
+"resultante é o tamanho expressado em bits para um elemento de uma matriz que "
+"tem o tipo dinâmico e parâmetros de tipo de **a**."
 
 #: ../../source/learn/intrinsics/_pages/STORAGE_SIZE.md:64
 msgid "[**c_sizeof**(3)](#c_sizeof)"
@@ -10958,11 +11295,11 @@ msgstr "leadz"
 
 #: ../../source/learn/intrinsics/_pages/LEADZ.md:6
 msgid "**leadz**(3) - \\[BIT:COUNT\\] Number of leading zero bits of an integer"
-msgstr ""
+msgstr "**leadz**(3) - \\[BIT:COUNT\\] Número de zeros no começo de um inteiro"
 
 #: ../../source/learn/intrinsics/_pages/LEADZ.md:16
 msgid "**leadz** returns the number of leading zero bits of an integer."
-msgstr ""
+msgstr "**leadz** retorna o número de zero bits à esquerda de um inteiro."
 
 #: ../../source/learn/intrinsics/_pages/DSHIFTL.md:23
 #: ../../source/learn/intrinsics/_pages/DSHIFTL.md:29
@@ -10974,7 +11311,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/SET_EXPONENT.md:25
 #: ../../source/learn/intrinsics/_pages/TRAILZ.md:22
 msgid "Shall be of type _integer_."
-msgstr ""
+msgstr "Deve ser do tipo _integer_."
 
 #: ../../source/learn/intrinsics/_pages/LEADZ.md:25
 msgid ""
@@ -11011,6 +11348,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/POPCNT.md:63
 msgid "[**poppar**(3)](#poppar), [**leadz**(3)](#leadz), [**trailz**(3)](#trailz)"
 msgstr ""
+"[**poppar**(3)](#poppar), [**leadz**(3)](#leadz), [**trailz**(3)](#trailz)"
 
 #: ../../source/learn/intrinsics/_pages/POPPAR.md:2
 msgid "poppar"
@@ -11039,6 +11377,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/POPPAR.md:64
 msgid "[**popcnt**(3)](#popcnt), [**leadz**(3)](#leadz), [**trailz**(3)](#trailz)"
 msgstr ""
+"[**popcnt**(3)](#popcnt), [**leadz**(3)](#leadz), [**trailz**(3)](#trailz)"
 
 #: ../../source/learn/intrinsics/_pages/TRAILZ.md:2
 msgid "trailz"
@@ -11540,7 +11879,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/IALL.md:76
 msgid "[**iany**(3)](#iany), [**iparity**(3)](#iparity), [**iand**(3)](#iand)"
-msgstr ""
+msgstr "[**iany**(3)](#iany), [**iparity**(3)](#iparity), [**iand**(3)](#iand)"
 
 #: ../../source/learn/intrinsics/_pages/IAND.md:2
 msgid "iand"
@@ -11552,7 +11891,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/IAND.md:16
 msgid "Bitwise logical **and**."
-msgstr ""
+msgstr "**and** lógico bit a bit."
 
 #: ../../source/learn/intrinsics/_pages/IAND.md:24
 #: ../../source/learn/intrinsics/_pages/IEOR.md:24
@@ -11599,7 +11938,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/IANY.md:73
 msgid "[**iparity**(3)](#iparity), [**iall**(3)](#iall), [**ior**(3)](#ior)"
-msgstr ""
+msgstr "[**iparity**(3)](#iparity), [**iall**(3)](#iall), [**ior**(3)](#ior)"
 
 #: ../../source/learn/intrinsics/_pages/IEOR.md:2
 msgid "ieor"
@@ -11851,11 +12190,12 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/SAME_TYPE_AS.md:35
 #: ../../source/learn/intrinsics/_pages/SELECTED_CHAR_KIND.md:62
 msgid "Fortran 2003 and later"
-msgstr ""
+msgstr "Fortran 2003 e posterior"
 
 #: ../../source/learn/intrinsics/_pages/C_ASSOCIATED.md:61
 msgid "[**c_loc**(3)](#c_loc), [**c_funloc**(3)](#c_funloc), **iso_c_binding**(3)"
 msgstr ""
+"[**c_loc**(3)](#c_loc), [**c_funloc**(3)](#c_funloc), **iso_c_binding**(3)"
 
 #: ../../source/learn/intrinsics/_pages/C_F_POINTER.md:2
 msgid "c_f_pointer"
@@ -11901,6 +12241,8 @@ msgid ""
 "[**c_loc**(3)](#c_loc), [**c_f_procpointer**(3)](#c_f_procpointer), "
 "**iso_c_binding**(3)"
 msgstr ""
+"[**c_loc**(3)](#c_loc), [**c_f_procpointer**(3)](#c_f_procpointer), "
+"**iso_c_binding**(3)"
 
 #: ../../source/learn/intrinsics/_pages/C_F_PROCPOINTER.md:2
 msgid "c_f_procpointer"
@@ -11931,6 +12273,8 @@ msgid ""
 "[**c_loc**(3)](#c_loc), [**c_f_pointer**(3)](#c_f_pointer), "
 "**iso_c_binding**(3)"
 msgstr ""
+"[**c_loc**(3)](#c_loc), [**c_f_pointer**(3)](#c_f_pointer), "
+"**iso_c_binding**(3)"
 
 #: ../../source/learn/intrinsics/_pages/C_FUNLOC.md:2
 msgid "c_funloc"
@@ -12018,6 +12362,8 @@ msgid ""
 "[**c_associated**(3)](#c_associated), [**c_loc**(3)](#c_loc), "
 "[**c_f_pointer**(3)](#c_f_pointer),"
 msgstr ""
+"[**c_associated**(3)](#c_associated), [**c_loc**(3)](#c_loc), "
+"[**c_f_pointer**(3)](#c_f_pointer),"
 
 #: ../../source/learn/intrinsics/_pages/C_FUNLOC.md:69
 #: ../../source/learn/intrinsics/_pages/C_LOC.md:56
@@ -12053,6 +12399,8 @@ msgid ""
 "[**c_associated**(3)](#c_associated), [**c_funloc**(3)](#c_funloc), "
 "[**c_f_pointer**(3)](#c_f_pointer),"
 msgstr ""
+"[**c_associated**(3)](#c_associated), [**c_funloc**(3)](#c_funloc), "
+"[**c_f_pointer**(3)](#c_f_pointer),"
 
 #: ../../source/learn/intrinsics/_pages/C_SIZEOF.md:2
 msgid "c_sizeof"
@@ -12381,7 +12729,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ACHAR.md:165
 msgid "[**char**(3)](#char), [**iachar**(3)](#iachar), [**ichar**(3)](#ichar)"
-msgstr ""
+msgstr "[**char**(3)](#char), [**iachar**(3)](#iachar), [**ichar**(3)](#ichar)"
 
 #: ../../source/learn/intrinsics/_pages/ACHAR.md:169
 #: ../../source/learn/intrinsics/_pages/DATE_AND_TIME.md:104
@@ -12448,11 +12796,12 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/SIN.md:127
 #: ../../source/learn/intrinsics/_pages/SQRT.md:92
 msgid "FORTRAN 77 and later"
-msgstr ""
+msgstr "FORTRAN 77 e posterior"
 
 #: ../../source/learn/intrinsics/_pages/CHAR.md:66
 msgid "[**achar**(3)](#achar), [**iachar**(3)](#iachar), [**ichar**(3)](#ichar)"
 msgstr ""
+"[**achar**(3)](#achar), [**iachar**(3)](#iachar), [**ichar**(3)](#ichar)"
 
 #: ../../source/learn/intrinsics/_pages/IACHAR.md:2
 msgid "iachar"
@@ -12485,7 +12834,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/IACHAR.md:80
 msgid "[**achar**(3)](#achar), [**char**(3)](#char), [**ichar**(3)](#ichar)"
-msgstr ""
+msgstr "[**achar**(3)](#achar), [**char**(3)](#char), [**ichar**(3)](#ichar)"
 
 #: ../../source/learn/intrinsics/_pages/ICHAR.md:2
 msgid "ichar"
@@ -12528,7 +12877,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ICHAR.md:111
 msgid "[**achar**(3)](#achar), [**char**(3)](#char), [**iachar**(3)](#iachar)"
-msgstr ""
+msgstr "[**achar**(3)](#achar), [**char**(3)](#char), [**iachar**(3)](#iachar)"
 
 #: ../../source/learn/intrinsics/_pages/ICHAR.md:118
 #: ../../source/learn/intrinsics/_pages/LGE.md:52
@@ -12565,7 +12914,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/INDEX.md:29
 msgid "string to be searched"
-msgstr ""
+msgstr "string a ser procurada"
 
 #: ../../source/learn/intrinsics/_pages/INDEX.md:31
 msgid "**substring**"
@@ -12748,7 +13097,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/LGE.md:47
 msgid "**\\[\\[lgt**(3), **\\[\\[lle**(3), **\\[\\[llt**(3)"
-msgstr ""
+msgstr "**\\[\\[lgt**(3), **\\[\\[lle**(3), **\\[\\[llt**(3)"
 
 #: ../../source/learn/intrinsics/_pages/LGT.md:2
 msgid "lgt"
@@ -12785,7 +13134,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/LGT.md:47
 msgid "[**lge**(3)](#lge), [**lle**(3)](#lle), [**llt**(3)](#llt)"
-msgstr ""
+msgstr "[**lge**(3)](#lge), [**lle**(3)](#lle), [**llt**(3)](#llt)"
 
 #: ../../source/learn/intrinsics/_pages/LLE.md:2
 msgid "lle"
@@ -12829,7 +13178,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/LLE.md:93
 msgid "[**lge**(3)](#lge), [**lgt**(3)](#lgt), [**llt**(3)](#llt)"
-msgstr ""
+msgstr "[**lge**(3)](#lge), [**lgt**(3)](#lgt), [**llt**(3)](#llt)"
 
 #: ../../source/learn/intrinsics/_pages/LLT.md:2
 msgid "llt"
@@ -12856,7 +13205,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/LLT.md:47
 msgid "[**lge**(3)](#lge), [**lgt**(3)](#lgt), [**lle**(3)](#lle))"
-msgstr ""
+msgstr "[**lge**(3)](#lge), [**lgt**(3)](#lgt), [**lle**(3)](#lle))"
 
 #: ../../source/learn/intrinsics/_pages/ADJUSTL.md:2
 msgid "adjustl"
@@ -13024,7 +13373,7 @@ msgstr "[**compiler_options**(3)](#compiler_options), **iso_fortran_env**(7)"
 
 #: ../../source/learn/intrinsics/index.md:12
 msgid "GNU Free Documentation License"
-msgstr ""
+msgstr "Licença de Documentação Gratuita GNU"
 
 #: ../../source/learn/intrinsics/index.md:1
 msgid "Fortran Intrinsics"
@@ -13064,7 +13413,7 @@ msgstr "em maior detalhe"
 
 #: ../../source/learn/intrinsics/index.md:40
 msgid "with a working example"
-msgstr ""
+msgstr "com um exemplo funcional"
 
 #: ../../source/learn/intrinsics/index.md:41
 msgid ""
@@ -13089,7 +13438,7 @@ msgstr "Veja Também"
 
 #: ../../source/learn/intrinsics/index.md:53
 msgid "The [Fortran stdlib](https://stdlib.fortran-lang.org/) project"
-msgstr ""
+msgstr "O projeto [Fortran stdlib](https://stdlib.fortran-lang.org/)"
 
 #: ../../source/learn/intrinsics/index.md:55
 msgid ""
@@ -13193,10 +13542,12 @@ msgid ""
 "[wikipedia: inverse trigonometric "
 "functions](https://en.wikipedia.org/wiki/Inverse_trigonometric_functions)"
 msgstr ""
+"[wikipedia: funções trigonométricas inversas](https://en.wikipedia.org/wiki/"
+"Inverse_trigonometric_functions)"
 
 #: ../../source/learn/intrinsics/_pages/ACOS.md:76
 msgid "Inverse function: [**cos**(3](cos))"
-msgstr ""
+msgstr "Função inversa: [**cos**(3](cos))"
 
 #: ../../source/learn/intrinsics/_pages/ACOSH.md:2
 msgid "acosh"
@@ -13255,7 +13606,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ACOSH.md:66
 msgid "Inverse function: [**cosh**(3)](#cosh)"
-msgstr ""
+msgstr "Função inversa: [**cosh**(3)](#cosh)"
 
 #: ../../source/learn/intrinsics/_pages/ASIN.md:2
 msgid "asin"
@@ -13338,7 +13689,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ASIN.md:103
 msgid "Inverse function: [**sin**(3)](#sin)"
-msgstr ""
+msgstr "Função inversa: [**sin**(3)](#sin)"
 
 #: ../../source/learn/intrinsics/_pages/ASINH.md:2
 msgid "asinh"
@@ -13384,7 +13735,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ASINH.md:64
 msgid "Inverse function: [**sinh**(3)](#sinh)"
-msgstr ""
+msgstr "Função inversa: [**sinh**(3)](#sinh)"
 
 #: ../../source/learn/intrinsics/_pages/ATAN.md:2
 msgid "atan"
@@ -13530,7 +13881,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/ATANH.md:58
 msgid "Inverse function: [**tanh**(3)](#tanh)"
-msgstr ""
+msgstr "Função inversa: [**tanh**(3)](#tanh)"
 
 #: ../../source/learn/intrinsics/_pages/COS.md:2
 msgid "cos"
@@ -13578,7 +13929,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/COS.md:79
 msgid "[**acos**(3)](#acos), [**sin**(3)](#sin), [**tan**(3)](#tan)"
-msgstr ""
+msgstr "[**acos**(3)](#acos), [**sin**(3)](#sin), [**tan**(3)](#tan)"
 
 #: ../../source/learn/intrinsics/_pages/COSH.md:2
 msgid "cosh"
@@ -13618,7 +13969,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/COSH.md:60
 msgid "Inverse function: [**acosh**(3)](#acosh)"
-msgstr ""
+msgstr "Função inversa: [**acosh**(3)](#acosh)"
 
 #: ../../source/learn/intrinsics/_pages/SIN.md:2
 msgid "sin"
@@ -13673,7 +14024,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/SIN.md:133
 msgid "[**asin**(3)](#asin), [**cos**(3)](#cos), [**tan**(3)](#tan)"
-msgstr ""
+msgstr "[**asin**(3)](#asin), [**cos**(3)](#cos), [**tan**(3)](#tan)"
 
 #: ../../source/learn/intrinsics/_pages/SINH.md:2
 msgid "sinh"
@@ -13731,7 +14082,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/TAN.md:53
 msgid "[**atan**(3)](#atan), [**cos**(3)](#cos), [**sin**(3)](#sin)"
-msgstr ""
+msgstr "[**atan**(3)](#atan), [**cos**(3)](#cos), [**sin**(3)](#sin)"
 
 #: ../../source/learn/intrinsics/_pages/TANH.md:2
 msgid "tanh"
@@ -14428,7 +14779,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/LOG_GAMMA.md:51
 msgid "Gamma function: [**gamma**(3)](#gamma)"
-msgstr ""
+msgstr "Função gama: [**gamma**(3)](#gamma)"
 
 #: ../../source/learn/intrinsics/_pages/NORM2.md:2
 msgid "norm2"
@@ -14469,7 +14820,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/NORM2.md:91
 msgid "[**product**(3)](#product), [**sum**(3)](#sum), [**hypot**(3)](#hypot)"
-msgstr ""
+msgstr "[**product**(3)](#product), [**sum**(3)](#sum), [**hypot**(3)](#hypot)"
 
 #: ../../source/learn/intrinsics/model.md:1
 msgid "Controlling and querying the current numeric model"
@@ -15314,7 +15665,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/DPROD.md:25
 #: ../../source/learn/intrinsics/_pages/DPROD.md:28
 msgid "shall be default real."
-msgstr ""
+msgstr "deve ser real padrão."
 
 #: ../../source/learn/intrinsics/_pages/DPROD.md:30
 msgid ""
@@ -15421,7 +15772,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MAX.md:119
 msgid "[**maxloc**(3)](#maxloc), [**maxval**(3)](#maxval), [**min**(3)](#min)"
-msgstr ""
+msgstr "[**maxloc**(3)](#maxloc), [**maxval**(3)](#maxval), [**min**(3)](#min)"
 
 #: ../../source/learn/intrinsics/_pages/MIN.md:2
 msgid "min"
@@ -15437,7 +15788,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MIN.md:23
 msgid "**a2, a3, ...**"
-msgstr ""
+msgstr "**a2, a3, ...**"
 
 #: ../../source/learn/intrinsics/_pages/MIN.md:28
 msgid ""
@@ -15447,7 +15798,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/MIN.md:54
 msgid "[**max**(3)](#max), [**minloc**(3)](#minloc), [**minval**(3)](#minval)"
-msgstr ""
+msgstr "[**max**(3)](#max), [**minloc**(3)](#minloc), [**minval**(3)](#minval)"
 
 #: ../../source/learn/intrinsics/_pages/MOD.md:2
 msgid "mod"
@@ -15692,7 +16043,7 @@ msgstr "**boundary**"
 
 #: ../../source/learn/intrinsics/_pages/EOSHIFT.md:42
 msgid "Same type as ARRAY."
-msgstr ""
+msgstr "Mesmo tipo que ARRAY."
 
 #: ../../source/learn/intrinsics/_pages/MATMUL.md:2
 msgid "matmul"
@@ -15796,7 +16147,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/NULL.md:17
 msgid "Returns a disassociated pointer."
-msgstr ""
+msgstr "Retorna um ponteiro desassociado."
 
 #: ../../source/learn/intrinsics/_pages/NULL.md:19
 msgid ""
@@ -16011,7 +16362,7 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/CO_SUM.md:67
 #: ../../source/learn/intrinsics/_pages/EVENT_QUERY.md:56
 msgid "TS 18508 or later"
-msgstr ""
+msgstr "TS 18508 ou posterior"
 
 #: ../../source/learn/intrinsics/_pages/CO_MAX.md:70
 msgid ""
@@ -16158,6 +16509,8 @@ msgid ""
 "[**co_lbound**(3)](#co_lbound), [**lbound**(3)](#lbound), "
 "[**ubound**(3)](#ubound)"
 msgstr ""
+"[**co_lbound**(3)](#co_lbound), [**lbound**(3)](#lbound), "
+"[**ubound**(3)](#ubound)"
 
 #: ../../source/learn/intrinsics/_pages/EVENT_QUERY.md:2
 msgid "event_query"
@@ -16222,7 +16575,7 @@ msgstr "**coarray**"
 
 #: ../../source/learn/intrinsics/_pages/IMAGE_INDEX.md:21
 msgid "Coarray of any type."
-msgstr ""
+msgstr "Comatriz de qualquer tipo."
 
 #: ../../source/learn/intrinsics/_pages/IMAGE_INDEX.md:23
 msgid "**sub**"
@@ -16470,6 +16823,8 @@ msgid ""
 "[**atomic_define**(3)](#atomic_define), [**atomic_and**(3)](#atomic_and), "
 "[**iso_fortran_env**(3)](#),"
 msgstr ""
+"[**atomic_define**(3)](#atomic_define), [**atomic_and**(3)](#atomic_and), "
+"[**iso_fortran_env**(3)](#),"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_AND.md:64
 msgid ""
@@ -16512,6 +16867,8 @@ msgid ""
 "[**atomic_define**(3)](#atomic_define), [**atomic_or**(3)](#atomic_or), "
 "[**iso_fortran_env**(3)](#),"
 msgstr ""
+"[**atomic_define**(3)](#atomic_define), [**atomic_or**(3)](#atomic_or), "
+"[**iso_fortran_env**(3)](#),"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_OR.md:64
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_XOR.md:64
@@ -16549,6 +16906,8 @@ msgid ""
 "[**atomic_define**(3)](#atomic_define), [**atomic_xor**(3)](#atomic_xor), "
 "[**iso_fortran_env**(3)](#),"
 msgstr ""
+"[**atomic_define**(3)](#atomic_define), [**atomic_xor**(3)](#atomic_xor), "
+"[**iso_fortran_env**(3)](#),"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_XOR.md:67
 msgid "[**atomic_fetch_or**(3)](#atomic_fetch_or)"
@@ -16586,6 +16945,8 @@ msgid ""
 "[**iso_fortran_env**(3)](#), [**atomic_add**(3)](#atomic_add), "
 "[**atomic_or**(3)](#atomic_or),"
 msgstr ""
+"[**iso_fortran_env**(3)](#), [**atomic_add**(3)](#atomic_add), "
+"[**atomic_or**(3)](#atomic_or),"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_OR.md:63
 msgid "[**atomic_xor**(3)](#atomic_xor)"
@@ -16697,6 +17058,8 @@ msgid ""
 "[**atomic_define**(3)](#atomic_define), [**atomic_ref**(3)](#atomic_ref), "
 "[**iso_fortran_env**(3)](#)"
 msgstr ""
+"[**atomic_define**(3)](#atomic_define), [**atomic_ref**(3)](#atomic_ref), "
+"[**iso_fortran_env**(3)](#)"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_DEFINE.md:2
 msgid "atomic_define"
@@ -16760,6 +17123,8 @@ msgid ""
 "[**atomic_define**(3)](#atomic_define), [**atomic_add**(3)](#atomic_add), "
 "**iso_fortran_env**(3),"
 msgstr ""
+"[**atomic_define**(3)](#atomic_define), [**atomic_add**(3)](#atomic_add), "
+"**iso_fortran_env**(3),"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_FETCH_ADD.md:64
 msgid ""
@@ -16797,6 +17162,8 @@ msgid ""
 "[**atomic_define**(3)](#atomic_define), [**atomic_cas**(3)](#atomic_cas), "
 "[**iso_fortran_env**(3)](#),"
 msgstr ""
+"[**atomic_define**(3)](#atomic_define), [**atomic_cas**(3)](#atomic_cas), "
+"[**iso_fortran_env**(3)](#),"
 
 #: ../../source/learn/intrinsics/_pages/ATOMIC_REF.md:67
 msgid ""
@@ -16813,7 +17180,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/state.md:1
 msgid "General and miscellaneous intrinsics"
-msgstr ""
+msgstr "Intrínsecos gerais e diversos"
 
 #: ../../source/learn/intrinsics/_pages/ASSOCIATED.md:2
 msgid "associated"
@@ -17110,7 +17477,7 @@ msgstr "[**extends_type_of**(3)](#extends_type_of)"
 
 #: ../../source/learn/intrinsics/system.md:1
 msgid "Accessing external system information"
-msgstr ""
+msgstr "Acessando informação externa ao sistema"
 
 #: ../../source/learn/intrinsics/_pages/COMMAND_ARGUMENT_COUNT.md:2
 msgid "command_argument_count"
@@ -17785,7 +18152,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/REDUCE.md:47
 msgid "**options**"
-msgstr "**Opções**"
+msgstr "**opções**"
 
 #: ../../source/learn/intrinsics/_pages/REDUCE.md:50
 msgid "An array of any type and allowed rank to select values from."
@@ -17875,7 +18242,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/REDUCE.md:111
 msgid "**examples**"
-msgstr "**Exemplos**"
+msgstr "**exemplos**"
 
 #: ../../source/learn/intrinsics/_pages/REDUCE.md:113
 msgid ""
@@ -18449,7 +18816,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/TRANSFER.md:109
 msgid "Fortran 90 and later"
-msgstr ""
+msgstr "Fortran 90 e posterior"
 
 #: ../../source/learn/intrinsics/_pages/LOGICAL.md:2
 msgid "logical"
@@ -18482,7 +18849,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/LOGICAL.md:70
 msgid "[**int**(3)](#int), [**real**(3)](#real), [**cmplx**(3)](#cmplx)"
-msgstr ""
+msgstr "[**int**(3)](#int), [**real**(3)](#real), [**cmplx**(3)](#cmplx)"
 
 #: ../../source/learn/intrinsics/_pages/KIND.md:2
 msgid "kind"
@@ -18547,7 +18914,7 @@ msgstr ""
 
 #: ../../source/learn/intrinsics/_pages/OUT_OF_RANGE.md:41
 msgid "From the standard:"
-msgstr ""
+msgstr "Do padrão:"
 
 #: ../../source/learn/intrinsics/_pages/OUT_OF_RANGE.md:43
 msgid ""
@@ -18722,6 +19089,8 @@ msgstr ""
 #: ../../source/learn/intrinsics/_pages/SELECTED_REAL_KIND.md:98
 msgid "[**precision**(3)](#precision), [**range**(3)](#range), [**radix**(3)](#radix)"
 msgstr ""
+"[**precision**(3)](#precision), [**range**(3)](#range), "
+"[**radix**(3)](#radix)"
 
 #: ../../source/learn/os_setup/choose_compiler.md:1
 #: ../../source/learn/os_setup/index.md:26
@@ -18866,7 +19235,7 @@ msgstr ""
 
 #: ../../source/learn/os_setup/index.md:14
 msgid "Setting up your OS"
-msgstr ""
+msgstr "Organizando seu SO"
 
 #: ../../source/learn/os_setup/index.md:16
 msgid ""
@@ -18947,7 +19316,7 @@ msgstr ""
 
 #: ../../source/learn/os_setup/install_gfortran.md:16
 msgid "Unix-like development on Windows"
-msgstr ""
+msgstr "Desenvolvimento Unix em Windows"
 
 #: ../../source/learn/os_setup/install_gfortran.md:18
 msgid ""
@@ -19099,7 +19468,7 @@ msgstr ""
 
 #: ../../source/learn/os_setup/install_gfortran.md:117
 msgid "Install a gcc version:"
-msgstr ""
+msgstr "Instale uma versão gcc:"
 
 #: ../../source/learn/os_setup/install_gfortran.md:123
 msgid "OpenBSD"
@@ -19317,7 +19686,7 @@ msgstr ""
 
 #: ../../source/learn/os_setup/text_editors.md:47
 msgid "[atom-ide ui by facebook-atom](https://atom.io/packages/atom-ide-ui)"
-msgstr ""
+msgstr "[ui atom-ide por facebook-atom](https://atom.io/packages/atom-ide-ui)"
 
 #: ../../source/learn/os_setup/text_editors.md:48
 msgid "[language-fortran by dparkins](https://atom.io/packages/language-fortran)"
@@ -19446,7 +19815,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/arrays_strings.md:44
 msgid "**Example:** array slicing"
-msgstr ""
+msgstr "**Exemplo:** Fatiamento de matriz"
 
 #: ../../source/learn/quickstart/arrays_strings.md:67
 msgid ""
@@ -19479,7 +19848,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/arrays_strings.md:81
 msgid "**Example:** allocatable arrays"
-msgstr ""
+msgstr "**Exemplo:** matrizes alocáveis"
 
 #: ../../source/learn/quickstart/arrays_strings.md:101
 msgid ""
@@ -19516,7 +19885,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/arrays_strings.md:156
 msgid "**Example:** string array"
-msgstr ""
+msgstr "**Exemplo:** matriz de string"
 
 #: ../../source/learn/quickstart/derived_types.md:1
 #: ../../source/learn/quickstart/index.md:11
@@ -19560,11 +19929,11 @@ msgstr ""
 
 #: ../../source/learn/quickstart/derived_types.md:39
 msgid "Example with default initialization:"
-msgstr ""
+msgstr "Exemplo com inicialização padrão:"
 
 #: ../../source/learn/quickstart/derived_types.md:53
 msgid "Derived types in detail"
-msgstr ""
+msgstr "Tipos derivados em detalhe"
 
 #: ../../source/learn/quickstart/derived_types.md:55
 msgid ""
@@ -19736,7 +20105,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/derived_types.md:230
 msgid "Examples of common cases:"
-msgstr ""
+msgstr "Exemplos de casos comuns:"
 
 #: ../../source/learn/quickstart/derived_types.md:252
 msgid ""
@@ -19907,7 +20276,7 @@ msgstr "Variáveis"
 #: ../../source/learn/quickstart/index.md:11
 #: ../../source/learn/quickstart/operators_control_flow.md:1
 msgid "Operators and flow control"
-msgstr ""
+msgstr "Operadores e controle de fluxo"
 
 #: ../../source/learn/quickstart/index.md:11
 #: ../../source/learn/quickstart/organising_code.md:1
@@ -20137,7 +20506,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/operators_control_flow.md:66
 msgid "**Example:** two-branch `if`-`else`"
-msgstr ""
+msgstr "**Exemplo:** dois-caminhos `if`-`else`"
 
 #: ../../source/learn/quickstart/operators_control_flow.md:76
 msgid ""
@@ -20182,7 +20551,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/operators_control_flow.md:106
 msgid "**Example:** `do` loop"
-msgstr ""
+msgstr "**Exemplo:** loop `do`"
 
 #: ../../source/learn/quickstart/operators_control_flow.md:116
 msgid "**Example:** `do` loop with skip"
@@ -20190,7 +20559,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/operators_control_flow.md:126
 msgid "Conditional loop (`do while`)"
-msgstr ""
+msgstr "Loop condicional (`do while`)"
 
 #: ../../source/learn/quickstart/operators_control_flow.md:128
 msgid ""
@@ -20241,7 +20610,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/operators_control_flow.md:184
 msgid "Nested loop control: tags"
-msgstr ""
+msgstr "Controle de loops encadeados: tags"
 
 #: ../../source/learn/quickstart/operators_control_flow.md:186
 msgid ""
@@ -20267,7 +20636,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/operators_control_flow.md:206
 msgid "Parallelizable loop (`do concurrent`)"
-msgstr ""
+msgstr "Loop paralelizável (`do concurrent`)"
 
 #: ../../source/learn/quickstart/operators_control_flow.md:208
 msgid ""
@@ -20380,7 +20749,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/organising_code.md:80
 msgid "To execute this function:"
-msgstr ""
+msgstr "Para executar essa função:"
 
 #: ../../source/learn/quickstart/organising_code.md:96
 msgid ""
@@ -20436,7 +20805,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/organising_code.md:167
 msgid "**Example:** aliased import"
-msgstr ""
+msgstr "**Exemplo:** importação apelidada"
 
 #: ../../source/learn/quickstart/organising_code.md:173
 msgid ""
@@ -20511,7 +20880,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/variables.md:35
 msgid "**Example:** variable declaration"
-msgstr ""
+msgstr "**Exemplo:** declaração de variável"
 
 #: ../../source/learn/quickstart/variables.md:50
 msgid ""
@@ -20543,7 +20912,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/variables.md:63
 msgid "**Example:** variable assignment"
-msgstr ""
+msgstr "**Exemplo:** atribuição de variável"
 
 #: ../../source/learn/quickstart/variables.md:73
 msgid "Characters are surrounded by either single (`'`) or double quotes (`\"`)."
@@ -20563,7 +20932,7 @@ msgstr ""
 
 #: ../../source/learn/quickstart/variables.md:81
 msgid "Standard input / output"
-msgstr ""
+msgstr "entrada / saída padrão"
 
 #: ../../source/learn/quickstart/variables.md:83
 msgid ""
@@ -20672,7 +21041,7 @@ msgstr "Notícias"
 
 #: ../../source/news/2020/02-28-J3-february-meeting.md:7
 msgid "J3 February 2020 Meeting"
-msgstr ""
+msgstr "Reunião J3 Fevereiro de 2020"
 
 #: ../../source/news/2020/02-28-J3-february-meeting.md:9
 msgid ""
@@ -20762,11 +21131,11 @@ msgstr ""
 
 #: ../../source/news/2020/02-28-J3-february-meeting.md:36
 msgid "Structural Integrity: Brad Richardson"
-msgstr ""
+msgstr "Integridade Estrutural: Brad Richardson"
 
 #: ../../source/news/2020/02-28-J3-february-meeting.md:38
 msgid "Proposals Discussed at Plenary"
-msgstr ""
+msgstr "Propostas Discutidas em Plenário"
 
 #: ../../source/news/2020/02-28-J3-february-meeting.md:40
 msgid "Monday 2/24"
@@ -20920,7 +21289,7 @@ msgstr ""
 
 #: ../../source/news/2020/02-28-J3-february-meeting.md:78
 msgid "[#19] : Short-circuiting proposal"
-msgstr ""
+msgstr "[#19] : proposta de curto-circuitagem"
 
 #: ../../source/news/2020/02-28-J3-february-meeting.md:80
 msgid "More Details"
@@ -20991,7 +21360,7 @@ msgstr ""
 
 #: ../../source/news/2020/04-18-Fortran-Webinar.md:17
 msgid "Watch the episode now:"
-msgstr ""
+msgstr "Assista o episódio agora:"
 
 #: ../../source/news/2020/04-18-Fortran-Webinar.md:21
 msgid ""
@@ -21010,7 +21379,7 @@ msgstr ""
 
 #: ../../source/news/2020/05-01-Fortran-Newsletter-May-2020.md:7
 msgid "Fortran newsletter: May 2020"
-msgstr ""
+msgstr "Boletim Fortran: Maio de 2020"
 
 #: ../../source/news/2020/05-01-Fortran-Newsletter-May-2020.md:13
 msgid ""
@@ -21061,6 +21430,8 @@ msgstr ""
 #: ../../source/news/2020/05-01-Fortran-Newsletter-May-2020.md:40
 msgid "[#173](https://github.com/fortran-lang/stdlib/pull/173) Minor bug fix."
 msgstr ""
+"[#173](https://github.com/fortran-lang/stdlib/pull/173) correção de pequeno "
+"bug."
 
 #: ../../source/news/2020/05-01-Fortran-Newsletter-May-2020.md:43
 msgid ""
@@ -21081,7 +21452,7 @@ msgstr ""
 
 #: ../../source/news/2020/05-01-Fortran-Newsletter-May-2020.md:52
 msgid "FPM supports three commands:"
-msgstr ""
+msgstr "FPM suporta três comandos:"
 
 #: ../../source/news/2020/05-01-Fortran-Newsletter-May-2020.md:53
 msgid "`fpm build`--compiles and links your application and/or library."
@@ -21318,7 +21689,7 @@ msgstr ""
 
 #: ../../source/news/2020/06-01-Fortran-Newsletter-June-2020.md:7
 msgid "Fortran newsletter: June 2020"
-msgstr ""
+msgstr "Boletim Fortran: Junho de 2020"
 
 #: ../../source/news/2020/06-01-Fortran-Newsletter-June-2020.md:9
 msgid ""
@@ -21635,7 +22006,7 @@ msgstr ""
 
 #: ../../source/news/2020/07-01-Fortran-Newsletter-July-2020.md:7
 msgid "Fortran newsletter: July 2020"
-msgstr ""
+msgstr "Boletim Fortran: Julho de 2020"
 
 #: ../../source/news/2020/07-01-Fortran-Newsletter-July-2020.md:9
 msgid ""
@@ -21825,7 +22196,7 @@ msgstr "Gerenciador de Pacotes Fortran"
 #: ../../source/news/2020/07-01-Fortran-Newsletter-July-2020.md:60
 #: ../../source/news/2020/08-01-Fortran-Newsletter-August-2020.md:50
 msgid "What's new in fpm:"
-msgstr ""
+msgstr "O que há de novo no fpm:"
 
 #: ../../source/news/2020/07-01-Fortran-Newsletter-July-2020.md:62
 msgid ""
@@ -21937,7 +22308,7 @@ msgstr ""
 
 #: ../../source/news/2020/08-01-Fortran-Newsletter-August-2020.md:7
 msgid "Fortran newsletter: August 2020"
-msgstr ""
+msgstr "Boletim Fortran: Agosto de 2020"
 
 #: ../../source/news/2020/08-01-Fortran-Newsletter-August-2020.md:9
 msgid ""
@@ -22181,7 +22552,7 @@ msgstr "LFortran"
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:149
 #: ../../source/news/2020/11-01-Fortran-Newsletter-November-2020.md:149
 msgid "What's new in LFortran:"
-msgstr ""
+msgstr "O que há de novo no LFortran:"
 
 #: ../../source/news/2020/08-01-Fortran-Newsletter-August-2020.md:120
 msgid ""
@@ -22255,7 +22626,7 @@ msgstr ""
 
 #: ../../source/news/2020/09-01-Fortran-Newsletter-September-2020.md:7
 msgid "Fortran newsletter: September 2020"
-msgstr ""
+msgstr "Boletim Fortran: Setembro de 2020"
 
 #: ../../source/news/2020/09-01-Fortran-Newsletter-September-2020.md:9
 msgid ""
@@ -22333,7 +22704,7 @@ msgstr ""
 
 #: ../../source/news/2020/09-01-Fortran-Newsletter-September-2020.md:47
 msgid "Ongoing work in fpm:"
-msgstr ""
+msgstr "Trabalhos em andamento no fpm:"
 
 #: ../../source/news/2020/09-01-Fortran-Newsletter-September-2020.md:49
 msgid ""
@@ -22540,7 +22911,7 @@ msgstr "[fortran-lang/benchmarks](https://github.com/fortran-lang/benchmarks),"
 
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:7
 msgid "Fortran newsletter: October 2020"
-msgstr ""
+msgstr "Boletim Fortran: Outubro de 2020"
 
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:9
 msgid ""
@@ -22635,7 +23006,7 @@ msgstr ""
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:47
 #: ../../source/news/2020/12-01-Fortran-Newsletter-December-2020.md:51
 msgid "Otherwise, ongoing discussions continue:"
-msgstr ""
+msgstr "Caso contrário, as discussões em andamento continuam:"
 
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:61
 msgid ""
@@ -22652,6 +23023,8 @@ msgstr ""
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:64
 msgid "[#185](https://github.com/fortran-lang/fpm/issues/185): Update CI workflow"
 msgstr ""
+"[#185](https://github.com/fortran-lang/fpm/issues/185): Atualização no "
+"workflow CI"
 
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:65
 msgid ""
@@ -22664,6 +23037,8 @@ msgid ""
 "[#180](https://github.com/fortran-lang/fpm/issues/180): Recursive source "
 "discovery"
 msgstr ""
+"[#180](https://github.com/fortran-lang/fpm/issues/180): Descoberta recursiva "
+"de fonte"
 
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:67
 msgid ""
@@ -22698,6 +23073,8 @@ msgstr ""
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:72
 msgid "[#170](https://github.com/fortran-lang/fpm/issues/170): Source parsing tests"
 msgstr ""
+"[#170](https://github.com/fortran-lang/fpm/issues/170): Fornece testes de "
+"parsing"
 
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:73
 msgid ""
@@ -22888,7 +23265,7 @@ msgstr "Melhorias adicionais no parser"
 
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:161
 msgid "Initial Fortran modules support"
-msgstr ""
+msgstr "Suporte inicial de módulos Fortran"
 
 #: ../../source/news/2020/10-01-Fortran-Newsletter-October-2020.md:162
 msgid ""
@@ -22916,7 +23293,7 @@ msgstr ""
 
 #: ../../source/news/2020/11-01-Fortran-Newsletter-November-2020.md:7
 msgid "Fortran newsletter: November 2020"
-msgstr ""
+msgstr "Boletim Fortran: Novembro de 2020"
 
 #: ../../source/news/2020/11-01-Fortran-Newsletter-November-2020.md:9
 msgid ""
@@ -23004,7 +23381,7 @@ msgstr ""
 
 #: ../../source/news/2020/11-01-Fortran-Newsletter-November-2020.md:55
 msgid "Otherwise, ongoing discussions continue;"
-msgstr ""
+msgstr "Caso contrário, discussões em andamento continuam;"
 
 #: ../../source/news/2020/11-01-Fortran-Newsletter-November-2020.md:57
 msgid ""
@@ -23159,6 +23536,8 @@ msgid ""
 "[PR#910: Fix f90_correct tests](https://github.com/flang-"
 "compiler/flang/pull/910)"
 msgstr ""
+"[PR#910: Corrige testes f90_correct](https://github.com/flang-compiler/flang/"
+"pull/910)"
 
 #: ../../source/news/2020/11-01-Fortran-Newsletter-November-2020.md:111
 msgid ""
@@ -23433,7 +23812,7 @@ msgstr ""
 
 #: ../../source/news/2020/12-01-Fortran-Newsletter-December-2020.md:7
 msgid "Fortran newsletter: December 2020"
-msgstr ""
+msgstr "Boletim Fortran: Dezembro de 2020"
 
 #: ../../source/news/2020/12-01-Fortran-Newsletter-December-2020.md:9
 msgid ""
@@ -23614,6 +23993,8 @@ msgid ""
 "(WIP) [#251](https://github.com/fortran-lang/fpm/pull/251): Dependency "
 "management."
 msgstr ""
+"(WIP) [#251](https://github.com/fortran-lang/fpm/pull/251): Gerenciamento de "
+"dependência."
 
 #: ../../source/news/2020/12-01-Fortran-Newsletter-December-2020.md:91
 msgid ""
@@ -23712,6 +24093,8 @@ msgid ""
 "[PR#942: Implement UNROLL(n) directive](https://github.com/flang-"
 "compiler/flang/pull/942)"
 msgstr ""
+"[PR#942: Implementa UNROLL(n) directive](https://github.com/flang-compiler/"
+"flang/pull/942)"
 
 #: ../../source/news/2020/12-01-Fortran-Newsletter-December-2020.md:118
 msgid ""
@@ -23897,7 +24280,7 @@ msgstr ""
 
 #: ../../source/news/2021/01-01-Fortran-Newsletter-January-2021.md:7
 msgid "Fortran newsletter: January 2021"
-msgstr ""
+msgstr "Boletim Fortran: Janeiro de 2021"
 
 #: ../../source/news/2021/01-01-Fortran-Newsletter-January-2021.md:9
 msgid ""
@@ -24076,6 +24459,8 @@ msgid ""
 "[Alpha release version 0.1.3](https://github.com/fortran-"
 "lang/fpm/releases/tag/v0.1.3)"
 msgstr ""
+"[Lançamento versão Alfa 0.1.3](https://github.com/fortran-lang/fpm/releases/"
+"tag/v0.1.3)"
 
 #: ../../source/news/2021/01-01-Fortran-Newsletter-January-2021.md:100
 msgid ""
@@ -24118,6 +24503,8 @@ msgstr ""
 #: ../../source/news/2021/01-01-Fortran-Newsletter-January-2021.md:112
 msgid "[#257](https://github.com/fortran-lang/fpm/pull/257): Implement `fpm install`"
 msgstr ""
+"[#257](https://github.com/fortran-lang/fpm/pull/257): Implementa `fpm "
+"install`"
 
 #: ../../source/news/2021/01-01-Fortran-Newsletter-January-2021.md:114
 msgid ""
@@ -24326,7 +24713,7 @@ msgstr ""
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:146
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:164
 msgid "Recent development updates:"
-msgstr ""
+msgstr "Atualizações de desenvolvimento recentes:"
 
 #: ../../source/news/2021/01-01-Fortran-Newsletter-January-2021.md:200
 msgid "Semantic analysis fix for index-names of `FORALL` statements"
@@ -24414,7 +24801,7 @@ msgstr "[fortran-lang/setup-fpm](https://github.com/fortran-lang/setup-fpm)"
 
 #: ../../source/news/2021/02-01-Fortran-Newsletter-February-2021.md:7
 msgid "Fortran newsletter: February 2021"
-msgstr ""
+msgstr "Boletim Fortran: Fevereiro de 2021"
 
 #: ../../source/news/2021/02-01-Fortran-Newsletter-February-2021.md:9
 msgid ""
@@ -24502,6 +24889,8 @@ msgid ""
 "[#335](https://github.com/fortran-lang/fpm/pull/335): Fix: performance "
 "regression"
 msgstr ""
+"[#335](https://github.com/fortran-lang/fpm/pull/335): Correção: regressão de "
+"performance"
 
 #: ../../source/news/2021/02-01-Fortran-Newsletter-February-2021.md:103
 msgid ""
@@ -24534,6 +24923,8 @@ msgid ""
 "[PR#957 Support Prefetch Directive](https://github.com/flang-"
 "compiler/flang/pull/957)"
 msgstr ""
+"[PR#957 Suporte à Diretiva Prefetch](https://github.com/flang-compiler/flang/"
+"pull/957)"
 
 #: ../../source/news/2021/02-01-Fortran-Newsletter-February-2021.md:141
 msgid ""
@@ -24621,7 +25012,7 @@ msgstr ""
 
 #: ../../source/news/2021/02-01-Fortran-Newsletter-February-2021.md:161
 msgid "Internal subprogram improvements"
-msgstr ""
+msgstr "Melhorias nos subprogramas internos"
 
 #: ../../source/news/2021/02-01-Fortran-Newsletter-February-2021.md:162
 msgid ""
@@ -24698,7 +25089,7 @@ msgstr ""
 
 #: ../../source/news/2021/03-01-Fortran-Newsletter-March-2021.md:7
 msgid "Fortran newsletter: March 2021"
-msgstr ""
+msgstr "Boletim Fortran: Março de 2021"
 
 #: ../../source/news/2021/03-01-Fortran-Newsletter-March-2021.md:9
 msgid ""
@@ -24736,6 +25127,8 @@ msgid ""
 "[#196](https://github.com/fortran-lang/fortran-lang.org/pull/196): Update "
 "package index"
 msgstr ""
+"[#196](https://github.com/fortran-lang/fortran-lang.org/pull/196): Atualiza "
+"índice de pacote"
 
 #: ../../source/news/2021/03-01-Fortran-Newsletter-March-2021.md:23
 msgid ""
@@ -24760,6 +25153,8 @@ msgid ""
 "[#208](https://github.com/fortran-lang/fortran-lang.org/pull/208): Fix "
 "package information"
 msgstr ""
+"[#208](https://github.com/fortran-lang/fortran-lang.org/pull/208): Corrige "
+"informação de pacote"
 
 #: ../../source/news/2021/03-01-Fortran-Newsletter-March-2021.md:34
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:35
@@ -24932,7 +25327,7 @@ msgstr ""
 
 #: ../../source/news/2021/03-01-Fortran-Newsletter-March-2021.md:136
 msgid "Recent Merge Requests highlights:"
-msgstr ""
+msgstr "Destaques de Merge Requests Recentes:"
 
 #: ../../source/news/2021/03-01-Fortran-Newsletter-March-2021.md:137
 msgid ""
@@ -24968,6 +25363,8 @@ msgid ""
 "[!648](https://gitlab.com/lfortran/lfortran/-/merge_requests/648): Implement "
 "--show-stacktrace"
 msgstr ""
+"[!648](https://gitlab.com/lfortran/lfortran/-/merge_requests/648): Implement "
+"--show-stacktrace"
 
 #: ../../source/news/2021/03-01-Fortran-Newsletter-March-2021.md:154
 msgid ""
@@ -25063,7 +25460,7 @@ msgstr ""
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:7
 msgid "Fortran newsletter: April 2021"
-msgstr ""
+msgstr "Boletim Fortran: Abril de 2021"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:9
 msgid ""
@@ -25090,6 +25487,9 @@ msgid ""
 "[#225](https://github.com/fortran-lang/fortran-lang.org/pull/225): GSoC "
 "announcement"
 msgstr ""
+"[#223](https://github.com/fortran-lang/fortran-lang.org/pull/223) "
+"[#225](https://github.com/fortran-lang/fortran-lang.org/pull/225): Anúncio "
+"GSoC"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:24
 msgid ""
@@ -25108,6 +25508,8 @@ msgid ""
 "[#216](https://github.com/fortran-lang/fortran-lang.org/pull/216): Improve "
 "tags"
 msgstr ""
+"[#216](https://github.com/fortran-lang/fortran-lang.org/pull/216): Improve "
+"tags"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:30
 msgid ""
@@ -25225,6 +25627,8 @@ msgid ""
 "[Alpha release version 0.2.0](https://github.com/fortran-"
 "lang/fpm/releases/tag/v0.2.0)"
 msgstr ""
+"[Lançamento versão Alpha 0.2.0](https://github.com/fortran-lang/fpm/releases/"
+"tag/v0.2.0)"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:104
 msgid ""
@@ -25253,6 +25657,8 @@ msgstr ""
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:111
 msgid "[#370](https://github.com/fortran-lang/fpm/pull/370): Update run subcommand"
 msgstr ""
+"[#370](https://github.com/fortran-lang/fpm/pull/370): Atualizado subcomando "
+"run"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:113
 msgid ""
@@ -25320,6 +25726,8 @@ msgid ""
 "[#412](https://github.com/fortran-lang/fpm/pull/412): Duplicate module "
 "definitions"
 msgstr ""
+"[#412](https://github.com/fortran-lang/fpm/pull/412): Definições módulo "
+"duplicate"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:136
 msgid ""
@@ -25399,7 +25807,7 @@ msgstr ""
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:179
 msgid "[PR#985 add asprintf](https://github.com/flang-compiler/flang/pull/985)"
-msgstr ""
+msgstr "[PR#985 add asprintf](https://github.com/flang-compiler/flang/pull/985)"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:180
 msgid ""
@@ -25450,6 +25858,7 @@ msgstr ""
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:190
 msgid "[PR#1010 LLVM 12 upgrade](https://github.com/flang-compiler/flang/pull/1010)"
 msgstr ""
+"[PR#1010 LLVM 12 upgrade](https://github.com/flang-compiler/flang/pull/1010)"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:191
 msgid ""
@@ -25475,7 +25884,7 @@ msgstr "Adicionado -fdebug-dump-parsing-log"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:201
 msgid "Add -fdebug-module-writer option"
-msgstr ""
+msgstr "Adicionado opção -fdebug-module-writer"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:202
 msgid "Add debug dump, measure-parse-tree and pre-fir-tree options"
@@ -25491,7 +25900,7 @@ msgstr ""
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:205
 msgid "Fix -fdefault\\* family bug"
-msgstr ""
+msgstr "Corrige -fdefault\\* family bug"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:206
 #: ../../source/news/2021/09-01-Fortran-Newsletter-September-2021.md:186
@@ -25545,15 +25954,15 @@ msgstr ""
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:217
 msgid "2.15.4.2 - Copyprivate clause"
-msgstr ""
+msgstr "2.15.4.2 - Cláusula Copyprivate"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:218
 msgid "2.15.3.4 - Firstprivate clause"
-msgstr ""
+msgstr "2.15.3.4 - Cláusula Firstprivate"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:219
 msgid "2.15.3.5 - Lastprivate clause"
-msgstr ""
+msgstr "2.15.3.5 - Cláusula Lastprivate"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:220
 msgid "Update character tests to use gtest"
@@ -25577,7 +25986,7 @@ msgstr ""
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:225
 msgid "Fix compilation on MinGW-w64"
-msgstr ""
+msgstr "Corrige compilação no MinGW-w64"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:226
 msgid "Extension: forward refs to dummy args under IMPLICIT NONE"
@@ -25631,7 +26040,7 @@ msgstr ""
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:249
 msgid "Many other fixes"
-msgstr ""
+msgstr "Diversas correções"
 
 #: ../../source/news/2021/04-01-Fortran-Newsletter-April-2021.md:251
 msgid ""
@@ -25752,6 +26161,7 @@ msgstr ""
 #: ../../source/news/2021/04-20-First-Year.md:23
 msgid "[Fortran Discourse](https://fortran-lang.discourse.group/) discussion forum"
 msgstr ""
+"[Fortran Discourse](https://fortran-lang.discourse.group/) fórum de discussão"
 
 #: ../../source/news/2021/04-20-First-Year.md:24
 msgid ""
@@ -25783,7 +26193,7 @@ msgstr ""
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:7
 msgid "Fortran newsletter: May 2021"
-msgstr ""
+msgstr "Boletim Fortran: Maio de 2021"
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:9
 msgid ""
@@ -25820,6 +26230,8 @@ msgstr ""
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:38
 msgid "[#391](https://github.com/fortran-lang/stdlib/pull/391): Add issue templates"
 msgstr ""
+"[#391](https://github.com/fortran-lang/stdlib/pull/391): Adiciona modelos de "
+"issue"
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:40
 msgid ""
@@ -25897,6 +26309,7 @@ msgstr ""
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:97
 msgid "[#468](https://github.com/fortran-lang/fpm/pull/468): Identify OpenBSD"
 msgstr ""
+"[#468](https://github.com/fortran-lang/fpm/pull/468): Identifica OpenBSD"
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:99
 msgid "[#465](https://github.com/fortran-lang/fpm/pull/465): Fix typo in README"
@@ -26000,6 +26413,8 @@ msgstr ""
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:155
 msgid "[PR#1030 Update README.md](https://github.com/flang-compiler/flang/pull/1030)"
 msgstr ""
+"[PR#1030 Atualiza README.md](https://github.com/flang-compiler/flang/pull/"
+"1030)"
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:156
 msgid ""
@@ -26058,7 +26473,7 @@ msgstr "Novo Driver"
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:171
 msgid "Add options for -Werror"
-msgstr ""
+msgstr "Adiciona opções para -Werror"
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:172
 #, python-format
@@ -26069,7 +26484,7 @@ msgstr ""
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:173
 msgid "Add support for `-cpp/-nocpp`"
-msgstr ""
+msgstr "Adiciona suporte para `-cpp/-nocpp`"
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:174
 msgid "Fix `-fdebug-dump-provenance`"
@@ -26090,7 +26505,7 @@ msgstr ""
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:178
 msgid "Add support for `-fget-definition`"
-msgstr ""
+msgstr "Adiciona suporte para `-fget-definition`"
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:179
 msgid "Move .f77 to the list of fixed-form file extensions"
@@ -26113,15 +26528,15 @@ msgstr "Implementação de reduções"
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:182
 msgid "Implement numeric intrinsic functions"
-msgstr ""
+msgstr "Implementa funções numéricas intrínsecas"
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:183
 msgid "TRANSFER() intrinsic function"
-msgstr ""
+msgstr "função intrínseca TRANSFER()"
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:184
 msgid "RANDOM_NUMBER, RANDOM_SEED, RANDOM_INIT"
-msgstr ""
+msgstr "RANDOM_NUMBER, RANDOM_SEED, RANDOM_INIT"
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:185
 msgid "Implement IPARITY, PARITY, and FINDLOC reductions"
@@ -26145,7 +26560,7 @@ msgstr ""
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:190
 msgid "Accept & fold IEEE_SELECTED_REAL_KIND"
-msgstr ""
+msgstr "Aceita & dobra IEEE_SELECTED_REAL_KIND"
 
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:191
 msgid "Define missing & needed IEEE_ARITHMETIC symbols"
@@ -26293,7 +26708,7 @@ msgstr ""
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:7
 msgid "Fortran newsletter: June 2021"
-msgstr ""
+msgstr "Boletim Fortran: Junho de 2021"
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:9
 msgid ""
@@ -26331,6 +26746,8 @@ msgid ""
 "[#255](https://github.com/fortran-lang/fortran-lang.org/pull/255) (WIP): "
 "Quickstart edits"
 msgstr ""
+"[#255](https://github.com/fortran-lang/fortran-lang.org/pull/255) (WIP): "
+"Edições no Guia Rápido"
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:42
 msgid ""
@@ -26343,6 +26760,8 @@ msgid ""
 "[#415](https://github.com/fortran-lang/stdlib/pull/415): Corrected Ubuntu "
 "version"
 msgstr ""
+"[#415](https://github.com/fortran-lang/stdlib/pull/415): Corrigido versão "
+"Ubuntu"
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:46
 msgid ""
@@ -26361,6 +26780,8 @@ msgid ""
 "[#355](https://github.com/fortran-lang/stdlib/pull/355): Implement clip "
 "function"
 msgstr ""
+"[#355](https://github.com/fortran-lang/stdlib/pull/355): Implementa função "
+"clip"
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:55
 #: ../../source/news/2021/07-01-Fortran-Newsletter-July-2021.md:81
@@ -26421,6 +26842,8 @@ msgid ""
 "39 Merge Requests "
 "[merged](https://gitlab.com/lfortran/lfortran/-/merge_requests?scope=all&state=merged)"
 msgstr ""
+"39 Merge Requests [merged](https://gitlab.com/lfortran/lfortran/-/"
+"merge_requests?scope=all&state=merged)"
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:133
 msgid "Features that can now be compiled (in the LLVM backend):"
@@ -26432,7 +26855,7 @@ msgstr ""
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:135
 msgid "Runtime: size, lbound, ubound"
-msgstr ""
+msgstr "Runtime: size, lbound, ubound"
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:136
 msgid "Return statement"
@@ -26444,7 +26867,7 @@ msgstr ""
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:138
 msgid "Array initializer expressions"
-msgstr ""
+msgstr "Expressões inicializadoras de matriz"
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:139
 msgid "Features in ASR only (semantics):"
@@ -26472,7 +26895,7 @@ msgstr "Enumerações"
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:145
 msgid "Attributes in `use`"
-msgstr ""
+msgstr "Atributos em `use`"
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:146
 msgid "BOZ constants"
@@ -26504,21 +26927,23 @@ msgstr ""
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:155
 msgid "Gagandeep Singh ([@czgdp1807](https://github.com/czgdp1807))"
-msgstr ""
+msgstr "Gagandeep Singh ([@czgdp1807](https://github.com/czgdp1807))"
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:156
 msgid ""
 "Thirumalai Shaktivel ([@Thirumalai-Shaktivel](https://github.com/Thirumalai-"
 "Shaktivel))"
 msgstr ""
+"Thirumalai Shaktivel ([@Thirumalai-Shaktivel](https://github.com/Thirumalai-"
+"Shaktivel))"
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:157
 msgid "Ondřej Čertík ([@certik](https://github.com/certik))"
-msgstr ""
+msgstr "Ondřej Čertík ([@certik](https://github.com/certik))"
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:158
 msgid "Dominic Poerio ([@dpoe](https://gitlab.com/dpoe))"
-msgstr ""
+msgstr "Dominic Poerio ([@dpoe](https://gitlab.com/dpoe))"
 
 #: ../../source/news/2021/06-01-Fortran-Newsletter-June-2021.md:162
 msgid ""
@@ -26543,7 +26968,7 @@ msgstr ""
 
 #: ../../source/news/2021/07-01-Fortran-Newsletter-July-2021.md:7
 msgid "Fortran newsletter: July 2021"
-msgstr ""
+msgstr "Boletim Fortran: Julho de 2021"
 
 #: ../../source/news/2021/07-01-Fortran-Newsletter-July-2021.md:9
 msgid ""
@@ -26569,6 +26994,8 @@ msgid ""
 "[#255](https://github.com/fortran-lang/fortran-lang.org/pull/255): Quickstart"
 " edits"
 msgstr ""
+"[#255](https://github.com/fortran-lang/fortran-lang.org/pull/255): Edições "
+"no início rápido"
 
 #: ../../source/news/2021/07-01-Fortran-Newsletter-July-2021.md:23
 msgid ""
@@ -26619,6 +27046,7 @@ msgstr ""
 #: ../../source/news/2021/07-01-Fortran-Newsletter-July-2021.md:48
 msgid "[#432](https://github.com/fortran-lang/stdlib/pull/432): Outer product"
 msgstr ""
+"[#432](https://github.com/fortran-lang/stdlib/pull/432): Produto externo"
 
 #: ../../source/news/2021/07-01-Fortran-Newsletter-July-2021.md:50
 msgid ""
@@ -26902,6 +27330,8 @@ msgid ""
 "49 Merge Requests "
 "[merged](https://gitlab.com/lfortran/lfortran/-/merge_requests?scope=all&state=merged)"
 msgstr ""
+"49 Merge Requests [merged](https://gitlab.com/lfortran/lfortran/-/"
+"merge_requests?scope=all&state=merged)"
 
 #: ../../source/news/2021/07-01-Fortran-Newsletter-July-2021.md:167
 msgid "Highlights"
@@ -26986,7 +27416,7 @@ msgstr ""
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:7
 msgid "Fortran newsletter: August 2021"
-msgstr ""
+msgstr "Boletim Fortran: Agosto de 2021"
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:9
 msgid ""
@@ -27000,6 +27430,8 @@ msgid ""
 "[#281](https://github.com/fortran-lang/fortran-lang.org/pull/281): July "
 "newsletter"
 msgstr ""
+"[#281](https://github.com/fortran-lang/fortran-lang.org/pull/281): "
+"newsletter de Julho"
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:19
 msgid ""
@@ -27018,6 +27450,8 @@ msgid ""
 "[#284](https://github.com/fortran-lang/fortran-lang.org/pull/284): PRs script"
 " updates"
 msgstr ""
+"[#284](https://github.com/fortran-lang/fortran-lang.org/pull/284): "
+"Atualizações no script de PRs"
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:25
 msgid ""
@@ -27072,6 +27506,8 @@ msgid ""
 "[#297](https://github.com/fortran-lang/fortran-lang.org/pull/297): Fix "
 "insecure workflow."
 msgstr ""
+"[#297](https://github.com/fortran-lang/fortran-lang.org/pull/297): Corrige "
+"workflow inseguro."
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:56
 #: ../../source/news/2021/09-01-Fortran-Newsletter-September-2021.md:36
@@ -27104,12 +27540,16 @@ msgid ""
 "[#453](https://github.com/fortran-lang/stdlib/pull/453): implemented count "
 "function"
 msgstr ""
+"[#453](https://github.com/fortran-lang/stdlib/pull/453): implementado função "
+"count"
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:64
 msgid ""
 "[#441](https://github.com/fortran-lang/stdlib/pull/441): implemented pad "
 "function"
 msgstr ""
+"[#441](https://github.com/fortran-lang/stdlib/pull/441): implementado função "
+"pad"
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:66
 msgid ""
@@ -27131,7 +27571,7 @@ msgstr ""
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:72
 msgid "[#468](https://github.com/fortran-lang/stdlib/pull/468): Update CI"
-msgstr ""
+msgstr "[#468](https://github.com/fortran-lang/stdlib/pull/468): Atualiza CI"
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:74
 msgid ""
@@ -27253,6 +27693,8 @@ msgstr ""
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:139
 msgid "[#507](https://github.com/fortran-lang/fpm/pull/507): optimize file listing"
 msgstr ""
+"[#507](https://github.com/fortran-lang/fpm/pull/507): otimiza listagem de "
+"arquivos"
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:141
 msgid ""
@@ -27268,7 +27710,7 @@ msgstr ""
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:145
 msgid "[#517](https://github.com/fortran-lang/fpm/pull/517): Fix run"
-msgstr ""
+msgstr "[#517](https://github.com/fortran-lang/fpm/pull/517): Corrige run"
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:147
 msgid ""
@@ -27297,6 +27739,7 @@ msgstr ""
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:158
 msgid "[#521](https://github.com/fortran-lang/fpm/pull/521) (WIP): expand tabs"
 msgstr ""
+"[#521](https://github.com/fortran-lang/fpm/pull/521) (WIP): expande tabelas"
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:160
 msgid ""
@@ -27306,7 +27749,7 @@ msgstr ""
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:182
 msgid "Updates for July 2021:"
-msgstr ""
+msgstr "Atualizações para Julho de 2021:"
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:184
 msgid ""
@@ -27335,7 +27778,7 @@ msgstr ""
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:190
 msgid "Associate construct (ASR, LLVM)"
-msgstr ""
+msgstr "Construto associado (ASR, LLVM)"
 
 #: ../../source/news/2021/08-01-Fortran-Newsletter-August-2021.md:191
 msgid "Compile time evaluation of constant expressions (ASR)"
@@ -27453,7 +27896,7 @@ msgstr ""
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:54
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:107
 msgid "Work in progress"
-msgstr ""
+msgstr "Trabalhos em desenvolvimento"
 
 #: ../../source/news/2021/09-01-Fortran-Newsletter-September-2021.md:22
 msgid ""
@@ -27627,6 +28070,7 @@ msgid ""
 "[#528](https://github.com/fortran-lang/fpm/pull/528): Generate "
 "`build/.gitignore`"
 msgstr ""
+"[#528](https://github.com/fortran-lang/fpm/pull/528): Gera `build/.gitignore`"
 
 #: ../../source/news/2021/09-01-Fortran-Newsletter-September-2021.md:126
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:187
@@ -27713,6 +28157,8 @@ msgstr ""
 #: ../../source/news/2021/09-01-Fortran-Newsletter-September-2021.md:163
 msgid "[#5](https://github.com/fortran-lang/fftpack/pull/5): Add `fftshift/ifftshift`"
 msgstr ""
+"[#5](https://github.com/fortran-lang/fftpack/pull/5): Adiciona `fftshift/"
+"ifftshift`"
 
 #: ../../source/news/2021/09-01-Fortran-Newsletter-September-2021.md:165
 msgid "[#3](https://github.com/fortran-lang/fftpack/pull/3): Add CI: fpm.yml"
@@ -27887,6 +28333,8 @@ msgid ""
 "Gagandeep Singh: "
 "[https://czgdp1807.github.io/2021/08/16/z_final_report.html](https://czgdp1807.github.io/2021/08/16/z_final_report.html)"
 msgstr ""
+"Gagandeep Singh: [https://czgdp1807.github.io/2021/08/16/z_final_report."
+"html](https://czgdp1807.github.io/2021/08/16/z_final_report.html)"
 
 #: ../../source/news/2021/09-01-Fortran-Newsletter-September-2021.md:225
 msgid ""
@@ -27894,12 +28342,17 @@ msgid ""
 "Shaktivel/c2a1aaa5239e792e499eaa8942987519](https://gist.github.com"
 "/Thirumalai-Shaktivel/c2a1aaa5239e792e499eaa8942987519)"
 msgstr ""
+"Thirumalai Shaktivel: [https://gist.github.com/Thirumalai-Shaktivel/"
+"c2a1aaa5239e792e499eaa8942987519](https://gist.github.com/"
+"Thirumalai-Shaktivel/c2a1aaa5239e792e499eaa8942987519)"
 
 #: ../../source/news/2021/09-01-Fortran-Newsletter-September-2021.md:226
 msgid ""
 "Rohit Goswami: [https://rgoswami.me/posts/gsoc21-fin-"
 "reprot/](https://rgoswami.me/posts/gsoc21-fin-reprot/)"
 msgstr ""
+"Rohit Goswami: [https://rgoswami.me/posts/gsoc21-fin-reprot/"
+"](https://rgoswami.me/posts/gsoc21-fin-reprot/)"
 
 #: ../../source/news/2021/09-01-Fortran-Newsletter-September-2021.md:228
 msgid "LFortran 0.12.0 was released on August 15"
@@ -27983,7 +28436,7 @@ msgstr ""
 
 #: ../../source/news/2021/09-01-Fortran-Newsletter-September-2021.md:261
 msgid "Runtime library improvements"
-msgstr ""
+msgstr "Melhorias nas bibliotecas de tempo de execução"
 
 #: ../../source/news/2021/09-01-Fortran-Newsletter-September-2021.md:262
 msgid "Complex intrinsics fixed on all platforms"
@@ -27997,7 +28450,7 @@ msgstr ""
 
 #: ../../source/news/2021/09-01-Fortran-Newsletter-September-2021.md:264
 msgid "More intrinsics implemented"
-msgstr ""
+msgstr "Implementado mais intrínsecos"
 
 #: ../../source/news/2021/09-01-Fortran-Newsletter-September-2021.md:265
 msgid "Initial implementation of classes and methods"
@@ -28090,6 +28543,8 @@ msgstr ""
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:23
 msgid "[#307](https://github.com/fortran-lang/fortran-lang.org/pull/307): Fixed typo"
 msgstr ""
+"[#307](https://github.com/fortran-lang/fortran-lang.org/pull/307): Corrigido "
+"erro de digitação"
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:25
 msgid ""
@@ -28166,6 +28621,8 @@ msgstr ""
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:65
 msgid "[#509](https://github.com/fortran-lang/stdlib/pull/509): fixed typo"
 msgstr ""
+"[#509](https://github.com/fortran-lang/stdlib/pull/509): corrigido erro de "
+"digitação"
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:67
 msgid ""
@@ -28312,7 +28769,7 @@ msgstr ""
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:156
 msgid "[#521](https://github.com/fortran-lang/fpm/pull/521): expand tabs"
-msgstr ""
+msgstr "[#521](https://github.com/fortran-lang/fpm/pull/521): expande tabelas"
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:158
 msgid ""
@@ -28425,7 +28882,7 @@ msgstr ""
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:224
 msgid "OpenMP 5.0 metadirective"
-msgstr ""
+msgstr "metadiretiva OpenMP 5.0"
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:226
 msgid "Change complex type define in runtime for clang-cl"
@@ -28443,7 +28900,7 @@ msgstr ""
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:229
 msgid "COMMAND_ARGUMENT_COUNT runtime implementation"
-msgstr ""
+msgstr "implementação de tempo de execução COMMAND_ARGUMENT_COUNT"
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:230
 msgid "Add POSIX implementation for SYSTEM_CLOCK"
@@ -28485,7 +28942,7 @@ msgstr ""
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:239
 msgid "Accept SIZE(assumed-rank, DIM=n)"
-msgstr ""
+msgstr "Aceita SIZE(assumed-rank, DIM=n)"
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:240
 msgid "Validate SIZE(x,DIM=n) dimension for assumed-size array x"
@@ -28571,7 +29028,7 @@ msgstr ""
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:270
 msgid "Harris M. Snyder"
-msgstr ""
+msgstr "Harris M. Snyder"
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:272
 msgid "Mengjia Lyu"
@@ -28587,7 +29044,7 @@ msgstr ""
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:276
 msgid "Goto (ASR, LLVM)"
-msgstr ""
+msgstr "Goto (ASR, LLVM)"
 
 #: ../../source/news/2021/10-01-Fortran-Newsletter-October-2021.md:277
 msgid "Runtime library improvements: `iand`, `len`, `trim`, `len_trim`"
@@ -28858,7 +29315,7 @@ msgstr ""
 
 #: ../../source/news/2021/11-01-Fortran-Newsletter-November-2021.md:164
 msgid "Add the DoLoopHelper"
-msgstr ""
+msgstr "Adiciona o DoLoopHelper"
 
 #: ../../source/news/2021/11-01-Fortran-Newsletter-November-2021.md:165
 msgid "Add IfBuilder and utility functions"
@@ -28874,7 +29331,7 @@ msgstr ""
 
 #: ../../source/news/2021/11-01-Fortran-Newsletter-November-2021.md:168
 msgid "Add Character helper"
-msgstr ""
+msgstr "Adiciona Character helper"
 
 #: ../../source/news/2021/11-01-Fortran-Newsletter-November-2021.md:169
 msgid "Add utility function to FIRBuilder and MutableBox"
@@ -28904,7 +29361,7 @@ msgstr ""
 
 #: ../../source/news/2021/11-01-Fortran-Newsletter-November-2021.md:174
 msgid "Fix erroneous `&`"
-msgstr ""
+msgstr "Corrige `&` errôneo"
 
 #: ../../source/news/2021/11-01-Fortran-Newsletter-November-2021.md:175
 msgid "Add actions that execute despite semantic errors"
@@ -29057,7 +29514,7 @@ msgstr ""
 
 #: ../../source/news/2021/11-01-Fortran-Newsletter-November-2021.md:217
 msgid "C preprocessor added"
-msgstr ""
+msgstr "Adicionado preprocessador C"
 
 #: ../../source/news/2021/11-01-Fortran-Newsletter-November-2021.md:224
 msgid "We have adopted two new Fortran-lang guidelines:"
@@ -29336,11 +29793,11 @@ msgstr "fir.zero_bits"
 
 #: ../../source/news/2021/12-01-Fortran-Newsletter-December-2021.md:173
 msgid "fir.select and fir.select_rank"
-msgstr ""
+msgstr "fir.select e fir.select_rank"
 
 #: ../../source/news/2021/12-01-Fortran-Newsletter-December-2021.md:174
 msgid "fir.extract_value and fir.insert_value"
-msgstr ""
+msgstr "fir.extract_value e fir.insert_value"
 
 #: ../../source/news/2021/12-01-Fortran-Newsletter-December-2021.md:175
 msgid "types - fir.box, fir.logical, fir.char, fir.ptr"
@@ -29360,7 +29817,7 @@ msgstr "fir.call"
 
 #: ../../source/news/2021/12-01-Fortran-Newsletter-December-2021.md:179
 msgid "fir.store and fir.load"
-msgstr ""
+msgstr "fir.store e fir.load"
 
 #: ../../source/news/2021/12-01-Fortran-Newsletter-December-2021.md:180
 msgid "Add substr information to fircg.ext_embox and fircg.ext_rebox operations"
@@ -29556,7 +30013,7 @@ msgstr ""
 
 #: ../../source/news/2021/12-29-Fortran-lang-2021-in-review.md:24
 msgid "Standard Library (stdlib)"
-msgstr ""
+msgstr "Biblioteca Padrão (stdlib)"
 
 #: ../../source/news/2021/12-29-Fortran-lang-2021-in-review.md:26
 msgid ""
@@ -30013,7 +30470,7 @@ msgstr ""
 
 #: ../../source/news/2021/12-29-Fortran-lang-2021-in-review.md:269
 msgid "Conferences and papers"
-msgstr ""
+msgstr "Conferências e artigos"
 
 #: ../../source/news/2021/12-29-Fortran-lang-2021-in-review.md:271
 msgid "FortranCon 2021"
@@ -30186,6 +30643,8 @@ msgstr ""
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:46
 msgid "[#500](https://github.com/fortran-lang/stdlib/pull/500): Selection algorithms"
 msgstr ""
+"[#500](https://github.com/fortran-lang/stdlib/pull/500): Algoritmos de "
+"seleção"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:48
 msgid ""
@@ -30202,6 +30661,7 @@ msgstr ""
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:52
 msgid "[#590](https://github.com/fortran-lang/stdlib/pull/590): Update changelog"
 msgstr ""
+"[#590](https://github.com/fortran-lang/stdlib/pull/590): Atualiza changelog"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:54
 msgid ""
@@ -30280,6 +30740,8 @@ msgid ""
 "[#603](https://github.com/fortran-lang/stdlib/pull/603): Implement "
 "trueloc/falseloc"
 msgstr ""
+"[#603](https://github.com/fortran-lang/stdlib/pull/603): Implementa trueloc/"
+"falseloc"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:80
 msgid ""
@@ -30384,7 +30846,7 @@ msgstr ""
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:181
 msgid "Add !fir.alloca conversion"
-msgstr ""
+msgstr "Adiciona conversão !fir.alloca"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:182
 msgid "Add placeholder conversion pattern for disptach operations"
@@ -30392,7 +30854,7 @@ msgstr ""
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:183
 msgid "Add fir.select_case conversion"
-msgstr ""
+msgstr "Adiciona conversão fir.select_case"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:184
 msgid "Add !fir.field type conversion"
@@ -30440,11 +30902,11 @@ msgstr ""
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:195
 msgid "Add fir.cmpc conversion"
-msgstr ""
+msgstr "Adiciona conversão fir.cmpc"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:196
 msgid "Add fir.gentypedesc conversion"
-msgstr ""
+msgstr "Adiciona conversão fir.gentypedesc"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:197
 msgid "Transform `fir.boxchar_len` to a sequence of LLVM MLIR"
@@ -30456,7 +30918,7 @@ msgstr ""
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:199
 msgid "Add fir.string_lit conversion"
-msgstr ""
+msgstr "Adiciona conversão fir.string_lit"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:200
 msgid "Add conversion patterns for slice, shape, shapeshift and shift ops"
@@ -30464,19 +30926,19 @@ msgstr ""
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:201
 msgid "Add fir.box_tdesc conversion"
-msgstr ""
+msgstr "Adiciona conversão fir.box_tdesc"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:202
 msgid "!fir.tdesc type conversion"
-msgstr ""
+msgstr "conversão de tipo !fir.tdesc"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:203
 msgid "Add fir.constc conversion"
-msgstr ""
+msgstr "Adiciona conversão fir.constc"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:204
 msgid "Add fir.embox conversion"
-msgstr ""
+msgstr "Adiciona conversão fir.embox"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:205
 msgid "Notify conversion failure for Proc ops, types"
@@ -30500,7 +30962,7 @@ msgstr ""
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:210
 msgid "Add fir.no_reassoc conversion"
-msgstr ""
+msgstr "Adiciona conversão fir.no_reassoc"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:211
 msgid "Set !fir.len_param_index conversion to unimplemented"
@@ -30536,7 +30998,7 @@ msgstr ""
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:219
 msgid "Add fircg.ext_embox conversion"
-msgstr ""
+msgstr "Adiciona conversão fircg.ext_embox"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:220
 msgid "Add fir derived type runtime builder"
@@ -30548,7 +31010,7 @@ msgstr ""
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:222
 msgid "Add fircg.ext_array_coor conversion"
-msgstr ""
+msgstr "Adiciona conversão fircg.ext_array_coor"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:223
 msgid "Upstream conversion of the XRebox Op"
@@ -30698,7 +31160,7 @@ msgstr ""
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:260
 msgid "TargetRewrite: Rewrite fir.address_of(func)"
-msgstr ""
+msgstr "TargetRewrite: Reescreve fir.address_of(func)"
 
 #: ../../source/news/2022/01-01-Fortran-Newsletter-January-2022.md:261
 msgid "Fix folding of EXPONENT() intrinsic function"
@@ -31175,6 +31637,8 @@ msgid ""
 "[Remove unused "
 "SymbolTable::get_hash()](https://gitlab.com/lfortran/lfortran/-/merge_requests/1631)"
 msgstr ""
+"[Remove SymbolTable::get_hash() não usada](https://gitlab.com/lfortran/"
+"lfortran/-/merge_requests/1631)"
 
 #: ../../source/news/2022/02-01-Fortran-Newsletter-February-2022.md:221
 msgid ""
@@ -31356,6 +31820,8 @@ msgid ""
 "[fpm-docs#42](https://github.com/fortran-lang/fpm-docs/issues/42): Dutch "
 "translation"
 msgstr ""
+"[fpm-docs#42](https://github.com/fortran-lang/fpm-docs/issues/42): Tradução "
+"holandês"
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:95
 msgid ""
@@ -31390,7 +31856,7 @@ msgstr ""
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:141
 msgid "Add lowering placeholders"
-msgstr ""
+msgstr "Adiciona campos de baixo nível"
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:142
 msgid "Add lowering for basic empty SUBROUTINE"
@@ -31406,7 +31872,7 @@ msgstr ""
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:145
 msgid "Lower PAUSE statement"
-msgstr ""
+msgstr "Declaração PAUSE de baixo nível"
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:146
 msgid "Add lowering for integer constant"
@@ -31418,7 +31884,7 @@ msgstr ""
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:148
 msgid "Add fir.array_access op"
-msgstr ""
+msgstr "Adiciona fir.array_access op"
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:149
 msgid "Add fir.array_amend operation definition"
@@ -31496,7 +31962,7 @@ msgstr ""
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:167
 msgid "Lower scalar negation"
-msgstr ""
+msgstr "Negação escalar de baixo nível"
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:168
 msgid "Lower basic binary operation for scalars"
@@ -31508,11 +31974,11 @@ msgstr ""
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:170
 msgid "Lower real constant"
-msgstr ""
+msgstr "Constante real de baixo nível"
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:171
 msgid "Lower complex constant"
-msgstr ""
+msgstr "Constante complexa de baixo nível"
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:172
 msgid "Lower function and subroutine calls"
@@ -31552,7 +32018,7 @@ msgstr ""
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:181
 msgid "Lower power operations"
-msgstr ""
+msgstr "Operações de potência de baixo nível"
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:182
 msgid "Add complex operations lowering tests"
@@ -31636,7 +32102,7 @@ msgstr ""
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:204
 msgid "Accept INDEX(..., BACK=array)"
-msgstr ""
+msgstr "Aceita INDEX(..., BACK=array)"
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:205
 msgid "Fix OPEN/WRITE(SIGN='SUPPRESS')"
@@ -31644,7 +32110,7 @@ msgstr "Correção de OPEN/WRITE(SIGN='SUPPRESS')"
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:206
 msgid "Handle FLUSH(unknown unit)"
-msgstr ""
+msgstr "Lida com FLUSH(unknown unit)"
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:207
 msgid "Allow explicit '+' in NAMELIST input subscripts"
@@ -31829,7 +32295,7 @@ msgstr ""
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:255
 msgid "New ASR optimizations"
-msgstr ""
+msgstr "Novas otimizações ASR"
 
 #: ../../source/news/2022/03-09-Fortran-Newsletter-March-2022.md:256
 msgid "Addes support for fma (fused-multiply add) in LLVM"
@@ -32007,7 +32473,7 @@ msgstr ""
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:151
 msgid "Lower inquire statement"
-msgstr ""
+msgstr "Declaração inquire de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:152
 msgid "Handle module in lowering pass"
@@ -32027,7 +32493,7 @@ msgstr ""
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:156
 msgid "Lower sum intrinsic"
-msgstr ""
+msgstr "soma intrínseca de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:157
 msgid "Lower computed and assigned goto"
@@ -32035,7 +32501,7 @@ msgstr ""
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:158
 msgid "Lower associate construct"
-msgstr ""
+msgstr "construção associada de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:159
 msgid "Update ArrayValueCopy to support array_amend and array_access"
@@ -32051,7 +32517,7 @@ msgstr ""
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:162
 msgid "Lower where statement"
-msgstr ""
+msgstr "Declaração \"where\" de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:163
 msgid "Lower general forall statement"
@@ -32075,19 +32541,19 @@ msgstr ""
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:168
 msgid "Lower elemental calls"
-msgstr ""
+msgstr "chamadas elementares de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:169
 msgid "Lower ALL intrinsic"
-msgstr ""
+msgstr "intrínseco ALL de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:170
 msgid "Lower common block"
-msgstr ""
+msgstr "bloco comum de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:171
 msgid "Lower format statement"
-msgstr ""
+msgstr "Declaração \"format\" de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:172
 msgid "Write a pass to annotate constant operands on FIR ops"
@@ -32095,7 +32561,7 @@ msgstr ""
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:173
 msgid "Lower ANY intrinsic"
-msgstr ""
+msgstr "intrínseco ANY de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:174
 msgid "Add support for lowering the dot_product intrinsic"
@@ -32115,15 +32581,15 @@ msgstr ""
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:178
 msgid "Lower entry statement"
-msgstr ""
+msgstr "Declaração de entrada de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:179
 msgid "Lower alternate return"
-msgstr ""
+msgstr "Retorno alternativo de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:180
 msgid "Lower allocated intrinsic"
-msgstr ""
+msgstr "Alocado intrínseco de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:181
 msgid ""
@@ -32137,7 +32603,7 @@ msgstr ""
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:183
 msgid "Lower random\\_[init|number|seed] intrinsics"
-msgstr ""
+msgstr "intrínsecos random\\_[init|number|seed] de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:184
 msgid "Lower date_and_time and cpu_time intrinsics"
@@ -32145,7 +32611,7 @@ msgstr ""
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:185
 msgid "Lower system_clock intrinsic"
-msgstr ""
+msgstr "Intrínseco system_clock de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:186
 msgid "Add support for lowering of the ibset intrinsic"
@@ -32153,7 +32619,7 @@ msgstr ""
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:187
 msgid "Lower transfer instrinsic"
-msgstr ""
+msgstr "Intrínseco transfer de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:188
 msgid "Lower adjustl and adjustr intrinsics"
@@ -32161,7 +32627,7 @@ msgstr ""
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:189
 msgid "Lower count intrinsic"
-msgstr ""
+msgstr "Intrínseco count de baixo nível"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:190
 msgid "Add lowering for the set_exponent intrinsic"
@@ -32295,7 +32761,7 @@ msgstr ""
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:224
 msgid "Fix DYLIB builds"
-msgstr ""
+msgstr "Corrige builds DYLIB"
 
 #: ../../source/news/2022/04-07-Fortran-Newsletter-April-2022.md:225
 msgid "Improve runtime crash messages"
@@ -32501,7 +32967,7 @@ msgstr ""
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:167
 msgid "Lower various intrinsics:"
-msgstr ""
+msgstr "Vários intrínsecos de baixo nível:"
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:168
 msgid ""
@@ -32534,7 +33000,7 @@ msgstr ""
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:174
 msgid "Lower statement function"
-msgstr ""
+msgstr "Declaração de função de baixo nível"
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:175
 msgid "Lower length on character storage"
@@ -32550,11 +33016,11 @@ msgstr ""
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:178
 msgid "Lower procedure designator"
-msgstr ""
+msgstr "Designador de processo de baixo nível"
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:179
 msgid "Lower boxed procedure"
-msgstr ""
+msgstr "Procedimento boxed de baixo nível"
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:180
 msgid "Flush and master constructs"
@@ -32630,7 +33096,7 @@ msgstr ""
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:200
 msgid "Lowering critical construct"
-msgstr ""
+msgstr "Construtor critical à menor nível"
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:201
 msgid "Added assembly format for omp.wsloop and remove parseClauses"
@@ -32684,19 +33150,19 @@ msgstr ""
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:213
 msgid "Lower init/shutdown directive"
-msgstr ""
+msgstr "Diretiva init/shutdown de baixo nível"
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:214
 msgid "Lower update directive"
-msgstr ""
+msgstr "Diretiva update de baixo nível"
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:215
 msgid "Lower data directive"
-msgstr ""
+msgstr "diretiva de dados de baixo nível"
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:216
 msgid "Lower wait directive"
-msgstr ""
+msgstr "diretiva wait de baixo nível"
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:218
 msgid "Error recovery improvement in runtime (IOMSG=)"
@@ -33060,6 +33526,8 @@ msgid ""
 "[Draft: Stdlib "
 "sprint](https://gitlab.com/lfortran/lfortran/-/merge_requests/1719)"
 msgstr ""
+"[Rascunho: sprint Stdlib](https://gitlab.com/lfortran/lfortran/-/"
+"merge_requests/1719)"
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:313
 msgid ""
@@ -33090,6 +33558,8 @@ msgid ""
 "[AST->ASR: Remove "
 "current_body](https://gitlab.com/lfortran/lfortran/-/merge_requests/1720)"
 msgstr ""
+"[AST->ASR: Remove current_body](https://gitlab.com/lfortran/lfortran/-/"
+"merge_requests/1720)"
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:324
 msgid ""
@@ -33196,6 +33666,8 @@ msgid ""
 "[bind(c): Fix "
 "call_fortran_i64](https://gitlab.com/lfortran/lfortran/-/merge_requests/1723)"
 msgstr ""
+"[bind(c): Corrige call_fortran_i64](https://gitlab.com/lfortran/lfortran/-/"
+"merge_requests/1723)"
 
 #: ../../source/news/2022/05-05-Fortran-Newsletter-May-2022.md:347
 msgid ""
@@ -33413,7 +33885,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:167
 msgid "Support for Collapse"
-msgstr ""
+msgstr "Suporte para Collapse"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:168
 msgid "Upstream the lowering of the parallel do combined construct"
@@ -33631,7 +34103,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:221
 msgid "Install Fortran_main library"
-msgstr ""
+msgstr "Instala biblioteca Fortran_main"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:222
 msgid "test conforming & non-conforming lcobound"
@@ -33671,7 +34143,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:234
 msgid "Gagandeep Singh (106):"
-msgstr ""
+msgstr "Gagandeep Singh (106):"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:236
 msgid "Factored out visit_Declaration to visit_DeclarationUtil in CommonVisitor"
@@ -33708,7 +34180,7 @@ msgstr ""
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:332
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:335
 msgid "Updated reference tests"
-msgstr ""
+msgstr "Atualizado testes de referência"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:240
 msgid "Added support for i32 and i64 in repeat"
@@ -34028,7 +34500,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:337
 msgid "Naman Gera (1):"
-msgstr ""
+msgstr "Naman Gera (1):"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:339
 msgid "Update the C runtime library"
@@ -34036,11 +34508,11 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:341
 msgid "Ondřej Čertík (136):"
-msgstr ""
+msgstr "Ondřej Čertík (136):"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:343
 msgid "AST->ASR: Remove current_body"
-msgstr ""
+msgstr "AST->ASR: Remove current_body"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:344
 msgid "Fix a bug in a test"
@@ -34081,7 +34553,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:351
 msgid "bind(c): Fix call_fortran_i64"
-msgstr ""
+msgstr "bind(c): Corrige call_fortran_i64"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:353
 msgid "bind(c): Add a test for i32 by value"
@@ -34093,7 +34565,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:356
 msgid "Make modules_18b.f90 compile"
-msgstr ""
+msgstr "Faz modules_18b.f90 compilar"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:357
 msgid "bind(c): test i64, f32, f64 by value"
@@ -34174,7 +34646,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:381
 msgid "ASR: Represent c_loc()"
-msgstr ""
+msgstr "ASR: Representa c_loc()"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:382
 msgid "Add ASR test for c_loc()"
@@ -34214,7 +34686,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:393
 msgid "Git ignore wasm_visitor.h"
-msgstr ""
+msgstr "Git ignore wasm_visitor.h"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:394
 msgid "Move emit_wat out of LLVM ifdef"
@@ -34236,7 +34708,7 @@ msgstr ""
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:444
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:447
 msgid "Update reference tests"
-msgstr ""
+msgstr "Atualiza os testes de referência"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:399
 msgid "Implement FortranEvaluator::get_wasm()"
@@ -34308,7 +34780,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:418
 msgid "lfortran_intrinsic_string: depend iso_fortran_env"
-msgstr ""
+msgstr "lfortran_intrinsic_string: depende iso_fortran_env"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:419
 msgid "Enable bindc_01 LLVM test"
@@ -34320,7 +34792,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:421
 msgid "Add suffixes 1/2"
-msgstr ""
+msgstr "Adiciona sufixos 1/2"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:422
 msgid "Add a callback2b test"
@@ -34344,7 +34816,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:430
 msgid "Tapasweni Pathak (9):"
-msgstr ""
+msgstr "Tapasweni Pathak (9):"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:432
 msgid "Add markdown sample for intrinsic:math:asin"
@@ -34408,7 +34880,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:450
 msgid "Add wasm_instructions list"
-msgstr ""
+msgstr "Adiciona lista wasm_instructions"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:451
 msgid "Comment out few instructions that have temporary variables"
@@ -34416,7 +34888,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:452
 msgid "Add wasm_instructions_visitor script"
-msgstr ""
+msgstr "Adiciona script wasm_instructions_visitor"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:453
 msgid ""
@@ -34434,7 +34906,7 @@ msgstr ""
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:456
 msgid "Add wasm_to_wat converter"
-msgstr ""
+msgstr "Adiciona conversor wasm_to_wat"
 
 #: ../../source/news/2022/06-09-Fortran-Newsletter-June-2022.md:457
 msgid "Include wasm_to_wat and wasm_utils in CMakeLists.txt"
@@ -34520,7 +34992,7 @@ msgstr ""
 
 #: ../../source/packages.md:16
 msgid "Find a Package"
-msgstr ""
+msgstr "Encontrar um pacote"
 
 #: ../../source/packages.md:28
 msgid "Package index"
@@ -34640,7 +35112,7 @@ msgstr ""
 
 #: ../../source/packages.md:77
 msgid "[Examples and templates](../packages/examples)"
-msgstr ""
+msgstr "[Exemplos e modelos](../packages/examples)"
 
 #: ../../source/packages.md:79 ../../source/packages/examples.md:9
 msgid "Demonstration codes and templates for Fortran"
@@ -34664,7 +35136,7 @@ msgstr ""
 
 #: ../../source/packages.md:89
 msgid "[Characters and strings](../packages/strings)"
-msgstr ""
+msgstr "[Characters e strings](../packages/strings)"
 
 #: ../../source/packages.md:91 ../../source/packages/strings.md:9
 msgid "Libraries for manipulating characters and strings"
@@ -35473,11 +35945,11 @@ msgstr ""
 
 #: ../../source/packages/data-types.md:69
 msgid "Tags:  {bdg-light}`hash`  {bdg-light}`table`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`hash`  {bdg-light}`table`"
 
 #: ../../source/packages/data-types.md:79
 msgid "Fortran template library"
-msgstr ""
+msgstr "Biblioteca Fortran template"
 
 #: ../../source/packages/data-types.md:87
 msgid "Generic containers, versatile algorithms, easy string manipulation, and more"
@@ -35509,7 +35981,7 @@ msgstr ""
 
 #: ../../source/packages/data-types.md:131
 msgid "Lookup Table Fortran"
-msgstr ""
+msgstr "Tabela de Pesquisa Fortran"
 
 #: ../../source/packages/data-types.md:139
 msgid "Linear lookup table implemented in modern Fortran"
@@ -35551,7 +36023,7 @@ msgstr "PSBLAS"
 
 #: ../../source/packages/data-types.md:199 ../../source/packages/numerical.md:793
 msgid "Parallel Sparse BLAS"
-msgstr ""
+msgstr "BLAS Esparso Paralelo"
 
 #: ../../source/packages/data-types.md:202 ../../source/packages/numerical.md:796
 msgid "Tags:  {bdg-light}`linear-algebra`  {bdg-light}`mpi`"
@@ -35696,7 +36168,7 @@ msgstr "Illustrate"
 
 #: ../../source/packages/graphics.md:100
 msgid "Biomolecular Illustration Tool"
-msgstr ""
+msgstr "Ferramenta de Ilustração Biomolecular"
 
 #: ../../source/packages/graphics.md:103
 msgid "Tags:  {bdg-light}`pdb`"
@@ -35923,7 +36395,7 @@ msgstr ""
 
 #: ../../source/packages/interfaces.md:338 ../../source/packages/programming.md:201
 msgid "Tags:  {bdg-light}`posix`  {bdg-light}`libc`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`posix`  {bdg-light}`libc`"
 
 #: ../../source/packages/interfaces.md:348 ../../source/packages/io.md:218
 #: ../../source/packages/libraries.md:157 ../../source/packages/numerical.md:360
@@ -36001,7 +36473,7 @@ msgstr ""
 
 #: ../../source/packages/interfaces.md:469
 msgid "Tags:  {bdg-light}`mpi`  {bdg-light}`fypp`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`mpi`  {bdg-light}`fypp`"
 
 #: ../../source/packages/interfaces.md:479
 msgid "node-fortran"
@@ -36061,7 +36533,7 @@ msgstr ""
 
 #: ../../source/packages/interfaces.md:620
 msgid "Tags:  {bdg-light}`sql`  {bdg-light}`database`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`sql`  {bdg-light}`database`"
 
 #: ../../source/packages/io.md:16
 msgid "atomsk"
@@ -36121,7 +36593,7 @@ msgstr ""
 
 #: ../../source/packages/io.md:107
 msgid "Tags:  {bdg-light}`json`  {bdg-light}`hpc`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`json`  {bdg-light}`hpc`"
 
 #: ../../source/packages/io.md:116 ../../source/packages/strings.md:37
 msgid "Fortran Equation Parser"
@@ -36135,7 +36607,7 @@ msgstr ""
 
 #: ../../source/packages/io.md:127 ../../source/packages/strings.md:48
 msgid "Tags:  {bdg-light}`equation`  {bdg-light}`parser`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`equation`  {bdg-light}`parser`"
 
 #: ../../source/packages/io.md:137
 msgid "fortran-csv-module"
@@ -36240,7 +36712,7 @@ msgstr ""
 
 #: ../../source/packages/io.md:360
 msgid "NPY for Fortran"
-msgstr ""
+msgstr "NPY para Fortran"
 
 #: ../../source/packages/io.md:368
 msgid "Allows saving numerical Fortran arrays in Numpy's .npy or .npz format"
@@ -36286,7 +36758,7 @@ msgstr ""
 
 #: ../../source/packages/io.md:432
 msgid "Tags:  {bdg-light}`logger`  {bdg-light}`mpi`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`logger`  {bdg-light}`mpi`"
 
 #: ../../source/packages/io.md:442
 msgid "Serialbox"
@@ -36338,7 +36810,7 @@ msgstr ""
 
 #: ../../source/packages/libraries.md:58
 msgid "Fortran Astrodynamics Toolkit"
-msgstr ""
+msgstr "Conjunto de Ferramentas Fortran para Astrodinâmica"
 
 #: ../../source/packages/libraries.md:66
 msgid "A Modern Fortran Library for Astrodynamics"
@@ -36372,7 +36844,7 @@ msgstr ""
 
 #: ../../source/packages/libraries.md:186
 msgid "Tags:  {bdg-light}`namelist`  {bdg-light}`args`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`namelist`  {bdg-light}`args`"
 
 #: ../../source/packages/libraries.md:196
 msgid "M_history"
@@ -36547,7 +37019,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:190
 msgid "Tags:  {bdg-light}`pde`  {bdg-light}`fe`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`pde`  {bdg-light}`fe`"
 
 #: ../../source/packages/numerical.md:200
 msgid "ELPA"
@@ -36559,7 +37031,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:206
 msgid "Tags:  {bdg-light}`mpi`  {bdg-light}`gpu`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`mpi`  {bdg-light}`gpu`"
 
 #: ../../source/packages/numerical.md:216 ../../source/packages/scientific.md:442
 msgid "FATODE"
@@ -36749,7 +37221,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:601
 msgid "Tags:  {bdg-light}`finite`  {bdg-light}`difference`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`finite`  {bdg-light}`difference`"
 
 #: ../../source/packages/numerical.md:632
 msgid "ODEPACK"
@@ -36822,7 +37294,7 @@ msgstr ""
 
 #: ../../source/packages/numerical.md:759
 msgid "Tags:  {bdg-light}`fft`  {bdg-light}`poisson`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`fft`  {bdg-light}`poisson`"
 
 #: ../../source/packages/numerical.md:769
 msgid "PROPACK"
@@ -37024,7 +37496,7 @@ msgstr ""
 
 #: ../../source/packages/programming.md:89
 msgid "Tags:  {bdg-light}`errors`  {bdg-light}`logging`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`errors`  {bdg-light}`logging`"
 
 #: ../../source/packages/programming.md:98
 msgid "f90wrap"
@@ -37044,7 +37516,7 @@ msgstr "findent"
 
 #: ../../source/packages/programming.md:122
 msgid "Indents/beautifies/converts Fortran sources"
-msgstr ""
+msgstr "Fontes Fortran de Indentações/embelezadores/conversores"
 
 #: ../../source/packages/programming.md:135
 msgid "FORD"
@@ -37131,7 +37603,7 @@ msgstr ""
 #: ../../source/packages/programming.md:319
 #: ../../source/packages/programming.md:403
 msgid "Tags:  {bdg-light}`unit`  {bdg-light}`testing`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`unit`  {bdg-light}`testing`"
 
 #: ../../source/packages/programming.md:329
 msgid "gFTL"
@@ -37166,7 +37638,7 @@ msgstr ""
 
 #: ../../source/packages/programming.md:382
 msgid "Tags:  {bdg-light}`hip`  {bdg-light}`rocm`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`hip`  {bdg-light}`rocm`"
 
 #: ../../source/packages/programming.md:392
 msgid "pFUnit"
@@ -37207,7 +37679,7 @@ msgstr ""
 
 #: ../../source/packages/programming.md:481
 msgid "Tags:  {bdg-light}`testing`  {bdg-light}`assert`"
-msgstr ""
+msgstr "Tags:  {bdg-light}`testing`  {bdg-light}`assert`"
 
 #: ../../source/packages/scientific.md:32
 msgid "ABINIT"
@@ -37532,7 +38004,7 @@ msgstr "FMS"
 
 #: ../../source/packages/scientific.md:528
 msgid "Flexible Modeling System"
-msgstr ""
+msgstr "Sistema de Modelagem Flexível"
 
 #: ../../source/packages/scientific.md:538
 msgid "freeCappuccino"
@@ -37588,7 +38060,7 @@ msgstr "libmbd"
 
 #: ../../source/packages/scientific.md:679
 msgid "Many-body dispersion library"
-msgstr ""
+msgstr "Biblioteca de dispersão de muitos corpos"
 
 #: ../../source/packages/scientific.md:682
 msgid "Tags:  {bdg-light}`dispersion-correction`"
@@ -37628,7 +38100,7 @@ msgstr "MOM6"
 
 #: ../../source/packages/scientific.md:769
 msgid "Modular Ocean Model"
-msgstr ""
+msgstr "Modelo de Oceano Modular"
 
 #: ../../source/packages/scientific.md:779
 msgid "MPAS-Model"
@@ -37997,7 +38469,7 @@ msgstr "M_strings"
 
 #: ../../source/packages/strings.md:103
 msgid "Fortran string manipulations"
-msgstr ""
+msgstr "Manipulações de string em Fortran"
 
 #: ../../source/packages/strings.md:106
 msgid ""
@@ -38021,7 +38493,7 @@ msgstr "StringiFor"
 
 #: ../../source/packages/strings.md:140
 msgid "Fortran strings manipulator"
-msgstr ""
+msgstr "Manipulador de strings em Fortran"
 
 #: ../../source/packages/strings.md:143
 msgid ""
