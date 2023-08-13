@@ -1,19 +1,39 @@
 from sphinx.directives.code import CodeBlock, parselinenos, dedent_lines, container_wrapper, logger
 import urllib.parse
-import requests
-from requests.structures import CaseInsensitiveDict
 from docutils import nodes
+import subprocess
 
-url = "https://play-api.fortran-lang.org/run"
 
-headers = CaseInsensitiveDict()
-headers["Accept"] = "application/json"
-headers["Content-Type"] = "application/json"
-data_dict = {"code":"","programInput":"","libs":["stdlib"]}
-comp_error = [b"<ERROR>",b"Error",b"app/main.f90",b"<h1>Bad Request</h1>"]
+comp_error = ["<ERROR>","Error","app/main.f90","<h1>Bad Request</h1>"]
 
 
 class PlayCodeBlock(CodeBlock):
+
+    def compile_and_execute_fortran(self,fortran_code, filename="code.f90"):
+        with open(filename, "w") as f:
+            f.write(fortran_code)
+
+        compile_command = ["gfortran", filename]
+        compile_result = subprocess.run(compile_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+        if compile_result.returncode == 0:
+            print("Compilation successful!")
+            
+            execute_command = ["./a.out"]
+            execute_result = subprocess.run(execute_command, input="", stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+            if execute_result.returncode == 0:
+                print("Execution successful!")
+                print(execute_result.stdout)
+                return execute_result.stdout
+            else:
+                print("Execution failed.")
+                print(execute_result.stderr)
+                return execute_result.stderr
+        else:
+            print("Compilation failed.")
+            print(compile_result.stderr)
+            return compile_result.stderr
 
     def run(self):
         document = self.state.document
@@ -68,11 +88,8 @@ class PlayCodeBlock(CodeBlock):
             return [document.reporter.warning(exc, line=self.lineno)]
         if "end program" not in code:
             code = code+"\nend program"
-        data_dict['code'] = code
-        resp = requests.post(url, headers=headers, json=data_dict)
-        print(resp.content)
-        #print([i in resp.content  for i in comp_error])
-        if any(i in resp.content for i in comp_error):
+        resp = self.compile_and_execute_fortran(code)
+        if any(i in str(resp) for i in comp_error):
             #print("original")
             return [*super().run()]
         else:
