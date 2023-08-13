@@ -32,6 +32,8 @@ data_files = {
     "intrinsics": pathlib.Path(root, "data", "intrinsics.yml"),
 }
 
+sys.path.insert(0, str(root / "extensions"))
+
 if not all(data.exists() for data in data_files.values()):
     sys.path.insert(0, str(root.absolute()))
     # pylint: disable=import-error, unused-import
@@ -68,7 +70,9 @@ extensions = [
     "sphinx_copybutton",
     "sphinx.ext.intersphinx",
     "sphinx_jinja",
+    "fortran_playground",
     "sphinx_favicon",
+
 ]
 
 myst_enable_extensions = [
