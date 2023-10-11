@@ -29,8 +29,8 @@ jobs:
               | jq -r '.state')
             echo "PR ${pr_folder::-1} is $pr_status"
             if [ "$pr_status" != "open" ]; then
-              rm -rf "$pr_folder"
-              echo "Removed folder $pr_folder for closed PR $pr_number"
+              rm -rf "pr/${pr_folder::-1}"
+              echo "Removed folder pr/${pr_folder::-1} for closed PR ${pr_folder::-1}"
             fi
           done
       
@@ -39,6 +39,6 @@ jobs:
         with:
           committer_email: 53436240+fortran-lang@users.noreply.github.com
           committer_name: Fortran
-          message: "Sphinx build cleanup pr/${{github.event.issue.number}}"
+          message: "Sphinx build cleanup pr/"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
