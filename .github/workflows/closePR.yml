@@ -18,20 +18,15 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: gh-pages
-
-      - name: List PR previews
-        id: pr-no
-        run: |
-          pr_folders=($(ls -d pr/*))
-          echo "::set-output name=pr_folders::${pr_folders[*]}"
           
       - name: Iterate and Check PRs
         id: iterate-prs
         run: |
-          for pr_folder in ${{ steps.pr-no.outputs.pr_folders }}; do
+          pr_folders=($(cd pr && ls -d */))
+          for pr_folder in "${pr_folders[@]}"; do
             pr_number=$(basename $pr_folder)
             pr_status=$(curl -s -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-              -X GET "https://api.github.com/repos/${{ github.repository }}/pulls/123" \
+              -X GET "https://api.github.com/repos/${{ github.repository }}/pulls/${pr_folder::-1}" \
               | jq -r '.state')
             echo "PR $pr_number is $pr_status"
             if [ "$pr_status" != "open" ]; then
