@@ -14,7 +14,7 @@
 ## Setup
 
 ### Build fortran-lang.org site (Sphinx Version)
-
+ 
 This assumes that you already have a recent version of python
 For example on Ubuntu 20.04, do:
 
