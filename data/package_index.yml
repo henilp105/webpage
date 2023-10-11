@@ -119,6 +119,14 @@
 
 # --- Interfaces ---
 
+- name: FTorch
+  github: Cambridge-ICCS/FTorch
+  description: Allows users to interface into the PyTorch machine learning library
+  categories: interfaces numerical scientific
+  tags:
+  license:
+  version: none
+
 - name: forpy
   github: ylikx/forpy
   description: allows you to use Python features in Fortran
