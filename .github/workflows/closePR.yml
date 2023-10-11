@@ -20,6 +20,7 @@ jobs:
           ref: gh-pages
           
       - name: Iterate and Check PRs
+        id: pr_check
         run: |
           pr_folders=($(cd pr && ls -d */))
           closed_pr=()
@@ -34,12 +35,13 @@ jobs:
               echo "Removed folder pr/${pr_folder::-1} for closed PR ${pr_folder::-1}"
             fi
           done
+          echo "${closed_pr[*]}" >> $GITHUB_STATE
       
       - name: Commit and push to gh-pages
         uses: EndBug/add-and-commit@v9.1.3
         with:
           committer_email: 53436240+fortran-lang@users.noreply.github.com
           committer_name: Fortran
-          message: "Sphinx build cleanup pr/${closed_pr[@]}"
+          message: "Sphinx build cleanup pr/${{ steps.pr_check.outputs.closed_pr }}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
