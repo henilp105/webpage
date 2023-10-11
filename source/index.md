@@ -9,7 +9,7 @@ Fortran <br> High-performance parallel programming language
 :::
 
 :::{div} sd-text-center sd-fs-4
-{bdg-link-primary}`Get started <learn/>`
+{bdg-link-primary}`playGet started <learn/>`
 :::
 
 :::{div} sd-fs-3 sd-font-weight-bold sd-text-primary
