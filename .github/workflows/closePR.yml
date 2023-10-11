@@ -40,6 +40,6 @@ jobs:
         with:
           committer_email: 53436240+fortran-lang@users.noreply.github.com
           committer_name: Fortran
-          message: "Sphinx build cleanup pr/$closed_pr[@]"
+          message: "Sphinx build cleanup pr/${closed_pr[@]}"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
