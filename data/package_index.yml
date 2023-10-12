@@ -1521,6 +1521,13 @@
   tags: hpc earthquakes dynamic-rupture
   license: BSD-3-Clause
 
+- name: MOKIT
+  gitlab: jxzou/mokit
+  description: Molecular orbital transfer utilities and automatic multi-reference calculations
+  categories: scientific
+  tags: electronic-structure quantum-chemistry casscf
+  license: Apache-2.0
+
 # --- Examples / demos / templates ---
 
 - name: Fortran 2018 examples
