@@ -36,5 +36,5 @@ jobs:
           title: 'Monthly newsletter'
           body: |
             Monthly newsletter
-          reviewers: awvwgk certik milancurcic gnikit
+          reviewers: awvwgk, certik, milancurcic, gnikit
 
