@@ -89,7 +89,7 @@ repos = [
     "j3-fortran/fortran_proposals",
 ]
 
-with open("newsletter_template.md", "r") as f:
+with open("newsletter/newsletter_template.md", "r") as f:
     newsletter = f.read()
 
 updates = []
