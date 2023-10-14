@@ -110,7 +110,7 @@ for i in newsletter_data:
     )
 
 
-directory = "../source/news/"
+directory = "source/news/"
 folder_path = os.path.join(directory, f"{year}")
 
 if not os.path.exists(folder_path):
