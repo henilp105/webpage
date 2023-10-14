@@ -87,6 +87,8 @@ repos = [
     "fortran-lang/test-drive",
     "fortran-lang/vscode-fortran-support",
     "j3-fortran/fortran_proposals",
+    "lfortran/lcompilers_frontend",
+    "lfortran/lfortran",
 ]
 
 with open("newsletter/newsletter_template.md", "r") as f:
