@@ -23,7 +23,7 @@ jobs:
         run: pip3 install --user -r requirements.txt
 
       - name: newsletter
-        run: python newsletter/newsletter.py
+        run: python newsletter/newsletter.py ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
