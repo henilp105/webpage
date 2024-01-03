@@ -10,6 +10,7 @@ Here's a list of the most popular text editors that support Fortran syntax, in a
 - [SublimeText](https://www.sublimetext.com/)
 - [Vim](https://www.vim.org/) and [Neovim](https://neovim.io/)
 - [Visual Studio Code](https://code.visualstudio.com/)
+- [Notepad3](https://www.rizonesoft.com/downloads/notepad3/)
 
 A comprehensive list with more choices is provided in [fortranwiki.org](http://fortranwiki.org/fortran/show/Source+code+editors).
 

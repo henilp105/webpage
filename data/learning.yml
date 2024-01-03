@@ -593,3 +593,11 @@ reference-books:
     edition: 1st ed
     location: Reading
     publisher: Addison-Wesley Professional
+
+  - author: Juan Antonio Hernandez Ramos and Javier Escoto Lopez
+    year: 2020
+    title: "How to learn Applied Mathematics through modern Fortran"
+    url: https://www.amazon.com/Applied-Mathematics-through-modern-FORTRAN/dp/B0851LN6HT
+    edition: 1st ed
+    location: Madrid
+    publisher: Independently published
