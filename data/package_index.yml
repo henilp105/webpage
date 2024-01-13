@@ -1067,6 +1067,12 @@
   categories: numerical
   tags: quadpack quadpack2 integrals
 
+- name: qr_mumps
+  gitlab: qr_mumps/qr_mumps
+  description: A parallel multifrontal solver for sparse linear systems based on QR and Cholesky decomposition
+  categories: numerical
+  tags: QR Cholesky sparse multifrontal least-squares
+  
 # --- Scientific codes ---
 
 - name: astro-fortran

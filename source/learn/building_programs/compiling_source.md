@@ -9,7 +9,7 @@ same source code and the naming conventions are different.
 The consequences:
 
 - If you use a particular compiler for one source file, you need to use
-  the same compiler (or a compatible one) for all other pieces. After
+  that same compiler (or a compatible one) for all other pieces. After
   all, a program may be built from many different source files and the
   compiled pieces have to cooperate.
 - Each source file will be compiled and the result is stored in a file
@@ -18,13 +18,13 @@ The consequences:
 
 Compilers are complex pieces of software: they have to understand the
 language in much more detail and depth than the average programmer. They
-also need to understand the inner working of the computer. And then,
+also need to understand the inner workings of the computer. And then,
 over the years they have been extended with numerous options to
 customise the compilation process and the final program that will be
 built.
 
 But the basics are simple enough. Take the gfortran compiler, part of
-the GNU compiler collection. To compile a simple program as the one
+the GNU compiler collection. To compile a simple program like the one
 above, that consists of one source file, you run the following command,
 assuming the source code is stored in the file "hello.f90":
 
