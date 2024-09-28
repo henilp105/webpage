@@ -145,8 +145,7 @@ html_theme_options = {
     "navbar_align": "right",
     "navbar_start": ["navbar-logo","theme-switcher.html","version-switcher"],
     "switcher": {
-        # "json_url":"https://fortran-lang.org/", 
-        "json_url": "_static/data.json",  
+        "json_url": "_static/data.json",  # shifted to custom local switcher
         "version_match": language,
     },
     "primary_sidebar_end": ["inpage_toc.html"],
