@@ -74,7 +74,7 @@ and allow for easier community collaboration.
 
 Find out more about Modern Fortran for Visual Studio Code on
 [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=fortran-lang.linter-gfortran)
-and on [GitHub](httos://github.com/fortran-lang/vscode-fortran-support).
+and on [GitHub](https://github.com/fortran-lang/vscode-fortran-support).
 
 ### fortls
 

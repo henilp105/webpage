@@ -141,14 +141,15 @@ html_theme_options = {
     "show_prev_next": False,
     "show_nav_level": 1,
     "show_toc_level": 0,
-    "footer_items": ["copyright"],
+    "footer_end": ["copyright"],
     "navbar_align": "right",
     "navbar_start": ["navbar-logo","theme-switcher.html","version-switcher"],
     "switcher": {
-        "json_url":"https://fortran-lang.org/",   
+        # "json_url":"https://fortran-lang.org/", 
+        "json_url": "_static/data.json",  
         "version_match": language,
     },
-    "page_sidebar_items": ["inpage_toc.html"],
+    "primary_sidebar_end": ["inpage_toc.html"],
     "navbar_end": ["navbar-icon-links",  "search-field.html"],
     "search_bar_text": "Search",
     "icon_links": [
@@ -177,14 +178,14 @@ html_theme_options = {
 
 html_sidebars = {
     "news": [
-        "tagcloud.html",
-        "archives.html",
-        "recentposts.html",
+        "ablog/tagcloud.html",
+        "ablog/archives.html",
+        "ablog/recentposts.html",
     ],
     "news/**": [
-        "postcard.html",
-        "recentposts.html",
-        "archives.html",
+        "ablog/postcard.html",
+        "ablog/recentposts.html",
+        "ablog/archives.html",
     ],
     "learn/**": ["sidebar-nav-bs.html"],
     "learn": [],
