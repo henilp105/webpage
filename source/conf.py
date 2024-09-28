@@ -121,6 +121,7 @@ jinja_contexts = {
 # a list of builtin themes.
 #
 html_theme = "pydata_sphinx_theme"
+html_show_sourcelink = False
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -143,13 +144,14 @@ html_theme_options = {
     "show_toc_level": 0,
     "footer_end": ["copyright"],
     "navbar_align": "right",
-    "navbar_start": ["navbar-logo","theme-switcher.html","version-switcher"],
+    "navbar_start": ["navbar-logo","theme-switcher.html"],
     "switcher": {
         "json_url": "_static/data.json",  # shifted to custom local switcher
         "version_match": language,
     },
-    "primary_sidebar_end": ["inpage_toc.html"],
-    "navbar_end": ["navbar-icon-links",  "search-field.html"],
+    "primary_sidebar_end": [],
+    "secondary_sidebar_items": ["inpage_toc.html"],
+    "navbar_end": ["navbar-icon-links","version-switcher"],
     "search_bar_text": "Search",
     "icon_links": [
         {
