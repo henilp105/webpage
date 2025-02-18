@@ -1,0 +1,1181 @@
+
+<!DOCTYPE html>
+
+
+<html lang="pl" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="256x256" href="../../../_static/images/favicon.ico" type="image/x-icon">
+    <title>Narzędzia do kompilacji &#8212; Fortran Programming Language</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=eaa92f49" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=90f43865"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/translations.js?v=4c397337"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'learn/building_programs/build_tools';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '_static/data.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'pl';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="canonical" href="https://fortran-lang.org/en/learn/building_programs/build_tools/" />
+    <link rel="index" title="Indeks" href="../../../genindex/" />
+    <link rel="search" title="Szukaj" href="../../../search/" />
+    <link rel="next" title="An introduction to make" href="../project_make/" />
+    <link rel="prev" title="Managing libraries (static and dynamic libraries)" href="../managing_libraries/" /> 
+<meta
+  name="description"
+  content="Fortran : High-performance parallel programming language"
+/>
+<meta
+  name="keywords"
+  content="High-performance, parallel, programming language"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  var pr_number = -1;
+  $(document).ready(function () {
+    if (window.location.href.indexOf("/pr/") > -1) {
+      pr_number = window.location.href.split("/").indexOf("pr") + 1;
+      document.getElementById("pr").innerHTML =
+        "pull request " + window.location.href.split("/")[pr_number];
+      document.getElementById("pr").href =
+        "https://github.com/fortran-lang/webpage/pull/" +
+        window.location.href.split("/")[pr_number];
+      var banner = document.getElementById("banner");
+      banner.style.display = "block";
+    }
+  });
+</script>
+<div id="banner" style="display: none" class="container">
+  <h3>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-git-pull-request"
+    >
+      <circle cx="18" cy="18" r="3"></circle>
+      <circle cx="6" cy="6" r="3"></circle>
+      <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+      <line x1="6" y1="9" x2="6" y2="21"></line>
+    </svg>
+    <b>Site preview: </b>you are previewing unpublished changes for
+    <a id="pr"></a>
+  </h3>
+</div> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../news/atom.xml"
+  title="Blog"
+/>
+ 
+<link href="True" rel="stylesheet" />
+ 
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/fortran-logo-256x256.png" class="logo__image only-light" alt="Fortran Programming Language - Home"/>
+    <img src="../../../_static/fortran-logo-256x256.png" class="logo__image only-dark pst-js-only" alt="Fortran Programming Language - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../">
+    Naucz się
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../compilers/">
+    Kompilatory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../community/">
+    Społeczność
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../packages/">
+    Packages
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../news/">
+    News
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Szukaj" aria-label="Szukaj" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Szukaj</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Szukaj" aria-label="Szukaj" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Szukaj</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../">
+    Naucz się
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../compilers/">
+    Kompilatory
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../community/">
+    Społeczność
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../packages/">
+    Packages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../news/">
+    News
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../os_setup/">Setting up your OS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/choose_compiler/">Choosing a compiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/install_gfortran/">Installing GFortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/text_editors/">Text Editors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/ides/">IDEs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/tips/">Smart Tips</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../quickstart/">Quickstart tutorial</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/hello_world/">Hello world</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/variables/">Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/arrays_strings/">Arrays and strings</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/operators_control_flow/">Operators and flow control</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/organising_code/">Organising code structure</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/derived_types/">Derived Types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/gotchas/">Gotchas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Building programs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../compiling_source/">Kompilowanie kodu źródłowego</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linking_pieces/">Linking the objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Run-time libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../include_files/">Include files and modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_libraries/">Managing libraries (static and dynamic libraries)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Narzędzia do kompilacji</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project_make/">An introduction to make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributing/">Distributing your programs</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../best_practices/">Najlepsze praktyki Fortran</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/style_guide/">Przewodnik stylu Fortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/floating_point/">Liczby zmiennoprzecinkowe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/integer_division/">Dzielenie całkowite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/modules_programs/">Moduły i programy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/arrays/">Tablice</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/multidim_arrays/">Tablice wielowymiarowe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/element_operations/">Operacje na tablicach z uwzględnieniem elementów</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/allocatable_arrays/">Tablice możliwe do przydzielenia</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/file_io/">Informacje wejściowe/wyjściowe pliku</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/callbacks/">Wywołania zwrotne (callbacks)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/type_casting/">Rzutowanie typów w wywołaniach zwrotnych</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intrinsics/">Fortran Intrinsics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/array/">Properties and attributes of arrays</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/bit/">Bit-level inquiry and manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/character/">Basic procedures for manipulating <em>character</em> variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/compiler/">Information about compiler and compiler options used for building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/cfi/">Procedures for binding to C interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/math/">General mathematical functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/model/">Controlling and querying the current numeric model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/numeric/">Manipulation and properties of numeric values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/parallel/">Parallel programming using co_arrays and co_indexed arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/state/">General and miscellaneous intrinsics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/system/">Accessing external system information</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/transform/">Matrix multiplication, dot product, and array shifts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/type/">Types and kinds</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.gnu.org/licenses/old-licenses/fdl-1.2.en.html">GNU Free Documentation License</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rosetta_stone/">Python Fortran Rosetta Stone</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../oop_features_in_fortran/">Putting Fortran’s object-related features to practical use</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/object_based_programming_techniques/">Object-based programming techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/object_oriented_programming_techniques/">Object-oriented programming techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/performance_and_ease_of_use/">Performance and ease of use</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../" class="nav-link">Naucz się</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../" class="nav-link">Building programs</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Narzędzia do kompilacji</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="build-tools">
+<h1>Narzędzia do kompilacji<a class="headerlink" href="#build-tools" title="Link to this heading">#</a></h1>
+<p>Kompilowanie twojego projektu Fortran ręcznie może być dość skomplikowane w zależności od liczby plików źródłowych i współzależności w module. Obsługa różnych kompilatorów i programów łączących lub różnych platform może stawać się coraz bardziej skomplikowana dopóki nie zostaną użyte odpowiednie narzędzia do automatycznego wykonania tych zadań.</p>
+<p>W zależności od rozmiaru twojego projektu i jego celu użyte mogą być różne narzędzia do automatyzacji kompilacji.</p>
+<p>Na początek, twoje zintegrowane środowisko programistyczne prawdopodobnie zapewnia sposób na skompilowanie twojego programu. Popularnym międzyplatformowym narzędziem jest Microsoft <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">Visual Studio Code</a>, ale istnieją również inne, takie jak <a href="https://atom.io/" target="_blank" rel="noopener">Atom</a>, <a href="https://www.eclipse.org/photran/" target="_blank" rel="noopener">Eclipse Photran</a> oraz <a href="http://www.codeblocks.org/" target="_blank" rel="noopener">Code::Blocks</a>. Oferują one graficzny interfejs użytkownika, ale często są bardzo specyficzne dla kompilatora i platformy.</p>
+<p>Dla mniejszych projektów powszechnym wyborem kompilacji programu jest system regułowy <code class="docutils literal notranslate"><span class="pre">make</span></code>. Bazując na zdefiniowanych zasadach może wykonywać takie działania jak (re)kompilowanie plików obiektów z zaktualizowanych plików, tworzyć biblioteki oraz łączyć pliki wykonywalne. Aby użyć <code class="docutils literal notranslate"><span class="pre">make</span></code> w twoim projekcie musisz zakodować te reguły w <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, który definiuje współzależności finałowego programu, pośrednich obiektów oraz bibliotek i plików źródłowych. Krótkie wprowadzenie do tematu znajdziesz w <a class="reference internal" href="#using-make-as-build-tool">przewodniku po <code class="docutils literal notranslate"><span class="pre">make</span></code></a>.</p>
+<p>Narzędzia konserwacyjne takie jak autotools i CMake mogą generować Makefiles lub pliki Visual Studio za pośrednictwem opisów wysokiego poziomu. Odbiegają one od specyfiki kompilatora i platformy.</p>
+<p>To, na które z tych narzędzi będzie najlepsze dla twojego projektu zależy od wielu czynników. Wybierz narzędzie do kompilacji, z którym będzie ci się komfortowo pracować, nie powinno przeszkadzać ci podczas programowania. Poświęcanie większej ilości czasu na walkę z narzędziami do kompilacji niż na faktycznemu tworzeniu programu może szybko stać się frustrujące.</p>
+<p>Zwróć również uwagę na dostępność twoich narzędzi do kompilacji. Jeśli są ograniczone do specyficznego zintegrowanego środowiska, czy wszyscy deweloperzy w twoim projekcie będą mieć dostęp do nich? Jeśli używasz konkretnego systemu kompilacji, czy działa on na wszystkich platformach, na które tworzysz program? Jak duża jest bariera wejścia twoich narzędzi do kompilacji? Rozważ również krzywą uczenia się dla narzędzi do kompilacji, idealne narzędzie do kompilacji będzie bezużyteczne jeśli najpierw musisz nauczyć się skomplikowanego języka programowania, aby dodać nowy plik źródłowy. Na koniec, zobacz czego używają inne projekty, takie, których używasz jako zależności i te które używają (lub będą używać) twojego projektu jako zależności.</p>
+<section id="using-make-as-build-tool">
+<h2>Korzystanie z make jako narzędzia do kompilacji<a class="headerlink" href="#using-make-as-build-tool" title="Link to this heading">#</a></h2>
+<p>Najbardziej znanym i powszechnie używanym systemem kompilacji jest system <code class="docutils literal notranslate"><span class="pre">make</span></code>. Wykonuje działania na podstawie zasad zdefiniowanych w pliku konfiguracyjnym nazywanym <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> lub <code class="docutils literal notranslate"><span class="pre">makefile</span></code>, który zazwyczaj prowadzi do skompilowania programu z dostarczonego kodu źródłowego.</p>
+<div class="admonition tip">
+<p class="admonition-title">Wskazówka</p>
+<p>Aby zobaczyć szczegółowy poradnik do <code class="docutils literal notranslate"><span class="pre">make</span></code> odwiedź jego stronę informacyjną. Wersja online jego strony informacyjnej jest dostępna <a href="https://www.gnu.org/software/make/manual/make.html" target="_blank" rel="noopener">tutaj</a>.</p>
+</div>
+<p>Zaczniemy od podstaw z początkowego folderu źródłowego. Utwórz i otwórz plik <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, zaczniemy od prostej zasady <em>all</em>:</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nf">all</span><span class="o">:</span>
+<span class="w">	</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Po zapisaniu <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> otwórz go poprzez wykonanie <code class="docutils literal notranslate"><span class="pre">make</span></code> w tym samym folderze. Powinieneś zobaczyć następujący wynik:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>echo &quot;all&quot;
+all
+</pre></div>
+</div>
+<p>Po pierwsze zauważmy, że <code class="docutils literal notranslate"><span class="pre">make</span></code> zastępuje nazwę reguły <code class="docutils literal notranslate"><span class="pre">$&#64;</span></code>. Po drugie, zauważmy, że <code class="docutils literal notranslate"><span class="pre">make</span></code> zawsze drukuje polecenie, które wykonuje. Na koniec widzimy rezultat wykonania <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">&quot;all&quot;</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Zgodnie z konwencją punkt wejścia naszego pliku <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> powinien nazywać się <em>all</em>, ale możesz wybrać dowolną nazwę.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Jeśli twój edytor tekstu działa poprawnie to nie powinieneś tego zauważyć, ale musisz wciąć zawartość znaku reguły za pomocą tabulatora. W przypadku problemów z uruchomieniem pliku <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> możesz zobaczyć taki błąd</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Makefile:2: *** missing separator.  Stop.
+</pre></div>
+</div>
+<p>Wcięcie jest prawdopodobnie niepoprawne. W tym przypadku zamień wcięcie w drugiej linii znakiem tabulacji.</p>
+</div>
+<p>Teraz chcemy stworzyć bardziej skomplikowane zasady, więc dodajemy kolejną regułę:</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nv">PROG</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>my_prog
+
+<span class="nf">all</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">PROG</span><span class="k">)</span>
+<span class="w">	</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2"> depends on </span>$<span class="s2">^&quot;</span>
+
+<span class="nf">$(PROG)</span><span class="o">:</span>
+<span class="w">	</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$@</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Zauważmy jak deklarujemy zmienne w <code class="docutils literal notranslate"><span class="pre">make</span></code>. Zmienne lokalne powinny być zawsze zadeklarowane poprzez <code class="docutils literal notranslate"><span class="pre">:=</span></code>. Aby zdobyć dostęp do zawartości zmiennej używamy <code class="docutils literal notranslate"><span class="pre">$(...)</span></code>, nazwa zmienniej musi być zawarta w nawiasach.</p>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>Deklaracja zmiennych zazwyczaj odbywa się za pomocą <code class="docutils literal notranslate"><span class="pre">:=</span></code>, jednak <code class="docutils literal notranslate"><span class="pre">make</span></code> pozwala zarówno na zmienne <code class="docutils literal notranslate"><span class="pre">=</span></code>, jak i na zmienne <em>rekursywnie rozbudowane</em>. Zwykle, pierwszy typ deklaracji jest bardziej pożądany, ponieważ jest bardziej przewidywalny i nie mają narzutu czasu wykonania wynikającego z rekurencyjnej rozbudowy.</p>
+</div>
+<p>Wprowadziliśmy zależność dla reguły all, a mianowicie zawartość zmiennej <code class="docutils literal notranslate"><span class="pre">PROG</span></code>, zmodyfikowaliśmy również wydruk, a teraz chcemy zobaczyć wszystkie zależności tej reguły, które są przechowywane w zmiennej <code class="docutils literal notranslate"><span class="pre">$^</span></code>. Teraz dla nowej reguły, której nadajemy nazwę po wartości zmiennej <code class="docutils literal notranslate"><span class="pre">PROG</span></code>, która robi to samo, co zrobiliśmy wcześniej dla reguły <em>all</em>. Zwróćmy uwagę, jak wartość <code class="docutils literal notranslate"><span class="pre">$&#64;</span></code> jest zależna od reguły, w której jest używana.</p>
+<p>Ponownie sprawdzamy poprzez wykonanie <code class="docutils literal notranslate"><span class="pre">make</span></code> i powinniśmy zobaczyć:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>echo &quot;my_prog&quot;
+my_prog
+echo &quot;all depends on my_prog&quot;
+all depends on my_prog
+</pre></div>
+</div>
+<p>Zależność została poprawnie rozwiązana i określona zanim jakakolwiek akcja na reguły <em>all</em> została wykonana. Teraz wykonajmy tylko drugą regułę: wpiszmy <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">my_prog</span></code>, a zobaczymy tylko dwa pierwsze wersy w terminalu.</p>
+<p>Następnym krokiem jest wykonanie prawdziwych akcji z <code class="docutils literal notranslate"><span class="pre">make</span></code>, weźmy kod źródłowy z poprzedniego rozdziału i dodajmy nowe reguły do naszego <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>:</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nv">OBJS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>tabulate.o<span class="w"> </span>functions.o
+<span class="nv">PROG</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>my_prog
+
+<span class="nf">all</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">PROG</span><span class="k">)</span>
+
+<span class="nf">$(PROG)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">OBJS</span><span class="k">)</span>
+<span class="w">	</span>gfortran<span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span>$^
+
+<span class="nf">$(OBJS)</span><span class="o">:</span><span class="w"> </span>%.<span class="n">o</span>: %.<span class="n">f</span>90
+<span class="w">	</span>gfortran<span class="w"> </span>-c<span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span>$&lt;
+</pre></div>
+</div>
+<p>Definiujemy <code class="docutils literal notranslate"><span class="pre">OBJS</span></code>, które jest skrótem od object files (pliki obiektów). Nasz program zależy od <code class="docutils literal notranslate"><span class="pre">OBJS</span></code> i dla każdego pliku obiektu tworzymy regułę, aby stworzyć je z pliku źródłowego. Ostatnia reguła, którą wprowadziliśmy to reguła dopasowania wzorca, <code class="docutils literal notranslate"><span class="pre">%</span></code> jest wspólnym wzorcem dla <code class="docutils literal notranslate"><span class="pre">tabulate.o</span></code> i <code class="docutils literal notranslate"><span class="pre">tabulate.f90</span></code>, który łączy nasz plik obiektu <code class="docutils literal notranslate"><span class="pre">tabulate.o</span></code> z plikiem źródłowym <code class="docutils literal notranslate"><span class="pre">tabulate.f90</span></code>. Mając to ustawione, uruchamiamy nasz kompilator ( <code class="docutils literal notranslate"><span class="pre">gfortran</span></code> ) i tłumaczymy plik źródłowy na plik obiektu, nie tworzymy jeszcze pliku wykonywalnego z powodu flagi <code class="docutils literal notranslate"><span class="pre">-c</span></code>. Zwróćmy uwagę na użycie <code class="docutils literal notranslate"><span class="pre">$&lt;</span></code> dla pierwszego elementu zależności tutaj.</p>
+<p>Po skompilowaniu wszystkich plików obiektowych próbujemy połączyć program. Nie używamy bezpośredniego linkera, ale <code class="docutils literal notranslate"><span class="pre">gfortran</span></code> do wygenerowania pliku wykonywalnego.</p>
+<p>Teraz uruchamiamy skrypt kompilacji poleceniem <code class="docutils literal notranslate"><span class="pre">make</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gfortran -c -o tabulate.o tabulate.f90
+tabulate.f90:2:7:
+
+    2 |    use user_functions
+      |       1
+Fatal Error: Cannot open module file ‘user_functions.mod’ for reading at (1): No such file or directory
+compilation terminated.
+make: *** [Makefile:10: tabulate.f90.o] Error 1
+</pre></div>
+</div>
+<p>Pamiętamy, że mamy zależności pomiędzy naszymi plikami źródłowymi, dlatego dodajemy zależność jawnie do pliku <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> za pomocą</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nf">tabulate.o</span><span class="o">:</span><span class="w"> </span><span class="n">functions</span>.<span class="n">o</span>
+</pre></div>
+</div>
+<p>Teraz możemy ponowić próbę i zobaczyć, że kompilacja przebiegła pomyślnie. Rezultat powinien być następujący</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gfortran -c -o functions.o functions.f90
+gfortran -c -o tabulate.o tabulate.f90
+gfortran -o my_prog tabulate.o functions.o
+</pre></div>
+</div>
+<p>Powinieneś teraz znaleźć <em>cztery</em> nowe pliki w twoim folderze. Uruchom <code class="docutils literal notranslate"><span class="pre">my_prog</span></code>, aby upewnić się, że wszystko działa zgodnie z oczekiwaniami. Teraz wykonajmy ponownie <code class="docutils literal notranslate"><span class="pre">make</span></code> :</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>make: Nothing to be done for &#39;all&#39;.
+</pre></div>
+</div>
+<p>Korzystając z sygnatur czasowych pliku wykonywalnego <code class="docutils literal notranslate"><span class="pre">make</span></code> udało się nam ustalić, że jest on nowszy niż <code class="docutils literal notranslate"><span class="pre">tabulate.o</span></code> i <code class="docutils literal notranslate"><span class="pre">functions.o</span></code>, które z kolei są nowsze niż <code class="docutils literal notranslate"><span class="pre">tabulate.f90</span></code> i <code class="docutils literal notranslate"><span class="pre">functions.f90</span></code>. Dlatego program jest już aktualny, zawiera najnowszy kod i nie trzeba wykonywać żadnych działań.</p>
+<p>Na koniec, spójrzmy na kompletny plik <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>.</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="c"># Disable all of make&#39;s built-in rules (similar to Fortran&#39;s implicit none)</span>
+<span class="nv">MAKEFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>--no-builtin-rules<span class="w"> </span>--no-builtin-variables
+<span class="c"># configuration</span>
+<span class="nv">FC</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>gfortran
+<span class="nv">LD</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>FC<span class="k">)</span>
+<span class="nv">RM</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>rm<span class="w"> </span>-f
+<span class="c"># list of all source files</span>
+<span class="nv">SRCS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>tabulate.f90<span class="w"> </span>functions.f90
+<span class="nv">PROG</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>my_prog
+
+<span class="nv">OBJS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>addsuffix<span class="w"> </span>.o,<span class="w"> </span><span class="k">$(</span>SRCS<span class="k">))</span>
+
+<span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">all</span> <span class="n">clean</span>
+<span class="nf">all</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">PROG</span><span class="k">)</span>
+
+<span class="nf">$(PROG)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">OBJS</span><span class="k">)</span>
+<span class="w">	</span><span class="k">$(</span>LD<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span>$^
+
+<span class="nf">$(OBJS)</span><span class="o">:</span><span class="w"> </span>%.<span class="n">o</span>: %
+<span class="w">	</span><span class="k">$(</span>FC<span class="k">)</span><span class="w"> </span>-c<span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span>$&lt;
+
+<span class="c"># define dependencies between object files</span>
+<span class="nf">tabulate.f90.o</span><span class="o">:</span><span class="w"> </span><span class="n">functions</span>.<span class="n">f</span>90.<span class="n">o</span> <span class="n">user_functions</span>.<span class="n">mod</span>
+
+<span class="c"># rebuild all object files in case this Makefile changes</span>
+<span class="nf">$(OBJS)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">MAKEFILE_LIST</span><span class="k">)</span>
+
+<span class="nf">clean</span><span class="o">:</span>
+<span class="w">	</span><span class="k">$(</span>RM<span class="k">)</span><span class="w"> </span><span class="k">$(</span>filter<span class="w"> </span>%.o,<span class="w"> </span><span class="k">$(</span>OBJS<span class="k">))</span><span class="w"> </span><span class="k">$(</span>wildcard<span class="w"> </span>*.mod<span class="k">)</span><span class="w"> </span><span class="k">$(</span>PROG<span class="k">)</span>
+</pre></div>
+</div>
+<p>Jako że zaczynasz od <code class="docutils literal notranslate"><span class="pre">make</span></code>, zdecydowanie zalecamy, aby zawsze zawierać pierwszy wiersz, podobnie jak w przypadku <code class="docutils literal notranslate"><span class="pre">implicit</span> <span class="pre">none</span></code> języka Fortran, nie chcemy, aby niejawne reguły zakłócały działanie naszego <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> w zaskakujący i szkodliwy sposób.</p>
+<p>Następnie, mamy sekcję konfiguracji, gdzie definiujemy zmienne, w przypadku jeśli chcemy zmienić nasz kompilator może to być z łatwością zrobione tutaj. Wprowadzamy także zmienną <code class="docutils literal notranslate"><span class="pre">SRCS</span></code> do przechowywania wszystkich plików źródłowych, co jest bardziej intuicyjne niż określanie plików obiektowych. Możemy z łatwością stworzyć plik obiektowy poprzez dodanie sufiksu <code class="docutils literal notranslate"><span class="pre">.o</span></code> przy użyciu funkcji <code class="docutils literal notranslate"><span class="pre">addsuffix</span></code>. <code class="docutils literal notranslate"><span class="pre">.PHONY</span></code> jest specjalną regułą. która powinna być używana dla każdego punktu wejścia w <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, tutaj definiujemy dwa punkty wejścia, <em>all</em>, już znamy, a nowa reguła <em>clean</em> usuwa ponownie wszystkie artefakty kompilacji, tak że zaczynamy od czystego folderu.</p>
+<p>Ponadto, zmieniliśmy odrobinę regułę budowania dla plików obiektowych, aby uwzględnić dodanie sufiksu <code class="docutils literal notranslate"><span class="pre">.o</span></code> zamiast go zastępować. Zwróćmy uwagę, że nadal musimy jawnie zadeklarować zależności w <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>. Dodaliśmy również zależność dla plików obiektowych w samym <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, w przypadku zmiany kompilatora pozwoli to na bezpieczną rekompilację.</p>
+<p>Teraz wiemy już wystarczająco o <code class="docutils literal notranslate"><span class="pre">make</span></code>, aby używać go do kompilowania mniejszych projektów. Jeśli planujesz używać <code class="docutils literal notranslate"><span class="pre">make</span></code> bardziej szczegółowo, zebraliśmy dla ciebie parę wskazówek.</p>
+<div class="admonition tip">
+<p class="admonition-title">Wskazówka</p>
+<p>W tym poradniku pominęliśmy lub wyłączyliśmy wiele z powszechnie używanych funkcji <code class="docutils literal notranslate"><span class="pre">make</span></code>, które mogą być szczególnie kłopotliwe jeśli zostaną użyte niewłaściwie. Zalecamy unikanie wbudowanych reguł i zmiennych, jeśli nie czujesz się pewnie pracując z <code class="docutils literal notranslate"><span class="pre">make</span></code>, a jawne deklarowanie wszystkich zmiennych i reguł.</p>
+<p>Przekonasz się, że <code class="docutils literal notranslate"><span class="pre">make</span></code> jest dobrym narzędziem do zautomatyzowania krótkich współzależnych przepływów pracy i kompilowania mniejszych projektów. Jednak dla większych projektów, prawdopodobnie szybko zetkniesz się z jego ograniczeniami. Z tego powodu, <code class="docutils literal notranslate"><span class="pre">make</span></code> nie jest używane samodzielnie, ale połączone z innymi narzędziami, aby wygenerować <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> w całości lub częściowo.</p>
+</div>
+<section id="recursively-expanded-variables">
+<h3>Zmienne rozszerzane rekurencyjnie<a class="headerlink" href="#recursively-expanded-variables" title="Link to this heading">#</a></h3>
+<p>Często w wielu projektach można zobaczyć zmienne rozszerzane rekurencyjnie (zadeklarowane za pomocą <code class="docutils literal notranslate"><span class="pre">=</span></code> zamiast <code class="docutils literal notranslate"><span class="pre">:=</span></code>). Rozszerzanie rekurencyjne zmiennych pozwala na deklarowanie poza kolejnością i inne sprytne sztuczki z <code class="docutils literal notranslate"><span class="pre">make</span></code>, ponieważ są one zdefiniowane jako reguły, które są rozszerzane w czasie wykonania , a nie definiowane podczas przetwarzania.</p>
+<p>Na przykład zadeklarowanie i użycie flag Fortranu za pomocą tego fragmentu kodu będzie działać całkowicie poprawnie:</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nf">all</span><span class="o">:</span>
+<span class="w">	</span><span class="nb">echo</span><span class="w"> </span><span class="k">$(</span>FFLAGS<span class="k">)</span>
+
+<span class="nv">FFLAGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span>include_dirs<span class="k">)</span><span class="w"> </span>-O
+<span class="nv">include_dirs</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>-I./include
+<span class="nv">include_dirs</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>-I/opt/some_dep/include
+</pre></div>
+</div>
+<p>Powinieneś znaleźć oczekiwany (lub może nieoczekiwany) rezultat po wykonaniu <code class="docutils literal notranslate"><span class="pre">make</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>echo -I./include -I/opt/some_dep/include -O
+-I./include -I/opt/some_dep/include -O
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Wskazówka</p>
+<p>dołączenie <code class="docutils literal notranslate"><span class="pre">+=</span></code> do niezdefiniowanej zmiennej stworzy zmienną rozszerzoną rekurencyjnie, a ten stan będzie dziedziczony przy każdym dalszym dołączeniu.</p>
+</div>
+<p>Podczas gdy może się wydawać to interesującą funkcją, czasem prowadzi do niespodziewanych i nieoczekiwanych rezultatów. Zwykle, podczas definiowania zmiennych jak twój kompilator, nie ma powodu, aby w ogóle używać rozszerzenia rekurencyjnego.</p>
+<p>To samo może być z łatwością osiągnięte poprzez użycie deklaracji <code class="docutils literal notranslate"><span class="pre">:=</span></code>:</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nf">all</span><span class="o">:</span>
+<span class="w">	</span><span class="nb">echo</span><span class="w"> </span><span class="k">$(</span>FFLAGS<span class="k">)</span>
+
+<span class="nv">include_dirs</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>-I./include
+<span class="nv">include_dirs</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>-I/opt/some_dep/include
+<span class="nv">FFLAGS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>include_dirs<span class="k">)</span><span class="w"> </span>-O
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Ważne</p>
+<p>zawsze myśl o <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> jako o całym zbiorze reguł, musi być przetworzony w całości zanim jakakolwiek zasada zostanie określona.</p>
+</div>
+<p>Możesz używać jakichkolwiek zmiennych, które lubisz, jednak powinieneś być ostrożny przy mieszaniu ich. Ważnym jest, aby być świadomym różnic pomiędzy tymi dwoma typami i ich konsekwencjami.</p>
+</section>
+<section id="comments-and-whitespace">
+<h3>Komentarze i znaki białe<a class="headerlink" href="#comments-and-whitespace" title="Link to this heading">#</a></h3>
+<p>Istnieją pewne zastrzeżenia dotyczące znaków białych i komentarzy, które mogą się od czasu do czasu pojawiać podczas używania <code class="docutils literal notranslate"><span class="pre">make</span></code>. Po pierwsze, <code class="docutils literal notranslate"><span class="pre">make</span></code> nie zna żadnego typu danych poza ciągami znaków, a domyślnym separatorem jest po prostu spacja. Oznacza to, że <code class="docutils literal notranslate"><span class="pre">make</span></code> będzie miał trudności ze zbudowaniem projektu, który ma spacje w nazwach plików. Jeśli napotkasz taki przypadek, zmiana nazwy pliku jest prawdopodobnie najłatwiejszym rozwiązaniem.</p>
+<p>Kolejnym powszechnym problemem są spacje na początku i na końcu. Po ich wprowadzeniu <code class="docutils literal notranslate"><span class="pre">make</span></code> bez problemu je zachowa, co ma znaczenie przy porównywaniu ciągów znaków w <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+<p>Można je wprowadzić przy pomocy komentarzy tak jak tutaj</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nv">prefix</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>/usr<span class="w">  </span><span class="c1"># path to install location</span>
+<span class="nf">install</span><span class="o">:</span>
+<span class="w">	</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>prefix<span class="k">)</span><span class="s2">/lib&quot;</span>
+</pre></div>
+</div>
+<p>Podczas gdy komentarz zostanie poprawnie usunięty przez <code class="docutils literal notranslate"><span class="pre">make</span></code>, dwie spacje na końcu są teraz częścią zawartości zmiennej. Wykonaj <code class="docutils literal notranslate"><span class="pre">make</span></code> i sprawdź czy tak jest w rzeczywistości:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;/usr  /lib&quot;</span>
+<span class="o">/</span><span class="n">usr</span>  <span class="o">/</span><span class="n">lib</span>
+</pre></div>
+</div>
+<p>Aby rozwiązać ten problem, możesz przesunąć komentarz lub usunąć spację za pomocą funkcji <code class="docutils literal notranslate"><span class="pre">strip</span></code>. Alternatywnym rozwiązaniem może być spróbowanie na złączenie ciągu znaków przy użyciu <code class="docutils literal notranslate"><span class="pre">join</span></code>.</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="nv">prefix</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>/usr<span class="w">  </span><span class="c1"># path to install location</span>
+<span class="nf">install</span><span class="o">:</span>
+<span class="w">	</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>strip<span class="w"> </span><span class="k">$(</span>prefix<span class="k">))</span><span class="s2">/lib&quot;</span>
+<span class="w">	</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>join<span class="w"> </span><span class="k">$(</span>join<span class="w"> </span><span class="k">$(</span>prefix<span class="k">)</span>,<span class="w"> </span>/<span class="k">)</span>,<span class="w"> </span>lib<span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Koniec końców, żadne z tych rozwiązań nie sprawią, że twój <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> będzie bardziej czytelny, dlatego rozsądnym jest, aby zwracać uwagę na znaki białe i komentarze podczas robienia i używania <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+</section>
+</section>
+<section id="the-meson-build-system">
+<h2>System kompilacji Meson<a class="headerlink" href="#the-meson-build-system" title="Link to this heading">#</a></h2>
+<p>Po tym jak nauczyliśmy się już podstaw <code class="docutils literal notranslate"><span class="pre">make</span></code>, które nazywamy systemem kompilacji niskiego poziomu, teraz możemy zapoznać się z systemem kompilacji wysokiego poziomu jakim jest <code class="docutils literal notranslate"><span class="pre">meson</span></code>. Podczas gdy w systemie niskiego poziomu musimy sprecyzować jak skompilować nasz program, w systemie wysokiego poziomu precyzujemy co skompilować. System wysokiego poziomu zajmie się sposobem i wygeneruje pliki kompilacji dla systemu kompilacji niskiego poziomu.</p>
+<p>Istnieje wiele systemów kompilacji wysokiego poziomu, ale tutaj skupimy się na systemie <code class="docutils literal notranslate"><span class="pre">meson</span></code>, ponieważ jest skonstruowany w sposób przyjazny dla użytkownika. Domyślny, niskopoziomowy system kompilacji <code class="docutils literal notranslate"><span class="pre">meson</span></code> nazywa się <code class="docutils literal notranslate"><span class="pre">ninja</span></code>.</p>
+<p>Spójrzmy na kompletny plik <code class="docutils literal notranslate"><span class="pre">meson.build</span></code>:</p>
+<!-- meson is unknown by the highlighter, python looks okayish -->
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">project</span><span class="p">(</span><span class="s1">&#39;my_proj&#39;</span><span class="p">,</span> <span class="s1">&#39;fortran&#39;</span><span class="p">,</span> <span class="n">meson_version</span><span class="p">:</span> <span class="s1">&#39;&gt;=0.49&#39;</span><span class="p">)</span>
+<span class="n">executable</span><span class="p">(</span><span class="s1">&#39;my_prog&#39;</span><span class="p">,</span> <span class="n">files</span><span class="p">(</span><span class="s1">&#39;tabulate.f90&#39;</span><span class="p">,</span> <span class="s1">&#39;functions.f90&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>I już skończyliśmy, następnym krokiem jest skonfigurowanie naszego systemu kompilacji niskiego poziomu za pomocą <code class="docutils literal notranslate"><span class="pre">meson</span> <span class="pre">setup</span> <span class="pre">build</span></code>, powinieneś zobaczyć dane wyjściowe nieco podobne do tego</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>The Meson build system
+Version: 0.53.2
+Source dir: /home/awvwgk/Examples
+Build dir: /home/awvwgk/Examples/build
+Build type: native build
+Project name: my_proj
+Project version: undefined
+Fortran compiler for the host machine: gfortran (gcc 9.2.1 &quot;GNU Fortran (Arch Linux 9.2.1+20200130-2) 9.2.1 20200130&quot;)
+Fortran linker for the host machine: gfortran ld.bfd 2.34
+Host machine cpu family: x86_64
+Host machine cpu: x86_64
+Build targets in project: 1
+
+Found ninja-1.10.0 at /usr/bin/ninja
+</pre></div>
+</div>
+<p>Informacje przedstawione tutaj są już w tym momencie dużo bardziej szczegółowe niż cokolwiek, co moglibyśmy zobaczyć w <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, teraz rozpocznijmy kompilację przy pomocy <code class="docutils literal notranslate"><span class="pre">ninja</span> <span class="pre">-C</span> <span class="pre">build</span></code>, która powinna pokazać coś takiego</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[1/4] Compiling Fortran object &#39;my_prog@exe/functions.f90.o&#39;.
+[2/4] Dep hack
+[3/4] Compiling Fortran object &#39;my_prog@exe/tabulate.f90.o&#39;.
+[4/4] Linking target my_prog.
+</pre></div>
+</div>
+<p>Znajdź i przetestuj swój program w <code class="docutils literal notranslate"><span class="pre">build/my_prog</span></code>, aby upewnić się, że działa prawidłowo. Możemy zauważyć, że kroki, które wykonał <code class="docutils literal notranslate"><span class="pre">ninja</span></code> są takie same, jak te, które zakodowalibyśmy w <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> (w tym zależności), ale nie musieliśmy ich określać, spójrz ponownie na swój plik <code class="docutils literal notranslate"><span class="pre">meson.build</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">project</span><span class="p">(</span><span class="s1">&#39;my_proj&#39;</span><span class="p">,</span> <span class="s1">&#39;fortran&#39;</span><span class="p">,</span> <span class="n">meson_version</span><span class="p">:</span> <span class="s1">&#39;&gt;=0.49&#39;</span><span class="p">)</span>
+<span class="n">executable</span><span class="p">(</span><span class="s1">&#39;my_prog&#39;</span><span class="p">,</span> <span class="n">files</span><span class="p">(</span><span class="s1">&#39;tabulate.f90&#39;</span><span class="p">,</span> <span class="s1">&#39;functions.f90&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>Sprecyzowaliśmy tylko, że program jest projektem Fortran (który wymaga odpowiedniej wersji <code class="docutils literal notranslate"><span class="pre">meson</span></code>) i kazaliśmy <code class="docutils literal notranslate"><span class="pre">meson</span></code> zbudować plik wykonywalny <code class="docutils literal notranslate"><span class="pre">my_prog</span></code> z plików <code class="docutils literal notranslate"><span class="pre">tabulate.f90</span></code> i <code class="docutils literal notranslate"><span class="pre">functions.f90</span></code>. Nie musieliśmy precyzować jak zbudować projekt, <code class="docutils literal notranslate"><span class="pre">meson</span></code> zrobił to sam.</p>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p><code class="docutils literal notranslate"><span class="pre">meson</span></code> jest międzyplatformowym systemem kompilacji, projekt, który właśnie określiłeś dla swojego programu, może być użyty do kompilacji plików binarnych dla twojego natywnego systemu operacyjnego lub do cross-kompilacji twojego projektu dla innych platform. Podobnie, plik <code class="docutils literal notranslate"><span class="pre">meson.build</span></code> jest przenośny i będzie działał również na różnych platformach.</p>
+</div>
+<p>Dokumentację systemu <code class="docutils literal notranslate"><span class="pre">meson</span></code> można znaleźć na <a href="https://mesonbuild.com/" target="_blank" rel="noopener">stronie internetowej kompilatora meson</a>.</p>
+</section>
+<section id="creating-a-cmake-project">
+<h2>Tworzenie projektu CMake<a class="headerlink" href="#creating-a-cmake-project" title="Link to this heading">#</a></h2>
+<p>Podobnie jak <code class="docutils literal notranslate"><span class="pre">meson</span></code> CMake jest również wysokopoziomowym systemem kompilacji, który jest powszechnie używany do kompilowania projektów w języku Fortran.</p>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>CMake stosuję nieco inna strategię i zapewnia kompletny język programowania do tworzenia twoich plików kompilacji. Największą zaletą tego rozwiązania jest to, że możesz zrobić prawie wszystko za pomocą CMake, ale twoje pliki kompilacji CMake mogą stać się bardzo złożone tak samo jak program, który kompilujesz.</p>
+</div>
+<p>Rozpocznij przez stworzenie pliku <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> z taką zawartością</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.7</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s2">&quot;my_proj&quot;</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s2">&quot;Fortran&quot;</span><span class="p">)</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s2">&quot;my_prog&quot;</span><span class="w"> </span><span class="s2">&quot;tabulate.f90&quot;</span><span class="w"> </span><span class="s2">&quot;functions.f90&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Podobnie jak w systemie <code class="docutils literal notranslate"><span class="pre">meson</span></code> już skończyliśmy z naszymi plikami kompilacji CMake. Konfigurujemy nasze niskopoziomowe pliki kompilacji przy pomocy <code class="docutils literal notranslate"><span class="pre">cmake</span> <span class="pre">-B</span> <span class="pre">build</span> <span class="pre">-G</span> <span class="pre">Ninja</span></code> i powinniśmy zobaczyć rezultat podobny do tego</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-- The Fortran compiler identification is GNU 10.2.0
+-- Detecting Fortran compiler ABI info
+-- Detecting Fortran compiler ABI info - done
+-- Check for working Fortran compiler: /usr/bin/f95 - skipped
+-- Checking whether /usr/bin/f95 supports Fortran 90
+-- Checking whether /usr/bin/f95 supports Fortran 90 - yes
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/awvwgk/Examples/build
+</pre></div>
+</div>
+<p>Możesz być zaskoczony tym, że CMake próbuje używać kompilatora <code class="docutils literal notranslate"><span class="pre">f95</span></code>, na szczęście jest to tylko symboliczny link do <code class="docutils literal notranslate"><span class="pre">gfortran</span></code> w większości systemów, a nie rzeczywisty kompilator <code class="docutils literal notranslate"><span class="pre">f95</span></code>. Aby dać CMake lepszą podpowiedź, możesz wyeksportować zmienną środowiskową <code class="docutils literal notranslate"><span class="pre">FC=gfortran</span></code>, a po ponownym uruchomieniu powinien teraz pokazać poprawną nazwę kompilatora</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>-- The Fortran compiler identification is GNU 10.2.0
+-- Detecting Fortran compiler ABI info
+-- Detecting Fortran compiler ABI info - done
+-- Check for working Fortran compiler: /usr/bin/gfortran - skipped
+-- Checking whether /usr/bin/gfortran supports Fortran 90
+-- Checking whether /usr/bin/gfortran supports Fortran 90 - yes
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/awvwgk/Example/build
+</pre></div>
+</div>
+<p>W podobny sposób możesz użyć kompilatora Intel Fortran do skompilowania swojego projektu (ustaw <code class="docutils literal notranslate"><span class="pre">FC=ifort</span></code> ).</p>
+<p>CMake wspiera kilka plików kompilacyjnych niskiego poziomu. Jako, że standardowy jest używany dla konkretnych platform, użyjemy po prostu <code class="docutils literal notranslate"><span class="pre">ninja</span></code>, ponieważ już wcześniej użyliśmy go razem z <code class="docutils literal notranslate"><span class="pre">meson</span></code>. Tak jak wcześniej, kompilujemy nasz program za pomocą <code class="docutils literal notranslate"><span class="pre">ninja</span> <span class="pre">-C</span> <span class="pre">build</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>[1/6] Building Fortran preprocessed CMakeFiles/my_prog.dir/functions.f90-pp.f90
+[2/6] Building Fortran preprocessed CMakeFiles/my_prog.dir/tabulate.f90-pp.f90
+[3/6] Generating Fortran dyndep file CMakeFiles/my_prog.dir/Fortran.dd
+[4/6] Building Fortran object CMakeFiles/my_prog.dir/functions.f90.o
+[5/6] Building Fortran object CMakeFiles/my_prog.dir/tabulate.f90.o
+[6/6] Linking Fortran executable my_prog
+</pre></div>
+</div>
+<p>Znajdź i przetestuj swój program za pomocą <code class="docutils literal notranslate"><span class="pre">build/my_prog</span></code>, aby upewnić się, że działa prawidłowo. Kroki, które wykonał <code class="docutils literal notranslate"><span class="pre">ninja</span></code> są w pewnym sensie inne, ponieważ zazwyczaj istnieje więcej niż jeden sposób na napisanie plików kompilacyjnych niskiego poziomu, aby skompilować program. Na szczęście, nie musimy się tym martwić, ponieważ nas system kompilacji może zająć się tymi detalami za nas.</p>
+<p>Na koniec szybko podsumujemy nasz skończony <code class="docutils literal notranslate"><span class="pre">CMakeLists.txt</span></code> żeby sprecyzować nasz projekt:</p>
+<div class="highlight-cmake notranslate"><div class="highlight"><pre><span></span><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.7</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s2">&quot;my_proj&quot;</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s2">&quot;Fortran&quot;</span><span class="p">)</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s2">&quot;my_prog&quot;</span><span class="w"> </span><span class="s2">&quot;tabulate.f90&quot;</span><span class="w"> </span><span class="s2">&quot;functions.f90&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Sprecyzowaliśmy już, że projekt jest projektem Fortran i powiedzieliśmy CMake, aby stworzył plik wykonywalny <code class="docutils literal notranslate"><span class="pre">my_prog</span></code> z plików <code class="docutils literal notranslate"><span class="pre">tabulate.f90</span></code> i <code class="docutils literal notranslate"><span class="pre">functions.f90</span></code>. CMake sam wie jak skompilować plik wykonywalny ze wskazanych źródeł, dlatego nie musimy się martwić żadnymi właściwymi krokami procesu kompilacji.</p>
+<div class="admonition tip">
+<p class="admonition-title">Wskazówka</p>
+<p>CMake’s official reference can be found at the
+<a href="https://cmake.org/cmake/help/latest/" target="_blank" rel="noopener">CMake webpage</a>.
+It is organised in manpages, which are also available with your local CMake
+installation as well using <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">cmake</span></code>. While it covers all functionality of
+CMake, it sometimes covers them only very briefly.</p>
+</div>
+</section>
+<section id="the-scons-build-system">
+<h2>The SCons build system<a class="headerlink" href="#the-scons-build-system" title="Link to this heading">#</a></h2>
+<p>SCons is one another high-level cross-platform build system with automatic
+dependency analysis that supports Fortran projects. SCons configuration files
+are executed as Python scripts but it could be successfully used without
+knowledge about Python programming. The using of Python scripting if needed
+allows to handle build process and file naming in more sophisticated manner.</p>
+<div class="admonition note">
+<p class="admonition-title">Informacja</p>
+<p>SCons doesn’t automatically passes the external environment variables such as
+<code class="docutils literal notranslate"><span class="pre">PATH</span></code> therefore it will not find programs and tools that installed into
+non-standard locations unless are specified or passed via appropriate variables.
+That guaranties that build isn’t affected by external (especially user’s)
+environment variables and build is repeatable. The most of such variables
+and compiler options and flags are required to be configured within special
+„isolated” <code class="docutils literal notranslate"><span class="pre">Environments</span></code> (please refer to
+<a href="https://scons.org/doc/production/HTML/scons-user/ch07.html" target="_blank" rel="noopener">User Guide</a>
+for additional information).</p>
+</div>
+<p>The SCons doesn’t use external low-level build systems and relies on own
+build system. The <code class="docutils literal notranslate"><span class="pre">ninja</span></code> support as external tool to generate <code class="docutils literal notranslate"><span class="pre">ninja.build</span></code>
+file is highly experimental (available since scons 4.2) and required to be
+enabled explicitly by additional configuration.</p>
+<p>The simple SCons project is <code class="docutils literal notranslate"><span class="pre">SConstruct</span></code> file that contains:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Program</span><span class="p">(</span><span class="s1">&#39;my_proj&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;tabulate.f90&#39;</span><span class="p">,</span> <span class="s1">&#39;functions.f90&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>The next step is to build our project with command <code class="docutils literal notranslate"><span class="pre">scons</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>scons: Reading SConscript files ...
+scons: done reading SConscript files.
+scons: Building targets ...
+gfortran -o functions.o -c functions.f90
+gfortran -o tabulate.o -c tabulate.f90
+gfortran -o my_proj tabulate.o functions.o
+scons: done building targets.
+</pre></div>
+</div>
+<p>or with <code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">-Q</span></code> to disable extended output:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gfortran -o functions.o -c functions.f90
+gfortran -o tabulate.o -c tabulate.f90
+gfortran -o my_proj tabulate.o functions.o
+</pre></div>
+</div>
+<p>Find and test your program <code class="docutils literal notranslate"><span class="pre">my_prog</span></code> at the same directory as source files
+(by default) to ensure it works correctly.</p>
+<p>To cleanup the build artifacts run <code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">-c</span></code> (or <code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">-Qc</span></code>):</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>scons: Reading SConscript files ...
+scons: done reading SConscript files.
+scons: Cleaning targets ...
+Removed functions.o
+Removed user_functions.mod
+Removed tabulate.o
+Removed my_proj
+scons: done cleaning targets.
+</pre></div>
+</div>
+<p>In our SCons <code class="docutils literal notranslate"><span class="pre">SConstruct</span></code> file</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Program</span><span class="p">(</span><span class="s1">&#39;my_proj&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;tabulate.f90&#39;</span><span class="p">,</span> <span class="s1">&#39;functions.f90&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>we specified executable target name <code class="docutils literal notranslate"><span class="pre">my_proj</span></code> (optional, if omitted the first
+source file name is used) and list of source files
+<code class="docutils literal notranslate"><span class="pre">['tabulate.f90',</span> <span class="pre">'functions.f90']</span></code>. There is no need to specify project source
+files language – it’s detected automatically by SCons for supported languages.</p>
+<p>The list of source files could be specified with SCons <code class="docutils literal notranslate"><span class="pre">Glob</span></code> function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Program</span><span class="p">(</span><span class="s1">&#39;my_proj&#39;</span><span class="p">,</span> <span class="n">Glob</span><span class="p">(</span><span class="s1">&#39;*.f90&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>or using SCons <code class="docutils literal notranslate"><span class="pre">Split</span></code> function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Program</span><span class="p">(</span><span class="s1">&#39;my_proj&#39;</span><span class="p">,</span> <span class="n">Split</span><span class="p">(</span><span class="s1">&#39;tabulate.f90 functions.f90&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>or in more readable form by assigning variable:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">src_files</span> <span class="o">=</span> <span class="n">Split</span><span class="p">(</span><span class="s1">&#39;tabulate.f90 functions.f90&#39;</span><span class="p">)</span>
+<span class="n">Program</span><span class="p">(</span><span class="s1">&#39;my_proj&#39;</span><span class="p">,</span> <span class="n">src_files</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In case of <code class="docutils literal notranslate"><span class="pre">Split</span></code> function the multiple lines could be used with Python
+„triple-quote” syntax:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">src_files</span> <span class="o">=</span> <span class="n">Split</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;tabulate.f90</span>
+<span class="s2">                     functions.f90&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="n">Program</span><span class="p">(</span><span class="s1">&#39;my_proj&#39;</span><span class="p">,</span> <span class="n">src_files</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Wskazówka</p>
+<p>SCons official webpage provides:
+<a href="https://scons.org/doc/production/HTML/scons-user/index.html" target="_blank" rel="noopener">User Guide</a>
+with extended description of various aspects how to handle the build process,
+<a href="https://scons.org/faq.html" target="_blank" rel="noopener">Frequently Asked Questions</a> page and
+<a href="https://scons.org/doc/production/HTML/scons-man.html" target="_blank" rel="noopener">man page</a>.</p>
+</div>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">  
+<br />
+
+<div class="tocsection onthispage">
+  <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav" class="page-toc"><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-make-as-build-tool">Korzystanie z make jako narzędzia do kompilacji</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#recursively-expanded-variables">Zmienne rozszerzane rekurencyjnie</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comments-and-whitespace">Komentarze i znaki białe</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-meson-build-system">System kompilacji Meson</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-cmake-project">Tworzenie projektu CMake</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-scons-build-system">The SCons build system</a></li>
+</ul></nav> </div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2024, Fortran Community.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

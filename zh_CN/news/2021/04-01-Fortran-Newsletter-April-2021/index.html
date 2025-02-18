@@ -1,0 +1,1033 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="256x256" href="../../../_static/images/favicon.ico" type="image/x-icon">
+    <title>Fortran 时事通讯：2021 年 4 月 &#8212; Fortran Programming Language</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=eaa92f49" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=5eee97a6"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'news/2021/04-01-Fortran-Newsletter-April-2021';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '_static/data.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'zh_CN';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="canonical" href="https://fortran-lang.org/en/news/2021/04-01-Fortran-Newsletter-April-2021/" />
+    <link rel="index" title="索引" href="../../../genindex/" />
+    <link rel="search" title="搜索" href="../../../search/" /> 
+<meta
+  name="description"
+  content="Fortran : High-performance parallel programming language"
+/>
+<meta
+  name="keywords"
+  content="High-performance, parallel, programming language"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  var pr_number = -1;
+  $(document).ready(function () {
+    if (window.location.href.indexOf("/pr/") > -1) {
+      pr_number = window.location.href.split("/").indexOf("pr") + 1;
+      document.getElementById("pr").innerHTML =
+        "pull request " + window.location.href.split("/")[pr_number];
+      document.getElementById("pr").href =
+        "https://github.com/fortran-lang/webpage/pull/" +
+        window.location.href.split("/")[pr_number];
+      var banner = document.getElementById("banner");
+      banner.style.display = "block";
+    }
+  });
+</script>
+<div id="banner" style="display: none" class="container">
+  <h3>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-git-pull-request"
+    >
+      <circle cx="18" cy="18" r="3"></circle>
+      <circle cx="6" cy="6" r="3"></circle>
+      <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+      <line x1="6" y1="9" x2="6" y2="21"></line>
+    </svg>
+    <b>Site preview: </b>you are previewing unpublished changes for
+    <a id="pr"></a>
+  </h3>
+</div> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../news/atom.xml"
+  title="Blog"
+/>
+ 
+<link href="True" rel="stylesheet" />
+ 
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/fortran-logo-256x256.png" class="logo__image only-light" alt="Fortran Programming Language - Home"/>
+    <img src="../../../_static/fortran-logo-256x256.png" class="logo__image only-dark pst-js-only" alt="Fortran Programming Language - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../learn/">
+    学习
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../compilers/">
+    编译器
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../community/">
+    社区
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../packages/">
+    源码包
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../">
+    新闻
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../learn/">
+    学习
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../compilers/">
+    编译器
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../community/">
+    社区
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../packages/">
+    源码包
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../">
+    新闻
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__postcard">
+   
+  <h2>
+     
+    <i class="fa fa-calendar"></i>
+    
+    <span>01 April 2021</span>
+    
+  </h2>
+  <ul>
+    <div class="ablog-sidebar-item ablog__postcard2">
+   
+  <li id="ablog-sidebar-item author ablog__author">
+    <span>
+      
+      <i class="fa-fw fa fa-user"></i>
+      
+    </span>
+     
+    <a href="../../author/sebastian-ehlert/">Sebastian Ehlert</a>
+     ,    
+    <a href="../../author/alexis-perry-holby/">Alexis Perry-Holby</a>
+     ,    
+    <a href="../../author/laurence-kedward/">Laurence Kedward</a>
+     ,    
+    <a href="../../author/milan-curcic/">Milan Curcic</a>
+     ,    
+    <a href="../../author/ondrej-certik/">Ondřej Čertík</a>
+      
+  </li>
+     
+  <li id="ablog-sidebar-item category ablog__category">
+    <span>
+      
+      <i class="fa-fw fa fa-folder-open"></i>
+      
+    </span>
+     
+    <a href="../../category/newsletter/">newsletter</a>
+      
+  </li>
+    
+</div>
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__recentposts">
+  <h3>
+    <a href="../../">最近文章</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../../2022/06-09-Fortran-Newsletter-June-2022/">
+        09 June - Fortran newsletter: June 2022
+      </a>
+    </li>
+    
+    <li>
+      <a href="../../2022/05-05-Fortran-Newsletter-May-2022/">
+        05 May - Fortran newsletter: May 2022
+      </a>
+    </li>
+    
+    <li>
+      <a href="../../2022/04-07-Fortran-Newsletter-April-2022/">
+        07 April - Fortran newsletter: April 2022
+      </a>
+    </li>
+    
+    <li>
+      <a href="../../2022/03-09-Fortran-Newsletter-March-2022/">
+        09 March - Fortran newsletter: March 2022
+      </a>
+    </li>
+    
+    <li>
+      <a href="../../2022/02-01-Fortran-Newsletter-February-2022/">
+        01 February - Fortran newsletter: February 2022
+      </a>
+    </li>
+    
+  </ul>
+</div>
+</div>
+        <div class="sidebar-primary-item">
+<div class="ablog-sidebar-item ablog__archive">
+  <h3>
+    <a href="../../archive/">归档</a>
+  </h3>
+  <ul>
+     
+    <li>
+      <a href="../../2022/">2022 (6)</a>
+    </li>
+      
+    <li>
+      <a href="../">2021 (16)</a>
+    </li>
+      
+    <li>
+      <a href="../../2020/">2020 (11)</a>
+    </li>
+     
+  </ul>
+</div>
+</div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Fortran 时事通讯：2021 年 4 月</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="fortran-newsletter-april-2021">
+<h1>Fortran 时事通讯：2021 年 4 月<a class="headerlink" href="#fortran-newsletter-april-2021" title="Link to this heading">#</a></h1>
+<p>欢迎阅读 2021 年 4 月版 Fortran 月刊。该通讯每月初发布，详细介绍上个月的 Fortran 新闻。</p>
+<section id="fortran-lang-org">
+<h2>fortran-lang.org<a class="headerlink" href="#fortran-lang-org" title="Link to this heading">#</a></h2>
+<p>本月我们对网站进行了几次更新：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fortran-lang.org/pull/229">#229</a>: 修正快速入门迷你书中 π 的数值</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fortran-lang.org/pull/226">#226</a>: 将 DelaunaySparse 添加到包列表中</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fortran-lang.org/pull/223">#223</a> <a class="reference external" href="https://github.com/fortran-lang/fortran-lang.org/pull/225">#225</a>：谷歌编程之夏（GSoC）公告</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fortran-lang.org/pull/222">#222</a>：避免在贡献指南中表述不清</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fortran-lang.org/pull/221">#221</a>：添加有关免费编译器版本的信息</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fortran-lang.org/pull/216">#216</a>：改进标签</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fortran-lang.org/issues/207">#207</a>：设置操作系统的正确副标题</p></li>
+</ul>
+<p>正在进行的工作：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fortran-lang.org/pull/201">#201</a> (WIP)：fortran-lang 的国际化</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fortran-lang.org/pull/220">#220</a> （施工中）：将学习资源纳入了在线课程</p></li>
+</ul>
+<p><a class="reference external" href="https://github.com/fortran-lang/fortran-lang.org/issues">让我们知道</a> 如果你对网站及其内容有任何建议。我们欢迎任何新的贡献者加入网站，尤其是教程页面 —— 请参阅 <a class="reference external" href="https://github.com/fortran-lang/fortran-lang.org/blob/HEAD/CONTRIBUTING.md">贡献者指南</a> 了解如何开始。</p>
+</section>
+<section id="fortran-standard-library">
+<h2>Fortran 标准库<a class="headerlink" href="#fortran-standard-library" title="Link to this heading">#</a></h2>
+<p>这是 <code class="docutils literal notranslate"><span class="pre">stdlib</span></code> 中的新内容：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/320">#320</a>:实现非繁琐的函数式字符串类型</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/362">#362</a>：修复了样式指南中关于维度属性的措辞</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/352">#352</a>：将目录添加到自述性（README）文件中</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/346">#346</a> <a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/356">#356</a>:在 stdlib_string_type 模块中添加了 to_lower、to_upper、reverse 和 to_title 函数</p></li>
+</ul>
+<p>工作正在进行中：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/189">#189</a> (WIP)：稀疏矩阵的初始实现。</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/272">#272</a>（开发中）, <a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/273">#273</a> （开发中），<a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/276">#276</a>（开发中），<a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/278">#278</a>（开发中）：<code class="docutils literal notranslate"><span class="pre">stdlib_stats_distribution</span></code> 模块的实现。它提供概率分布和统计功能。</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/311">#311</a>（开发中）：用于处理字符串列表的模块的实现</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/313">#313</a> (WIP):勒让德多项式和高斯求积</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/333">#333</a> （施工中）：为字符串对象提供抽象基类</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/336">#336</a> （施工中）：添加将整数/逻辑值转换为字符值的函数</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/343">#343</a> (进行中):作为对 trim 的补充，实现 strip 和 chomp</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/349">#349</a>(进行中):简化测试 Makefile</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/353">#353</a> (进行中):实现一个用于实数宽松比较的模块的初始版本</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/355">#355</a>(进行中):实现 clip 函数</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/359">#359</a> （施工中）：向 stdlib 添加一般贡献指南</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/360">#360</a>(进行中):总结构建工具链工作流程和隐含规则</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/363">#363</a> (进行中):在 stdlib_string_type 模块中添加 sort</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib/pull/367">#367</a> (施工中):添加适用于 OSX 的英特尔编译器工作流程</p></li>
+</ul>
+<p>请通过测试和审查这些拉取请求来帮助改进 stdlib！</p>
+<p><a class="reference external" href="https://github.com/MarDiehl">&#64;MarDiehl</a> 和 <a class="reference external" href="https://github.com/arjenmarkus">&#64;arjenmarkus</a> 在 <a class="reference external" href="https://github.com/MarDiehl/stdlib_os">该仓库</a>。请尝试一下，如果有任何问题，或者 API 是否可以改进，请告诉我们它是如何工作的。</p>
+</section>
+<section id="fortran-package-manager">
+<h2>Fortran 包管理器<a class="headerlink" href="#fortran-package-manager" title="Link to this heading">#</a></h2>
+<p>以下是 <code class="docutils literal notranslate"><span class="pre">fpm</span></code> 中的新功能：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/releases/tag/v0.2.0">Alpha 发布版本 0.2.0</a></p></li>
+<li><p><a class="reference external" href="https://github.com/conda-forge/fpm-feedstock">Fortran 包管理器嫌疑现已在 conda-forge 上可用</a></p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/352">#352</a>: 对帮助测试的一种临时修复</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/357">#357</a>:Fortran fpm 的安装脚本</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/369">#369</a>: 将构建目标与模块结构分开</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/370">#370</a>: 更新 run 子命令</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/377">#377</a>: 在清单中添加显式的 include-dir 键</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/378">#378</a>: 在 fpm_strings.f90 中添加与 ford 兼容的文档</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/386">#386</a>: 在 debug_fortran 选项中替换已弃用的标志</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/390">#390</a> <a class="reference external" href="https://github.com/fortran-lang/fpm/pull/407">#407</a>: 为 Fortran fpm 实现 --flag 选项</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/397">#397</a>: 在 README 中添加 Conda 安装说明</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/398">#398</a>: 小修复：用于设置可执行链接库</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/402">#402</a>: 添加 fpm 描述并重新组织 README 介绍</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/404">#404</a>: 修正对空输入的连接</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/409">#409</a>: 使程序能够访问子目录中的代码</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/414">#414</a>: 在 README 中添加一些重要的链接</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/412">#412</a>: 重复的模块定义</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/413">#413</a>: 将 omp_lib 添加到内建模块列表中</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/419">#419</a>: 将 Haskell 和 Fortran fpm 的工作流拆分</p></li>
+</ul>
+<p>工作正在进行中：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/milestone/1">第一个 beta 版本</a> (WIP)：Fortran 实现的第一个功能完整的版本。</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/364">#364</a> （施工中）：插件的 alpha 版本</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm/pull/420">#420</a> (进行中): 逐渐淘汰 Haskell fpm</p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm-haskell">fpm-haskell</a> (进行中):Haskell 版本 fpm 的独立存储库</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">fpm</span></code> 仍处于早期开发阶段，我们需要尽可能多的帮助。以下是你今天可以提供的帮助：</p>
+<ul class="simple">
+<li><p>使用它，让我们知道你的想法！阅读 <a class="reference external" href="https://github.com/fortran-lang/fpm/blob/HEAD/PACKAGING.md">fpm 打包指南</a> 了解如何使用 fpm 构建你的包，以及 <a class="reference external" href="https://github.com/fortran-lang/fpm/blob/HEAD/manifest-reference.md">清单参考</a> 了解你可以在 fpm.toml 文件中指定的所有内容。</p></li>
+<li><p>在 <a class="reference external" href="https://fortran-lang.org/packages/fpm">fortran-lang 网站</a> 上浏览现有的 <em>fpm</em> 包</p></li>
+<li><p>浏览 <a class="reference external" href="https://github.com/fortran-lang/fpm/issues">开启的 issues</a>，看看你是否可以帮助实施任何修复或功能。</p></li>
+<li><p>为 fpm 调整 Fortran 包并将其提交到 <a class="reference external" href="https://github.com/fortran-lang/fpm-registry">Registry</a>。</p></li>
+<li><p>改进文档。</p></li>
+</ul>
+<p>fpm 的短期目标是使具有依赖关系的 Fortran 包的开发和安装更容易。其长期目标是构建一个丰富且分散的 Fortran 软件包生态系统，并创建一个健康的环境，在该环境中轻松创建和发布新的开源 Fortran 项目。</p>
+</section>
+<section id="compilers">
+<h2>编译器<a class="headerlink" href="#compilers" title="Link to this heading">#</a></h2>
+<section id="classic-flang">
+<h3>经典 Flang<a class="headerlink" href="#classic-flang" title="Link to this heading">#</a></h3>
+<p>在二月份总共合并了 10 个拉取请求。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/996">PR#996 tests:一个测试用例，支持 PR #966</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/968">PR#968 修复 flang 中 CONTIGUOUS 和 SAVE 属性之间的冲突 (issue #673)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/955">PR#955 不在使用字符种类 2 时发出错误</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/975">PR#975 添加使用 Github Actions 构建 llvm 的 release_11x 分支的选项</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/974">PR#974修复哈希冲突处理例程，由于致命错误未能正常工作 (issue #960).</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/1000">PR#1000向 GitHub Actions 添加 ccache 支持</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/952">PR#952 使用升级的 DISubrange 实现数组调试支持</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/1002">PR#1002 由 PR 引入的回归问题修复 #922 (issue #995)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/985">PR#985 添加 asprintf</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/966">PR#966 修复以解决 cp2k 编译和运行时问题</a></p></li>
+</ul>
+<p>三月份总共合并了 8 个拉取请求。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/963">PR#963修复隐含 do 循环中的数组初始化错误</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/1007">PR#1007 问题 #1006 的修复：停止传递未使用的未初始化值</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/1004">PR#1004 实数类型的嵌套隐含 do 循环修复</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/710">PR#710 用于捕获过程指针到 OpenMP 并行区域的测试用例</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/561">PR#561 flang2：修复问题 #424 的正确方法 </a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/778">PR#778 修复 NCAR 测试问题，容忍度低于 E-12。</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/1010">PR#1010 LLVM 12 upgrade</a></p></li>
+<li><p><a class="reference external" href="https://github.com/flang-compiler/flang/pull/1012">PR#1012 Remove release_90 from Github Actions</a></p></li>
+</ul>
+</section>
+<section id="llvm-flang">
+<h3>LLVM Flang<a class="headerlink" href="#llvm-flang" title="Link to this heading">#</a></h3>
+<p>最近的开发更新：</p>
+<ul class="simple">
+<li><p>新的驱动程序：</p>
+<ul>
+<li><p>添加 -fdefault* 和 -flarge-sizes 的选项</p></li>
+<li><p>完善模块搜索目录的测试</p></li>
+<li><p>添加 -fdebug-dump-parsing-log</p></li>
+<li><p>添加 -fdebug-module-writer 选项</p></li>
+<li><p>添加 debug dump、measure-parse-tree 和 pre-fir-tree 选项</p></li>
+<li><p>添加 -Xflang 并将 -test-io 设为仅前端的 flang</p></li>
+<li><p>将 -J 和 -module-dir 添加到 f18 驱动程序</p></li>
+<li><p>修复 -fdefault* 系列的错误</p></li>
+</ul>
+</li>
+<li><p>FIR（Fortran IR - MLIR 的一种方言）：</p>
+<ul>
+<li><p>为 FIR 操作验证器添加诊断测试</p></li>
+<li><p>添加 FIR 类型解析器的诊断测试</p></li>
+<li><p>上游预 FIR 树的更改（PFT 已更新以支持 Fortran 77）</p></li>
+<li><p>更新 flang 测试工具支持类</p></li>
+<li><p>添加 zero_bits、数组值和其他操作</p></li>
+<li><p>上游实用函数 valueHasFirAttribute()，以便在后续合并中使用</p></li>
+</ul>
+</li>
+<li><p>OpenMP - 添加语义检查:</p>
+<ul>
+<li><p>OpenMP 4.5 - 2.7.1 Do Loop 中对 Threadprivate 的限制</p></li>
+<li><p>在 simd 指令的 aligned 子句中出现多个列表项</p></li>
+<li><p>Flang OpenMP 4.5 - 2.15.3.6 Reduction 子句</p></li>
+<li><p>2.15.4.2 - Copyprivate 子句</p></li>
+<li><p>2.15.3.4 - Firstprivate 子句</p></li>
+<li><p>2.15.3.5 - 最后私条款</p></li>
+</ul>
+</li>
+<li><p>Update character tests to use gtest</p></li>
+<li><p>Adaptations to MLIR API changes</p></li>
+<li><p>修复在覆盖错误的类型绑定过程时调用 CHECK() 的问题</p></li>
+<li><p>处理具有交替返回的类型绑定过程</p></li>
+<li><p>运行时间:执行INDEX内在功能</p></li>
+<li><p>修复在 MinGW-w64 上的编译问题</p></li>
+<li><p>扩展：将引用转发到 IMPLICIT NONE 下的虚拟参数</p></li>
+<li><p>检测循环定义的例程接口</p></li>
+<li><p>实现相关的字符内部函数 SCAN 和 VERIFY</p></li>
+</ul>
+<p>通话记录将发送到 <em>flang-dev</em> 电子邮件列表，并记录在 <a class="reference external" href="https://docs.google.com/document/d/10T-S2J3GrahpG4Ooif93NSTz2zBW0MQc_RlwHi0-afY">此处</a>。</p>
+</section>
+<section id="lfortran">
+<h3>LFortran<a class="headerlink" href="#lfortran" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>LFortran 正在 NumFOCUS 和 Fortran-lang 旗下参与 GSoC，如果您有兴趣，请申请：<a class="gitlab reference external" href="https://gitlab.com/lfortran/lfortran/-/wikis/GSoC-2021-Ideas">lfortran/lfortran/-/wikis/GSoC-2021-Ideas</a></p></li>
+<li><p>7个人在上个月贡献了代码：<a class="reference external" href="https://github.com/czgdp1807">Gagandeep Singh</a>, <a class="reference external" href="https://dompoer.io/">Dominic Poerio</a>, <a class="reference external" href="https://github.com/hp77-creator">Himanshu Pandey</a>, <a class="reference external" href="https://github.com/Thirumalai-Shaktivel">Thirumalai Shaktivel</a>, <a class="reference external" href="https://github.com/scothalverson">Scot Halverson</a>, <a class="reference external" href="https://rgoswami.me/">Rohit Goswami</a>, <a class="reference external" href="https://ondrejcertik.com/">Ondřej Čertík</a>.</p></li>
+<li><p>过去一个月有 114 个合并请求被 <a class="reference external" href="https://gitlab.com/lfortran/lfortran/-/merge_requests?scope=all&amp;amp;utf8=%E2%9C%93&amp;amp;state=merged">merged</a>，亮点</p>
+<ul>
+<li><p>macOS 支持（Intel 和 ARM）、编译和 LFortran 本身的开发（堆栈跟踪工作正常）</p></li>
+<li><p>初始实现：模块（modfiles、依赖项等）、接口、整数/实数类型、公共/私有属性、派生类型、字符串、变量初始化、指针、模块</p></li>
+<li><p>许多其他修复</p></li>
+</ul>
+</li>
+</ul>
+<p>LFortran 仍处于 pre-alpha 阶段，但我们正在快速推进，使其能够编译更多的 Fortran 功能。我们正在寻找贡献者，如果您有兴趣，请与我们联系，我们将帮助您入门。您可以通过 Zulip Chat、mailinglist 或 GitLab 问题与我们联系（有关这三者的链接，请参阅 https://lfortran.org）。</p>
+</section>
+</section>
+<section id="events">
+<h2>活动<a class="headerlink" href="#events" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>我们在 3 月 24 日进行了第 10 次 Fortran 月度电话会议。您可以观看下面的记录：</p></li>
+</ul>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/cxDF2Sa3nvU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<ul>
+<li><p>今年，Fortran-lang 是 <a class="reference external" href="https://summerofcode.withgoogle.com/organizations/6633903353233408/">Google Summer of Code</a> 的导师组织。如果您是学生，或者认识 <a class="reference external" href="https://developers.google.com/open-source/gsoc/faq#what_are_the_eligibility_requirements_for_participation">有资格参与</a> 的学生，并且您想帮助构建 Fortran 生态系统，请联系我们并告诉我们。学生申请窗口于 3 月 29 日开放，并将于 4 月 13 日东部时间 14:00 关闭。</p></li>
+<li><p>美国 Fortran 标准委员会第 223 次会议于 3 月 2 日结束。讨论的主要议题是 Fortran 202X 标准修订计划的变更。以下是<a class="reference external" href="https://j3-fortran.org/doc/meeting/223">所有提交论文的列表</a>，以及讨论和投票结果的<a class="reference external" href="https://github.com/j3-fortran/fortran_proposals/issues/199">摘要</a>。委员会还欢迎新成员 Milan Curcic(<a class="reference external" href="https://github.com/milancurcic">&#64;milancurcic</a>)，他是 Gary Klimowicz(<a class="reference external" href="https://github.com/gklimowicz">&#64;gklimowicz</a>)的投票替代者。</p>
+<p>如果您对语言有新的改进意见，请在 <a class="reference external" href="https://github.com/j3-fortran/fortran_proposals">此处</a> 提出。</p>
+</li>
+<li><p>即将举行的关于 <a class="reference external" href="https://register.gotowebinar.com/register/7343048137688004108">Fortran 用于高性能计算</a> 的免费网络研讨会的注册已开放。该网络研讨会由 <a class="reference external" href="https://www.excellerat.eu/">Excellerat</a> 组织，将由南安普顿大学的 Wadud Miah(<a class="reference external" href="https://github.com/wadudmiah">&#64;wadudmiah</a>) 进行介绍。</p></li>
+</ul>
+<p>像往常一样，订阅 <a class="reference external" href="https://groups.io/g/fortran-lang">邮件列表</a> 和/或加入 <a class="reference external" href="https://fortran-lang.discourse.group">Discourse</a> 继续关注未来的会议。</p>
+</section>
+<section id="contributors">
+<h2>贡献者<a class="headerlink" href="#contributors" title="Link to this heading">#</a></h2>
+<p>我们感谢过去一个月为 fortran-lang 做出贡献的每个人，他们在以下任何存储库中发表评论：</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib">fortran-lang/stdlib</a></p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/stdlib-cmake-example">fortran-lang/stdlib-cmake-example</a></p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm">fortran-lang/fpm</a></p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm-registry">fortran-lang/fpm-registry</a></p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/setup-fpm">fortran-lang/setup-fpm</a></p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fpm-haskell">fortran-lang/fpm-haskell</a></p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fortran-lang.org">fortran-lang/fortran-lang.org</a></p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/benchmarks">fortran-lang/benchmarks</a></p></li>
+<li><p><a class="reference external" href="https://github.com/fortran-lang/fortran-forum-article-template">fortran-lang/fortran-forum-article-template</a></p></li>
+<li><p><a class="reference external" href="https://github.com/j3-fortran/fortran_proposals">j3-fortran/fortran_proposals</a></p></li>
+</ul>
+<div id="gh-contributors" data-startdate="March 01 2021" data-enddate="March 31 2021" height="500px"></div>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+     
+<div class="section ablog__prev-next">
+  <span class="ablog__prev">
+     
+    <a href="../03-09-fortran-lang-accepted-for-google-summer-of-code-2021/">
+      
+      <i class="fa fa-arrow-circle-left"></i>
+      
+      <span>Fortran-lang 被 Google 编程之夏（GSoC）2021 接受</span>
+    </a>
+    
+  </span>
+  <span class="ablog__spacer">&nbsp;</span>
+  <span class="ablog__next">
+     
+    <a href="../04-20-First-Year/">
+      <span>这是Fortran网站创立的头一年</span>
+      
+      <i class="fa fa-arrow-circle-right"></i>
+      
+    </a>
+    
+  </span>
+</div>
+  
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">  
+<br />
+
+<div class="tocsection onthispage">
+  <i class="fas fa-list"></i> 当前页面
+</div>
+
+<nav id="bd-toc-nav" class="page-toc"><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fortran-lang-org">fortran-lang.org</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fortran-standard-library">Fortran 标准库</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fortran-package-manager">Fortran 包管理器</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compilers">编译器</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classic-flang">经典 Flang</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#llvm-flang">LLVM Flang</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lfortran">LFortran</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#events">活动</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contributors">贡献者</a></li>
+</ul></nav> </div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2024, Fortran Community.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1125 @@
+
+<!DOCTYPE html>
+
+
+<html lang="pt" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="256x256" href="../../../_static/images/favicon.ico" type="image/x-icon">
+    <title>Um introdução ao make &#8212; Fortran Programming Language</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=eaa92f49" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=ecd938d6"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/translations.js?v=beaedd51"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'learn/building_programs/project_make';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '_static/data.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'pt';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="canonical" href="https://fortran-lang.org/en/learn/building_programs/project_make/" />
+    <link rel="index" title="Índice" href="../../../genindex/" />
+    <link rel="search" title="Pesquisar" href="../../../search/" />
+    <link rel="next" title="Distribuição dos seus programas" href="../distributing/" />
+    <link rel="prev" title="Ferramentas de compilação" href="../build_tools/" /> 
+<meta
+  name="description"
+  content="Fortran : High-performance parallel programming language"
+/>
+<meta
+  name="keywords"
+  content="High-performance, parallel, programming language"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  var pr_number = -1;
+  $(document).ready(function () {
+    if (window.location.href.indexOf("/pr/") > -1) {
+      pr_number = window.location.href.split("/").indexOf("pr") + 1;
+      document.getElementById("pr").innerHTML =
+        "pull request " + window.location.href.split("/")[pr_number];
+      document.getElementById("pr").href =
+        "https://github.com/fortran-lang/webpage/pull/" +
+        window.location.href.split("/")[pr_number];
+      var banner = document.getElementById("banner");
+      banner.style.display = "block";
+    }
+  });
+</script>
+<div id="banner" style="display: none" class="container">
+  <h3>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-git-pull-request"
+    >
+      <circle cx="18" cy="18" r="3"></circle>
+      <circle cx="6" cy="6" r="3"></circle>
+      <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+      <line x1="6" y1="9" x2="6" y2="21"></line>
+    </svg>
+    <b>Site preview: </b>you are previewing unpublished changes for
+    <a id="pr"></a>
+  </h3>
+</div> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../news/atom.xml"
+  title="Blog"
+/>
+ 
+<link href="True" rel="stylesheet" />
+ 
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/fortran-logo-256x256.png" class="logo__image only-light" alt="Fortran Programming Language - Home"/>
+    <img src="../../../_static/fortran-logo-256x256.png" class="logo__image only-dark pst-js-only" alt="Fortran Programming Language - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../">
+    Aprenda
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../compilers/">
+    Compiladores
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../community/">
+    Comunidade
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../packages/">
+    Pacotes
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../news/">
+    Notícias
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Pesquisar" aria-label="Pesquisar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Pesquisar</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Pesquisar" aria-label="Pesquisar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Pesquisar</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../">
+    Aprenda
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../compilers/">
+    Compiladores
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../community/">
+    Comunidade
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../packages/">
+    Pacotes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../news/">
+    Notícias
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../os_setup/">Organizando seu SO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/choose_compiler/">Escolhendo um compilador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/install_gfortran/">Instalação do GFortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/text_editors/">Editores de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/ides/">Ambiente de Desenvolvimento Integrado (IDEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/tips/">Dicas Valiosas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../quickstart/">Tutorial Introdutório</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/hello_world/">Olá Mundo</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/variables/">Variáveis</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/arrays_strings/">Arrays e cadeias</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/operators_control_flow/">Operadores e controle de fluxo</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/organising_code/">Organizando a estrutura de um código</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/derived_types/">Tipos Derivados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/gotchas/">Gotchas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Compilando programas</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../compiling_source/">Compilando o código fonte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linking_pieces/">Vinculando os objetos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Bibliotecas em Tempo de Execução</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../include_files/">Incluir arquivos e módulos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_libraries/">Gerenciando bibliotecas (bibliotecas estáticas e dinâmicas)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_tools/">Ferramentas de compilação</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Um introdução ao make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributing/">Distribuição dos seus programas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../best_practices/">Práticas Recomendadas em Fortran</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/style_guide/">Guia de Estilos para o Fortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/floating_point/">Números de Ponto Flutuante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/integer_division/">Divisão de Inteiros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/modules_programs/">Módulos e Programas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/arrays/">Matrizes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/multidim_arrays/">Arrays Multidimensionais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/element_operations/">Operações em Elementos em Matrizes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/allocatable_arrays/">Matrizes Alocáveis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/file_io/">Entrada/Saída em Ficheiros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/callbacks/">Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/type_casting/">Conversão de Tipos em Callbacks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intrinsics/">Funções Intrínsecas do Fortran</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/array/">Propriedades e atributos das matrizes</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/bit/">manipulação e consulta à nível de bit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/character/">Basic procedures for manipulating <em>character</em> variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/compiler/">Information about compiler and compiler options used for building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/cfi/">Procedimentos para vincular à interfaces C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/math/">Funções matemáticas em geral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/model/">Controlling and querying the current numeric model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/numeric/">Manipulation and properties of numeric values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/parallel/">Parallel programming using co_arrays and co_indexed arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/state/">Intrínsecos gerais e diversos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/system/">Acessando informação externa ao sistema</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/transform/">Matrix multiplication, dot product, and array shifts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/type/">Types e kinds</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.gnu.org/licenses/old-licenses/fdl-1.2.en.html">Licença de Documentação Gratuita GNU</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rosetta_stone/">Python Fortran Rosetta Stone</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../oop_features_in_fortran/">Putting Fortran’s object-related features to practical use</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/object_based_programming_techniques/">Object-based programming techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/object_oriented_programming_techniques/">Object-oriented programming techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/performance_and_ease_of_use/">Performance and ease of use</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../" class="nav-link">Aprenda</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../" class="nav-link">Compilando programas</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Um introdução ao make</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="an-introduction-to-make">
+<h1>Um introdução ao make<a class="headerlink" href="#an-introduction-to-make" title="Link to this heading">#</a></h1>
+<p>Discutimos brevemente o básico do <code class="docutils literal notranslate"><span class="pre">make</span></code>. Esse capítulos dá ideias e estratégias de escalas <code class="docutils literal notranslate"><span class="pre">make</span></code> para projetos maiores.</p>
+<p>Antes de irmos aos detalhes com <code class="docutils literal notranslate"><span class="pre">make</span></code>, considere alguns pontos:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span></code> é uma ferramenta Unix e pode te dar algum trabalho quando portando para plataformas não Unix. Dito isso, há outros sabores de <code class="docutils literal notranslate"><span class="pre">make</span></code> disponíveis, mas nem todos podem ter as funcionalidades que você queira usar.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span></code> te dá controle total do processo de geração de build, isso significa que você é responsável por todo o processo, e deverá especificar as regras para cada detalhe do seu projeto. Você poderá se encontrar gastando um tempo significativo escrevendo e mantendo seu <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> ao invés de desenvolver seu código fonte.</p></li>
+<li><p>Você pode trabalhar com seu <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, mas lembre dos outros desenvolvedores no seu projeto que podem não ser familiares com <code class="docutils literal notranslate"><span class="pre">make</span></code>. Quanto tempo você espera que eles gastem para aprender seu <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> e eles serão capazes de debugar ou adicionar funcionalidades?</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span></code> puro não irá escalar. Cedo você adicionará programas auxiliares para gerar dinamicamente ou estaticamente seu <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>. Eles introduzem dependências e possíveis fontes de erros. O esforço necessário para testar e documentar essas ferramentas não deve ser subestimada.</p></li>
+</ol>
+<p>Se você acha <code class="docutils literal notranslate"><span class="pre">make</span></code> adequado para suas necessidades, então você pode começar escrevendo seu <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>. Para esse curso nós iremos usar exemplos do mundo real vindo do pacote de índice, o qual (no momento dessa escrita) usa sistemas de geração de build fora o <code class="docutils literal notranslate"><span class="pre">make</span></code>. Esse guia apresenta uma recomendação de estilo geral para escrever <code class="docutils literal notranslate"><span class="pre">make</span></code>, mas também serve como demonstração de funcionalidades úteis e interessantes.</p>
+<div class="admonition tip">
+<p class="admonition-title">Dica</p>
+<p>Mesmo se você achar <code class="docutils literal notranslate"><span class="pre">make</span></code> inadequado para gerar o build do seu projeto, essa é <em>a</em> ferramenta para automatizar fluxos de trabalho definidos pelos arquivos. Talvez você possa utilizar de seu poder em um contexto diferente.</p>
+</div>
+<section id="getting-started">
+<h2>Começando<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
+<p>Para essa parte, trabalharemos com <a href="https://github.com/jacobwilliams/fortran-csv-module/tree/1.2.0" target="_blank" rel="noopener"> o Fortran CSV module (v1.2.0)</a>. Nosso objetivo é criar um <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> para compilar esse projeto em uma biblioteca estática. Comece clonando o repositório</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">jacobwilliams</span><span class="o">/</span><span class="n">fortran</span><span class="o">-</span><span class="n">csv</span><span class="o">-</span><span class="n">module</span> <span class="o">-</span><span class="n">b</span> <span class="mf">1.2.0</span>
+<span class="n">cd</span> <span class="n">fortran</span><span class="o">-</span><span class="n">csv</span><span class="o">-</span><span class="n">module</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Dica</p>
+<p>Para essa parte trabalharemos com o código da tag <code class="docutils literal notranslate"><span class="pre">1.2.0</span></code> para fazê-lo o mais reprodutível o possível. Sinta-se a vontade de usar a última versão ou outro projeto.</p>
+</div>
+<p>Esse projeto usa FoBiS como sistema de geração de build, e você pode chegar o <code class="docutils literal notranslate"><span class="pre">build.sh</span></code> para opções com FoBiS. Nós agora iremos escrever o <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> para esse projeto. Primeiro, checamos a estrutura do diretório e os arquivos fonte</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.
+├── build.sh
+├── files
+│   ├── test_2_columns.csv
+│   └── test.csv
+├── fortran-csv-module.md
+├── LICENSE
+├── README.md
+└── src
+    ├── csv_kinds.f90
+    ├── csv_module.F90
+    ├── csv_parameters.f90
+    ├── csv_utilities.f90
+    └── tests
+        ├── csv_read_test.f90
+        ├── csv_test.f90
+        └── csv_write_test.f90
+</pre></div>
+</div>
+<p>Nós encontramos sete arquivos fonte Fortran diferentes; os quatros no <code class="docutils literal notranslate"><span class="pre">src</span></code> devem ser compilados e adicionados na biblioteca estática enquanto que os três em <code class="docutils literal notranslate"><span class="pre">src/tests</span></code> contém programas individuais que dependem da biblioteca estática.</p>
+<p>Comece criando um <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> simples:</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="c"># Disable the default rules</span>
+<span class="nv">MAKEFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>--no-builtin-rules<span class="w"> </span>--no-builtin-variables
+
+<span class="c"># Project name</span>
+<span class="nv">NAME</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>csv
+
+<span class="c"># Configuration settings</span>
+<span class="nv">FC</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>gfortran
+<span class="nv">AR</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>ar<span class="w"> </span>rcs
+<span class="nv">LD</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>FC<span class="k">)</span>
+<span class="nv">RM</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>rm<span class="w"> </span>-f
+
+<span class="c"># List of all source files</span>
+<span class="nv">SRCS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>src/csv_kinds.f90<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>src/csv_module.F90<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>src/csv_parameters.f90<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>src/csv_utilities.f90
+<span class="nv">TEST_SRCS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>src/tests/csv_read_test.f90<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>src/tests/csv_test.f90<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>src/tests/csv_write_test.f90
+
+<span class="c"># Create lists of the build artefacts in this project</span>
+<span class="nv">OBJS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>addsuffix<span class="w"> </span>.o,<span class="w"> </span><span class="k">$(</span>SRCS<span class="k">))</span>
+<span class="nv">TEST_OBJS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>addsuffix<span class="w"> </span>.o,<span class="w"> </span><span class="k">$(</span>TEST_SRCS<span class="k">))</span>
+<span class="nv">LIB</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>patsubst<span class="w"> </span>%,<span class="w"> </span>lib%.a,<span class="w"> </span><span class="k">$(</span>NAME<span class="k">))</span>
+<span class="nv">TEST_EXE</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>patsubst<span class="w"> </span>%.f90,<span class="w"> </span>%.exe,<span class="w"> </span><span class="k">$(</span>TEST_SRCS<span class="k">))</span>
+
+<span class="c"># Declare all public targets</span>
+<span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">all</span> <span class="n">clean</span>
+<span class="nf">all</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">LIB</span><span class="k">)</span> <span class="k">$(</span><span class="nv">TEST_EXE</span><span class="k">)</span>
+
+<span class="c"># Create the static library from the object files</span>
+<span class="nf">$(LIB)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">OBJS</span><span class="k">)</span>
+<span class="w">	</span><span class="k">$(</span>AR<span class="k">)</span><span class="w"> </span><span class="nv">$@</span><span class="w"> </span>$^
+
+<span class="c"># Link the test executables</span>
+<span class="nf">$(TEST_EXE)</span><span class="o">:</span><span class="w"> </span>%.<span class="n">exe</span>: %.<span class="n">f</span>90.<span class="n">o</span> <span class="k">$(</span><span class="nv">LIB</span><span class="k">)</span>
+<span class="w">	</span><span class="k">$(</span>LD<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span>$^
+
+<span class="c"># Create object files from Fortran source</span>
+<span class="nf">$(OBJS) $(TEST_OBJS)</span><span class="o">:</span><span class="w"> </span>%.<span class="n">o</span>: %
+<span class="w">	</span><span class="k">$(</span>FC<span class="k">)</span><span class="w"> </span>-c<span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span>$&lt;
+
+<span class="c"># Define all module interdependencies</span>
+<span class="nv">csv_kinds.mod</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>src/csv_kinds.f90.o
+<span class="nv">csv_module.mod</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>src/csv_module.F90.o
+<span class="nv">csv_parameters.mod</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>src/csv_parameters.f90.o
+<span class="nv">csv_utilities.mod</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>src/csv_utilities.f90.o
+<span class="nf">src/csv_module.F90.o</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_utilities.mod</span><span class="k">)</span>
+<span class="nf">src/csv_module.F90.o</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_kinds.mod</span><span class="k">)</span>
+<span class="nf">src/csv_module.F90.o</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_parameters.mod</span><span class="k">)</span>
+<span class="nf">src/csv_parameters.f90.o</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_kinds.mod</span><span class="k">)</span>
+<span class="nf">src/csv_utilities.f90.o</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_kinds.mod</span><span class="k">)</span>
+<span class="nf">src/csv_utilities.f90.o</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_parameters.mod</span><span class="k">)</span>
+<span class="nf">src/tests/csv_read_test.f90.o</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_module.mod</span><span class="k">)</span>
+<span class="nf">src/tests/csv_test.f90.o</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_module.mod</span><span class="k">)</span>
+<span class="nf">src/tests/csv_write_test.f90.o</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_module.mod</span><span class="k">)</span>
+
+<span class="c"># Cleanup, filter to avoid removing source code by accident</span>
+<span class="nf">clean</span><span class="o">:</span>
+<span class="w">	</span><span class="k">$(</span>RM<span class="k">)</span><span class="w"> </span><span class="k">$(</span>filter<span class="w"> </span>%.o,<span class="w"> </span><span class="k">$(</span>OBJS<span class="k">)</span><span class="w"> </span><span class="k">$(</span>TEST_OBJS<span class="k">))</span><span class="w"> </span><span class="k">$(</span>filter<span class="w"> </span>%.exe,<span class="w"> </span><span class="k">$(</span>TEST_EXE<span class="k">))</span><span class="w"> </span><span class="k">$(</span>LIB<span class="k">)</span><span class="w"> </span><span class="k">$(</span>wildcard<span class="w"> </span>*.mod<span class="k">)</span>
+</pre></div>
+</div>
+<p>Invocando <code class="docutils literal notranslate"><span class="pre">make</span></code> deve construir a biblioteca estática e os executáveis dos testes como esperado:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gfortran -c -o src/csv_kinds.f90.o src/csv_kinds.f90
+gfortran -c -o src/csv_parameters.f90.o src/csv_parameters.f90
+gfortran -c -o src/csv_utilities.f90.o src/csv_utilities.f90
+gfortran -c -o src/csv_module.F90.o src/csv_module.F90
+ar rcs libcsv.a src/csv_kinds.f90.o src/csv_module.F90.o src/csv_parameters.f90.o src/csv_utilities.f90.o
+gfortran -c -o src/tests/csv_read_test.f90.o src/tests/csv_read_test.f90
+gfortran -o src/tests/csv_read_test.exe src/tests/csv_read_test.f90.o libcsv.a
+gfortran -c -o src/tests/csv_test.f90.o src/tests/csv_test.f90
+gfortran -o src/tests/csv_test.exe src/tests/csv_test.f90.o libcsv.a
+gfortran -c -o src/tests/csv_write_test.f90.o src/tests/csv_write_test.f90
+gfortran -o src/tests/csv_write_test.exe src/tests/csv_write_test.f90.o libcsv.a
+</pre></div>
+</div>
+<p>Há algumas coisas para notar aqui, o build <code class="docutils literal notranslate"><span class="pre">make</span></code> geralmente interlaça os artefatos do build e o código fonte, a não ser que você implemente o diretório de build. Além disso, os arquivos fonte e dependências são especificadas explicitamente, o que resulta em diversas linhas adicionais mesmo para tal projeto simples.</p>
+</section>
+<section id="automatically-generated-dependencies">
+<h2>Dependências geradas automaticamente<a class="headerlink" href="#automatically-generated-dependencies" title="Link to this heading">#</a></h2>
+<p>A principal desvantagem do <code class="docutils literal notranslate"><span class="pre">make</span></code> para Fortran é a falta da capacidade de determinar dependências de módulo. Isso é geralmente resolvido seja adicionando à mão ou escaneando automaticamente o código fonte com uma ferramenta externa. Alguns compiladores (como o compilador Intel Fortran) também oferece a geração de dependências no formato <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+<p>Antes de aprofundar na geração de dependências, vamos delinear o conceito de uma medida robusta para o problema de dependência. Primeiro, queremos uma abordagem que consiga processar todos os arquivos fonte independentemente, enquanto cada arquivo fonte fornece (<code class="docutils literal notranslate"><span class="pre">module</span></code>) ou requer (<code class="docutils literal notranslate"><span class="pre">use</span></code>) módulos. Quando gerando as dependências apenas o nome do arquivo fonte e os arquivos módulo são conhecidos, e nenhuma informação dos nomes dos arquivos objeto deve ser necessária.</p>
+<p>Se você checar a seção de dependência acima você notará que todas as dependências são definidas entre arquivos objeto ao invés de arquivos fonte. Para mudar isso, podemos gerar uma relação dos arquivos fonte com seus respectivos arquivos objeto:</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="c"># Define a map from each file name to its object file</span>
+<span class="nv">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span>src<span class="k">)</span>.o
+<span class="nf">$(foreach src, $(SRCS) $(TEST_SRCS), $(eval $(src) </span><span class="o">:</span>= <span class="k">$(</span><span class="nv">obj</span><span class="k">)</span>))
+</pre></div>
+</div>
+<p>Note a declaração do <code class="docutils literal notranslate"><span class="pre">obj</span></code> como uma variável recursivamente expandida, efetivamente usamos esse mecanismo para definir a função em <code class="docutils literal notranslate"><span class="pre">make</span></code>. A função <code class="docutils literal notranslate"><span class="pre">foreach</span></code> nos permite fazer um laço em todos os arquivos fonte, enquanto que a função <code class="docutils literal notranslate"><span class="pre">eval</span></code> nos permite gerar as declarações <code class="docutils literal notranslate"><span class="pre">make</span></code> e avalia-las para esse <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>.</p>
+<p>Ajustamos as dependências de acordo como definimos o nome dos arquivos objeto através dos nomes dos arquivos fonte:</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="c"># Define all module interdependencies</span>
+<span class="nv">csv_kinds.mod</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>src/csv_kinds.f90<span class="k">)</span>
+<span class="nv">csv_module.mod</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>src/csv_module.F90<span class="k">)</span>
+<span class="nv">csv_parameters.mod</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>src/csv_parameters.f90<span class="k">)</span>
+<span class="nv">csv_utilities.mod</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>src/csv_utilities.f90<span class="k">)</span>
+<span class="nf">$(src/csv_module.F90)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_utilities.mod</span><span class="k">)</span>
+<span class="nf">$(src/csv_module.F90)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_kinds.mod</span><span class="k">)</span>
+<span class="nf">$(src/csv_module.F90)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_parameters.mod</span><span class="k">)</span>
+<span class="nf">$(src/csv_parameters.f90)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_kinds.mod</span><span class="k">)</span>
+<span class="nf">$(src/csv_utilities.f90)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_kinds.mod</span><span class="k">)</span>
+<span class="nf">$(src/csv_utilities.f90)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_parameters.mod</span><span class="k">)</span>
+<span class="nf">$(src/tests/csv_read_test.f90)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_module.mod</span><span class="k">)</span>
+<span class="nf">$(src/tests/csv_test.f90)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_module.mod</span><span class="k">)</span>
+<span class="nf">$(src/tests/csv_write_test.f90)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_module.mod</span><span class="k">)</span>
+</pre></div>
+</div>
+<p>A mesma estratégia de criar uma relação já é usada para os arquivos módulo, agora é apenas expandida para os arquivos objeto também.</p>
+<p>Para gerar a respectiva relação de dependências automaticamente usaremos um script <code class="docutils literal notranslate"><span class="pre">awk</span></code> aqui</p>
+<div class="highlight-awk notranslate"><div class="highlight"><pre><span></span><span class="c1">#!/usr/bin/awk -f</span>
+
+<span class="nb">BEGIN</span> <span class="p">{</span>
+    <span class="c1"># Fortran is case insensitive, disable case sensitivity for matching</span>
+    <span class="nb">IGNORECASE</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="p">}</span>
+
+<span class="c1"># Match a module statement</span>
+<span class="c1"># - the first argument ($1) should be the whole word module</span>
+<span class="c1"># - the second argument ($2) should be a valid module name</span>
+<span class="o">$</span><span class="mi">1</span> <span class="o">~</span> <span class="sr">/^module$/</span> <span class="o">&amp;&amp;</span>
+<span class="o">$</span><span class="mi">2</span> <span class="o">~</span> <span class="sr">/^[a-zA-Z][a-zA-Z0-9_]*$/</span> <span class="p">{</span>
+    <span class="c1"># count module names per file to avoid having modules twice in our list</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">modc</span><span class="p">[</span><span class="nb">FILENAME</span><span class="p">,</span><span class="o">$</span><span class="mi">2</span><span class="p">]</span><span class="o">++</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># add to the module list, the generated module name is expected</span>
+        <span class="c1"># to be lowercase, the FILENAME is the current source file</span>
+        <span class="nx">mod</span><span class="p">[</span><span class="o">++</span><span class="nx">im</span><span class="p">]</span> <span class="o">=</span> <span class="kr">sprintf</span><span class="p">(</span><span class="s2">&quot;%s.mod = $(%s)&quot;</span><span class="p">,</span> <span class="kr">tolower</span><span class="p">(</span><span class="o">$</span><span class="mi">2</span><span class="p">),</span> <span class="nb">FILENAME</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Match a use statement</span>
+<span class="c1"># - the first argument ($1) should be the whole word use</span>
+<span class="c1"># - the second argument ($2) should be a valid module name</span>
+<span class="o">$</span><span class="mi">1</span> <span class="o">~</span> <span class="sr">/^use$/</span> <span class="o">&amp;&amp;</span>
+<span class="o">$</span><span class="mi">2</span> <span class="o">~</span> <span class="sr">/^[a-zA-Z][a-zA-Z0-9_]*,?$/</span> <span class="p">{</span>
+    <span class="c1"># Remove a trailing comma from an optional only statement</span>
+    <span class="kr">gsub</span><span class="p">(</span><span class="sr">/,/</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">$</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># count used module names per file to avoid using modules twice in our list</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">usec</span><span class="p">[</span><span class="nb">FILENAME</span><span class="p">,</span><span class="o">$</span><span class="mi">2</span><span class="p">]</span><span class="o">++</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># add to the used modules, the generated module name is expected</span>
+        <span class="c1"># to be lowercase, the FILENAME is the current source file</span>
+        <span class="nx">use</span><span class="p">[</span><span class="o">++</span><span class="nx">iu</span><span class="p">]</span> <span class="o">=</span> <span class="kr">sprintf</span><span class="p">(</span><span class="s2">&quot;$(%s) += $(%s.mod)&quot;</span><span class="p">,</span> <span class="nb">FILENAME</span><span class="p">,</span> <span class="kr">tolower</span><span class="p">(</span><span class="o">$</span><span class="mi">2</span><span class="p">))</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Match an include statement</span>
+<span class="c1"># - the first argument ($1) should be the whole word include</span>
+<span class="c1"># - the second argument ($2) can be everything, as long as delimited by quotes</span>
+<span class="o">$</span><span class="mi">1</span> <span class="o">~</span> <span class="sr">/^(#:?)?include$/</span> <span class="o">&amp;&amp;</span>
+<span class="o">$</span><span class="mi">2</span> <span class="o">~</span> <span class="sr">/^[&quot;&#39;].+[&quot;&#39;]$/</span> <span class="p">{</span>
+    <span class="c1"># Remove quotes from the included file name</span>
+    <span class="kr">gsub</span><span class="p">(</span><span class="sr">/&#39;|&quot;/</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="o">$</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># count included files per file to avoid having duplicates in our list</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">incc</span><span class="p">[</span><span class="nb">FILENAME</span><span class="p">,</span><span class="o">$</span><span class="mi">2</span><span class="p">]</span><span class="o">++</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1"># Add the included file to our list, this might be case-sensitive</span>
+        <span class="nx">inc</span><span class="p">[</span><span class="o">++</span><span class="nx">ii</span><span class="p">]</span> <span class="o">=</span> <span class="kr">sprintf</span><span class="p">(</span><span class="s2">&quot;$(%s) += %s&quot;</span><span class="p">,</span> <span class="nb">FILENAME</span><span class="p">,</span> <span class="o">$</span><span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># Finally, produce the output for make, loop over all modules, use statements</span>
+<span class="c1"># and include statements, empty lists are ignored in awk</span>
+<span class="nb">END</span> <span class="p">{</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">in</span> <span class="nx">mod</span><span class="p">)</span> <span class="kr">print</span> <span class="nx">mod</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">in</span> <span class="nx">use</span><span class="p">)</span> <span class="kr">print</span> <span class="nx">use</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">in</span> <span class="nx">inc</span><span class="p">)</span> <span class="kr">print</span> <span class="nx">inc</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Esse script tem algumas premissas sobre o código fonte analisado, então não funcionará para todo código Fortran (declaradamente submódulos não são suportados), mas para esse exemplo bastará.</p>
+<div class="admonition tip">
+<p class="admonition-title">Dica</p>
+<p>Usando awk</p>
+<p>O script acima usa a linguagem <code class="docutils literal notranslate"><span class="pre">awk</span></code>, a qual é projetada com o propósito de processar fluxos de texto e usa uma síntaxe C-like. Em <code class="docutils literal notranslate"><span class="pre">awk</span></code> você pode definir grupos que são avaliados em certos eventos, <em>p.ex.</em> quando uma linha corresponde a um padrão específico, geralmente espressada por uma <a href="https://en.wikipedia.org/wiki/Regular_expression" target="_blank" rel="noopener">expressão regular</a>.</p>
+<p>O script <code class="docutils literal notranslate"><span class="pre">awk</span></code> define cinco grupos, dois usam o padrão especial <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> e <code class="docutils literal notranslate"><span class="pre">END</span></code> os quais rodam antes do script iniciar e depois do script finalizar, respectivamente. Antes do script iniciar fazemos o script insensitivo à caixa já que estamos lidando com código fonte Fortran aqui. Também usamos a variável especial <code class="docutils literal notranslate"><span class="pre">FILENAME</span></code> para determinar qual arquivo nós estamos avaliado atualmente e permitir processar múltiplos arquivos de uma vez.</p>
+<p>Com os três padrões definidos buscaremos as declarações <code class="docutils literal notranslate"><span class="pre">module</span></code>, <code class="docutils literal notranslate"><span class="pre">use</span></code> e <code class="docutils literal notranslate"><span class="pre">include</span></code> como as primeiras entradas delimitadas por espaço. Com o padrão usado nem todo código Fortran válido será avaliada corretamente. Um exemplo de falha seria:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">use</span><span class="kd">::</span><span class="n">my_module</span><span class="p">,</span><span class="k">only</span><span class="p">:</span><span class="n">proc</span>
+</pre></div>
+</div>
+<p>Para faze-lo avaliável pelo script <code class="docutils literal notranslate"><span class="pre">awk</span></code> adicionaremos outro grupo diretamente depois do grupo <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code>, modificando o fluxo enquanto processa ele com</p>
+<div class="highlight-awk notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+   <span class="kr">gsub</span><span class="p">(</span><span class="sr">/,|:/</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Na teoria você precisaria de um avaliador Fortran completo para lidar com as linhas de continuação e outras dificuldades. Isso pode ser possível de implementar no <code class="docutils literal notranslate"><span class="pre">awk</span></code> mas iria requerer um script enorme no final.</p>
+<p>Além disso, tenha em mente que gerar as dependências deve ser rápido, um avaliador caro pode produzir uma despesa adicional quando gerando dependências para uma base de código grande. Tomar premissas razoáveis pode simplificar e acelerar esse passo, mas também introduzir fontes de erro nas suas ferramentas de geração de build.</p>
+</div>
+<p>Faça o script executável (<code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">gen-deps.awk</span></code>) e teste-o com <code class="docutils literal notranslate"><span class="pre">.gen-deps.awk</span> <span class="pre">$(find</span> <span class="pre">src</span> <span class="pre">-name</span> </code>*.[fF]90<code class="docutils literal notranslate"><span class="pre">)</span></code>. Você deve ver uma saída como isto:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>csv_utilities.mod = $(src/csv_utilities.f90)
+csv_kinds.mod = $(src/csv_kinds.f90)
+csv_parameters.mod = $(src/csv_parameters.f90)
+csv_module.mod = $(src/csv_module.F90)
+$(src/csv_utilities.f90) += $(csv_kinds.mod)
+$(src/csv_utilities.f90) += $(csv_parameters.mod)
+$(src/csv_kinds.f90) += $(iso_fortran_env.mod)
+$(src/tests/csv_read_test.f90) += $(csv_module.mod)
+$(src/tests/csv_read_test.f90) += $(iso_fortran_env.mod)
+$(src/tests/csv_write_test.f90) += $(csv_module.mod)
+$(src/tests/csv_write_test.f90) += $(iso_fortran_env.mod)
+$(src/tests/csv_test.f90) += $(csv_module.mod)
+$(src/tests/csv_test.f90) += $(iso_fortran_env.mod)
+$(src/csv_parameters.f90) += $(csv_kinds.mod)
+$(src/csv_module.F90) += $(csv_utilities.mod)
+$(src/csv_module.F90) += $(csv_kinds.mod)
+$(src/csv_module.F90) += $(csv_parameters.mod)
+$(src/csv_module.F90) += $(iso_fortran_env.mod)
+</pre></div>
+</div>
+<p>No que a saída do script usará variáveis recursivamente expandidas e não define nenhuma dependência ainda, por causa que a declaração de variáveis fora de ordem pode ser necessária e não queremos que crie qualquer coisa por acidente. Você pode verificar que a mesma informação como no snippet escrito acima é presente. A única exceção é a dependência adicional no <code class="docutils literal notranslate"><span class="pre">iso_fortran_env.mod</span></code>, já que é uma variável indefinida e irá apenas expandir em um string vazia e não introduzirá qualquer dependência.</p>
+<p>Agora, você pode finalmente incluir este pedaço no seu <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> para automatizar a geração de dependência:</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="c"># Disable the default rules</span>
+<span class="nv">MAKEFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>--no-builtin-rules<span class="w"> </span>--no-builtin-variables
+
+<span class="c"># Project name</span>
+<span class="nv">NAME</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>csv
+
+<span class="c"># Configuration settings</span>
+<span class="nv">FC</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>gfortran
+<span class="nv">AR</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>ar<span class="w"> </span>rcs
+<span class="nv">LD</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>FC<span class="k">)</span>
+<span class="nv">RM</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>rm<span class="w"> </span>-f
+<span class="nv">GD</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>./gen-deps.awk
+
+<span class="c"># List of all source files</span>
+<span class="nv">SRCS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>src/csv_kinds.f90<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>src/csv_module.F90<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>src/csv_parameters.f90<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>src/csv_utilities.f90
+<span class="nv">TEST_SRCS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span>src/tests/csv_read_test.f90<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>src/tests/csv_test.f90<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>src/tests/csv_write_test.f90
+
+<span class="c"># Add source and tests directories to search paths</span>
+<span class="cp">vpath % .: src</span>
+<span class="cp">vpath % .: src/tests</span>
+
+<span class="c"># Define a map from each file name to its object file</span>
+<span class="nv">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span>src<span class="k">)</span>.o
+<span class="nf">$(foreach src, $(SRCS) $(TEST_SRCS), $(eval $(src) </span><span class="o">:</span>= <span class="k">$(</span><span class="nv">obj</span><span class="k">)</span>))
+
+<span class="c"># Create lists of the build artefacts in this project</span>
+<span class="nv">OBJS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>addsuffix<span class="w"> </span>.o,<span class="w"> </span><span class="k">$(</span>SRCS<span class="k">))</span>
+<span class="nv">DEPS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>addsuffix<span class="w"> </span>.d,<span class="w"> </span><span class="k">$(</span>SRCS<span class="k">))</span>
+<span class="nv">TEST_OBJS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>addsuffix<span class="w"> </span>.o,<span class="w"> </span><span class="k">$(</span>TEST_SRCS<span class="k">))</span>
+<span class="nv">TEST_DEPS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>addsuffix<span class="w"> </span>.d,<span class="w"> </span><span class="k">$(</span>TEST_SRCS<span class="k">))</span>
+<span class="nv">LIB</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>patsubst<span class="w"> </span>%,<span class="w"> </span>lib%.a,<span class="w"> </span><span class="k">$(</span>NAME<span class="k">))</span>
+<span class="nv">TEST_EXE</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>patsubst<span class="w"> </span>%.f90,<span class="w"> </span>%.exe,<span class="w"> </span><span class="k">$(</span>TEST_SRCS<span class="k">))</span>
+
+<span class="c"># Declare all public targets</span>
+<span class="nf">.PHONY</span><span class="o">:</span><span class="w"> </span><span class="n">all</span> <span class="n">clean</span>
+<span class="nf">all</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">LIB</span><span class="k">)</span> <span class="k">$(</span><span class="nv">TEST_EXE</span><span class="k">)</span>
+
+<span class="c"># Create the static library from the object files</span>
+<span class="nf">$(LIB)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">OBJS</span><span class="k">)</span>
+<span class="w">	</span><span class="k">$(</span>AR<span class="k">)</span><span class="w"> </span><span class="nv">$@</span><span class="w"> </span>$^
+
+<span class="c"># Link the test executables</span>
+<span class="nf">$(TEST_EXE)</span><span class="o">:</span><span class="w"> </span>%.<span class="n">exe</span>: %.<span class="n">f</span>90.<span class="n">o</span> <span class="k">$(</span><span class="nv">LIB</span><span class="k">)</span>
+<span class="w">	</span><span class="k">$(</span>LD<span class="k">)</span><span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span>$^
+
+<span class="c"># Create object files from Fortran source</span>
+<span class="nf">$(OBJS) $(TEST_OBJS)</span><span class="o">:</span><span class="w"> </span>%.<span class="n">o</span>: % <span class="p">|</span> %.<span class="n">d</span>
+<span class="w">	</span><span class="k">$(</span>FC<span class="k">)</span><span class="w"> </span>-c<span class="w"> </span>-o<span class="w"> </span><span class="nv">$@</span><span class="w"> </span>$&lt;
+
+<span class="c"># Process the Fortran source for module dependencies</span>
+<span class="nf">$(DEPS) $(TEST_DEPS)</span><span class="o">:</span><span class="w"> </span>%.<span class="n">d</span>: %
+<span class="w">	</span><span class="k">$(</span>GD<span class="k">)</span><span class="w"> </span>$&lt;<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$@</span>
+
+<span class="c"># Define all module interdependencies</span>
+<span class="cp">include $(DEPS) $(TEST_DEPS)</span>
+<span class="nf">$(foreach dep, $(OBJS) $(TEST_OBJS), $(eval $(dep)</span><span class="o">:</span><span class="w"> </span><span class="k">$($(</span><span class="nv">dep</span><span class="k">))</span>))
+
+<span class="c"># Cleanup, filter to avoid removing source code by accident</span>
+<span class="nf">clean</span><span class="o">:</span>
+<span class="w">	</span><span class="k">$(</span>RM<span class="k">)</span><span class="w"> </span><span class="k">$(</span>filter<span class="w"> </span>%.o,<span class="w"> </span><span class="k">$(</span>OBJS<span class="k">)</span><span class="w"> </span><span class="k">$(</span>TEST_OBJS<span class="k">))</span><span class="w"> </span><span class="k">$(</span>filter<span class="w"> </span>%.d,<span class="w"> </span><span class="k">$(</span>DEPS<span class="k">)</span><span class="w"> </span><span class="k">$(</span>TEST_DEPS<span class="k">))</span><span class="w"> </span><span class="k">$(</span>filter<span class="w"> </span>%.exe,<span class="w"> </span><span class="k">$(</span>TEST_EXE<span class="k">))</span><span class="w"> </span><span class="k">$(</span>LIB<span class="k">)</span><span class="w"> </span><span class="k">$(</span>wildcard<span class="w"> </span>*.mod<span class="k">)</span>
+</pre></div>
+</div>
+<p>Aqui arquivos de dependência adicionais são gerados para cada arquivo fonte individualmente e então incluídos no <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> principal. Al[em disso, os arquivos de dependência são adicionados como dependência para os arquivos objeto para garantir que serão gerados antes do objeto ser compilado. O carácter pipe nas dependências define a ordem de regras sem uma dependência temporal, porque não é necessário recompilar um arquivo de objeto no caso de dependências serem gerem e potencialmente não modificadas.</p>
+<p>De novo, faremos uso da função <code class="docutils literal notranslate"><span class="pre">eval</span></code> para gerar as dependências em um laço <code class="docutils literal notranslate"><span class="pre">foreach</span></code> em todos os arquivos objeto. Note que criamos uma relação entre os arquivos objeto e os arquivos de dependência, expandindo <code class="docutils literal notranslate"><span class="pre">dep</span></code> uma vez rende o nome do arquivo objeto, expandir novamente rende os arquivos de objeto que ele depende.</p>
+<p>Construindo seu projeto com <code class="docutils literal notranslate"><span class="pre">make</span></code> deve dar uma saída similar a</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>./gen-deps.awk src/csv_utilities.f90 &gt; src/csv_utilities.f90.d
+./gen-deps.awk src/csv_parameters.f90 &gt; src/csv_parameters.f90.d
+./gen-deps.awk src/csv_module.F90 &gt; src/csv_module.F90.d
+./gen-deps.awk src/csv_kinds.f90 &gt; src/csv_kinds.f90.d
+gfortran -c -o src/csv_kinds.f90.o src/csv_kinds.f90
+gfortran -c -o src/csv_parameters.f90.o src/csv_parameters.f90
+gfortran -c -o src/csv_utilities.f90.o src/csv_utilities.f90
+gfortran -c -o src/csv_module.F90.o src/csv_module.F90
+ar rcs libcsv.a src/csv_kinds.f90.o src/csv_module.F90.o src/csv_parameters.f90.o src/csv_utilities.f90.o
+./gen-deps.awk src/tests/csv_read_test.f90 &gt; src/tests/csv_read_test.f90.d
+gfortran -c -o src/tests/csv_read_test.f90.o src/tests/csv_read_test.f90
+gfortran -o src/tests/csv_read_test.exe src/tests/csv_read_test.f90.o libcsv.a
+./gen-deps.awk src/tests/csv_test.f90 &gt; src/tests/csv_test.f90.d
+gfortran -c -o src/tests/csv_test.f90.o src/tests/csv_test.f90
+gfortran -o src/tests/csv_test.exe src/tests/csv_test.f90.o libcsv.a
+./gen-deps.awk src/tests/csv_write_test.f90 &gt; src/tests/csv_write_test.f90.d
+gfortran -c -o src/tests/csv_write_test.f90.o src/tests/csv_write_test.f90
+gfortran -o src/tests/csv_write_test.exe src/tests/csv_write_test.f90.o libcsv.a
+</pre></div>
+</div>
+<p>Uma vez que os arquivos de dependência são gerados, <code class="docutils literal notranslate"><span class="pre">make</span></code> irá apenas atualizá-los se a fonte mudar e não requer regerar o build novamente para cada invocação.</p>
+<div class="admonition tip">
+<p class="admonition-title">Dica</p>
+<p>Com dependências corretas você pode alavancar a execução paralela no seu <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, apenas use a flag <code class="docutils literal notranslate"><span class="pre">-j</span></code> para criar múltiplos processos <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+</div>
+<p>Já que dependências podem ser geradas automaticamente, não precisa especificar os arquivos fonte explicitamente, a função <code class="docutils literal notranslate"><span class="pre">wildcard</span></code> pode ser usada para determiná-los dinamicamente:</p>
+<div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="c"># List of all source files</span>
+<span class="nv">SRCS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>wildcard<span class="w"> </span>src/*.f90<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span><span class="k">$(</span>wildcard<span class="w"> </span>src/*.F90<span class="k">)</span>
+<span class="nv">TEST_SRCS</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>wildcard<span class="w"> </span>src/tests/*.f90<span class="k">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">  
+<br />
+
+<div class="tocsection onthispage">
+  <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav" class="page-toc"><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Começando</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatically-generated-dependencies">Dependências geradas automaticamente</a></li>
+</ul></nav> </div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2024, Fortran Community.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

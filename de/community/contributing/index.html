@@ -1,0 +1,925 @@
+
+<!DOCTYPE html>
+
+
+<html lang="de" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="256x256" href="../../_static/images/favicon.ico" type="image/x-icon">
+    <title>Zu fortran-lang.org beitragen &#8212; Fortran Programming Language</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=eaa92f49" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=fe1cd063"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/translations.js?v=9bf55d28"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'community/contributing';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '_static/data.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'de';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="canonical" href="https://fortran-lang.org/en/community/contributing/" />
+    <link rel="index" title="Stichwortverzeichnis" href="../../genindex/" />
+    <link rel="search" title="Suche" href="../../search/" />
+    <link rel="next" title="Minibuch-Tutorials auf fortran-lang.org" href="../minibooks/" />
+    <link rel="prev" title="Fortran-lang history" href="../history/" /> 
+<meta
+  name="description"
+  content="Fortran : High-performance parallel programming language"
+/>
+<meta
+  name="keywords"
+  content="High-performance, parallel, programming language"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  var pr_number = -1;
+  $(document).ready(function () {
+    if (window.location.href.indexOf("/pr/") > -1) {
+      pr_number = window.location.href.split("/").indexOf("pr") + 1;
+      document.getElementById("pr").innerHTML =
+        "pull request " + window.location.href.split("/")[pr_number];
+      document.getElementById("pr").href =
+        "https://github.com/fortran-lang/webpage/pull/" +
+        window.location.href.split("/")[pr_number];
+      var banner = document.getElementById("banner");
+      banner.style.display = "block";
+    }
+  });
+</script>
+<div id="banner" style="display: none" class="container">
+  <h3>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-git-pull-request"
+    >
+      <circle cx="18" cy="18" r="3"></circle>
+      <circle cx="6" cy="6" r="3"></circle>
+      <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+      <line x1="6" y1="9" x2="6" y2="21"></line>
+    </svg>
+    <b>Site preview: </b>you are previewing unpublished changes for
+    <a id="pr"></a>
+  </h3>
+</div> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../news/atom.xml"
+  title="Blog"
+/>
+ 
+<link href="True" rel="stylesheet" />
+ 
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/fortran-logo-256x256.png" class="logo__image only-light" alt="Fortran Programming Language - Home"/>
+    <img src="../../_static/fortran-logo-256x256.png" class="logo__image only-dark pst-js-only" alt="Fortran Programming Language - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../learn/">
+    Lernen
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../compilers/">
+    Compilers
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../">
+    Community
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../packages/">
+    Packages
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../news/">
+    Aktuelles
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Suche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Suche" aria-label="Suche" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Suche</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../learn/">
+    Lernen
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../compilers/">
+    Compilers
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../packages/">
+    Packages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../news/">
+    Aktuelles
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../history/">Fortran-lang history</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Zu fortran-lang.org beitragen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../minibooks/">Minibuch-Tutorials auf fortran-lang.org</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/">fortran-lang.org Paket Index</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../" class="nav-link">Community</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Zu fortran-lang.org beitragen</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="contributing-to-fortran-lang-org">
+<h1>Zu fortran-lang.org beitragen<a class="headerlink" href="#contributing-to-fortran-lang-org" title="Link to this heading">#</a></h1>
+<p>Diese Website ist Open Source und Beiträge sind willkommen!</p>
+<ul class="simple">
+<li><p>See <a class="reference internal" href="../packages/"><span class="doc std std-doc">package index guide</span></a> for how to add an entry to the <a class="reference internal" href="../../packages/"><span class="doc std std-doc">Package index</span></a></p></li>
+<li><p>Siehe <a class="reference internal" href="../minibooks/"><span class="doc std std-doc">Minibücher</span></a> für das Schreiben und Strukturieren eines Minibuch-Tutorials für den Abschnitt <a class="reference internal" href="../../learn/"><span class="doc std std-doc">Lernen</span></a></p></li>
+</ul>
+<section id="introduction">
+<h2>Einführung<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p><strong>Wie ist die Website aufgebaut?</strong></p>
+<p>The content of the website is primarily written in a combination of Markdown (Myst flavoured), HTML and YAML (for data).
+This source is compiled to produce pure HTML which is what you see on the final website.</p>
+<p>Die Website ist <em>statisch</em>, was bedeutet, dass der Inhalt der Website nach der Erstellung für alle Benutzer gleich ist; dies steht im Gegensatz zu vielen Websites, die <em>dynamisch</em> sind, d. h. sie können je nach Benutzer und den von ihm eingegebenen Daten unterschiedliche Inhalte anbieten.</p>
+<p>Die strukturellen Komponenten der Website werden mit dem Sphinx Static Site Generator für statische Funktionen und mit JavaScript für dynamische Funktionen geschrieben.</p>
+<p><strong>Muss ich HTML können, um einen Beitrag zu leisten?</strong></p>
+<p>Der größte Teil des Inhalts der Website ist in <a class="reference external" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a> geschrieben, einer einfachen Auszeichnungssprache zur Formatierung von Text - keine Sorge, wenn du dies noch nie benutzt hast, es ist sehr leicht zu erlernen!</p>
+<p><strong>Wie ist die Website aufgebaut?</strong></p>
+<p>Die Fortran-lang Seite nutzt den Python-basierten <a class="reference external" href="https://www.sphinx-doc.org/en/master/">statischen Webseitengenerator Sphinx</a> um die RST, Markdown und HTML Dateien zu kompilieren. Es ist für Mitwirkende empfehlenswert Python auf dem Rechner, den man zum Entwickeln verwendet, zu installieren, um sich Änderungen auch schon lokal vorher anschauen zu können, das ist allerdings nicht zwingend notwendig, da eine Seitenvorschau auch während des Pull Request Prozesses erstellt werden kann (dazu weiter unten mehr). Siehe auch <a class="reference external" href="https://github.com/fortran-lang/webpage/blob/HEAD/README.md">README.md</a> wie man Sphinx aufsetzt und damit die Seite baut.</p>
+<p>Auf dem Standardzweig des GitHub Repos befindet sich stets nur der ‚Quellcode‘ der Webseite, nicht das endgültige kompilierte Ergebnis; ein automatisierter Dienst kompiliert diesen Quellcode bei jeder Aktualisierung und legt das Ergebnis auf den Zweig <a class="reference external" href="https://github.com/fortran-lang/webpage/tree/gh-pages"><code class="docutils literal notranslate"><span class="pre">gh-pages</span></code></a>, welcher dann auf <a class="reference external" href="https://fortran-lang.org">https://fortran-lang.org</a> angezeigt wird.</p>
+<p>Deswegen müssen zum Mitwirken nur Änderungen an dem Quellcode der Seite hochgeladen werden und nicht die fertig kompilierten Ergebnisse, da diese automatisch aus dem Quellcode auf dem Standardzweig gebaut werden.</p>
+</section>
+<section id="workflow">
+<h2>Arbeitsablauf<a class="headerlink" href="#workflow" title="Link to this heading">#</a></h2>
+<p>Beiträge zur Website werden per Pull-Request an das Github-Repository übermittelt: <a class="github reference external" href="https://github.com/fortran-lang/webpage/">fortran-lang/webpage</a>.</p>
+<p>Der Arbeitsablauf dafür sieht folgendermaßen aus:</p>
+<ol class="arabic simple">
+<li><p>Erstelle/Aktualisiere einen persönlichen Fork der Webseite</p>
+<ul class="simple">
+<li><p>(Siehe <a class="reference external" href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/syncing-a-fork">Github Hilfe: syncing a fork</a> )</p></li>
+</ul>
+</li>
+<li><p>Erstelle einen neuen Zweig in Deinem Fork</p>
+<ul class="simple">
+<li><p>Der Name des Zweigs sollte deinen Beitrag kurz und knapp zusammenfassen, <em>z.B.</em> <code class="docutils literal notranslate"><span class="pre">fix-spelling-homepage</span></code>, <code class="docutils literal notranslate"><span class="pre">update-compiler-info</span></code></p></li>
+</ul>
+</li>
+<li><p>Setze die Anpassungen auf deinem lokalen Ast um</p></li>
+<li><p>Pushe den modifizierten Zweig in den Fork</p>
+<ul class="simple">
+<li><p><em>z.B.</em> <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">--set-upstream</span> <span class="pre">origin</span> <span class="pre">fix-spelling-homepage</span></code></p></li>
+</ul>
+</li>
+<li><p>Erstelle einen pull-request auf der fortran-lang/webpage ausgehend von deinem modifizierten Zweig</p>
+<ul class="simple">
+<li><p>(Siehe auch <a class="reference external" href="https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request">Github Hilfe: creating a pull request</a> )</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Note: Before opening a pull request you must build your changes locally using Sphinx (see <a class="reference external" href="https://github.com/fortran-lang/webpage/blob/HEAD/README.md">README.md</a>) to verify that your changes build correctly and render as you expect.</strong></p>
+<p><strong>Hinweis: Du kannst auch nach der Öffnung eines pull-requests weiterhin Änderungen in deinen Fork-Zweig pushen - der pull-request wird sich dementsprechend anpassen</strong></p>
+<p>Dein pull-request wird von anderen Mitgliedern der Community gereviewed werden. Hierbei kann es sein, dass Änderungswünsche geäußert werden. Github stellt ein einfaches Interface auf der Website zur Verfügung um Vorschläge der Reviewer mittels simplen Knopfdruck zu akzeptieren oder abzulehnen. Dies erspart manuelles kopieren in deine lokale Kopie und erneutes pushen. Falls du den „Commit suggestion“-Button verwendest, ist es erforderlich die lokale Kopie auf deinem Rechner mittels <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> zu aktualisieren, falls du vorhast weitere Änderungen vorzunehmen.</p>
+<p>Sobald dein pull-request akzeptiert wurde (im Normalfall sind zwei Mitglieder der Community erforderlich), wird er von den Maintainern in den Standard-Zweig der Website gemerged. Von diesem Zeitpunkt an sind die Änderungen auf der fortran-lang.org Seite einsehbar.</p>
+<p>Falls es erforderlich sein sollte, können die Maintainer des Repositorys eine öffentliche Preview der vorgeschlagenen Änderungen erstellen. Diese kann auf <code class="docutils literal notranslate"><span class="pre">fortran-lang.org/pr/&lt;pr_id&gt;/</span></code>eingesehen werden. Hierbei ist <code class="docutils literal notranslate"><span class="pre">&lt;pr_id&gt;</span></code> die ID deines pull requests.</p>
+<p>Dies ermöglicht den Reviewern direkt das Ergebnis deines pull-requests zu sehen.</p>
+<p><strong>Hinweis:</strong> falls du anschließend weitere Commits in den pull-request branch pushst, ist es erforderlich die pull-request-vorschau neu zu erstellen, indem du den pull-request mit ‚#build_preview‘ kommentierst.</p>
+<p>Nachdem ein pull-request gemerged und erfolgreich gerendert wurde, wird im Rahmen des weiteren Workflows der Vorschaubuild gelöscht.</p>
+<p><strong>Hinweis:</strong> Falls dein pull-request-vorschau-link nicht funktionieren sollte oder nach einem Neu-Erstellen nicht aktualisiert werden sollte, versuche ans Ende der URL einen zufälligen Parameter, <em>z.B.</em> <code class="docutils literal notranslate"><span class="pre">https://fortran-lang.org/pr/98?v=2</span></code> hinzuzufügen. Der Name und der Wert des Parameters ist hierbei irrelevant. Allerdings sollte mit jedem Update ein anderer Wert verwendet werden. Dieses Vorgehen erzwingt das GitHub content delivery network dazu dir eine aktualisierte Version anstatt einer veralteten Version aus dem Cache zu schicken.</p>
+</section>
+<section id="style-guide">
+<h2>Style Richtlinie<a class="headerlink" href="#style-guide" title="Link to this heading">#</a></h2>
+<section id="markdown">
+<h3>Markdown<a class="headerlink" href="#markdown" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Plaziere Code-Schnipsel in <a class="reference external" href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#code-and-syntax-highlighting">Code-Blöcke</a>, gekennzeichnet durch „Rückwärtsanführungzeichen“ (<code class="docutils literal notranslate"><span class="pre">```</span></code>). Verwende den Inline-Code-Stil (<code class="docutils literal notranslate"><span class="pre">`code`</span></code>) für Inline-Code-Schnipsel, Keywords, Variablennamen und Dateinamen.</p></li>
+<li><p>In jeder Quellcodezeile sollte nicht mehr als ein Satz sein und lange Sätze sollten über mehrere Zeilen aufgeteilt werden - Dies ist wichtig um große Unterschiede im Git und große Review Blöcke auf Github zu vermeiden.</p></li>
+</ul>
+</section>
+<section id="external-links">
+<h3>Ausgehende Links<a class="headerlink" href="#external-links" title="Link to this heading">#</a></h3>
+<p>It is recommended practice for off-site hyperlinks to open in a new tab.
+On <code class="docutils literal notranslate"><span class="pre">Fortran-lang.org</span></code> all such links will automatically be suffixed with a new-tab icon;
+this gives site users prior expectation that the link will lead them off-site while keeping fortran-lang.org open in a previous tab.</p>
+<p><strong>Beispiel:</strong> Öffne einen Link in einem neuen Tab (HTML oder Markdown)</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://fortran-lang.discourse.group/&quot;</span> <span class="na">target</span><span class="o">=</span><span class="s">&quot;_blank&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;noopener&quot;</span>
+  <span class="p">&gt;</span>Discourse<span class="p">&lt;/</span><span class="nt">a</span>
+<span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="internal-site-links">
+<h3>Seiteninterne Links<a class="headerlink" href="#internal-site-links" title="Link to this heading">#</a></h3>
+<p>Hyperlinks, die auf andere Teile der fortran-lang.org website verweisen sollten mit dem Präfix <code class="docutils literal notranslate"><span class="pre">{{pathto('index',1)[:-5]}}</span></code> versehen werden - dies ist wichtig für die Erstellung von pull-request Vorschauen (siehe auch <a class="reference external" href="https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/">hier</a> für eine umfangreichere Erklärung (in Englisch)).</p>
+<p><strong>Beispiel:</strong> Markdown Link</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Fortran</span><span class="o">-</span><span class="n">lang</span> <span class="n">news</span><span class="p">]({{</span><span class="n">pathto</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span><span class="mi">1</span><span class="p">)[:</span><span class="o">-</span><span class="mi">5</span><span class="p">]}}</span><span class="n">News</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Beispiel:</strong> HTML Link</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;{{pathto(&#39;index&#39;,1)[:-5]}}Packages&quot;</span><span class="o">&gt;</span><span class="n">Fortran</span> <span class="n">packages</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="icon-packs">
+<h3>Icon Packs<a class="headerlink" href="#icon-packs" title="Link to this heading">#</a></h3>
+<p>Icons ermöglichen es auf einfache Weise die Seite ästhetischer zu gestalten, indem monotone Textpassagen durch die gezielte Lenkung der Aufmerksamkeit auf Überschriften oder Schlüsselinformationen unterbrochen werden.</p>
+<p>Es sind drei Icon-Packs für die Verwendung auf <code class="docutils literal notranslate"><span class="pre">fortran-lang.org</span></code> verfügbar:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://sphinx-design.readthedocs.io/en/sbt-theme/badges_buttons.html#inline-icons">Sphinx-design</a> (MIT License)</p></li>
+<li><p><a class="reference external" href="https://fontawesome.com/icons?d=gallery">Font awesome</a> (CC BY 4.0 License)</p></li>
+</ul>
+<p><strong>Beispiel:</strong> Font awesome</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">i</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;fas fa-info-circle&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">i</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><strong>Beispiel:</strong> Sphinx design Myst directives</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>{octicon}`book;1em;sd-text-info`
+</pre></div>
+</div>
+<p>Besuche die jeweiligen Webseiten um die verfügbaren Icons zu durchsuchen.</p>
+</section>
+<section id="page-contents">
+<h3>Seiteninhalt<a class="headerlink" href="#page-contents" title="Link to this heading">#</a></h3>
+<p>Bei langen Seiten ist es manchmal hilfreich, Hyperlinks zum Seiteninhalt anzuzeigen. Der TOC-Tree der Seite wurde automatisiert und generiert das TOC der aktuellen Seite. Während die Methode zur Erzeugung des TOC des gesamten Verzeichnisses auf <code class="docutils literal notranslate"><span class="pre">Fortran-lang.org</span></code> ist hingegen:</p>
+<p><strong>Für Seiten in MD:</strong></p>
+<p>Ergänze die toc tree direktive im md am Ende der Index-Seite des Verzeichnisses mit den Namen aller Dateien in dem Verzeichnis.</p>
+<pre>
+````{toctree}  
+:hidden:
+ARRAY_index 
+```` 
+</pre>
+</section>
+</section>
+<section id="tutorials">
+<h2>Tutorials<a class="headerlink" href="#tutorials" title="Link to this heading">#</a></h2>
+<p>Ein Leitfaden für den Inhalt von Minibüchern.</p>
+<section id="general">
+<h3>Allgemeines<a class="headerlink" href="#general" title="Link to this heading">#</a></h3>
+<p>Verwende das <code class="docutils literal notranslate"><span class="pre">book</span></code> Layout.</p>
+<p>Folge den <a class="reference internal" href="#markdown">Markdown guidelines</a>.</p>
+</section>
+<section id="code-style">
+<h3>Code Style<a class="headerlink" href="#code-style" title="Link to this heading">#</a></h3>
+<p>Verwende zwei Leerzeichen zum Einrücken. Rücke die Inhalte der Units ein, aber setze das <code class="docutils literal notranslate"><span class="pre">contains</span></code> Statement auf derselben Höhe wie <code class="docutils literal notranslate"><span class="pre">module</span></code> oder <code class="docutils literal notranslate"><span class="pre">type</span></code>. Versuche die Zeilenlänge auf 90 Zeichen zu begrenzen. Diese Überlegungen sollten dazu führen, dass der Code lesbarer und auf Geräten mit kleiner Bildschirmbreite leichter angezeigt werden kann.</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">m</span>
+<span class="w">  </span><span class="k">implicit none</span>
+<span class="k">  private</span>
+<span class="k">  public</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a_t</span>
+
+<span class="w">  </span><span class="k">type</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">a_t</span>
+<span class="w">    </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">val</span>
+<span class="w">  </span><span class="k">contains</span>
+<span class="k">    procedure</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">func</span>
+<span class="w">  </span><span class="k">end type </span><span class="n">a_t</span>
+
+<span class="k">contains</span>
+
+<span class="k">  subroutine </span><span class="n">func</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+<span class="w">    </span><span class="k">class</span><span class="p">(</span><span class="n">a_t</span><span class="p">),</span><span class="w"> </span><span class="k">intent</span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">self</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">self</span><span class="p">%</span><span class="n">val</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">self</span><span class="p">%</span><span class="n">val</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">  end function </span><span class="n">func</span>
+
+<span class="k">end module </span><span class="n">m</span>
+</pre></div>
+</div>
+<p>Jeder code Block sollte zuerst auf Level 0 eingerückt werden. Dies gilt auch, wenn es in einen größeren Kontext integriert werden würde.</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i1</span><span class="w">  </span><span class="c">! yes</span>
+<span class="w">  </span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i2</span><span class="w">  </span><span class="c">! no</span>
+</pre></div>
+</div>
+<p>Vermeide das Ausrichten von <code class="docutils literal notranslate"><span class="pre">::</span></code> sowie Inline-Kommentaren, da diese die Pflege erschwert und in den meisten Fällen die Zeilenlänge überschreitete.</p>
+<p>Wenn ein Codeblock Zeilen enthält, die kein gültiges Fortran enthalten, lasse es in einem language-less code block um die roten Boxen des Syntax-Highlighters zu vermeiden.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="o">&lt;</span><span class="n">module</span> <span class="n">name</span><span class="o">&gt;</span>
+<span class="o">...</span>
+<span class="n">end</span> <span class="n">module</span> <span class="o">&lt;</span><span class="n">module</span> <span class="n">name</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>In Ausdrücken können Leerzeichen weglassen werden, wenn es der Lesbarkeit dient, aber im Allgemeinen sollten Leerzeichen um Operatoren herum einfügt werden.</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">y1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">b</span>
+<span class="n">y2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="o">*</span><span class="n">d</span><span class="w">  </span><span class="c">! instead of a * b + c * d</span>
+<span class="n">y3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="n">y4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">c</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">s3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s1</span><span class="w"> </span><span class="o">//</span><span class="w"> </span><span class="n">s2</span>
+</pre></div>
+</div>
+<p>Generell sollten nach Kommas Leerzeichen eingefügt werden außer beim Indizieren mit kurzen Indexwerten oder Variablennamen.</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">(:,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">a2</span><span class="p">(</span><span class="mi">1</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">b</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)</span>
+<span class="n">b2</span><span class="p">(</span><span class="n">long_i_name</span><span class="p">,</span><span class="w"> </span><span class="n">long_j_name</span><span class="p">)</span>
+<span class="n">b3</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">)</span>
+<span class="k">call </span><span class="n">some_subroutine</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">an_option</span><span class="o">=</span><span class="p">.</span><span class="n">false</span><span class="p">.)</span>
+<span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">]</span>
+<span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">)]</span>
+<span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span>
+<span class="c">! ...</span>
+</pre></div>
+</div>
+<p>Andere Situationen abseits von einfachem indizieren, in denen Leerzeichen weggelassen werden können:</p>
+<ul>
+<li><p>Aliasing bei Importen</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="nb">iso_c_binding</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="p">:</span><span class="w"> </span><span class="n">sp</span><span class="o">=&gt;</span><span class="kt">c_float</span><span class="p">,</span><span class="w"> </span><span class="n">dp</span><span class="o">=&gt;</span><span class="kt">c_double</span>
+</pre></div>
+</div>
+</li>
+<li><p>Concatenation von Strings</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;hello &#39;</span><span class="o">//</span><span class="s1">&#39;world&#39;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Zugriff auf Komponenten/Attributen von derived types</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="p">%</span><span class="n">x</span>
+<span class="n">p</span><span class="p">%</span><span class="n">calc_something</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Rund um das <code class="docutils literal notranslate"><span class="pre">=</span></code>, wenn Keyword-Argumente übergeben werden</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">call </span><span class="n">sr</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">t_point</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="mf">2.</span><span class="p">)</span>
+<span class="kt">character</span><span class="p">(</span><span class="nb">len</span><span class="o">=</span><span class="p">:),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">s</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>In Inline-Kommentaren sollte der erste Buchstabe groß geschrieben werden, es sei denn es sind abschließende Kommentare, die nur aus einem Wort oder einer kurzen Phrase bestehen.</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="c">! Compute new values</span>
+<span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w">  </span><span class="c">! meters</span>
+</pre></div>
+</div>
+<p>Diese Code-Style Empfehlungen sind ähnlich zu denen im <a class="reference external" href="https://dftbplus-develguide.readthedocs.io/en/latest/fortranstyle.html">the DFTB+ style guide</a>.</p>
+</section>
+<section id="text">
+<h3>Text<a class="headerlink" href="#text" title="Link to this heading">#</a></h3>
+<p>Verwende für Seiten- und Abschnittsüberschriften Groß- und Kleinschreibung (im Gegensatz zu Titelüberschriften).</p>
+<p>Verwende bei der ersten Verwendung <em>Hervorhebungen</em> (<code class="docutils literal notranslate"><span class="pre">*Hervorhebung*</span></code>/<code class="docutils literal notranslate"><span class="pre">_Hervorhebung_</span></code>, dargestellt in Kursiv) für Keywords/Phrasen zur Hervorhebung …</p>
+<p>Vermeide die Verwendung von <strong>strong</strong> (<code class="docutils literal notranslate"><span class="pre">**strong**</span></code>, in fett dargestellt) innerhalb von Paragraphen, da die Fettschrift für Überschriften, zum Erregen von Aufmerksamkeit auf Beispiele (<strong>Beispiel:</strong>), Mahnung/Nebentitel, usw. verwendet wird.</p>
+<p>Verwende Hinweise (<em>Hinweis</em>, <em>Tip</em>, <em>Wichtig</em>) wo es angemessen ist.</p>
+<ul class="simple">
+<li><p>Um einen <strong>Hinweis</strong> in ein md Dokument hinzuzufügen, verwende:</p></li>
+</ul>
+<pre>
+::::{note}
+extra information, something that might appear in a footnote
+::::: 
+</pre>
+<ul class="simple">
+<li><p>Um einen <strong>Tip</strong> einem md-Dokument hinzuzfügen, verwende:</p></li>
+</ul>
+<pre>
+::::{tip}
+information about best practices, practical tips
+::::: 
+</pre>
+<ul class="simple">
+<li><p>Um ein <strong>Wichtig</strong>-Text dem md-Dokument hinzuzufügen, verwende:</p></li>
+</ul>
+<pre>
+::::{importrant}
+warnings, things to avoid, etc.
+::::: 
+</pre>
+<p>Bevorzuge das <a class="reference external" href="https://en.wikipedia.org/wiki/Serial_comma">Oxford comma</a>. Es macht Dinge üblicherweise klarer.</p>
+<blockquote>
+<div><p>Fortran ist schnell, macht Spaß und ist bekannt.</p>
+</div></blockquote>
+</section>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2024, Fortran Community.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

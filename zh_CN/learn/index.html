@@ -1,0 +1,889 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="256x256" href="../_static/images/favicon.ico" type="image/x-icon">
+    <title>学习 &#8212; Fortran Programming Language</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=eaa92f49" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=5eee97a6"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'learn';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '_static/data.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'zh_CN';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="canonical" href="https://fortran-lang.org/en/learn/" />
+    <link rel="index" title="索引" href="../genindex/" />
+    <link rel="search" title="搜索" href="../search/" />
+    <link rel="next" title="设置操作系统" href="os_setup/" />
+    <link rel="prev" title="Fortran 编程语言" href="../" /> 
+<meta
+  name="description"
+  content="Fortran : High-performance parallel programming language"
+/>
+<meta
+  name="keywords"
+  content="High-performance, parallel, programming language"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  var pr_number = -1;
+  $(document).ready(function () {
+    if (window.location.href.indexOf("/pr/") > -1) {
+      pr_number = window.location.href.split("/").indexOf("pr") + 1;
+      document.getElementById("pr").innerHTML =
+        "pull request " + window.location.href.split("/")[pr_number];
+      document.getElementById("pr").href =
+        "https://github.com/fortran-lang/webpage/pull/" +
+        window.location.href.split("/")[pr_number];
+      var banner = document.getElementById("banner");
+      banner.style.display = "block";
+    }
+  });
+</script>
+<div id="banner" style="display: none" class="container">
+  <h3>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-git-pull-request"
+    >
+      <circle cx="18" cy="18" r="3"></circle>
+      <circle cx="6" cy="6" r="3"></circle>
+      <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+      <line x1="6" y1="9" x2="6" y2="21"></line>
+    </svg>
+    <b>Site preview: </b>you are previewing unpublished changes for
+    <a id="pr"></a>
+  </h3>
+</div> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../news/atom.xml"
+  title="Blog"
+/>
+ 
+<link href="True" rel="stylesheet" />
+ 
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/fortran-logo-256x256.png" class="logo__image only-light" alt="Fortran Programming Language - Home"/>
+    <img src="../_static/fortran-logo-256x256.png" class="logo__image only-dark pst-js-only" alt="Fortran Programming Language - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    学习
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../compilers/">
+    编译器
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../community/">
+    社区
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../packages/">
+    源码包
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../news/">
+    新闻
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="#">
+    学习
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../compilers/">
+    编译器
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../community/">
+    社区
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../packages/">
+    源码包
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../news/">
+    新闻
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">学习</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="learn">
+<h1 class="sd-d-none">学习<a class="headerlink" href="#learn" title="Link to this heading">#</a></h1>
+<div class="sd-text-center sd-fs-2 sd-font-weight-bold sd-text-primary docutils">
+<p>学习 Fortran</p>
+</div>
+<div class="sd-text-center sd-fs-3 docutils">
+<p>为初学者和专家提供学习资源</p>
+</div>
+<div class="sd-fs-3 sd-font-weight-bold sd-text-primary docutils">
+<p>入门</p>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-2 sd-row-cols-lg-2 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1 docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-info sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg> New to Fortran</div>
+<p class="sd-card-text">试试快速入门的 Fortran 教程，以了解语言的语法和能力。</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-none sd-card-hover sd-btn docutils">
+<div class="sd-card-body sd-p-1 sd-text-center sd-font-weight-bold sd-text-info sd-btn-primary sd-text-light sd-btn docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path></svg> 快速入门教程</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="quickstart/"><span>quickstart/</span></a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-bug sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.72.22a.75.75 0 0 1 1.06 0l1 .999a3.488 3.488 0 0 1 2.441 0l.999-1a.748.748 0 0 1 1.265.332.75.75 0 0 1-.205.729l-.775.776c.616.63.995 1.493.995 2.444v.327c0 .1-.009.197-.025.292.408.14.764.392 1.029.722l1.968-.787a.75.75 0 0 1 .556 1.392L13 7.258V9h2.25a.75.75 0 0 1 0 1.5H13v.5c0 .409-.049.806-.141 1.186l2.17.868a.75.75 0 0 1-.557 1.392l-2.184-.873A4.997 4.997 0 0 1 8 16a4.997 4.997 0 0 1-4.288-2.427l-2.183.873a.75.75 0 0 1-.558-1.392l2.17-.868A5.036 5.036 0 0 1 3 11v-.5H.75a.75.75 0 0 1 0-1.5H3V7.258L.971 6.446a.75.75 0 0 1 .558-1.392l1.967.787c.265-.33.62-.583 1.03-.722a1.677 1.677 0 0 1-.026-.292V4.5c0-.951.38-1.814.995-2.444L4.72 1.28a.75.75 0 0 1 0-1.06Zm.53 6.28a.75.75 0 0 0-.75.75V11a3.5 3.5 0 1 0 7 0V7.25a.75.75 0 0 0-.75-.75ZM6.173 5h3.654A.172.172 0 0 0 10 4.827V4.5a2 2 0 1 0-4 0v.327c0 .096.077.173.173.173Z"></path></svg> Looking for help</div>
+<p class="sd-card-text">在 Fortran-lang 论坛中提出问题 —— 讨论 Fortran 相关内容的友好论坛。</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-none sd-card-hover sd-btn docutils">
+<div class="sd-card-body sd-p-1 sd-text-center sd-font-weight-bold sd-text-info sd-btn-primary sd-text-light sd-btn docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-check-circle sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm1.5 0a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm10.28-1.72-4.5 4.5a.75.75 0 0 1-1.06 0l-2-2a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l1.47 1.47 3.97-3.97a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg> Fortran-lang 论坛</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="https://fortran-lang.discourse.group/"><span>https://fortran-lang.discourse.group/</span></a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-1 sd-row-cols-xs-1 sd-row-cols-sm-1 sd-row-cols-md-1 sd-row-cols-lg-1 sd-g-1 sd-g-xs-1 sd-g-sm-1 sd-g-md-1 sd-g-lg-1 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+<svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-play sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Play with Fortran</div>
+<p class="sd-card-text">Get a taste of Fortran in an interactive playground in the browser.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-none sd-card-hover sd-btn docutils">
+<div class="sd-card-body sd-p-1 sd-text-center sd-font-weight-bold sd-text-info sd-btn-primary sd-text-light sd-btn docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-play sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg> Fortran Playground</p>
+</div>
+<a class="sd-stretched-link sd-hide-link-text reference external" href="https://dev.lfortran.org/"><span>https://dev.lfortran.org/</span></a></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-fs-3 sd-font-weight-bold sd-text-primary docutils">
+<p>迷你书教程</p>
+</div>
+<div class="sd-fs-4 sd-font-weight-bold sd-text-primary docutils">
+<p>开始</p>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<div class="sd-fs-5 sd-font-weight-bold sd-text-primary docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path></svg> <a href="../learn/quickstart/">快速 Fortran 入门</a></p>
+</div>
+<p class="sd-card-text">Fortran 语法及其功能介绍。</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<div class="sd-fs-5 sd-font-weight-bold sd-text-primary docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path></svg> <a href="../learn/building_programs/">构建程序</a></p>
+</div>
+<p class="sd-card-text">如何使用编译器构建可执行程序。</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<div class="sd-fs-5 sd-font-weight-bold sd-text-primary docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path></svg> <a href="../learn/os_setup/">设置操作系统</a></p>
+</div>
+<p class="sd-card-text">如何在 Windows、Linux 和 MacOS 中安装 Fortran 编译器并建立开发环境。</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<div class="sd-fs-5 sd-font-weight-bold sd-text-primary docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path></svg> <a href="../learn/best_practices/">Fortran 最佳实践</a></p>
+</div>
+<p class="sd-card-text">本教程收集了使用 Fortran 的现代规范方式。</p>
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<div class="sd-fs-5 sd-font-weight-bold sd-text-primary docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path></svg> <a href='../learn/rosetta_stone/'>Python--Fortran Rosetta Stone</a></p>
+</div>
+<p class="sd-card-text">This &quot;Rosetta Stone&quot; shows how to implement many common idioms in Python with NumPy and Fortran side by side.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-fs-4 sd-font-weight-bold sd-text-primary docutils">
+<p>Fortran 文档</p>
+</div>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row sd-col-6 sd-col-xs-6 sd-col-sm-6 sd-col-md-6 sd-col-lg-6 docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-none docutils">
+<div class="sd-card-body docutils">
+<div class="sd-fs-5 sd-font-weight-bold sd-text-primary docutils">
+<p class="sd-card-text"><svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-book sd-text-info" viewBox="0 0 16 16" aria-hidden="true"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path></svg> <a href="../learn/intrinsics/">Fortran 内置函数</a></p>
+</div>
+<p class="sd-card-text">Fortran 内置函数的手册。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sd-fs-3 sd-font-weight-bold sd-text-primary docutils">
+<p>其它资源</p>
+</div>
+<div class="sd-fs-4 sd-font-weight-bold sd-text-primary docutils">
+<p>网站</p>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="http://fortranwiki.org/">Fortran wiki</a>：一个丰富的Fortran文章和资源的集合，采用可编辑的wiki格式</p></li>
+<li><p><a class="reference external" href="https://www.fortran90.org/">Fortran 90 org</a>：Fortran 最佳实践指南，Python/Fortran Rosetta Stone，Fortran 常见问题</p></li>
+<li><p><a class="reference external" href="https://j3-fortran.org/doc/year/18/18-007r1.pdf">Fortran 2018 标准解释文档</a>：J3/18-007r1 F2018，Fortran 2018 基础语言规范</p></li>
+<li><p><a class="reference external" href="https://github.com/j3-fortran/fortran_proposals">J3 Fortran 提案</a>：一个社区协作的存储库，用于为 Fortran 标准委员会提出提案</p></li>
+<li><p><a class="reference external" href="https://j3-fortran.org/">J3：美国 Fortran 标准委员会</a>：J3 是国际 Fortran 标准委员会的美国国家机构</p></li>
+<li><p><a class="reference external" href="https://wg5-fortran.org/">WG5: International Fortran Standards Committee</a></p></li>
+<li><p><a class="reference external" href="https://github.com/scivision/fortran2018-examples">Scivision Fortran 2018 示例</a>：包含 Fortran 2018 各种功能代码示例的 GitHub 仓库</p></li>
+<li><p><a class="reference external" href="https://stevelionel.com/drfortran">Doctor Fortran 博客</a>：有关 Fortran 语言有趣或鲜为人知的方面的帖子集合</p></li>
+</ul>
+<div class="sd-fs-4 sd-font-weight-bold sd-text-primary docutils">
+<p>在线课程</p>
+</div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://doku.lrz.de/display/PUBLIC/Programming+with+Fortran">Fortran 编程</a>：莱布尼茨超级计算中心（Leibniz-Rechenzentrum）提供的课程</p></li>
+<li><p><a class="reference external" href="https://www.futurelearn.com/courses/fortran-for-scientific-computing">PRACE 课程：科学计算中的 Fortran</a></p></li>
+<li><p><a class="reference external" href="https://doku.lrz.de/display/PUBLIC/PRACE+Course%3A+Advanced+Fortran+Topics">PRACE 课程：高级 Fortran 主题</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/playlist?list=PLRO4xf5MdhAv9CNTETor75rANZtBqPVgQ">“F” —— Fortran 编程</a>：现代 Fortran 开发可用于使用光谱和光谱求解守恒定律（PDE）的可扩展库元素方法</p></li>
+<li><p><a class="reference external" href="https://www.bccms.uni-bremen.de/cms/people/b-aradi/wissen-progr/modern-fortran/2017">科学编程课程材料（Modern Fortran，2017）</a>：Bremen 计算材料科学中心，来自 Bálint Aradi（德）</p></li>
+<li><p><a class="reference external" href="http://www.idris.fr/formations/fortran/">Formations Fortran</a>：Fortran 从入门到精通（法）</p></li>
+<li><p><a class="reference external" href="http://www.chem.helsinki.fi/~manninen/fortran2014/">面向化学家和物理学家的现代 Fortran 编程</a>：赫尔辛基大学 Pekka Manninen 的课程（包括Coarray）</p></li>
+<li><p><a class="reference external" href="http://www.cs.rpi.edu/~szymansk/OOF90/Forum.html">在 Fortran90 中表达面向对象的概念</a></p></li>
+<li><p><a class="reference external" href="https://github.com/tkoenig1/coarray-tutorial/blob/main/tutorial.md">Coarray 教程</a>：作者 Thomas Koenig</p></li>
+<li><p><a class="reference external" href="https://fs.hlrs.de/projects/par/par_prog_ws/">并行编程研讨会</a>：斯图加特高性能计算中心的材料</p></li>
+<li><p><a class="reference external" href="https://cyber.dabamos.de/programming/modernfortran/">现代 Fortran 编程</a>：作者 Philipp Engel</p></li>
+<li><p><a class="reference external" href="https://tcevents.chem.uzh.ch/event/3/">2018 年科学应用中的 Fortran 现代化研讨会</a></p></li>
+<li><p><a class="reference external" href="http://www.egr.unlv.edu/~ed/fortran.html">Fortran 95/2003/2008 编程简介</a></p></li>
+<li><p><a class="reference external" href="http://homepage.ntu.edu.tw/~wttsai/fortran/">科学编程与数值计算</a>：台湾大学蔡武丁讲授课程</p></li>
+<li><p><a class="reference external" href="https://www-uxsup.csx.cam.ac.uk/courses/moved.Fortran/">现代 Fortran 简介</a>：剑桥大学计算服务部 Nick Maclaren 讲授课程，源自利物浦大学 Steve Morgan 的课程</p></li>
+<li><p><a class="reference external" href="http://www.ibiblio.org/pub/languages/fortran/unfp.html">Fortran 编程用户注意事项（UNFP）</a></p></li>
+<li><p><a class="reference external" href="https://www.mcs.anl.gov/~itf/dbpp/">Designing and Building Parallel Programs</a> by Ian Foster, contains descriptions of several non-standard Fortran dialects like Fortran M and High Performance Fortran</p></li>
+<li><p><a class="reference external" href="https://coarrays.sourceforge.io/doc.html">使用 Fortran 2008 和 2018 Coarray 进行并行编程</a>：布里斯托大学 Anton Shterenlikht 的课程</p></li>
+<li><p><a class="reference external" href="https://www.star.le.ac.uk/~cgp/prof77.html">Fortran77 专业程序员指南</a>：英国莱斯特大学 Clive G. Page</p></li>
+<li><p><a class="reference external" href="https://www.star.le.ac.uk/~cgp/f90course/f90.html">Fortran77 程序员的 Fortran90</a>：作者 Clive G. Page</p></li>
+<li><p><a class="reference external" href="https://www.archer.ac.uk/training/course-material/2014/08/F95_CCFE/Fortran95CourseNotes.pdf">使用 Fortran 95 的计算机编程导论</a>：英国国家超级计算局 ARCHER 培训材料</p></li>
+<li><p><a class="reference external" href="https://www.ecmwf.int/sites/default/files/elibrary/2008/15361-combining-object-oriented-techniques-co-arrays-fortran.pdf">在 Fortran 2008 中将面向对象与 Co-array 相结合</a>：作者 Robert W. Numrich</p></li>
+<li><p><a class="reference external" href="ftp://ftp.numerical.rl.ac.uk/pub/talks/jkr.reading.5XI08.pdf">使用 Coarray 在 Fortran 中进行并行编程</a>：作者 John Reid</p></li>
+<li><p><a class="reference external" href="https://faculty.csbsju.edu/mheroux/fall2011_csci317/NumrichCafTalk.pdf">Co-Array Fortran 简介</a>：作者 Robert W. Numrich</p></li>
+<li><p><a class="reference external" href="https://www.nsc.liu.se/~boein/f77to90/f77to90.html">Fortran 77 程序员的 Fortran 90</a>：作者 Bo Einarsson 和 Yurij Shokin</p></li>
+<li><p><a class="reference external" href="https://www.tat.physik.uni-tuebingen.de/~kley/lehre/ftn77/tutorial/">Fortran 教程</a>：斯坦福大学 Erik Boman 的旧教程</p></li>
+<li><p><a class="reference external" href="https://web.stanford.edu/class/me200c/tutorial_90/">Fortran 90 教程</a>：斯坦福大学 Paul Hargrove 和 Sarah Whitlock 的旧教程</p></li>
+<li><p><a class="reference external" href="https://pages.mtu.edu/%7eshene/COURSES/cs201/NOTES/fortran.html">Fortran 90 教程</a>：作者 C.-K.Shene，密歇根理工大学</p></li>
+<li><p><a class="reference external" href="https://www.manning.com/books/exploring-modern-fortran-basics">探索现代 Fortran 基础</a>：作者 Milan Curcic，摘自 Modern Fortran —— 构建高效并行应用程序（第 2、3 和 4 章）</p></li>
+</ul>
+<div class="sd-fs-4 sd-font-weight-bold sd-text-primary docutils">
+<p>出版物</p>
+</div>
+<ul class="simple">
+<li><p>Ramkarthik, M. S. 和 Solanki, P. D. 2021. <a class="reference external" href="https://www.routledge.com/Numerical-Recipes-in-Quantum-Information-Theory-and-Quantum-Computing-An/Ramkarthik-Solanki/p/book/9780367759285">量子信息理论和量子计算中的数值配方：FORTRAN 90 中的冒险</a>. 第一版, 博卡拉顿. CRC出版社</p></li>
+<li><p>Metcalf, M., Reid, J., Cohen, M., and Bader, R.
+2024
+<a class="reference external" href="https://global.oup.com/academic/product/modern-fortran-explained-9780198876571">Modern Fortran Explained</a>
+6th ed
+Oxford, UK.
+Oxford University Press</p></li>
+<li><p>Curcic, M. 2020. <a class="reference external" href="https://www.manning.com/books/modern-fortran">现代 Fortran：构建高效的并行应用程序</a>. 第 1 版, Shelter Island, NY. 曼宁出版物</p></li>
+<li><p>Fehr, H. 和 Kindermann, F. 2020. <a class="reference external" href="https://www.ce-fortran.com/">使用 Fortran 计算经济学简介</a>. 第 1 版, 牛津, 英国. 牛津大学出版社</p></li>
+<li><p>Markus, A. 2012. <a class="reference external" href="https://www.cambridge.org/core/books/modern-fortran-in-practice/BC5BD23B2E478B4D457C5D6265BA9363">现代 Fortran 实践</a>. 第 1 版, 剑桥, 英国. 剑桥大学出版社</p></li>
+<li><p>Chivers, I. 和 Sleightholme, J. 2018. <a class="reference external" href="https://doi.org/10.1007/978-3-319-75502-1">Fortran 编程简介</a>. 第 4 版. 施普林格国际出版社</p></li>
+<li><p>Chapman, S. J. 2018. <a class="reference external" href="https://www.mheducation.com/highered/product/fortran-scientists-engineers-chapman/M9780073385891.html">Fortran 程序设计</a>. 第 4 版, 纽约. 麦格劳-希尔教育</p></li>
+<li><p>Ray, S. 2019. <a class="reference external" href="https://www.routledge.com/Fortran-2018-with-Parallel-Programming/Ray/p/book/9780367218430">使用 Fortran 2018 进行并行编程</a>. 第 1 版. 查普曼和霍尔/CRC</p></li>
+<li><p>Brainerd, W. S. 2015. <a class="reference external" href="https://doi.org/10.1007/978-1-4471-6759-4">Fortran 2008 编程指南</a>. 第 1 版, 伦敦. 施普林格出版社</p></li>
+<li><p>Numrich, R. W. 2018. <a class="reference external" href="https://doi.org/10.1201/9780429437182">使用协阵列进行并行编程</a>. 第 1 版, 纽约. 查普曼和霍尔/CRC</p></li>
+<li><p>Akin, E. 2003. <a class="reference external" href="https://doi.org/10.1017/CBO9780511530111">通过 Fortran 90/95 进行面向对象编程</a>. 第 1 版, 剑桥. 剑桥大学出版社</p></li>
+<li><p>McCormack, D. 2009. <a class="reference external" href="https://www.lulu.com/en/gb/shop/drew-mccormack/scientific-software-development-in-fortran/ebook/product-1gvmw8p6.html">使用 Fortran 进行科学软件开发</a>. 第 1 版, None. Lulu 出版社</p></li>
+<li><p>Rouson, D., Xia, J., and Xiaofeng, X. 2014. <a class="reference external" href="https://www.cambridge.org/gb/academic/subjects/engineering/engineering-general-interest/scientific-software-design-object-oriented-way">科学软件设计：面向对象的方式</a>. 第二版, 剑桥. 剑桥大学出版社</p></li>
+<li><p>Chirila, D. B. 和 Lohmann, G. 2015. <a class="reference external" href="https://doi.org/10.1007/978-3-642-37009-0">地球系统科学现代 Fortran 简介</a>. 第 1 版, 柏林. 施普林格出版社</p></li>
+<li><p>Clerman, N. S. 和 Spector, W. 2011. <a class="reference external" href="https://doi.org/10.1017/CBO9781139027687">现代 Fortran：风格和用法</a>. 第 1 版, 剑桥. 剑桥大学出版社</p></li>
+<li><p>Hanson, R. J. 和 Hopkins, T. 2013. <a class="reference external" href="https://doi.org/10.1137/1.9781611973129.fm">使用现代 Fortran 进行数值计算</a>. 第 1 版, 费城. SIAM</p></li>
+<li><p>Oliveira, S. 和 Steward, D. 2006. <a class="reference external" href="https://www.cambridge.org/gb/academic/subjects/computer-science/scientific-computing-scientific-software/%E5%86%99%E4%BD%9C%E7%A7%91%E5%AD%A6%E8%BD%AF%E4%BB%B6%E6%8C%87%E5%8D%97%E5%A5%BD%E9%A3%8E%E6%A0%BC">编写科学软件：良好风格指南</a>. 第一版, 剑桥. 剑桥大学出版社</p></li>
+<li><p>Kernighan, B. 和 Pike, R. 1999. <a class="reference external" href="https://www.oreilly.com/library/view/the-practice-of/9780133133448/">编程实践</a>. 第 1 版, 阅读. 艾迪生-卫斯理专业</p></li>
+<li><p>Juan Antonio Hernandez Ramos and Javier Escoto Lopez
+2020
+<a class="reference external" href="https://www.amazon.com/Applied-Mathematics-through-modern-FORTRAN/dp/B0851LN6HT">How to learn Applied Mathematics through modern Fortran</a>
+1st ed
+Madrid.
+Independently published</p></li>
+</ul>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2024, Fortran Community.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+
+
+<html lang="pt" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="256x256" href="../../../_static/images/favicon.ico" type="image/x-icon">
+    <title>Gerenciando bibliotecas (bibliotecas estáticas e dinâmicas) &#8212; Fortran Programming Language</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=eaa92f49" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=ecd938d6"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/translations.js?v=beaedd51"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'learn/building_programs/managing_libraries';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '_static/data.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'pt';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="canonical" href="https://fortran-lang.org/en/learn/building_programs/managing_libraries/" />
+    <link rel="index" title="Índice" href="../../../genindex/" />
+    <link rel="search" title="Pesquisar" href="../../../search/" />
+    <link rel="next" title="Ferramentas de compilação" href="../build_tools/" />
+    <link rel="prev" title="Incluir arquivos e módulos" href="../include_files/" /> 
+<meta
+  name="description"
+  content="Fortran : High-performance parallel programming language"
+/>
+<meta
+  name="keywords"
+  content="High-performance, parallel, programming language"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  var pr_number = -1;
+  $(document).ready(function () {
+    if (window.location.href.indexOf("/pr/") > -1) {
+      pr_number = window.location.href.split("/").indexOf("pr") + 1;
+      document.getElementById("pr").innerHTML =
+        "pull request " + window.location.href.split("/")[pr_number];
+      document.getElementById("pr").href =
+        "https://github.com/fortran-lang/webpage/pull/" +
+        window.location.href.split("/")[pr_number];
+      var banner = document.getElementById("banner");
+      banner.style.display = "block";
+    }
+  });
+</script>
+<div id="banner" style="display: none" class="container">
+  <h3>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-git-pull-request"
+    >
+      <circle cx="18" cy="18" r="3"></circle>
+      <circle cx="6" cy="6" r="3"></circle>
+      <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+      <line x1="6" y1="9" x2="6" y2="21"></line>
+    </svg>
+    <b>Site preview: </b>you are previewing unpublished changes for
+    <a id="pr"></a>
+  </h3>
+</div> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../news/atom.xml"
+  title="Blog"
+/>
+ 
+<link href="True" rel="stylesheet" />
+ 
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/fortran-logo-256x256.png" class="logo__image only-light" alt="Fortran Programming Language - Home"/>
+    <img src="../../../_static/fortran-logo-256x256.png" class="logo__image only-dark pst-js-only" alt="Fortran Programming Language - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../">
+    Aprenda
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../compilers/">
+    Compiladores
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../community/">
+    Comunidade
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../packages/">
+    Pacotes
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../news/">
+    Notícias
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Pesquisar" aria-label="Pesquisar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Pesquisar</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Pesquisar" aria-label="Pesquisar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Pesquisar</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../">
+    Aprenda
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../compilers/">
+    Compiladores
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../community/">
+    Comunidade
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../packages/">
+    Pacotes
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../news/">
+    Notícias
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../os_setup/">Organizando seu SO</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/choose_compiler/">Escolhendo um compilador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/install_gfortran/">Instalação do GFortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/text_editors/">Editores de Texto</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/ides/">Ambiente de Desenvolvimento Integrado (IDEs)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/tips/">Dicas Valiosas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../quickstart/">Tutorial Introdutório</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/hello_world/">Olá Mundo</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/variables/">Variáveis</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/arrays_strings/">Arrays e cadeias</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/operators_control_flow/">Operadores e controle de fluxo</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/organising_code/">Organizando a estrutura de um código</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/derived_types/">Tipos Derivados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../quickstart/gotchas/">Gotchas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Compilando programas</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../compiling_source/">Compilando o código fonte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linking_pieces/">Vinculando os objetos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Bibliotecas em Tempo de Execução</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../include_files/">Incluir arquivos e módulos</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Gerenciando bibliotecas (bibliotecas estáticas e dinâmicas)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../build_tools/">Ferramentas de compilação</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project_make/">Um introdução ao make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributing/">Distribuição dos seus programas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../best_practices/">Práticas Recomendadas em Fortran</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/style_guide/">Guia de Estilos para o Fortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/floating_point/">Números de Ponto Flutuante</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/integer_division/">Divisão de Inteiros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/modules_programs/">Módulos e Programas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/arrays/">Matrizes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/multidim_arrays/">Arrays Multidimensionais</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/element_operations/">Operações em Elementos em Matrizes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/allocatable_arrays/">Matrizes Alocáveis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/file_io/">Entrada/Saída em Ficheiros</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/callbacks/">Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/type_casting/">Conversão de Tipos em Callbacks</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intrinsics/">Funções Intrínsecas do Fortran</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/array/">Propriedades e atributos das matrizes</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/bit/">manipulação e consulta à nível de bit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/character/">Basic procedures for manipulating <em>character</em> variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/compiler/">Information about compiler and compiler options used for building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/cfi/">Procedimentos para vincular à interfaces C</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/math/">Funções matemáticas em geral</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/model/">Controlling and querying the current numeric model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/numeric/">Manipulation and properties of numeric values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/parallel/">Parallel programming using co_arrays and co_indexed arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/state/">Intrínsecos gerais e diversos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/system/">Acessando informação externa ao sistema</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/transform/">Matrix multiplication, dot product, and array shifts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/type/">Types e kinds</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.gnu.org/licenses/old-licenses/fdl-1.2.en.html">Licença de Documentação Gratuita GNU</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rosetta_stone/">Python Fortran Rosetta Stone</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../oop_features_in_fortran/">Putting Fortran’s object-related features to practical use</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/object_based_programming_techniques/">Object-based programming techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/object_oriented_programming_techniques/">Object-oriented programming techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/performance_and_ease_of_use/">Performance and ease of use</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../" class="nav-link">Aprenda</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../" class="nav-link">Compilando programas</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Gerenciando bibliotecas (bibliotecas estáticas e dinâmicas)</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="managing-libraries-static-and-dynamic-libraries">
+<h1>Gerenciando bibliotecas (bibliotecas estáticas e dinâmicas)<a class="headerlink" href="#managing-libraries-static-and-dynamic-libraries" title="Link to this heading">#</a></h1>
+<p>Se você precisa gerenciar um programa com dúzias de arquivos fonte (e isso não é incomum!), o comando em linha necessário para especificar todos os arquivos objeto será bem grande. Isso logo fica tedioso ou até mesmo impossível de manter. Então uma solução diferente é necessária: criar suas próprias bibliotecas.</p>
+<p>Bibliotecas contêm qualquer quantidade de arquivos objeto de uma forma compactada, para que os comandos em linha se tornem bem menores:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>-o<span class="w"> </span>tabulate<span class="w"> </span>tabulate.f90<span class="w"> </span>functions.o<span class="w"> </span>supportlib.a
+</pre></div>
+</div>
+<p>onde «supportlib.a» é uma coleção de um, dois ou mais arquivos objetos, todos compilados e adicionados em uma biblioteca. A extensão «.a» é usa no Linux e plataformas semelhantes. No Windows é usada a extensão «.lib».</p>
+<p>Criar suas próprias bibliotecas não é complicado: no Linux, você consegue usando um utilitário como <code class="docutils literal notranslate"><span class="pre">ar</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>-c<span class="w"> </span>file1.f90<span class="w"> </span>file2.f90
+$<span class="w"> </span>gfortran<span class="w"> </span>-c<span class="w"> </span>file3.f90<span class="w"> </span>...
+$<span class="w"> </span>ar<span class="w"> </span>r<span class="w"> </span>supportlib.a<span class="w"> </span>file1.o<span class="w"> </span>file2.o
+$<span class="w"> </span>ar<span class="w"> </span>r<span class="w"> </span>supportlib.a<span class="w"> </span>file3.o<span class="w"> </span>...
+</pre></div>
+</div>
+<p>ou no Windows usando o utilitário <code class="docutils literal notranslate"><span class="pre">lib</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>c:<span class="se">\.</span>..&gt;<span class="w"> </span>ifort<span class="w"> </span>-c<span class="w"> </span>file1.f90<span class="w"> </span>file2.f90
+c:<span class="se">\.</span>..&gt;<span class="w"> </span>ifort<span class="w"> </span>-c<span class="w"> </span>file3.f90<span class="w"> </span>...
+c:<span class="se">\.</span>..&gt;<span class="w"> </span>lib<span class="w"> </span>/out:supportlib.lib<span class="w"> </span>file1.obj<span class="w"> </span>file2.obj
+c:<span class="se">\.</span>..&gt;<span class="w"> </span>lib<span class="w"> </span>supportlib.lib<span class="w"> </span>file3.obj<span class="w"> </span>...
+</pre></div>
+</div>
+<p>Nota:</p>
+<ul class="simple">
+<li><p>O comando <code class="docutils literal notranslate"><span class="pre">ar</span></code> com a opção <code class="docutils literal notranslate"><span class="pre">r</span></code> ou cria a biblioteca (o nome aparece depois da opção) ou adiciona novos arquivos objeto para a biblioteca (ou substitui qualquer existente).</p></li>
+<li><p>O comando <code class="docutils literal notranslate"><span class="pre">lib</span></code> criará uma nova biblioteca se você específica a opção <code class="docutils literal notranslate"><span class="pre">/out:</span></code> com o nome de uma nova biblioteca próxima a ela. Para adicionar arquivos objetos para uma biblioteca existente, não use <code class="docutils literal notranslate"><span class="pre">/out:</span></code>.</p></li>
+<li><p>Nas plataformas semelhantes ao Linux há a convenção particular de nomear bibliotecas. Se você nomear sua biblioteca como «libname.a» (note o prefixo «lib»), então você pode se referir a ela como <code class="docutils literal notranslate"><span class="pre">-lname</span></code> na fase de link.</p></li>
+<li><p>Bibliotecas são frequentemente buscadas em diretórios indicados por uma opção <code class="docutils literal notranslate"><span class="pre">-L</span></code> ou <code class="docutils literal notranslate"><span class="pre">/LIBPATH</span></code>. Isso te poupa de ter que especificar o caminho exato para cada biblioteca.</p></li>
+</ul>
+<p>Usando bibliotecas você pode construir programas gigantes sem ter que depender de linhas de comando extremamente longas.</p>
+<section id="static-versus-dynamic-libraries">
+<h2>bibliotecas estáticas versus dinâmicas<a class="headerlink" href="#static-versus-dynamic-libraries" title="Link to this heading">#</a></h2>
+<p>A discussão acima assume tacitamente que você está usando as chamadas bibliotecas estáticas. Bibliotecas estáticas (ou pelo menos parte dela) se torna uma parte integral do programa executável. A única forma de mudar as rotinas incorporadas no programa é realizando o rebuild do programa com uma nova versão da biblioteca.</p>
+<p>Uma alternativa flexível é usar as chamadas bibliotecas dinâmicas. Essas bibliotecas permanecem fora do código executável e como consequência podem ser substituídas sem refazer o build do programa completamente. Compiladores e o próprio sistema operacional são altamente dependentes de bibliotecas dinâmicas. Você pode considerar bibliotecas dinâmicas como programas executáveis que precisam de um pouco de ajuda para rodar.</p>
+<p>Construir bibliotecas dinâmicas funciona de forma ligeiramente diferente de construir bibliotecas estáticas: você usa o compilador/linker ao invés de uma ferramenta como <code class="docutils literal notranslate"><span class="pre">ar</span></code> ou <code class="docutils literal notranslate"><span class="pre">lib</span></code>.</p>
+<p>No Linux:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>-fpic<span class="w"> </span>-c<span class="w"> </span>file1.f90<span class="w"> </span>file2.f90
+$<span class="w"> </span>gfortran<span class="w"> </span>-fpic<span class="w"> </span>-c<span class="w"> </span>file3.f90<span class="w"> </span>...
+$<span class="w"> </span>gfortran<span class="w"> </span>-shared<span class="w"> </span>-o<span class="w"> </span>supportlib.so<span class="w"> </span>file1.o<span class="w"> </span>file2.o<span class="w"> </span>file3.o<span class="w"> </span>...
+</pre></div>
+</div>
+<p>No Windows, com o compilador Intel Fortran:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ifort<span class="w"> </span>-c<span class="w"> </span>file1.f90<span class="w"> </span>file2.f90
+$<span class="w"> </span>ifort<span class="w"> </span>-c<span class="w"> </span>file3.f90<span class="w"> </span>...
+$<span class="w"> </span>ifort<span class="w"> </span>-dll<span class="w"> </span>-exe:supportlib.dll<span class="w"> </span>file1.obj<span class="w"> </span>file2.obj<span class="w"> </span>file3.obj<span class="w"> </span>...
+</pre></div>
+</div>
+<p>As diferenças são que:</p>
+<ul class="simple">
+<li><p>Você precisa especificar a opção de compilação no Linux, no gfortran é <code class="docutils literal notranslate"><span class="pre">-fpic</span></code>, porque o código objeto é ligeiramente diferente.</p></li>
+<li><p>Você precisa informar na fase de link que você quer uma biblioteca dinâmica (no Linux: um objeto/biblioteca compartilhado, por isso a extensão «.so»; no Windows: um link de biblioteca dinâmico)</p></li>
+</ul>
+<p>Há mais de uma coisa para se manter atento: No Windows você precisa especificar explicitamente que um procedimento é <em>exported</em>, p.ex. é visível na biblioteca dinâmica. Há várias formas - dependendo do compilador que você usa - para conseguir isso. Um método é através da chamada diretiva do compilador:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">myroutine</span><span class="p">(</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
+<span class="c">!GCC$ ATTRIBUTES DLLEXPORT:: myroutine</span>
+</pre></div>
+</div>
+<p>Ou, com o compilador Intel Fortran:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">myroutine</span><span class="p">(</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
+<span class="c">!DEC$ ATTRIBUTES DLLEXPORT:: myroutine</span>
+</pre></div>
+</div>
+<p>Além da biblioteca dinâmica (DLL), a chamada biblioteca de importação pode ser gerada.</p>
+<p>Por conta dos detalhes serem diferentes em cada compilador, aqui dois exemplos: gfortran no Cygwin e Intel Fortran no Windows. Em ambos os casos, olharemos o programa <code class="docutils literal notranslate"><span class="pre">tabulate</span></code> no arquivo «tabulate.f90».</p>
+</section>
+<section id="gnu-linux-and-gfortran">
+<h2>GNU/Linux e gfortran<a class="headerlink" href="#gnu-linux-and-gfortran" title="Link to this heading">#</a></h2>
+<p>O programa <code class="docutils literal notranslate"><span class="pre">tabulate</span></code> requer uma rotina definida pelo usuário <code class="docutils literal notranslate"><span class="pre">f</span></code>. Se deixarmos numa biblioteca dinâmica, digamos «functions.dll», nós podemos simplesmente substituir a implementação da função colocando outra biblioteca dinâmica no diretório. Não precisa refazer o build do programa.</p>
+<p>No Cygwin não é necessário exportar explicitamente um procedimento - todas as rotinas publicamente visíveis são exportadas quando você constrói uma biblioteca dinâmica. Além disso, nenhuma biblioteca de importação é gerada.</p>
+<p>Já que nossa biblioteca dinâmica pode ser construída de um único arquivo fonte, nós podemos tomar um atalho:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>-shared<span class="w"> </span>-o<span class="w"> </span>functions.dll<span class="w"> </span>functions.f90
+</pre></div>
+</div>
+<p>Isso produz os arquivos «functions.dll» e «user_functions.mod». O utilitário <code class="docutils literal notranslate"><span class="pre">nm</span></code> nos diz o nome exato da função <code class="docutils literal notranslate"><span class="pre">f</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>nm<span class="w"> </span>functions.dll
+...
+000000054f9d7000<span class="w"> </span>B<span class="w"> </span>__dynamically_loaded
+<span class="w">                 </span>U<span class="w"> </span>__end__
+<span class="m">0000000000000200</span><span class="w"> </span>A<span class="w"> </span>__file_alignment__
+000000054f9d1030<span class="w"> </span>T<span class="w"> </span>__function_MOD_f
+000000054f9d1020<span class="w"> </span>T<span class="w"> </span>__gcc_deregister_frame
+000000054f9d1000<span class="w"> </span>T<span class="w"> </span>__gcc_register_frame
+...
+</pre></div>
+</div>
+<p>Ele recebeu um prefixo <code class="docutils literal notranslate"><span class="pre">__function_MOD_</span></code> para distingui-lo de qualquer outra rotina «f» que possa ser definida em outro módulo.</p>
+<p>O próximo passo é realizar o build do programa:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>-o<span class="w"> </span>tabulate<span class="w"> </span>tabulate.f90<span class="w"> </span>functions.dll
+</pre></div>
+</div>
+<p>O DLL é o arquivo .mod são usadas para realizar o build do programa executável com checagem na interface da função, o nome correto e a referência para «uma» DLL, chamada «functions.dll».</p>
+<p>Você pode substituir a biblioteca compartilhada «functions.dll» por outra, implementando uma função diferente «f». Claro, você precisa ter cuidado ao usar a interface correta para essa função. O compilador/linker não é mais invocado, então não podem fazer checagem.</p>
+</section>
+<section id="windows-and-intel-fortran">
+<h2>Windows e Intel Fortran<a class="headerlink" href="#windows-and-intel-fortran" title="Link to this heading">#</a></h2>
+<p>O setup é o mesmo do Linux, mas no Windows é necessário exportar explicitamente as rotinas. E uma biblioteca de importação é gerada - essa é a biblioteca que deve ser usada na fase de link.</p>
+<p>O arquivo fonte deve conter a diretiva do compilador, ou a função <code class="docutils literal notranslate"><span class="pre">f</span></code> não é exportada:</p>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="kt">real </span><span class="k">function </span><span class="n">f</span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">)</span>
+<span class="c">!DEC$ ATTRIBUTES DLLEXPORT :: f</span>
+</pre></div>
+</div>
+<p>De novo, tomamos um atalho:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ifort<span class="w"> </span>-exe:functions.dll<span class="w"> </span>functions.f90<span class="w"> </span>-dll
+</pre></div>
+</div>
+<p>Isso produz os arquivos «functions.dll», «user_functions.mod» assim como «functions.lib» (e outros dois arquivos sem importância para cá). O programa «andador de dependências» nos diz que o nome exato da função «f» é <code class="docutils literal notranslate"><span class="pre">FUNCTION_mp_F</span></code>. Isso também é exportado para que também possa ser encontrado pelo linker na próxima fase:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ifort tabulate.f90 functions.lib
+</pre></div>
+</div>
+<p>Note que precisamos especificar o nome da biblioteca de exportação, não a DLL!</p>
+<p>(Note também: o compilador Intel Fortran usa o nome do primeiro arquivo fonte como o nome do executável - aqui fazemos sem a opção <code class="docutils literal notranslate"><span class="pre">-exe</span></code>.)</p>
+<p>No Cygwin, a DLL e o arquivo .mod são usados para o build do programa executável com checagem na interface da função, no nome correto e na referência para «uma» DLL, chamada «functions.dll».</p>
+<p>Você pode substituir a biblioteca compartilhada «functions.dll» por outra, mas a mesma atenção é necessária: enquanto que a implementação pode ser diferente, a interface da função deve ser a mesma.</p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">  
+<br />
+
+<div class="tocsection onthispage">
+  <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav" class="page-toc"><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-versus-dynamic-libraries">bibliotecas estáticas versus dinâmicas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-linux-and-gfortran">GNU/Linux e gfortran</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-and-intel-fortran">Windows e Intel Fortran</a></li>
+</ul></nav> </div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2024, Fortran Community.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

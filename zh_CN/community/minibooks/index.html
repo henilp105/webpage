@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="256x256" href="../../_static/images/favicon.ico" type="image/x-icon">
+    <title>fortran-lang.org 上的迷你书教程 &#8212; Fortran Programming Language</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=eaa92f49" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=5eee97a6"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'community/minibooks';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '_static/data.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'zh_CN';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="canonical" href="https://fortran-lang.org/en/community/minibooks/" />
+    <link rel="index" title="索引" href="../../genindex/" />
+    <link rel="search" title="搜索" href="../../search/" />
+    <link rel="next" title="Fortran-lang.org 包索引" href="../packages/" />
+    <link rel="prev" title="参与 fortran-lang.org 贡献" href="../contributing/" /> 
+<meta
+  name="description"
+  content="Fortran : High-performance parallel programming language"
+/>
+<meta
+  name="keywords"
+  content="High-performance, parallel, programming language"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  var pr_number = -1;
+  $(document).ready(function () {
+    if (window.location.href.indexOf("/pr/") > -1) {
+      pr_number = window.location.href.split("/").indexOf("pr") + 1;
+      document.getElementById("pr").innerHTML =
+        "pull request " + window.location.href.split("/")[pr_number];
+      document.getElementById("pr").href =
+        "https://github.com/fortran-lang/webpage/pull/" +
+        window.location.href.split("/")[pr_number];
+      var banner = document.getElementById("banner");
+      banner.style.display = "block";
+    }
+  });
+</script>
+<div id="banner" style="display: none" class="container">
+  <h3>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-git-pull-request"
+    >
+      <circle cx="18" cy="18" r="3"></circle>
+      <circle cx="6" cy="6" r="3"></circle>
+      <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+      <line x1="6" y1="9" x2="6" y2="21"></line>
+    </svg>
+    <b>Site preview: </b>you are previewing unpublished changes for
+    <a id="pr"></a>
+  </h3>
+</div> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../news/atom.xml"
+  title="Blog"
+/>
+ 
+<link href="True" rel="stylesheet" />
+ 
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/fortran-logo-256x256.png" class="logo__image only-light" alt="Fortran Programming Language - Home"/>
+    <img src="../../_static/fortran-logo-256x256.png" class="logo__image only-dark pst-js-only" alt="Fortran Programming Language - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../learn/">
+    学习
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../compilers/">
+    编译器
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../">
+    社区
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../packages/">
+    源码包
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../news/">
+    新闻
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../learn/">
+    学习
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../compilers/">
+    编译器
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../">
+    社区
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../packages/">
+    源码包
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../news/">
+    新闻
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="章节导航">
+  <p class="bd-links__title" role="heading" aria-level="1">章节导航</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../history/">Fortran-lang history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/">参与 fortran-lang.org 贡献</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">fortran-lang.org 上的迷你书教程</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/">Fortran-lang.org 包索引</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../" class="nav-link">社区</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">fortran-lang.org 上的迷你书教程</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="mini-book-tutorials-on-fortran-lang-org">
+<h1>fortran-lang.org 上的迷你书教程<a class="headerlink" href="#mini-book-tutorials-on-fortran-lang-org" title="Link to this heading">#</a></h1>
+<p>本指南将介绍如何为 <a class="reference external" href="https://fortran-lang.org">https://fortran-lang.org</a> 的 <a class="reference external" href="https://fortran-lang.org/learn">Learn</a> 部分编写迷你书教程。</p>
+<p>有关为 <a class="reference external" href="https://fortran-lang.org">https://fortran-lang.org</a> 做出贡献的一般指导，请参阅 <a class="reference internal" href="../contributing/"><span class="doc std std-doc">贡献指南</span></a>。</p>
+<section id="mini-book-formats">
+<h2>0. Mini-book formats<a class="headerlink" href="#mini-book-formats" title="Link to this heading">#</a></h2>
+<p>迷你书一般是对于 Fortran 语言特定功能的独立教程。</p>
+<p>迷你书有两种格式类型：</p>
+<ul class="simple">
+<li><p><strong>单页：</strong> 所有内容都写在一个 markdown 文件中，并显示在单个网页上；</p></li>
+<li><p><strong>多页：</strong> 教程内容跨越多个 markdown 文件中，并显示为一组网页。</p></li>
+</ul>
+<p>书的类型取决于内容的长度以及你打算如何组织它。</p>
+<p>关于生成的目录：</p>
+<ul class="simple">
+<li><p>单页面的书有 <strong>一层级</strong> 的导航：页内目录（页面右侧的目录）会显示教程中每个标题的链接。</p></li>
+<li><p>多页面的书有 <strong>两层级</strong> 的导航：页内目录（页面右侧的目录）显示本页中每个标题的链接，侧边栏目录（页面左侧的目录）则显示文件夹下各个页面的名称。</p></li>
+</ul>
+<p>单页面的迷你书容易制作，适合写简短的主题或教程，甚至可以并入到更详尽的多页书中。</p>
+<p>而更详尽的教程，建议使用多页书，每页可包含一个小的主题。</p>
+<p>本指南的剩余内容分为两小节，分别针对单页书和多页书。</p>
+</section>
+<section id="single-page-mini-book">
+<h2>1. Single-page mini-book<a class="headerlink" href="#single-page-mini-book" title="Link to this heading">#</a></h2>
+<p>发布单页迷你书所需的步骤是：</p>
+<ul class="simple">
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">./learn</span></code> 路径下新建一个 markdown 文档</p></li>
+<li><p>编写你的教程内容</p></li>
+<li><p>在 <a class="reference internal" href="#./data/learning.yml"><span class="xref myst">data/learning.yml</span></a> 中添加你的新迷你书的条目</p></li>
+<li><p>发起新「拉取请求」</p></li>
+</ul>
+<section id="writing-your-mini-book-in-markdown">
+<h3>1.1 用 markdown 编写你的迷你书<a class="headerlink" href="#writing-your-mini-book-in-markdown" title="Link to this heading">#</a></h3>
+<p>对于单页迷你书，你的教程将完全包含在单个 markdown 文档中。</p>
+<p>首先在 <code class="docutils literal notranslate"><span class="pre">./learn/{{name_of_minibook}}/</span></code> 文件夹中创建一个新的 markdown 文档，起一个能概括教程主题的短名字，文件扩展名为 <code class="docutils literal notranslate"><span class="pre">.md</span></code> ，<em>例如</em> <code class="docutils literal notranslate"><span class="pre">./learn/{{name_of_minibook}}/file_io.md</span></code>。</p>
+<p>打开新的markdown 文件并在 <code class="docutils literal notranslate"><span class="pre">learn.md</span></code> 的目录中附加一个条目，格式如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:::{</span><span class="n">toctree</span><span class="p">}</span>
+<span class="p">:</span><span class="n">hidden</span><span class="p">:</span>
+
+<span class="n">learn</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">best_practices</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">os_setup</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">building_programs</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">intrinsics</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="p">{{</span><span class="n">book</span><span class="o">-</span><span class="n">filename</span><span class="p">}}</span>
+<span class="p">:::</span>
+</pre></div>
+</div>
+<p>将 <code class="docutils literal notranslate"><span class="pre">{{book-filename}}</span></code> 替换为你的 markdown 文件的文件名，但<strong>不包括 <code class="docutils literal notranslate"><span class="pre">.md</span></code> 扩展名</strong>。 也不应该有尾部斜线。</p>
+<p><strong>示例：</strong> 标头</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:::{</span><span class="n">toctree</span><span class="p">}</span>
+<span class="p">:</span><span class="n">hidden</span><span class="p">:</span>
+
+<span class="n">learn</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">best_practices</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">os_setup</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">building_programs</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">intrinsics</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">file_io</span>
+<span class="p">:::</span>
+</pre></div>
+</div>
+<p><strong>而不是：</strong> <code class="docutils literal notranslate"><span class="pre">permalink:</span> <span class="pre">/learn/file_io.md</span></code></p>
+<p><strong>而不是：</strong> <code class="docutils literal notranslate"><span class="pre">permalink:</span> <span class="pre">/learn/file_io/</span></code></p>
+<p>现在你可以使用 markdown 格式编写教程的剩余内容了；在<a class="reference external" href="https://kramdown.gettalong.org/syntax.html">Kramdown 语法</a>可以查看 markdown 的语法文档。</p>
+</section>
+<section id="structuring-your-mini-book-with-headings">
+<h3>1.2 用标题划分迷你书的结构<a class="headerlink" href="#structuring-your-mini-book-with-headings" title="Link to this heading">#</a></h3>
+<p>你应当使用标题划分单页迷你书的逻辑结构。每个标题都将显示在目录的超链接中。</p>
+<p>标题在 markdown 中这样写：</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># Heading level 1</span>
+
+<span class="gu">## Heading level 2</span>
+
+<span class="gu">### Heading level 3</span>
+
+<span class="gu">#### Heading level 4</span>
+
+<span class="gu">##### Heading level 5</span>
+
+<span class="gu">###### Heading level 6</span>
+</pre></div>
+</div>
+<p><strong>注意：</strong> 确保在标题前留一空行。</p>
+</section>
+<section id="add-your-mini-book-to-the-learn-page">
+<h3>1.3 将你的迷你书添加到 Learn 页面<a class="headerlink" href="#add-your-mini-book-to-the-learn-page" title="Link to this heading">#</a></h3>
+<p>你需要在 <a class="reference internal" href="#./data/learning.yml"><span class="xref myst">data/learning.yml</span></a> 数据文件中添加一个新条目，以将新迷你书加入到 <em>Learn</em> 页面。</p>
+<p>打开此文件并在 <code class="docutils literal notranslate"><span class="pre">books:</span></code> 字段下按以下格式创建一个新条目：</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-title</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-description</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-category</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/{{book-filename}}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">title</span></code> 字段是你的迷你书在 <em>Learn</em> 页面上显示的标题，通常应该与 markdown 文件中的 <code class="docutils literal notranslate"><span class="pre">title</span></code> 字段相同，但这不是必需的。</p>
+<p><code class="docutils literal notranslate"><span class="pre">description</span></code> 字段的内容也会显示在 <em>Learn</em> 页面上，能简要总结你的迷你书教程内容。</p>
+<p><code class="docutils literal notranslate"><span class="pre">category</span></code> 字段内容用于对 Learn 页面上的教程进行分组，应与数据文件头部列出的类别（在 <code class="docutils literal notranslate"><span class="pre">categories:</span></code> 字段下）之一相匹配。</p>
+<p><code class="docutils literal notranslate"><span class="pre">link</span></code> 字段应该与 markdown 文档中的 <code class="docutils literal notranslate"><span class="pre">permalink</span></code> 字段完全匹配。</p>
+<p><strong>示例：</strong> <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code> 书籍条目</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File input and output</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A tutorial on reading and writing files in Fortran</span>
+<span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Getting started</span>
+<span class="w">  </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/file/file_io</span>
+</pre></div>
+</div>
+<p>保存修改后的 <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code> 数据文件并运行 fortran_package.py 并在本地计算机上重建网站以检查结果。 如果成功，_Learn* 页面上应该会出现一个新链接，其中包含新迷你书的标题。</p>
+<p>完成迷你书并向 <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code> 数据文件添加条目后，请在 <a class="github reference external" href="https://github.com/fortran-lang/webpage">fortran-lang/webpage</a> 处发起「拉取请求」（请参阅 <a class="reference internal" href="#./CONTRIBUTING.md"><span class="xref myst">CONTRIBUTING</span></a>)。</p>
+</section>
+</section>
+<section id="multi-page-mini-books">
+<h2>2. Multi-page mini-books<a class="headerlink" href="#multi-page-mini-books" title="Link to this heading">#</a></h2>
+<p>发布多页迷你书所需的步骤是：</p>
+<ul class="simple">
+<li><p>在<code class="docutils literal notranslate"><span class="pre">./learn/</span></code>目录下新建文件夹</p></li>
+<li><p>在新文件夹中创建一个 <code class="docutils literal notranslate"><span class="pre">index.md</span></code> 文件</p></li>
+<li><p>在新文件夹中的 markdown 文件里编写教程内容</p></li>
+<li><p>在 <a class="reference internal" href="#./data/learning.yml"><span class="xref myst">data/learning.yml</span></a> 中添加你的新迷你书的条目</p></li>
+<li><p>发起新「拉取请求」</p></li>
+</ul>
+<section id="create-a-new-folder-for-your-mini-book">
+<h3>2.1 为你的迷你书创建一个新文件夹<a class="headerlink" href="#create-a-new-folder-for-your-mini-book" title="Link to this heading">#</a></h3>
+<p>在 <code class="docutils literal notranslate"><span class="pre">./learn/</span></code> 目录中创建一个新文件夹，其名称简明扼要地描述了你的教程主题，<em>例如</em> <code class="docutils literal notranslate"><span class="pre">./learn/coarrays/</span></code>。你的迷你书的所有页面都将包含在此文件夹中。</p>
+<p>你的迷你书的第一页应该叫做<code class="docutils literal notranslate"><span class="pre">index.md</span></code>，所以在你的迷你书文件夹中创建一个名为<code class="docutils literal notranslate"><span class="pre">index.md</span></code>的新markdown文件，并在所有的markdown文件中添加一个如下格式的目录：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:::{</span><span class="n">toctree</span><span class="p">}</span>
+<span class="p">:</span><span class="n">hidden</span><span class="p">:</span>
+
+<span class="n">file1</span>
+<span class="n">file2</span>
+<span class="p">:::</span>
+</pre></div>
+</div>
+<p><strong>不应有尾部斜线。</strong></p>
+<p><strong>示例：</strong> toc for <code class="docutils literal notranslate"><span class="pre">index.md</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:::{</span><span class="n">toctree</span><span class="p">}</span>
+<span class="p">:</span><span class="n">hidden</span><span class="p">:</span>
+
+<span class="n">learn</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">best_practices</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">os_setup</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">building_programs</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">intrinsics</span><span class="o">/</span><span class="n">index</span>
+<span class="p">:::</span>
+</pre></div>
+</div>
+<p><strong>不是：</strong> <code class="docutils literal notranslate"><span class="pre">永久链接：/learn/coarrays/</span></code></p>
+<p>你应该在 <code class="docutils literal notranslate"><span class="pre">index.md</span></code> 的其余部分中添加对你的迷你书教程的介绍，其中可能包括：所涵盖概念的摘要；任何先决条件；以及对其它相关迷你书或有用的第三方资源的任何引用。</p>
+</section>
+<section id="add-pages-to-your-mini-book">
+<h3>2.2 为你的迷你书添加页面<a class="headerlink" href="#add-pages-to-your-mini-book" title="Link to this heading">#</a></h3>
+<p>对于迷你书中的每个新页面，在迷你书文件夹中创建一个新的降价文件。</p>
+<p>与单页迷你书一样，你应该使用标题将每一页分解成一个逻辑结构。当前页面上的每个标题都将显示在 inpage 目录中。</p>
+</section>
+<section id="id1">
+<h3>2.3 将你的迷你书添加到学习页面<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>你需要在 <a class="reference internal" href="#./data/learning.yml"><span class="xref myst">data/learning.yml</span></a> 数据文件中添加一个新条目，以将新迷你书加入到 <em>Learn</em> 页面。</p>
+<p>打开此文件并在 <code class="docutils literal notranslate"><span class="pre">books:</span></code> 字段下按以下格式创建一个新条目：</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-title</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-description</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-category</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/{{book-folder}}</span>
+<span class="w">  </span><span class="nt">pages</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/{{book-folder}}/{{page1-filename}}</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/{{book-folder}}/{{page2-filename}}</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/{{book-folder}}/{{page3-filename}}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">title</span></code> 字段将显示在迷你书的 <em>Learn</em> 页面上，通常应与 <code class="docutils literal notranslate"><span class="pre">index.md</span></code> markdown 文件中的 <code class="docutils literal notranslate"><span class="pre">title</span></code> 字段相同，但这不是必需的。</p>
+<p><code class="docutils literal notranslate"><span class="pre">description</span></code> 字段的内容也会显示在 <em>Learn</em> 页面上，能简要总结你的迷你书教程内容。</p>
+<p><code class="docutils literal notranslate"><span class="pre">category</span></code> 字段内容用于对 Learn 页面上的教程进行分组，应与数据文件头部列出的类别（在 <code class="docutils literal notranslate"><span class="pre">categories:</span></code> 字段下）之一相匹配。</p>
+<p>顶级 <code class="docutils literal notranslate"><span class="pre">link</span></code> 字段应该与 <code class="docutils literal notranslate"><span class="pre">index.md</span></code> 文件中的 <code class="docutils literal notranslate"><span class="pre">permalink</span></code> 字段完全匹配。</p>
+<p><code class="docutils literal notranslate"><span class="pre">pages</span></code> 下的每个 <code class="docutils literal notranslate"><span class="pre">link</span></code> 字段应与你后续每个迷你书页面中的 <code class="docutils literal notranslate"><span class="pre">permalink</span></code> 字段完全匹配。</p>
+<p><strong>示例：</strong> <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code> 书籍条目</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parallel programming with Coarrays</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A tutorial on parallel programming using coarrays</span>
+<span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parallel programming</span>
+<span class="w">  </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/coarrays</span>
+<span class="w">  </span><span class="nt">pages</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/coarrays/background</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/coarrays/codimension</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/coarrays/examples</span>
+</pre></div>
+</div>
+<p>保存修改后的 <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code> 数据文件并运行 fortran<em>package.py 并在本地计算机上重建网站以检查结果。如果成功，_Learn</em> 页面上应该会出现一个新链接，其中包含新迷你书的标题。</p>
+<p>完成迷你书并向 <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code> 数据文件添加条目后，请在 <a class="github reference external" href="https://github.com/fortran-lang/fortran-lang.org">fortran-lang/fortran-lang.org</a> 上打开拉取请求（请参阅 <a class="reference internal" href="#./CONTRIBUTING.md"><span class="xref myst">CONTRIBUTING </span></a>)。</p>
+</section>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2024, Fortran Community.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

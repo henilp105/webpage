@@ -1,0 +1,1050 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="256x256" href="../../_static/images/favicon.ico" type="image/x-icon">
+    <title>Fortran 内置函数 &#8212; Fortran Programming Language</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=eaa92f49" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=5eee97a6"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'learn/intrinsics/index';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '_static/data.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'zh_CN';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="canonical" href="https://fortran-lang.org/en/learn/intrinsics/" />
+    <link rel="index" title="索引" href="../../genindex/" />
+    <link rel="search" title="搜索" href="../../search/" />
+    <link rel="next" title="数组的属性和属性" href="array/" />
+    <link rel="prev" title="回调中的类型转换" href="../best_practices/type_casting/" /> 
+<meta
+  name="description"
+  content="Fortran : High-performance parallel programming language"
+/>
+<meta
+  name="keywords"
+  content="High-performance, parallel, programming language"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  var pr_number = -1;
+  $(document).ready(function () {
+    if (window.location.href.indexOf("/pr/") > -1) {
+      pr_number = window.location.href.split("/").indexOf("pr") + 1;
+      document.getElementById("pr").innerHTML =
+        "pull request " + window.location.href.split("/")[pr_number];
+      document.getElementById("pr").href =
+        "https://github.com/fortran-lang/webpage/pull/" +
+        window.location.href.split("/")[pr_number];
+      var banner = document.getElementById("banner");
+      banner.style.display = "block";
+    }
+  });
+</script>
+<div id="banner" style="display: none" class="container">
+  <h3>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-git-pull-request"
+    >
+      <circle cx="18" cy="18" r="3"></circle>
+      <circle cx="6" cy="6" r="3"></circle>
+      <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+      <line x1="6" y1="9" x2="6" y2="21"></line>
+    </svg>
+    <b>Site preview: </b>you are previewing unpublished changes for
+    <a id="pr"></a>
+  </h3>
+</div> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../news/atom.xml"
+  title="Blog"
+/>
+ 
+<link href="True" rel="stylesheet" />
+ 
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/fortran-logo-256x256.png" class="logo__image only-light" alt="Fortran Programming Language - Home"/>
+    <img src="../../_static/fortran-logo-256x256.png" class="logo__image only-dark pst-js-only" alt="Fortran Programming Language - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../">
+    学习
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../compilers/">
+    编译器
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../community/">
+    社区
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../packages/">
+    源码包
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../news/">
+    新闻
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">搜索</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../">
+    学习
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../compilers/">
+    编译器
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../community/">
+    社区
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../packages/">
+    源码包
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../news/">
+    新闻
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="章节导航">
+  <p class="bd-links__title" role="heading" aria-level="1">章节导航</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../os_setup/">设置操作系统</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../os_setup/choose_compiler/">选择编译器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../os_setup/install_gfortran/">安装 GFortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../os_setup/text_editors/">文本编辑器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../os_setup/ides/">集成开发环境（IDE）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../os_setup/tips/">提示语</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../quickstart/">快速入门教程</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart/hello_world/">Hello World</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../quickstart/variables/">变量</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../quickstart/arrays_strings/">数组和字符串</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../quickstart/operators_control_flow/">操作符和流程控制</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../quickstart/organising_code/">组织代码结构</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../quickstart/derived_types/">派生类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../quickstart/gotchas/">Gotchas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../building_programs/">构建程序</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../building_programs/compiling_source/">编译源代码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building_programs/linking_pieces/">链接对象</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building_programs/runtime_libraries/">运行时库</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building_programs/include_files/">包含文件和模块</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building_programs/managing_libraries/">管理库（静态和动态库）</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building_programs/build_tools/">构建工具</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building_programs/project_make/">一个make的介绍</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../building_programs/distributing/">分发你的程序</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../best_practices/">Fortran最佳实践</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../best_practices/style_guide/">Fortran风格指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best_practices/floating_point/">浮点数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best_practices/integer_division/">整数除法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best_practices/modules_programs/">模块和程序</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best_practices/arrays/">数组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best_practices/multidim_arrays/">多维数组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best_practices/element_operations/">数组的逐元操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best_practices/allocatable_arrays/">可分配数组</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best_practices/file_io/">文件输入/输出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best_practices/callbacks/">回调</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best_practices/type_casting/">回调中的类型转换</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Fortran 内置函数</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="array/">数组的属性和属性</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="bit/">位级别查询和操作</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/">操作 <em>character</em> 变量的基本过程</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="compiler/">有关用于构建的编译器和编译器选项的信息</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi/">绑定到 C 接口的过程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/">一般数学函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/">控制和查询当前数值模型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/">数值的操作和属性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/">使用 co_arrays 和 co_indexed 数组进行并行编程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state/">一般和杂项内置函数</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system/">访问外部系统信息</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="transform/">矩阵乘法、点积和数组移位</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/">类型和种类</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.gnu.org/licenses/old-licenses/fdl-1.2.en.html">GNU 自由文档许可证</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../rosetta_stone/">Python Fortran Rosetta Stone</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../oop_features_in_fortran/">Putting Fortran’s object-related features to practical use</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../oop_features_in_fortran/object_based_programming_techniques/">Object-based programming techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../oop_features_in_fortran/object_oriented_programming_techniques/">Object-oriented programming techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../oop_features_in_fortran/performance_and_ease_of_use/">Performance and ease of use</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../" class="nav-link">学习</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Fortran 内置函数</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="fortran-intrinsics">
+<h1>Fortran 内置函数<a class="headerlink" href="#fortran-intrinsics" title="Link to this heading">#</a></h1>
+<p>这是基于参考文档“<a class="reference external" href="http://isotc.iso.org/livelink/livelink?func=ll&amp;amp;objId=19442438&amp;amp;objAction=Open">截至 2018 年 4 月的当前 F2018 工作文档</a>”的 Fortran 内置函数扩展描述的集合，不包括供应商特定的扩展。</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header sd-bg-primary sd-bg-text-primary">
+<span class="sd-summary-text">内置函数</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="array/">数组的属性和属性</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="array/#merge">merge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#pack">pack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#spread">spread</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#unpack">unpack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#allocated">allocated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#is-contiguous">is_contiguous</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#lbound">lbound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#rank">rank</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="array/#id68"></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="array/#shape">shape</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#size">size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#ubound">ubound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#maxloc">maxloc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#minloc">minloc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#findloc">findloc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#transpose">transpose</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#all">all</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#any">any</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#count">count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#maxval">maxval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#minval">minval</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#product">product</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#sum">sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="array/#reshape">reshape</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bit/">位级别查询和操作</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bit/#bge">bge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#bgt">bgt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#ble">ble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#blt">blt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#bit-size">bit_size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#btest">btest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#storage-size">storage_size</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#leadz">leadz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#popcnt">popcnt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#poppar">poppar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#trailz">trailz</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#dshiftl">dshiftl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#dshiftr">dshiftr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#merge-bits">merge_bits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#mvbits">mvbits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#ibits">ibits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#ibclr">ibclr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#ibset">ibset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#maskl">maskl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#maskr">maskr</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#iparity">iparity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#iall">iall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#iand">iand</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#iany">iany</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#ieor">ieor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#ior">ior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#not">not</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#ishftc">ishftc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#ishft">ishft</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#shifta">shifta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#shiftl">shiftl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bit/#shiftr">shiftr</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="character/">操作 <em>character</em> 变量的基本过程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="character/#len">len</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#new-line">new_line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#repeat">repeat</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="character/#id19"></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="character/#achar">achar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#char">char</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#iachar">iachar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#ichar">ichar</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#index">index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#scan">scan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#verify">verify</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#lge">lge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#lgt">lgt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#lle">lle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#llt">llt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#adjustl">adjustl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#adjustr">adjuster</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#len-trim">len_trim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="character/#trim">trim</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="compiler/">有关用于构建的编译器和编译器选项的信息</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="compiler/#compiler-options">compiler_options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compiler/#compiler-version">compiler_version</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="cfi/">绑定到 C 接口的过程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cfi/#c-associated">c_associated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi/#c-f-pointer">c_f_pointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi/#c-f-procpointer">c_f_procpointer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi/#c-funloc">c_funloc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi/#c-loc">c_loc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cfi/#c-sizeof">c_sizeof</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="math/">一般数学函数</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="math/#acos">acos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#acosh">acosh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#asin">asin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#asinh">asinh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#atan">atan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#atan2">atan2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#atanh">atanh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#cos">cos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#cosh">cosh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#sin">sin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#sinh">sinh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#tan">tan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#tanh">tanh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#random-number">random_number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#random-seed">random_seed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#exp">exp</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#log">log</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#log10">log10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#sqrt">sqrt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#hypot">hypot</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#bessel-j0">bessel_j0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#bessel-j1">bessel_j1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#bessel-jn">bessel_jn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#bessel-y0">bessel_y0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#bessel-y1">bessel_y1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#bessel-yn">bessel_yn</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#erf">erf</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#erfc">erfc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#erfc-scaled">erfc_scaled</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#gamma">gamma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#log-gamma">log_gamma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#id283">log_gamma</a></li>
+<li class="toctree-l2"><a class="reference internal" href="math/#norm2">norm2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="model/">控制和查询当前数值模型</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="model/#exponent">exponent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#fraction">fraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#nearest">nearest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#rrspacing">rrspacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#scale">scale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#set-exponent">set_exponent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#spacing">spacing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#digits">digits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#epsilon">epsilon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#huge">huge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#maxexponent">maxexponent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#minexponent">minexponent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#precision">precision</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#radix">radix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#range">range</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model/#tiny">tiny</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="numeric/">数值的操作和属性</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#abs">abs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#aint">aint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#anint">anint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#ceiling">ceiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#conjg">conjg</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#dim">dim</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#dprod">dprod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#floor">floor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#max">max</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#min">min</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#mod">mod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#modulo">modulo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#sign">sign</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#cshift">cshift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#id115">cshift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#dot-product">dot_product</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#eoshift">eoshift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#matmul">matmul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#parity">parity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="numeric/#null">null</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="parallel/">使用 co_arrays 和 co_indexed 数组进行并行编程</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#co-broadcast">co_broadcast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#co-lbound">co_lbound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#co-max">co_max</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#co-min">co_min</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#co-reduce">co_reduce</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#co-sum">co_sum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#co-ubound">co_ubound</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#event-query">event_query</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#image-index">image_index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#num-images">num_images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#this-image">this_image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#atomic-and">atomic_and</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#atomic-fetch-and">atomic_fetch_and</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#atomic-fetch-or">atomic_fetch_or</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#atomic-fetch-xor">atomic_fetch_xor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#atomic-or">atomic_or</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#atomic-xor">atomic_xor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#atomic-add">atomic_add</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#atomic-cas">atomic_cas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#atomic-define">atomic_define</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#atomic-fetch-add">atomic_fetch_add</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parallel/#atomic-ref">atomic_ref</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="state/">一般和杂项内置函数</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="state/#associated">associated</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state/#extends-type-of">extends_type_of</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state/#is-iostat-end">is_iostat_end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state/#is-iostat-eor">is_iostat_eor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state/#move-alloc">move_alloc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state/#present">present</a></li>
+<li class="toctree-l2"><a class="reference internal" href="state/#same-type-as">same_type_as</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="system/">访问外部系统信息</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="system/#command-argument-count">command_argument_count</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system/#get-command">get_command</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="system/#id9"></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="system/#get-command-argument">get_command_argument</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="system/#id19"></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="system/#cpu-time">cpu_time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system/#date-and-time">date_and_time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system/#system-clock">system_clock</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system/#execute-command-line">execute_command_line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="system/#get-environment-variable">get_environment_variable</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="system/#id61"></a></li>
+<li class="toctree-l1"><a class="reference internal" href="transform/">矩阵乘法、点积和数组移位</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="transform/#cshift">cshift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform/#id1">cshift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform/#dot-product">dot_product</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform/#eoshift">eoshift</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform/#matmul">matmul</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform/#parity">parity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform/#null">null</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transform/#reduce">reduce</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="type/">类型和种类</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="type/#fortran-data-types">Fortran 数据类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#implicit-typing">隐式类型</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#aimag">aimag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#cmplx">cmplx</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#int">int</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#nint">nint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#real">real</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#dble">dble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#transfer">transfer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#logical">logical</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#kind">kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#out-of-range">out_of_range</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#selected-char-kind">selected_char_kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#selected-int-kind">selected_int_kind</a></li>
+<li class="toctree-l2"><a class="reference internal" href="type/#selected-real-kind">selected_real_kind</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference external" href="https://www.gnu.org/licenses/old-licenses/fdl-1.2.en.html">GNU 自由文档许可证</a></li>
+</ul>
+</div>
+</div>
+</details><section id="overview">
+<h2>概述<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
+<p>标准文档和大多数供应商提供的内在函数描述通常非常简洁，以至于内在函数的功能变得晦涩难懂，尤其是对于不熟悉该过程的人。</p>
+<p>通过在此处描述例程</p>
+<ul class="simple">
+<li><p>更详细</p></li>
+<li><p>有一个工作示例</p></li>
+<li><p>提供其它资源的链接（包括 fortran-lang.org 上的其它文档和 Fortran Discourse 中的相关讨论）</p></li>
+</ul>
+<p>这些文档致力于为 Fortran 程序员阐明内置函数。</p>
+<p>这是一个社区驱动的资源，鼓励每个人为文档做出贡献。有关贡献指南，请参阅 <a class="reference internal" href="../../community/minibooks/"><span class="doc std std-doc">minibook guide</span></a> 和以下版权指南。</p>
+</section>
+<section id="see-also">
+<h2>也可以看看<a class="headerlink" href="#see-also" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://stdlib.fortran-lang.org/">Fortran 标准库</a> 项目</p></li>
+<li><p><a class="reference external" href="https://fortran-lang.org/packages/fpm">fpm(1)</a> 包，其中许多是通用库/模块</p></li>
+<li><p><a class="reference external" href="https://github.com/urbanjost/M_intrinsics">M_intrinsics</a> 一个利用此处的描述生成手册页和与操作系统无关的 CLI（命令行界面）程序的相关项目。其中包括手册页的一个 tar(1) 和一个 zip(1) 文件，以及允许你从终端界面查看文档的非图形化纯 ASCII 部分的独立 Fortran 程序。</p></li>
+</ul>
+</section>
+<section id="text-content-copyrights">
+<h2>文字内容版权<a class="headerlink" href="#text-content-copyrights" title="Link to this heading">#</a></h2>
+<p>此处提供的许多文档是来自 <a class="reference external" href="https://fortranwiki.org">Fortran Wiki</a> 的手册页的修改版本，因此可根据 GNU 自由文档许可证 <a class="reference internal" href="#GNU_Free_Documentation_License.md"><span class="xref myst"><strong>GFDL</strong></span></a>，没有不变的部分、封面文本或封底文本。</p>
+<p>如果你通过修改标记为 GFDL 的文件为本网站做出贡献，则你因此同意根据 GFDL（1.2 版或自由软件基金会发布的任何更高版本，没有不变的部分，封面向公众许可所贡献的材料文本或封底文本）。</p>
+<p>如果你提供新材料，则表示你同意在 MIT 许可下发布它，并应通过将 MIT 放在特殊格式的最后一行来表明这一点。例如，改变</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>###### fortran-lang intrinsic descriptions
+</pre></div>
+</div>
+<p>至</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>###### fortran-lang intrinsic descriptions (License: MIT) @urbanjost
+</pre></div>
+</div>
+<p>在 <a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/">Myst-Markdown</a> 中书写</p>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2024, Fortran Community.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3创建。
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

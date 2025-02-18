@@ -1,0 +1,1029 @@
+
+<!DOCTYPE html>
+
+
+<html lang="ru" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="256x256" href="../../../_static/images/favicon.ico" type="image/x-icon">
+    <title>Операторы и поток управления &#8212; Fortran Programming Language</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=eaa92f49" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=85df17b7"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/translations.js?v=5b699b7f"></script>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'learn/quickstart/operators_control_flow';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '_static/data.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'ru';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="canonical" href="https://fortran-lang.org/en/learn/quickstart/operators_control_flow/" />
+    <link rel="index" title="Алфавитный указатель" href="../../../genindex/" />
+    <link rel="search" title="Поиск" href="../../../search/" />
+    <link rel="next" title="Организация структуры кода" href="../organising_code/" />
+    <link rel="prev" title="Массивы и строки" href="../arrays_strings/" /> 
+<meta
+  name="description"
+  content="Fortran : High-performance parallel programming language"
+/>
+<meta
+  name="keywords"
+  content="High-performance, parallel, programming language"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  var pr_number = -1;
+  $(document).ready(function () {
+    if (window.location.href.indexOf("/pr/") > -1) {
+      pr_number = window.location.href.split("/").indexOf("pr") + 1;
+      document.getElementById("pr").innerHTML =
+        "pull request " + window.location.href.split("/")[pr_number];
+      document.getElementById("pr").href =
+        "https://github.com/fortran-lang/webpage/pull/" +
+        window.location.href.split("/")[pr_number];
+      var banner = document.getElementById("banner");
+      banner.style.display = "block";
+    }
+  });
+</script>
+<div id="banner" style="display: none" class="container">
+  <h3>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-git-pull-request"
+    >
+      <circle cx="18" cy="18" r="3"></circle>
+      <circle cx="6" cy="6" r="3"></circle>
+      <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+      <line x1="6" y1="9" x2="6" y2="21"></line>
+    </svg>
+    <b>Site preview: </b>you are previewing unpublished changes for
+    <a id="pr"></a>
+  </h3>
+</div> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../../news/atom.xml"
+  title="Blog"
+/>
+ 
+<link href="True" rel="stylesheet" />
+ 
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Перейти к основному содержанию</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Навигация по сайту">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/fortran-logo-256x256.png" class="logo__image only-light" alt="Fortran Programming Language - Home"/>
+    <img src="../../../_static/fortran-logo-256x256.png" class="logo__image only-dark pst-js-only" alt="Fortran Programming Language - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="светлая"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="темная"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../">
+    Обучение
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../compilers/">
+    Компиляторы
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../community/">
+    Community
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../packages/">
+    Packages
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../../news/">
+    News
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Поиск" aria-label="Поиск" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Поиск</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Поиск" aria-label="Поиск" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Поиск</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="На этой странице">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../">
+    Обучение
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../compilers/">
+    Компиляторы
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../community/">
+    Community
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../packages/">
+    Packages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../news/">
+    News
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="В этом разделе">
+  <p class="bd-links__title" role="heading" aria-level="1">В этом разделе</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../os_setup/">Настройка вашей ОС</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/choose_compiler/">Выбор компилятора</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/install_gfortran/">Установка GFortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/text_editors/">Текстовые редакторы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/ides/">IDE (Интегрированная среда разработки)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../os_setup/tips/">Полезные советы</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Краткое руководство</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../hello_world/">Hello world</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../variables/">Переменные</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../arrays_strings/">Массивы и строки</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Операторы и поток управления</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../organising_code/">Организация структуры кода</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../derived_types/">Производные типы данных</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../gotchas/">Gotchas</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../building_programs/">Сборка программ</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../building_programs/compiling_source/">Компиляция исходного кода</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building_programs/linking_pieces/">Компоновка объектов</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building_programs/runtime_libraries/">Библиотеки времени выполнения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building_programs/include_files/">Подключаемые файлы и модули</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building_programs/managing_libraries/">Управление библиотеками (статические и динамические библиотеки)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building_programs/build_tools/">Инструменты сборки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building_programs/project_make/">Введение в систему сборки make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../building_programs/distributing/">Распространение ваших программ</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../best_practices/">Практические рекомендации по разработке на Fortran</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/style_guide/">Руководство по стилю оформления кода Fortran</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/floating_point/">Числа с плавающей точкой</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/integer_division/">Целочисленное деление</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/modules_programs/">Модули и программы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/arrays/">Массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/multidim_arrays/">Многомерные массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/element_operations/">Элементные операции с массивами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/allocatable_arrays/">Выделяемые (динамические) массивы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/file_io/">Файловый ввод/вывод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/callbacks/">Функции обратного вызова</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../best_practices/type_casting/">Приведение типа в функциях обратного вызова</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../intrinsics/">Fortran Intrinsics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/array/">Properties and attributes of arrays</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/bit/">Bit-level inquiry and manipulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/character/">Basic procedures for manipulating <em>character</em> variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/compiler/">Information about compiler and compiler options used for building</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/cfi/">Procedures for binding to C interfaces</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/math/">General mathematical functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/model/">Controlling and querying the current numeric model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/numeric/">Manipulation and properties of numeric values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/parallel/">Parallel programming using co_arrays and co_indexed arrays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/state/">General and miscellaneous intrinsics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/system/">Accessing external system information</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/transform/">Matrix multiplication, dot product, and array shifts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../intrinsics/type/">Types and kinds</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://www.gnu.org/licenses/old-licenses/fdl-1.2.en.html">GNU Free Documentation License</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rosetta_stone/">Python Fortran Rosetta Stone</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../oop_features_in_fortran/">Putting Fortran’s object-related features to practical use</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/object_based_programming_techniques/">Object-based programming techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/object_oriented_programming_techniques/">Object-oriented programming techniques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../oop_features_in_fortran/performance_and_ease_of_use/">Performance and ease of use</a></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Хлебная крошка" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../" class="nav-link" aria-label="Главная">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../" class="nav-link">Обучение</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../" class="nav-link">Краткое руководство</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Операторы и поток управления</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="operators-and-flow-control">
+<h1>Операторы и поток управления<a class="headerlink" href="#operators-and-flow-control" title="Ссылка на этот заголовок">#</a></h1>
+<p>Одним из самых больших преимуществ компьютерных алгоритмов, по сравнению с простыми математическими формулами, является возможность <em>ветвления</em> программы, когда программа может решать, какие инструкции выполнять дальше, основываясь на логическом условии.</p>
+<p>Существуют две основных формы управления потоком программы:</p>
+<ul class="simple">
+<li><p><em>Условный</em> (if): выбор ветки исполнения программы на основе логического значения (true или false – истина или ложь)</p></li>
+<li><p><em>Цикл</em>: повторение части кода несколько раз</p></li>
+</ul>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="logical-operators">
+<h1>Логические операторы<a class="headerlink" href="#logical-operators" title="Ссылка на этот заголовок">#</a></h1>
+<p>Прежде чем использовать оператор условного ветвления, необходимо сформировать логическое выражение.</p>
+<p>Для формирования логического выражения, доступен следующий набор операторов отношения:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Оператор  </p></th>
+<th class="head text-center"><p>Альтернативная форма записи  </p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">.eq.</span></code></p></td>
+<td><p>Проверка равенства двух операндов</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">/=</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">.ne.</span></code></p></td>
+<td><p>Проверка неравенства двух операндов</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">&gt;</span> </code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">.gt.</span></code></p></td>
+<td><p>Проверка на то, что левый операнд строго больше правого операнда</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">&lt;</span> </code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">.lt.</span></code></p></td>
+<td><p>Проверка на то, что левый операнд строго меньше правого операнда</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">.ge.</span></code></p></td>
+<td><p>Проверка на то, что левый операнд больше или равен правому операнду</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">.le.</span></code></p></td>
+<td><p>Проверка на то, что левый операнд меньше или равен правому операнду</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<p>а также следующие логические операторы:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Оператор  </p></th>
+<th class="head"><p>Описание</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">.and.</span></code></p></td>
+<td><p>TRUE (истина) если оба операнда (левый и правый) возвращают значение TRUE (истина)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">.or.</span></code></p></td>
+<td><p>TRUE (истина) если либо левый, либо правый, либо оба операнда возвращают значение TRUE (истина)</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">.not.</span></code></p></td>
+<td><p>TRUE (истина) если правый операнд возвращает значение FALSE (ложь)</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">.eqv.</span></code></p></td>
+<td><p>TRUE (истина) если левый операнд имеет то же логическое значение, что и правый операнд</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p><code class="docutils literal notranslate"><span class="pre">.neqv.</span></code></p></td>
+<td><p>TRUE (истина) если левый операнд противоположное логическое значение по сравнению с правым операндом</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<br>
+<section id="conditional-construct-if">
+<h2>Условная конструкция (<code class="docutils literal notranslate"><span class="pre">if</span></code>)<a class="headerlink" href="#conditional-construct-if" title="Ссылка на этот заголовок">#</a></h2>
+<p>В следующих примерах условная конструкция <code class="docutils literal notranslate"><span class="pre">if</span></code> используется для вывода сообщения для описания характера переменной <code class="docutils literal notranslate"><span class="pre">angle</span></code> (угол):</p>
+<p><strong>Пример:</strong> одиночная ветвь <code class="docutils literal notranslate"><span class="pre">if</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text"><a href='https://play.fortran-lang.org/?code=if%20%28angle%20%3C%2090.0%29%20then%0A%20%20print%20%2A%2C%20%27Angle%20is%20acute%27%0Aend%20if' target='_blank'>Fortran Playground</a></span><a class="headerlink" href="#id1" title="Ссылка на этот код">#</a></div>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">9</span><span class="mf">0.0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">  print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Angle is acute&#39;</span>
+<span class="k">end if</span>
+</pre></div>
+</div>
+</div>
+<p>В этом первом примере код внутри конструкции <code class="docutils literal notranslate"><span class="pre">if</span></code> <em>выполняется только если</em> тестовое выражение (<code class="docutils literal notranslate"><span class="pre">angle</span> <span class="pre">&lt;</span> <span class="pre">90.0</span></code>) истинно.</p>
+<div class="admonition tip">
+<p class="admonition-title">Совет</p>
+<p>Хорошей практикой считается добавление отступа внутри таких конструкций как <code class="docutils literal notranslate"><span class="pre">if</span></code> и <code class="docutils literal notranslate"><span class="pre">do</span></code>, чтобы сделать код более читабельным.</p>
+</div>
+<p>Мы можем добавить альтернативную ветвь в конструкцию с помощью ключевого слова <code class="docutils literal notranslate"><span class="pre">else</span></code>:</p>
+<p><strong>Example:</strong> две ветви <code class="docutils literal notranslate"><span class="pre">if</span></code>-<code class="docutils literal notranslate"><span class="pre">else</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text"><a href='https://play.fortran-lang.org/?code=if%20%28angle%20%3C%2090.0%29%20then%0A%20%20print%20%2A%2C%20%27Angle%20is%20acute%27%0Aelse%0A%20%20print%20%2A%2C%20%27Angle%20is%20obtuse%27%0Aend%20if' target='_blank'>Fortran Playground</a></span><a class="headerlink" href="#id2" title="Ссылка на этот код">#</a></div>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">9</span><span class="mf">0.0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">  print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Angle is acute&#39;</span>
+<span class="k">else</span>
+<span class="k">  print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Angle is obtuse&#39;</span>
+<span class="k">end if</span>
+</pre></div>
+</div>
+</div>
+<p>Теперь в конструкции <code class="docutils literal notranslate"><span class="pre">if</span></code> есть две <em>ветви</em>, но <em>выполнятся только одна ветвь</em> в зависимости от логического выражения, следующего за ключевым словом <code class="docutils literal notranslate"><span class="pre">if</span></code>.</p>
+<p>Мы можем добавить любое количество ветвей с помощью ключевого слова <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code>, чтобы задать больше условий:</p>
+<p><strong>Пример:</strong> множественное ветвление <code class="docutils literal notranslate"><span class="pre">if</span></code>-<code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code>-<code class="docutils literal notranslate"><span class="pre">else</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text"><a href='https://play.fortran-lang.org/?code=if%20%28angle%20%3C%2090.0%29%20then%0A%20%20print%20%2A%2C%20%27Angle%20is%20acute%27%0Aelse%20if%20%28angle%20%3C%20180.0%29%20then%0A%20%20print%20%2A%2C%20%27Angle%20is%20obtuse%27%0Aelse%0A%20%20print%20%2A%2C%20%27Angle%20is%20reflex%27%0Aend%20if' target='_blank'>Fortran Playground</a></span><a class="headerlink" href="#id3" title="Ссылка на этот код">#</a></div>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">9</span><span class="mf">0.0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">  print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Angle is acute&#39;</span>
+<span class="k">else if</span><span class="w"> </span><span class="p">(</span><span class="n">angle</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">18</span><span class="mf">0.0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">  print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Angle is obtuse&#39;</span>
+<span class="k">else</span>
+<span class="k">  print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Angle is reflex&#39;</span>
+<span class="k">end if</span>
+</pre></div>
+</div>
+</div>
+<p>При использовании нескольких условных выражений, каждое условное выражение проверяется только в том случае, если ни одно из предыдущих не было истинно.</p>
+</section>
+<section id="loop-constructs-do">
+<h2>Конструкции циклов (<code class="docutils literal notranslate"><span class="pre">do</span></code>)<a class="headerlink" href="#loop-constructs-do" title="Ссылка на этот заголовок">#</a></h2>
+<p>В следуем примере конструкция цикла <code class="docutils literal notranslate"><span class="pre">do</span></code> используется для вывода последовательности чисел. Цикл <code class="docutils literal notranslate"><span class="pre">do</span></code> имеет целочисленную переменную <em>счётчик</em> (счётчик цикла), которая используется для отслеживания того, какая итерация цикла выполняется в данный момент. В этом примере мы используем принятое обычно для такой переменной счётчика имя: <code class="docutils literal notranslate"><span class="pre">i</span></code>.</p>
+<p>Когда мы определяем начало цикла <code class="docutils literal notranslate"><span class="pre">do</span></code>, мы используем имя нашей переменной счётчика, за которой следует знак присваивания (<code class="docutils literal notranslate"><span class="pre">=</span></code>), чтобы указать начальное и конечное значение нашего счётчика цикла.</p>
+<p><strong>Пример:</strong> цикл <code class="docutils literal notranslate"><span class="pre">do</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text"><a href='https://play.fortran-lang.org/?code=integer%20%3A%3A%20i%0A%0Ado%20i%20%3D%201%2C%2010%0A%20%20print%20%2A%2C%20i%0Aend%20do' target='_blank'>Fortran Playground</a></span><a class="headerlink" href="#id4" title="Ссылка на этот код">#</a></div>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+
+<span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">i</span>
+<span class="k">end do</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Пример:</strong> цикл <code class="docutils literal notranslate"><span class="pre">do</span></code> с заданием шага счётчика</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text"><a href='https://play.fortran-lang.org/?code=integer%20%3A%3A%20i%0A%0Ado%20i%20%3D%201%2C%2010%2C%202%0A%20%20print%20%2A%2C%20i%20%20%21%20Print%20odd%20numbers%0Aend%20do' target='_blank'>Fortran Playground</a></span><a class="headerlink" href="#id5" title="Ссылка на этот код">#</a></div>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+
+<span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w">  </span><span class="c">! Print odd numbers</span>
+<span class="k">end do</span>
+</pre></div>
+</div>
+</div>
+<section id="conditional-loop-do-while">
+<h3>Цикл с условием (<code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">while</span></code>)<a class="headerlink" href="#conditional-loop-do-while" title="Ссылка на этот заголовок">#</a></h3>
+<p>В цикл <code class="docutils literal notranslate"><span class="pre">do</span></code> можно добавить проверку условия с помощью ключевого слова <code class="docutils literal notranslate"><span class="pre">while</span></code>. Тогда цикл будет выполняться до тех пор, пока условие, заданное в <code class="docutils literal notranslate"><span class="pre">while()</span></code>, истинно (<code class="docutils literal notranslate"><span class="pre">.true.</span></code>).</p>
+<p><strong>Пример:</strong> цикла <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">while()</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text"><a href='https://play.fortran-lang.org/?code=integer%20%3A%3A%20i%0A%0Ai%20%3D%201%0Ado%20while%20%28i%20%3C%2011%29%0A%20%20print%20%2A%2C%20i%0A%20%20i%20%3D%20i%20%2B%201%0Aend%20do%0A%21%20Here%20i%20%3D%2011' target='_blank'>Fortran Playground</a></span><a class="headerlink" href="#id6" title="Ссылка на этот код">#</a></div>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+
+<span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span>
+<span class="k">do while</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">11</span><span class="p">)</span>
+<span class="w">  </span><span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">i</span>
+<span class="w">  </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+<span class="k">end do</span>
+<span class="c">! Here i = 11</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="loop-control-statements-exit-and-cycle">
+<h3>Операторы управления циклом (<code class="docutils literal notranslate"><span class="pre">exit</span></code> and <code class="docutils literal notranslate"><span class="pre">cycle</span></code>)<a class="headerlink" href="#loop-control-statements-exit-and-cycle" title="Ссылка на этот заголовок">#</a></h3>
+<p>Часто бывает необходимо остановить выполнение цикла при выполнении какого-либо условия. Fortran предоставляет для таких случаев два оператора исполнения.</p>
+<p><code class="docutils literal notranslate"><span class="pre">exit</span></code> (выход) используется для преждевременного завершения цикла. Он обычно используется внутри условной конструкции <code class="docutils literal notranslate"><span class="pre">if</span></code>.</p>
+<p><strong>Пример:</strong> цикл с оператором <code class="docutils literal notranslate"><span class="pre">exit</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text"><a href='https://play.fortran-lang.org/?code=integer%20%3A%3A%20i%0A%0Ado%20i%20%3D%201%2C%20100%0A%20%20if%20%28i%20%3E%2010%29%20then%0A%20%20%20%20exit%20%20%21%20Stop%20printing%20numbers%0A%20%20end%20if%0A%20%20print%20%2A%2C%20i%0Aend%20do%0A%21%20Here%20i%20%3D%2011' target='_blank'>Fortran Playground</a></span><a class="headerlink" href="#id7" title="Ссылка на этот код">#</a></div>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+
+<span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">    exit</span><span class="w">  </span><span class="c">! Stop printing numbers</span>
+<span class="w">  </span><span class="k">end if</span>
+<span class="k">  print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">i</span>
+<span class="k">end do</span>
+<span class="c">! Here i = 11</span>
+</pre></div>
+</div>
+</div>
+<p>С другой стороны, оператор <code class="docutils literal notranslate"><span class="pre">cycle</span></code> принудительно заставляет программу пропустить выполнение всего, что осталось ниже него и перейти к выполнению следующей итерации цикла.</p>
+<p><strong>Пример:</strong> цикл с оператором <code class="docutils literal notranslate"><span class="pre">cycle</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text"><a href='https://play.fortran-lang.org/?code=integer%20%3A%3A%20i%0A%0Ado%20i%20%3D%201%2C%2010%0A%20%20if%20%28mod%28i%2C%202%29%20%3D%3D%200%29%20then%0A%20%20%20%20%20%20cycle%20%20%21%20Don%27t%20print%20even%20numbers%0A%20%20end%20if%0A%20%20print%20%2A%2C%20i%0Aend%20do' target='_blank'>Fortran Playground</a></span><a class="headerlink" href="#id8" title="Ссылка на этот код">#</a></div>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+
+<span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nb">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="k">then</span>
+<span class="k">      cycle</span><span class="w">  </span><span class="c">! Don&#39;t print even numbers</span>
+<span class="w">  </span><span class="k">end if</span>
+<span class="k">  print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">i</span>
+<span class="k">end do</span>
+</pre></div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>При использовании внутри вложенных циклов операторы <code class="docutils literal notranslate"><span class="pre">cycle</span></code> и <code class="docutils literal notranslate"><span class="pre">exit</span></code> действуют на самый внутренний цикл внутри которого находятся.</p>
+</div>
+</section>
+<section id="nested-loop-control-tags">
+<h3>Управление вложенным циклом: метки<a class="headerlink" href="#nested-loop-control-tags" title="Ссылка на этот заголовок">#</a></h3>
+<p>В любом языке программирования часто встречается использование вложенных циклов. Вложенные циклы – циклы, которые выполняются внутри другого цикла. Fortran позволяет программисту пометить или назвать каждый цикл <em>меткой</em> или <em>именем</em>. Использование меток для циклов, даёт два потенциальных преимущества:</p>
+<ol class="arabic simple">
+<li><p>Может быть улучшена читабельность кода (при условии, что имена меток осмысленные).</p></li>
+<li><p>Операторы <code class="docutils literal notranslate"><span class="pre">exit</span></code> и <code class="docutils literal notranslate"><span class="pre">cycle</span></code> могут использоваться с метками, что позволяет очень тонко управлять переходами в циклах.</p></li>
+</ol>
+<p><strong>Пример:</strong> вложенные циклы с метками</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text"><a href='https://play.fortran-lang.org/?code=integer%20%3A%3A%20i%2C%20j%0A%0Aouter_loop%3A%20do%20i%20%3D%201%2C%2010%0A%20%20inner_loop%3A%20do%20j%20%3D%201%2C%2010%0A%20%20%20%20if%20%28%28j%20%2B%20i%29%20%3E%2010%29%20then%20%20%21%20Print%20only%20pairs%20of%20i%20and%20j%20that%20add%20up%20to%2010%0A%20%20%20%20%20%20cycle%20outer_loop%20%20%21%20Go%20to%20the%20next%20iteration%20of%20the%20outer%20loop%0A%20%20%20%20end%20if%0A%20%20%20%20print%20%2A%2C%20%27I%3D%27%2C%20i%2C%20%27%20J%3D%27%2C%20j%2C%20%27%20Sum%3D%27%2C%20j%20%2B%20i%0A%20%20end%20do%20inner_loop%0Aend%20do%20outer_loop' target='_blank'>Fortran Playground</a></span><a class="headerlink" href="#id9" title="Ссылка на этот код">#</a></div>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span>
+
+<span class="n">outer_loop</span><span class="p">:</span><span class="w"> </span><span class="k">do </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">  </span><span class="n">inner_loop</span><span class="p">:</span><span class="w"> </span><span class="k">do </span><span class="n">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="k">then</span><span class="w">  </span><span class="c">! Print only pairs of i and j that add up to 10</span>
+<span class="w">      </span><span class="k">cycle </span><span class="n">outer_loop</span><span class="w">  </span><span class="c">! Go to the next iteration of the outer loop</span>
+<span class="w">    </span><span class="k">end if</span>
+<span class="k">    print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;I=&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; J=&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39; Sum=&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span>
+<span class="w">  </span><span class="k">end do </span><span class="n">inner_loop</span>
+<span class="k">end do </span><span class="n">outer_loop</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="parallelizable-loop-do-concurrent">
+<h3>Параллельное выполнение цикла (<code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">concurrent</span></code>)<a class="headerlink" href="#parallelizable-loop-do-concurrent" title="Ссылка на этот заголовок">#</a></h3>
+<p>Оператор цикла <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">concurrent</span></code> используется для явного указания, что <em>внутри цикла нет взаимозависимостей</em>; он сообщает компилятору, что возможно использовать распараллеливание/<em>SIMD</em> для ускорения выполнения цикла и более явно передаёт намерения программиста. Более конкретно, это означает, что любая отдельная итерация цикла не зависит от выполнения предшествующих итераций этого цикла. Также необходимо, чтобы любые изменения состояния, которые могут произойти, происходили только внутри каждой итерации цикла <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">concurrent</span></code>. Эти требования накладывают ограничения на то, что может быть размещено в теле такого цикла.</p>
+<blockquote>
+<div><p>Простая замена цикла <code class="docutils literal notranslate"><span class="pre">do</span></code> на цикл <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">concurrent</span></code> не гарантирует параллельного выполнения. Приведённое выше объяснение не содержит всех требований, которые должны быть выполнены для написания корректного цикла <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">concurrent</span></code>. Компиляторы также вольны поступать по своему усмотрению, то есть они могут не оптимизировать цикл (например, при небольшом количестве итераций для выполнения простого вычисления, как в примере ниже). В общем случае для активации возможного распараллеливания циклов <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">concurrent</span></code> требуются использование дополнительных флагов компиляции.</p>
+</div></blockquote>
+<p><strong>Пример:</strong> цикл <code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">concurrent()</span></code></p>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text"><a href='https://play.fortran-lang.org/?code=real%2C%20parameter%20%3A%3A%20pi%20%3D%203.14159265%0Ainteger%2C%20parameter%20%3A%3A%20n%20%3D%2010%0Areal%20%3A%3A%20result_sin%28n%29%0Ainteger%20%3A%3A%20i%0A%0Ado%20concurrent%20%28i%20%3D%201%3An%29%20%20%21%20Careful%2C%20the%20syntax%20is%20slightly%20different%0A%20%20result_sin%28i%29%20%3D%20sin%28i%20%2A%20pi/4.%29%0Aend%20do%0A%0Aprint%20%2A%2C%20result_sin' target='_blank'>Fortran Playground</a></span><a class="headerlink" href="#id10" title="Ссылка на этот код">#</a></div>
+<div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="kt">real</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.14159265</span>
+<span class="kt">integer</span><span class="p">,</span><span class="w"> </span><span class="k">parameter</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span>
+<span class="kt">real</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">result_sin</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="kt">integer</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">i</span>
+
+<span class="k">do</span><span class="w"> </span><span class="k">concurrent</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">)</span><span class="w">  </span><span class="c">! Careful, the syntax is slightly different</span>
+<span class="w">  </span><span class="n">result_sin</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">sin</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">pi</span><span class="o">/</span><span class="mf">4.</span><span class="p">)</span>
+<span class="k">end do</span>
+
+<span class="k">print</span><span class="w"> </span><span class="o">*</span><span class="p">,</span><span class="w"> </span><span class="n">result_sin</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">  
+<br />
+
+<div class="tocsection onthispage">
+  <i class="fas fa-list"></i> На этой странице
+</div>
+
+<nav id="bd-toc-nav" class="page-toc"><ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Операторы и поток управления</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-operators">Логические операторы</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-construct-if">Условная конструкция (<code class="docutils literal notranslate"><span class="pre">if</span></code>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loop-constructs-do">Конструкции циклов (<code class="docutils literal notranslate"><span class="pre">do</span></code>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-loop-do-while">Цикл с условием (<code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">while</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loop-control-statements-exit-and-cycle">Операторы управления циклом (<code class="docutils literal notranslate"><span class="pre">exit</span></code> and <code class="docutils literal notranslate"><span class="pre">cycle</span></code>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-loop-control-tags">Управление вложенным циклом: метки</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#parallelizable-loop-do-concurrent">Параллельное выполнение цикла (<code class="docutils literal notranslate"><span class="pre">do</span> <span class="pre">concurrent</span></code>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav> </div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Копирайт 2020-2024, Fortran Community.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Создано с использованием <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Собрано с использованием темы <a href=\"https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html\">PyData Sphinx</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

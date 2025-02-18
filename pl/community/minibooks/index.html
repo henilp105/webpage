@@ -1,0 +1,854 @@
+
+<!DOCTYPE html>
+
+
+<html lang="pl" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" sizes="256x256" href="../../_static/images/favicon.ico" type="image/x-icon">
+    <title>Poradniki do mini-książek na fortran-lang.org &#8212; Fortran Programming Language</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=eaa92f49" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=90f43865"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/translations.js?v=4c397337"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'community/minibooks';</script>
+    <script>
+        DOCUMENTATION_OPTIONS.theme_version = '0.16.1';
+        DOCUMENTATION_OPTIONS.theme_switcher_json_url = '_static/data.json';
+        DOCUMENTATION_OPTIONS.theme_switcher_version_match = 'pl';
+        DOCUMENTATION_OPTIONS.show_version_warning_banner =
+            false;
+        </script>
+    <link rel="canonical" href="https://fortran-lang.org/en/community/minibooks/" />
+    <link rel="index" title="Indeks" href="../../genindex/" />
+    <link rel="search" title="Szukaj" href="../../search/" />
+    <link rel="next" title="Spis pakietów Fortran-lang.org" href="../packages/" />
+    <link rel="prev" title="Wspieranie fortran-lang.org" href="../contributing/" /> 
+<meta
+  name="description"
+  content="Fortran : High-performance parallel programming language"
+/>
+<meta
+  name="keywords"
+  content="High-performance, parallel, programming language"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+  var pr_number = -1;
+  $(document).ready(function () {
+    if (window.location.href.indexOf("/pr/") > -1) {
+      pr_number = window.location.href.split("/").indexOf("pr") + 1;
+      document.getElementById("pr").innerHTML =
+        "pull request " + window.location.href.split("/")[pr_number];
+      document.getElementById("pr").href =
+        "https://github.com/fortran-lang/webpage/pull/" +
+        window.location.href.split("/")[pr_number];
+      var banner = document.getElementById("banner");
+      banner.style.display = "block";
+    }
+  });
+</script>
+<div id="banner" style="display: none" class="container">
+  <h3>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-git-pull-request"
+    >
+      <circle cx="18" cy="18" r="3"></circle>
+      <circle cx="6" cy="6" r="3"></circle>
+      <path d="M13 6h3a2 2 0 0 1 2 2v7"></path>
+      <line x1="6" y1="9" x2="6" y2="21"></line>
+    </svg>
+    <b>Site preview: </b>you are previewing unpublished changes for
+    <a id="pr"></a>
+  </h3>
+</div> 
+<link
+  rel="alternate"
+  type="application/atom+xml"
+  href="../../news/atom.xml"
+  title="Blog"
+/>
+ 
+<link href="True" rel="stylesheet" />
+ 
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search/"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search"
+         aria-label="Search"
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/fortran-logo-256x256.png" class="logo__image only-light" alt="Fortran Programming Language - Home"/>
+    <img src="../../_static/fortran-logo-256x256.png" class="logo__image only-dark pst-js-only" alt="Fortran Programming Language - Home"/>
+  
+  
+</a></div>
+    
+      <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="ms-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../learn/">
+    Naucz się
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../compilers/">
+    Kompilatory
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../">
+    Społeczność
+  </a>
+</li>
+
+            <li class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button"
+                data-bs-toggle="dropdown" aria-expanded="false"
+                aria-controls="pst-nav-more-links">
+                    More
+                </button>
+                <ul id="pst-nav-more-links" class="dropdown-menu">
+                    
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../packages/">
+    Packages
+  </a>
+</li>
+
+
+<li class=" ">
+  <a class="nav-link dropdown-item nav-internal" href="../../news/">
+    News
+  </a>
+</li>
+
+                </ul>
+            </li>
+            
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Szukaj" aria-label="Szukaj" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Szukaj</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-2"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-2"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-2"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-2">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Szukaj" aria-label="Szukaj" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Szukaj</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://dev.lfortran.org/">
+    Play
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../learn/">
+    Naucz się
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../roadmap/">
+    Roadmap <!-- omit in toc -->
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../compilers/">
+    Kompilatory
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../">
+    Społeczność
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../packages/">
+    Packages
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../news/">
+    News
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.discourse.group/" title="Discourse" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-discourse fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Discourse</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/fortranlang" title="Twitter" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/fortran-lang" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fab fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">RSS</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+<div class="version-switcher__container dropdown pst-js-only">
+  <button id="pst-version-switcher-button-3"
+    type="button"
+    class="version-switcher__button btn btn-sm dropdown-toggle"
+    data-bs-toggle="dropdown"
+    aria-haspopup="listbox"
+    aria-controls="pst-version-switcher-list-3"
+    aria-label="Version switcher list"
+  >
+    Choose version  <!-- this text may get changed later by javascript -->
+    <span class="caret"></span>
+  </button>
+  <div id="pst-version-switcher-list-3"
+    class="version-switcher__menu dropdown-menu list-group-flush py-0"
+    role="listbox" aria-labelledby="pst-version-switcher-button-3">
+    <!-- dropdown will be populated by javascript on page load -->
+  </div>
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../history/">Fortran-lang history</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing/">Wspieranie fortran-lang.org</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Poradniki do mini-książek na fortran-lang.org</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages/">Spis pakietów Fortran-lang.org</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../" class="nav-link">Społeczność</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Poradniki do mini-książek na fortran-lang.org</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                   <section class="tex2jax_ignore mathjax_ignore" id="mini-book-tutorials-on-fortran-lang-org">
+<h1>Poradniki do mini-książek na fortran-lang.org<a class="headerlink" href="#mini-book-tutorials-on-fortran-lang-org" title="Link to this heading">#</a></h1>
+<p>W tym poradniku wyjaśniono jak pisać samouczki w formie mini-książek dla sekcji <a class="reference external" href="https://fortran-lang.org/learn">Naucz się</a> na stronie <a class="reference external" href="https://fortran-lang.org">https://fortran-lang.org</a>.</p>
+<p>Ogólne wskazówki dotyczące współtworzenia strony <a class="reference external" href="https://fortran-lang.org">https://fortran-lang.org</a> znajdziesz w <a class="reference internal" href="../contributing/"><span class="doc std std-doc">poradniki współtworzenia</span></a>.</p>
+<section id="mini-book-formats">
+<h2>0. Mini-book formats<a class="headerlink" href="#mini-book-formats" title="Link to this heading">#</a></h2>
+<p>Mini-książki zaprojektowano tak, aby w większości samodzielnie wyjaśniały daną funkcję języka Fortran.</p>
+<p>Istnieją dwa rodzaje formatów mini-książek:</p>
+<ul class="simple">
+<li><p><strong>Jednostronicowy:</strong> cała zawartość napisana jest w jednym pliku typu Markdown i wyświetla się na pojedynczej stronie internetowej;</p></li>
+<li><p><strong>Wielostronicowy:</strong> zawartość poradnika zapisana jest w wielu plikach typu Markdown i wyświetla się jako kolekcja stron internetowych.</p></li>
+</ul>
+<p>Wybór formatu poradnika zależy od długości jego treści i planowanej struktury.</p>
+<p>Przemyśl strukturę oraz spis treści, który zostanie utworzony:</p>
+<ul class="simple">
+<li><p>Jednostronicowe poradniki mają <strong>jeden poziom</strong> nawigacji: link do każdego nagłówka samouczka w spisie treści na stronie (spis treści po prawej stronie witryny).</p></li>
+<li><p>Wielostronicowe poradniki mają <strong>dwa poziomy</strong> nawigacji: link do każdego nagłówka samouczka w spisie treści na stronie (spis treści po prawej stronie witryny) oraz spis treści na pasku bocznym (spis treści po lewej stronie witryny pokazujący listę wszystkich stron w katalogu).</p></li>
+</ul>
+<p>Jednostronicowe mini-książki są łatwiejsze w tworzeniu i powinny być używane do krótszych tematów lub poradników, które ostatecznie zostaną ujęte w bardziej obszernych wielostronicowych książkach.</p>
+<p>Wielostronicowe książki rekomendowane są do bardziej obszernych poradników, gdzie jeden podtemat może być przedstawiony na jednej stronie.</p>
+<p>Pozostała część tego poradniki podzielona jest na dwie części, po jednej dla jednostronicowych i wielostronicowych mini-książek.</p>
+</section>
+<section id="single-page-mini-book">
+<h2>1. Single-page mini-book<a class="headerlink" href="#single-page-mini-book" title="Link to this heading">#</a></h2>
+<p>Kroki wymagane do opublikowania jednostronnicowej mini-książki:</p>
+<ul class="simple">
+<li><p>Utwórz nowy dokument typu Markdown w katalogu <code class="docutils literal notranslate"><span class="pre">./learn</span></code></p></li>
+<li><p>Napisz zawartość twojego poradnika</p></li>
+<li><p>Dodaj wpis do <a class="reference internal" href="#./data/learning.yml"><span class="xref myst">data/learning.yml</span></a> dla twojej nowej mini-książki</p></li>
+<li><p>Otwórz żądanie ściągnięcia</p></li>
+</ul>
+<section id="writing-your-mini-book-in-markdown">
+<h3>1.1 Pisanie twojej mini-książki w pliku typu markdown<a class="headerlink" href="#writing-your-mini-book-in-markdown" title="Link to this heading">#</a></h3>
+<p>W przypadku mini-książek jednostronicowych twój poradnik będzie w całości zawarty w jednym dokumencie typu markdown.</p>
+<p>Na początku stwórz nowy dokument typu markdown w katalogu <code class="docutils literal notranslate"><span class="pre">./learn/{{nazwa_miniksiążki}}/</span></code> z rozszerzeniem <code class="docutils literal notranslate"><span class="pre">.md</span></code> i krótką nazwą, która zwięźle opisuje temat twojego poradnika, <em>np.</em> <code class="docutils literal notranslate"><span class="pre">./learn/{{nazwa_miniksiążki}}/file_io.md</span></code>.</p>
+<p>Otwórz swój nowy dokument i dodaj wpis do spisu treści <code class="docutils literal notranslate"><span class="pre">learn.md</span></code> w następującym formacie:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:::{</span><span class="n">toctree</span><span class="p">}</span>
+<span class="p">:</span><span class="n">hidden</span><span class="p">:</span>
+
+<span class="n">learn</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">best_practices</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">os_setup</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">building_programs</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">intrinsics</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="p">{{</span><span class="n">book</span><span class="o">-</span><span class="n">filename</span><span class="p">}}</span>
+<span class="p">:::</span>
+</pre></div>
+</div>
+<p>Zamień <code class="docutils literal notranslate"><span class="pre">{{book-filename}}</span></code> na nazwę twojego pliku markdown z <strong>wyłączeniem rozszerzenia <code class="docutils literal notranslate"><span class="pre">.md</span></code></strong>. Nie powinien się tam również znajdować ukośnik końcowy.</p>
+<p><strong>Przykład:</strong> nagłówek</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:::{</span><span class="n">toctree</span><span class="p">}</span>
+<span class="p">:</span><span class="n">hidden</span><span class="p">:</span>
+
+<span class="n">learn</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">best_practices</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">os_setup</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">building_programs</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">intrinsics</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">file_io</span>
+<span class="p">:::</span>
+</pre></div>
+</div>
+<p><strong>NIE:</strong> <code class="docutils literal notranslate"><span class="pre">link</span> <span class="pre">bezpośredni:</span> <span class="pre">/learn/file_io.md</span></code></p>
+<p><strong>NIE:</strong> <code class="docutils literal notranslate"><span class="pre">link</span> <span class="pre">bezpośredni:</span> <span class="pre">/learn/file_io/</span></code></p>
+<p>Teraz możesz uzupełnić resztę poradnika treścią napisaną w formacie markdown; kliknij <a class="reference external" href="https://kramdown.gettalong.org/syntax.html">Kramdown syntax</a>, aby zobaczyć dokumentację implementacji plików markdown.</p>
+</section>
+<section id="structuring-your-mini-book-with-headings">
+<h3>1.2 Tworzenie struktury za pomocą nagłówków<a class="headerlink" href="#structuring-your-mini-book-with-headings" title="Link to this heading">#</a></h3>
+<p>Nagłówki powinny być używane, aby nadać twojemu poradnikowi logiczną strukturę. Każdy nagłówek pojawi się w spisie treści wraz z hiperłączem.</p>
+<p>W dokumentach markdown nagłówki mogą być zapisane jako:</p>
+<div class="highlight-markdown notranslate"><div class="highlight"><pre><span></span><span class="gh"># Heading level 1</span>
+
+<span class="gu">## Heading level 2</span>
+
+<span class="gu">### Heading level 3</span>
+
+<span class="gu">#### Heading level 4</span>
+
+<span class="gu">##### Heading level 5</span>
+
+<span class="gu">###### Heading level 6</span>
+</pre></div>
+</div>
+<p><strong>Uwaga:</strong> pamiętaj o umieszczeniu pustej linii przed nagłówkiem.</p>
+</section>
+<section id="add-your-mini-book-to-the-learn-page">
+<h3>1.3 Dodaj swoją mini-książkę do strony Ucz się<a class="headerlink" href="#add-your-mini-book-to-the-learn-page" title="Link to this heading">#</a></h3>
+<p>Aby dodać swoją mini-książkę do strony <em>Ucz się</em>, musisz stworzyć nowy wpis w pliku <a class="reference internal" href="#./data/learning.yml"><span class="xref myst">data/learning.yml</span></a>.</p>
+<p>Otwórz ten plik i stwórz nowy wpis pod polem <code class="docutils literal notranslate"><span class="pre">books:</span></code> w następującym formacie:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-title</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-description</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-category</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/{{book-filename}}</span>
+</pre></div>
+</div>
+<p>To co wpiszesz pod polem <code class="docutils literal notranslate"><span class="pre">title</span></code> będzie nazwą twojego poradnika, która będzie się wyświetlać na stronie _Ucz się _ i z reguły powinna być taka sama jak pole <code class="docutils literal notranslate"><span class="pre">title</span></code> w twoim pliku markdown, jednak nie jest to wymagane.</p>
+<p>Zawartość pola <code class="docutils literal notranslate"><span class="pre">description</span></code> (opis) jest także wyświetlana na stronie _Ucz się _ i powinna krótko streszczać zawartość twojego poradnika.</p>
+<p>Pole <code class="docutils literal notranslate"><span class="pre">category</span></code> (kategoria) powinno odpowiadać jednej z kategorii wymienionych na górze pliku danych (pod polem <code class="docutils literal notranslate"><span class="pre">categories:</span></code>) i służy do grupowania poradników na stronie Ucz się.</p>
+<p>Pole <code class="docutils literal notranslate"><span class="pre">link</span></code> powinno dokładnie odpowiadać polu <code class="docutils literal notranslate"><span class="pre">permalink</span></code> w twoim dokumencie markdown.</p>
+<p><strong>Przykład:</strong> wpis <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File input and output</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A tutorial on reading and writing files in Fortran</span>
+<span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Getting started</span>
+<span class="w">  </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/file/file_io</span>
+</pre></div>
+</div>
+<p>Zapisz zmodyfikowany plik <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code>, następnie uruchom fortran_package.py i skompiluj ponownie stronę na swoim komputerze lokalnym. Jeśli wszystko się powiodło, nowy link z tytułem twojego poradnika powinien pojawić się na stronie _Learn* (Ucz się).</p>
+<p>Po ukończeniu swojej mini-książki i dodaniu wpisu do <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code>, utwórz żądanie ściągnięcia na <a class="github reference external" href="https://github.com/fortran-lang/webpage">fortran-lang/webpage</a> (zobacz <a class="reference internal" href="#./CONTRIBUTING.md"><span class="xref myst">KONTRYBUCJE</span></a>).</p>
+</section>
+</section>
+<section id="multi-page-mini-books">
+<h2>2. Multi-page mini-books<a class="headerlink" href="#multi-page-mini-books" title="Link to this heading">#</a></h2>
+<p>Kroki wymagane do opublikowania wielostronicowej mini-książki:</p>
+<ul class="simple">
+<li><p>Utwórz nowy folder w katalogu <code class="docutils literal notranslate"><span class="pre">./learn/</span></code></p></li>
+<li><p>Utwórz plik <code class="docutils literal notranslate"><span class="pre">index.md</span></code> w twoim nowym folderze</p></li>
+<li><p>Napisz zawartość twojego poradnika w plikach typu markdown w twoim nowym folderze</p></li>
+<li><p>Dodaj wpis do <a class="reference internal" href="#./data/learning.yml"><span class="xref myst">data/learning.yml</span></a> dla twojej nowej mini-książki</p></li>
+<li><p>Otwórz żądanie ściągnięcia</p></li>
+</ul>
+<section id="create-a-new-folder-for-your-mini-book">
+<h3>2.1 Utwórz nowy folder dla swojego poradnika<a class="headerlink" href="#create-a-new-folder-for-your-mini-book" title="Link to this heading">#</a></h3>
+<p>Utwórz nowy folder w katalogu <code class="docutils literal notranslate"><span class="pre">./learn/</span></code>, z tytułem który będzie zwięźle opisywał treść twojego poradnika <em>np.</em><code class="docutils literal notranslate"><span class="pre">./learn/coarrays/</span></code>. Wszystkie strony twojej mini-książki będą znajdowały się w tym folderze.</p>
+<p>Pierwsza strona twojej mini-książki powinna mieć nazwę <code class="docutils literal notranslate"><span class="pre">index.md</span></code>, dlatego utwórz nowy plik typu markdown o nazwie <code class="docutils literal notranslate"><span class="pre">index.md</span></code> w folderze twojej mini-książki oraz do twoich wszystkich plików markdown dodaj spis treści w następującym formacie:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:::{</span><span class="n">toctree</span><span class="p">}</span>
+<span class="p">:</span><span class="n">hidden</span><span class="p">:</span>
+
+<span class="n">file1</span>
+<span class="n">file2</span>
+<span class="p">:::</span>
+</pre></div>
+</div>
+<p><strong>Na końcu nie powinno być żadnego ukośnika.</strong></p>
+<p><strong>Przykład:</strong> spis treści dla <code class="docutils literal notranslate"><span class="pre">index.md</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:::{</span><span class="n">toctree</span><span class="p">}</span>
+<span class="p">:</span><span class="n">hidden</span><span class="p">:</span>
+
+<span class="n">learn</span><span class="o">/</span><span class="n">quickstart</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">best_practices</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">os_setup</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">building_programs</span><span class="o">/</span><span class="n">index</span>
+<span class="n">learn</span><span class="o">/</span><span class="n">intrinsics</span><span class="o">/</span><span class="n">index</span>
+<span class="p">:::</span>
+</pre></div>
+</div>
+<p><strong>NIE:</strong> <code class="docutils literal notranslate"><span class="pre">link</span> <span class="pre">bezpośredni:</span> <span class="pre">/learn/coarrays/</span></code></p>
+<p>Powinieneś wypełnić pozostałą część pliku <code class="docutils literal notranslate"><span class="pre">index.md</span></code> wprowadzeniem do twojego samouczka, które może zawierać: podsumowanie omawianych pojęć; wszelkie niezbędne wymogi; oraz odniesienia do innych powiązanych mini-książek lub przydatnych zasobów stron trzecich.</p>
+</section>
+<section id="add-pages-to-your-mini-book">
+<h3>2.2 Dodaj strony do twojej mini-książki<a class="headerlink" href="#add-pages-to-your-mini-book" title="Link to this heading">#</a></h3>
+<p>Dla każdej nowej strony twojego poradnika stwórz nowy plik typu markdown w folderze twojej mini-książki.</p>
+<p>Tak jak w przypadku jednostronicowych mini-książek, powinieneś używać nagłówków, aby nadać każdej stronie logiczną strukturę. Każdy nagłówek pojawi się w spisie treści na stronie.</p>
+</section>
+<section id="id1">
+<h3>2.3 Dodaj swoją mini-książkę do strony Ucz się<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Aby dodać swoją mini-książkę do strony <em>Ucz się</em>, musisz stworzyć nowy wpis w pliku <a class="reference internal" href="#./data/learning.yml"><span class="xref myst">data/learning.yml</span></a>.</p>
+<p>Otwórz ten plik i stwórz nowy wpis pod polem <code class="docutils literal notranslate"><span class="pre">books:</span></code> w następującym formacie:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-title</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-description</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-category</span><span class="p p-Indicator">}}</span>
+<span class="w">  </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/{{book-folder}}</span>
+<span class="w">  </span><span class="nt">pages</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/{{book-folder}}/{{page1-filename}}</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/{{book-folder}}/{{page2-filename}}</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/{{book-folder}}/{{page3-filename}}</span>
+</pre></div>
+</div>
+<p>To co wpiszesz pod polem <code class="docutils literal notranslate"><span class="pre">title</span></code> będzie nazwą twojego poradnika, która będzie się wyświetlać na stronie _Ucz się _ i z reguły powinna być taka sama jak pole <code class="docutils literal notranslate"><span class="pre">title</span></code> w pliku markdown <code class="docutils literal notranslate"><span class="pre">index.md</span></code>, jednak nie jest to wymagane.</p>
+<p>Zawartość pola <code class="docutils literal notranslate"><span class="pre">description</span></code> (opis) jest także wyświetlana na stronie _Ucz się _ i powinna krótko streszczać zawartość twojego poradnika.</p>
+<p>Pole <code class="docutils literal notranslate"><span class="pre">category</span></code> (kategoria) powinno odpowiadać jednej z kategorii wymienionych na górze pliku danych (pod polem <code class="docutils literal notranslate"><span class="pre">categories:</span></code>) i służy do grupowania poradników na stronie Ucz się.</p>
+<p>Pierwsze pole <code class="docutils literal notranslate"><span class="pre">link</span></code> powinno dokładnie odpowiadać polu <code class="docutils literal notranslate"><span class="pre">permalink</span></code> w pliku <code class="docutils literal notranslate"><span class="pre">index.md</span></code>.</p>
+<p>Każde pole <code class="docutils literal notranslate"><span class="pre">link</span></code> w sekcji <code class="docutils literal notranslate"><span class="pre">pages</span></code> powinno dokładnie odpowiadać polu <code class="docutils literal notranslate"><span class="pre">permalink</span></code> na każdej kolejnej stronie miniksiążki.</p>
+<p><strong>Przykład:</strong> wpis <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code></p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parallel programming with Coarrays</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A tutorial on parallel programming using coarrays</span>
+<span class="w">  </span><span class="nt">category</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Parallel programming</span>
+<span class="w">  </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/coarrays</span>
+<span class="w">  </span><span class="nt">pages</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/coarrays/background</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/coarrays/codimension</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">link</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/learn/coarrays/examples</span>
+</pre></div>
+</div>
+<p>Zapisz zmodyfikowany plik <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code>, a następnie uruchom fortran<em>package.py i skompiluj ponownie stronę na swoim komputerze lokalnym. Jeśli wszystko się powiodło, nowy link z tytułem twojego poradnika powinien pojawić się na stronie _Learn</em> (Ucz się).</p>
+<p>Po ukończeniu swojej mini-książki i dodaniu wpisu do <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code>, utwórz żądanie ściągnięcia na <a class="github reference external" href="https://github.com/fortran-lang/fortran-lang.org">fortran-lang/fortran-lang.org</a> (zobacz <a class="reference internal" href="#./CONTRIBUTING.md"><span class="xref myst">KONTRYBUCJE</span></a>).</p>
+</section>
+</section>
+</section>
+
+<div class="section ablog__blog_comments">
+   
+</div>
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2020-2024, Fortran Community.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.1.3.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
