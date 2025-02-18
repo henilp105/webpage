@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Fortran-lang.org website\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-10-01 14:47+0530\n"
-"PO-Revision-Date: 2024-09-28 17:15+0000\n"
+"PO-Revision-Date: 2025-02-11 19:02+0000\n"
 "Last-Translator: Agnieszka Ziora <agaxx02@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/fortran-lang/"
 "webpage/pl/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 5.8-dev\n"
+"X-Generator: Weblate 5.10-dev\n"
 "Generated-By: Babel 2.10.3\n"
 
 #: ../../source/community.md:10
@@ -4073,6 +4073,12 @@ msgid ""
 "in contrast to `get_argument()` where `getarg()` is perfectly clean and "
 "clear."
 msgstr ""
+"Na przykład fraza \"spline inerpolation\" może być skrócona do "
+"`spline_interpolation`, `spline_interpolate`, `spline_interp`, `spline`, ale "
+"nie do `splineint` (\"int\" może oznaczać integration (integrację), integer ("
+"liczbę całkowitą) itd. --- zbyt duża niejednoznaczność nawet w zrozumiałym "
+"kontekście kodu obliczeniowego). Dla porówniania `getarg()` jest prostym i "
+"zrozumiałym skrótem frazy `get_argument()`."
 
 #: ../../source/learn/best_practices/style_guide.md:26
 msgid ""
@@ -4085,10 +4091,18 @@ msgid ""
 "collaboration and for one's own sanity when going back to some old code you "
 "haven't seen in while."
 msgstr ""
+"Powyższe zasady są generalnymi wytycznymi. Wybór odpowiedniej nazwy zależy "
+"od słów, które mają być skrócone i tego czy pierwsza sylaba będzie "
+"wystarczająca. Zazwyczaj jest, jednak nie zawsze. Powinniśmy się również "
+"zastanowić nad krokiem \"postaraj się ograniczać do jednej lub dwóch sylab\""
+", ponieważ może to mieć wpływ na zrozumiałość i prostotę kodu. Jasny i "
+"jednolity system nazewnictwa jest w tym przypadku pomocny -- zarówno dla "
+"współpracy oraz własnego zdrowia psychicznego podczas wracania do starego "
+"kodu, którego nie widziało się przez jakiś czas."
 
 #: ../../source/learn/best_practices/style_guide.md:35
 msgid "Indentation"
-msgstr ""
+msgstr "Wcięcia"
 
 #: ../../source/learn/best_practices/style_guide.md:37
 msgid ""
@@ -4096,10 +4110,13 @@ msgid ""
 "indentation is a matter of preference, the most common choices are two, three"
 " or four spaces."
 msgstr ""
+"Używaj stałych wcięć, aby twój kod był bardziej czytelny. Ilość wcięć jest "
+"kwestią preferencji, najbardziej powszechnym wyborem są dwie, trzy lub "
+"cztery odstępy."
 
 #: ../../source/learn/best_practices/style_guide.md:41
 msgid "Comparison to Other Languages"
-msgstr ""
+msgstr "Porównanie z innymi językami"
 
 #: ../../source/learn/best_practices/style_guide.md:43
 msgid ""
@@ -4113,12 +4130,23 @@ msgid ""
 " with their more general-purpose missions. But Fortran has a different "
 "mission (numerical scientific computing)."
 msgstr ""
+"Z drugiej strony, w większości innych środowisk programistycznych, gdzie "
+"głównym celem jest (w takiej lub innej formie) definiowanie i używanie "
+"dużych zestawów złożonych obiektów z mnóstwem właściwości i zachowań znanych "
+"tylko w kodzie, w którym są zdefiniowane (w przeciwieństwie do "
+"zdefiniowanych tą samą notacją w całej literaturze), większy sens ma "
+"używanie dłuższych, bardziej opisowych nazw. Konwencje nazewnictwa, które "
+"można zauważyć w bardziej ogólnych językach takich jak C++ oraz Python są "
+"zatem całkowicie spójne z ich celem. Fortran jednak stworzony został w innym "
+"celu (numeryczne obliczenia naukowe)."
 
 #: ../../source/learn/best_practices/type_casting.md:3
 msgid ""
 "There are essentially five different ways to do type casting, each with its "
 "own advantages and disadvantages."
 msgstr ""
+"Istnieje zasadniczo pięć różnych sposobów na przeprowadzenie rzutowania "
+"typów, z których każdy ma swoje plusy i minusy."
 
 #: ../../source/learn/best_practices/type_casting.md:6
 msgid ""
@@ -4126,10 +4154,13 @@ msgid ""
 "and IV are only available in Fortran. The method VI is obsolete and should "
 "not be used."
 msgstr ""
+"Metody I, II i V mogą być używane zarówno w języku C, jak i Fortranie. "
+"Metody III i IV dostępne są tylko w Fortranie. Metoda VI przestarzała i nie "
+"powinna być używana."
 
 #: ../../source/learn/best_practices/type_casting.md:10
 msgid "Work Arrays"
-msgstr ""
+msgstr "Tablice robocze"
 
 #: ../../source/learn/best_practices/type_casting.md:12
 msgid ""
@@ -4137,6 +4168,9 @@ msgid ""
 "and unpacked by the called routine. This is the old way -- e.g., how LAPACK "
 "does it."
 msgstr ""
+"Podaj \"tablicę roboczą\", która jest spakowana ze wszystkim, czego "
+"potrzebuje funkcja wywołująca i rozpakowana przez wywołaną procedurę. Jest "
+"to stary sposób - np. tak jak robi to LAPACK."
 
 #: ../../source/learn/best_practices/type_casting.md:16
 #: ../../source/learn/best_practices/type_casting.md:86
@@ -4144,7 +4178,7 @@ msgstr ""
 #: ../../source/learn/best_practices/type_casting.md:233
 #: ../../source/learn/best_practices/type_casting.md:284
 msgid "Integrator:"
-msgstr ""
+msgstr "Integrator:"
 
 #: ../../source/learn/best_practices/type_casting.md:45
 #: ../../source/learn/best_practices/type_casting.md:124
@@ -4153,11 +4187,11 @@ msgstr ""
 #: ../../source/learn/best_practices/type_casting.md:314
 #: ../../source/learn/best_practices/type_casting.md:424
 msgid "Usage:"
-msgstr ""
+msgstr "Użycie:"
 
 #: ../../source/learn/best_practices/type_casting.md:78
 msgid "General Structure"
-msgstr ""
+msgstr "Ogólna struktura"
 
 #: ../../source/learn/best_practices/type_casting.md:80
 msgid ""
@@ -4167,6 +4201,12 @@ msgid ""
 "need to change from passing, say, real numbers to, say, and instantiation of "
 "a text editor."
 msgstr ""
+"Zdefiniuj strukturę generalną, która zawiera wariację, których faktycznie "
+"potrzebujesz (lub, których będziesz potrzebował w przyszłości). Ten "
+"pojedynczy typ struktury może się później zmienić jeśli będzie to koniecznie "
+"i gdy pozwolą na to przyszłe potrzeby/pomysły, jednak prawdopodobnie nie "
+"trzeba będzie zmieniać np. przekazywania liczb rzeczywistych i instancji "
+"edytora tekstu."
 
 #: ../../source/learn/best_practices/type_casting.md:157
 msgid ""
@@ -4175,20 +4215,28 @@ msgid ""
 " Dirac. Each would then be sufficiently general and contain all the needed "
 "pieces with all the right labels."
 msgstr ""
+"Potrzebna jest tylko elastyczność. Na przykład, możesz zdefiniować w tym "
+"celu dwa typy struktur, jeden dla Schroedingera i jeden dla Diraca. Każdy z "
+"nich byłby wtedy wystarczająco ogólny i zawierałby wszystkie potrzebne "
+"elementy ze właściwymi etykietami."
 
 #: ../../source/learn/best_practices/type_casting.md:162
 msgid ""
 "Point is: it needn't be \"one abstract type to encompass all\" or bust. There"
 " are natural and viable options between \"all\" and \"none\"."
 msgstr ""
+"Chodzi o to, że nie musi to być „jeden abstrakcyjny typ obejmujący wszystko” "
+"lub totalna porażka. Istnieją naturalne i wykonalne opcje między „wszystkim” "
+"a „niczym”."
 
 #: ../../source/learn/best_practices/type_casting.md:165
 msgid "Private Module Variables"
-msgstr ""
+msgstr "Prywatne zmienne modułu"
 
 #: ../../source/learn/best_practices/type_casting.md:167
 msgid "Hide the variable arguments completely by passing in module variables."
 msgstr ""
+"Ukryj całkowicie zmienne argumenty poprzez przekazanie zmiennych modułu."
 
 #: ../../source/learn/best_practices/type_casting.md:226
 msgid ""
@@ -4197,21 +4245,27 @@ msgid ""
 "way. However, with a bit of thought, usually there is a better, safer, more "
 "explicit way along the lines of II or IV."
 msgstr ""
+"Najlepiej jest jednak unikać takich zmiennych globalnych (nawet jeśli są "
+"tylko pół-globalne) jeśli to możliwe. Czasami jednak może to być najbardziej "
+"przejrzysty i najprostszy sposób. Często z odrobiną namysłu istnieje lepsza, "
+"bezpieczniejsza i bardziej bezpośrednia droga dzięki sposobom II lub IV."
 
 #: ../../source/learn/best_practices/type_casting.md:231
 #: ../../source/news/2021/05-01-Fortran-Newsletter-May-2021.md:208
 msgid "Nested functions"
-msgstr ""
+msgstr "Funkcje zagnieżdżone"
 
 #: ../../source/learn/best_practices/type_casting.md:279
 msgid "Using type(c_ptr) Pointer"
-msgstr ""
+msgstr "Używanie wskaźnika typu (c_ptr)"
 
 #: ../../source/learn/best_practices/type_casting.md:281
 msgid ""
 "In C, one would use the `void *` pointer. In Fortran, one can use "
 "`type(c_ptr)` for exactly the same purpose."
 msgstr ""
+"W języku C można użyć wskaźnika typu `void*`. W Fortranie `type(c_ptr)`"
+"spełnia taką samą funkcję."
 
 #: ../../source/learn/best_practices/type_casting.md:352
 msgid ""
@@ -4220,6 +4274,11 @@ msgid ""
 "time checks are possible to catch errors; and with that, inevitably more "
 "leaky, bug-prone code. So one always has to balance the costs and benefits."
 msgstr ""
+"Jak zawsze, z zaletami ponownego rzutowania na jakie pozwala Fortran "
+"pojawiają się również wady, takie jak zmniejszenie liczby sprawdzeń w czasie "
+"kompilacji i wykonania programu w celu wyłapania błędów, a wraz z tym "
+"otrzymujemy bardziej nieszczelny i skłonny do błędów kod. Tak więc zawsze "
+"trzeba zrównoważyć koszty i benefity."
 
 #: ../../source/learn/best_practices/type_casting.md:358
 msgid ""
@@ -4229,10 +4288,16 @@ msgid ""
 "interface elements), simplest, least bug-prone, and fastest is to use one of "
 "the previous approaches."
 msgstr ""
+"Zazwyczaj, w kontekście programu naukowego, gdzie główny nacisk kładzie się "
+"na przedstawienie i rozwiązanie dokładnej formuły matematycznej (w "
+"przeciwieństwie do tworzenia interfejsu graficznego z niewyobrażalną ilością "
+"przycisków, rozwijanych list i innych elementów), najprostsze, najmniej "
+"skłonne do błędów i najszybsze jest zastosowanie któregoś z poprzednio "
+"wymienionych sposobów."
 
 #: ../../source/learn/best_practices/type_casting.md:364
 msgid "transfer() Intrinsic Function"
-msgstr ""
+msgstr "transfer() Funkcja wewnętrzna"
 
 #: ../../source/learn/best_practices/type_casting.md:366
 msgid ""
@@ -4241,30 +4306,36 @@ msgid ""
 "verbose and more error prone. It is now obsolete and one should use the "
 "method V instead."
 msgstr ""
+"Przed Fortranem 2003 jedynym sposobem na rzutowanie typów było użycie "
+"funkcji wewnętrznej `transfer`. Spełnia ona taki sam cel jak metoda V, ale "
+"jest bardziej rozwlekła i skłonna do błędów. Jest już przestarzała i zamiast "
+"niej powinno się stosować metodę V."
 
 #: ../../source/learn/best_practices/type_casting.md:371
 msgid "Examples:"
-msgstr ""
+msgstr "Przykłady:"
 
 #: ../../source/learn/best_practices/type_casting.md:373
 msgid "<http://jblevins.org/log/transfer>"
-msgstr ""
+msgstr "<http://jblevins.org/log/transfer>"
 
 #: ../../source/learn/best_practices/type_casting.md:375
 msgid "<http://jblevins.org/research/generic-list.pdf>"
-msgstr ""
+msgstr "<http://jblevins.org/research/generic-list.pdf>"
 
 #: ../../source/learn/best_practices/type_casting.md:377
 msgid "<http://www.macresearch.org/advanced_fortran_90_callbacks_with_the_transfer_function>"
 msgstr ""
+"<http://www.macresearch.org/"
+"advanced_fortran_90_callbacks_with_the_transfer_function>"
 
 #: ../../source/learn/best_practices/type_casting.md:379
 msgid "Object Oriented Approach"
-msgstr ""
+msgstr "Podejście obiektowe"
 
 #: ../../source/learn/best_practices/type_casting.md:381
 msgid "The module:"
-msgstr ""
+msgstr "Moduł:"
 
 #: ../../source/learn/best_practices/type_casting.md:418
 msgid ""
@@ -4274,60 +4345,68 @@ msgid ""
 "eval type bound procedure and adding necessary context data as components of "
 "the extended type."
 msgstr ""
+"Typ abstrakcyjny określa dokładnie czego potrzebuje rutyna integracyjna, "
+"czyli metodę określenia wartości funkcji, ale nie narzuca użytkownikowi "
+"niczego więcej. Użytkownik rozszerza ten typ poprzez zapewnienie konkretnej "
+"implementacji procedur powiązanych typu eval oraz dodanie niezbędnych danych "
+"kontekstowych jako komponenty typu rozszerzonego."
 
 #: ../../source/learn/best_practices/type_casting.md:463
 msgid "Complete Example of void \\* vs type(c_ptr) and transfer()"
-msgstr ""
+msgstr "Przykład porównania void \\* vs type(c_ptr) i transfer()"
 
 #: ../../source/learn/best_practices/type_casting.md:465
 msgid ""
 "Here are three equivalent codes: one in C using `void *` and two codes in "
 "Fortran using `type(c_ptr)` and `transfer()`:"
 msgstr ""
+"Tutaj są trzy równowartościowe przykłady kodu: jeden w C przy użyciu `void*` "
+"oraz dwa przykłady w Fortranie, jeden przy użyciu `type(c_ptr)`, a drugi "
+"`transfer()`:"
 
 #: ../../source/learn/best_practices/type_casting.md
 msgid "Language &nbsp;"
-msgstr ""
+msgstr "Język &nbsp;"
 
 #: ../../source/learn/best_practices/type_casting.md
 msgid "Method"
-msgstr ""
+msgstr "Metoda"
 
 #: ../../source/learn/best_practices/type_casting.md
 msgid "Link"
-msgstr ""
+msgstr "Link"
 
 #: ../../source/learn/best_practices/type_casting.md
 msgid "C"
-msgstr ""
+msgstr "C"
 
 #: ../../source/learn/best_practices/type_casting.md
 msgid "`void *`"
-msgstr ""
+msgstr "`void *`"
 
 #: ../../source/learn/best_practices/type_casting.md
 msgid "<https://gist.github.com/1665641>"
-msgstr ""
+msgstr "<https://gist.github.com/1665641>"
 
 #: ../../source/learn/best_practices/type_casting.md
 msgid "Fortran"
-msgstr ""
+msgstr "Fortran"
 
 #: ../../source/learn/best_practices/type_casting.md
 msgid "`type(c_ptr)` &nbsp;"
-msgstr ""
+msgstr "`type(c_ptr)` &nbsp;"
 
 #: ../../source/learn/best_practices/type_casting.md
 msgid "<https://gist.github.com/1665626>"
-msgstr ""
+msgstr "<https://gist.github.com/1665626>"
 
 #: ../../source/learn/best_practices/type_casting.md
 msgid "`transfer()`"
-msgstr ""
+msgstr "`transfer()`"
 
 #: ../../source/learn/best_practices/type_casting.md
 msgid "<https://gist.github.com/1665630>"
-msgstr ""
+msgstr "<https://gist.github.com/1665630>"
 
 #: ../../source/learn/best_practices/type_casting.md:474
 msgid ""
@@ -4336,6 +4415,10 @@ msgid ""
 "same. The `type(c_ptr)` method is equivalent to the C version and that is the"
 " approach that should be used."
 msgstr ""
+"Kod w C używa standardowego podejścia w C dla pisania rozszerzalnych "
+"bibliotek, które akceptują wywołania zwrotne i konteksty. Dwa przykłady kodu "
+"Fortran pokazują jak zrobić to samo. Metoda `type(c_ptr)` jest równoważna "
+"wersji C i jest to podejście, które powinno być używane."
 
 #: ../../source/learn/best_practices/type_casting.md:479
 msgid ""
@@ -4344,11 +4427,15 @@ msgid ""
 " create auxiliary conversion functions for each of his types. As such, the "
 "`type(c_ptr)` method should be used instead."
 msgstr ""
+"Metoda `transfer()` jest tutaj tylko dla kompletności poradnika (przed "
+"Fortran 2003 był to jedyny sposób) i jest trochę nieporęczna, ponieważ "
+"użytkownik musi stworzyć funkcje posiłkowe dla konwersji dla każdego z jego "
+"typów. Dlatego, metoda `type(c_ptr)` powinna być używana zamiast niej."
 
 #: ../../source/learn/building_programs/build_tools.md:1
 #: ../../source/learn/building_programs/index.md:47
 msgid "Build tools"
-msgstr ""
+msgstr "Narzędzia do kompilacji"
 
 #: ../../source/learn/building_programs/build_tools.md:3
 msgid ""
@@ -4358,12 +4445,19 @@ msgid ""
 "can become increasingly complicated unless the right tools are used to "
 "automatically perform those tasks."
 msgstr ""
+"Kompilowanie twojego projektu Fortran ręcznie może być dość skomplikowane w "
+"zależności od liczby plików źródłowych i współzależności w module. Obsługa "
+"różnych kompilatorów i programów łączących lub różnych platform może stawać "
+"się coraz bardziej skomplikowana dopóki nie zostaną użyte odpowiednie "
+"narzędzia do automatycznego wykonania tych zadań."
 
 #: ../../source/learn/building_programs/build_tools.md:9
 msgid ""
 "Depending on the size of your project and the purpose of project different "
 "options for the build automation can be used."
 msgstr ""
+"W zależności od rozmiaru twojego projektu i jego celu użyte mogą być różne "
+"narzędzia do automatyzacji kompilacji."
 
 #: ../../source/learn/building_programs/build_tools.md:12
 msgid ""
@@ -4378,6 +4472,16 @@ msgid ""
 "rel=\"noopener\">Code::Blocks</a>. They offer a graphical user-interface, but"
 " are often very specific for the compiler and platform."
 msgstr ""
+"Na początek, twoje zintegrowane środowisko programistyczne prawdopodobnie "
+"zapewnia sposób na skompilowanie twojego programu. Popularnym "
+"międzyplatformowym narzędziem jest Microsoft <a href=\"https://code."
+"visualstudio.com/\" target=\"_blank\" rel=\"noopener\">Visual Studio Code</"
+"a>, ale istnieją również inne, takie jak <a href=\"https://atom.io/\" target="
+"\"_blank\" rel=\"noopener\">Atom</a>, <a href=\"https://www.eclipse.org/"
+"photran/\" target=\"_blank\" rel=\"noopener\">Eclipse Photran</a> oraz <a "
+"href=\"http://www.codeblocks.org/\" target=\"_blank\" rel=\"noopener\""
+">Code::Blocks</a>. Oferują one graficzny interfejs użytkownika, ale często "
+"są bardzo specyficzne dla kompilatora i platformy."
 
 #: ../../source/learn/building_programs/build_tools.md:22
 msgid ""
@@ -4389,6 +4493,14 @@ msgid ""
 "intermediary object files or libraries and the actual source files. For a "
 "short introduction see [the guide on `make`](#using-make-as-build-tool)."
 msgstr ""
+"Dla mniejszych projektów powszechnym wyborem kompilacji programu jest system "
+"regułowy `make`. Bazując na zdefiniowanych zasadach może wykonywać takie "
+"działania jak (re)kompilowanie plików obiektów z zaktualizowanych plików, "
+"tworzyć biblioteki oraz łączyć pliki wykonywalne. Aby użyć `make` w twoim "
+"projekcie musisz zakodować te reguły w `Makefile`, który definiuje "
+"współzależności finałowego programu, pośrednich obiektów oraz bibliotek i "
+"plików źródłowych. Krótkie wprowadzenie do tematu znajdziesz w [przewodniku "
+"po `make`](#using-make-as-build-tool)."
 
 #: ../../source/learn/building_programs/build_tools.md:31
 msgid ""
@@ -4396,6 +4508,9 @@ msgid ""
 "Studio project files via a high-level description. They abstract away from "
 "the compiler and platform specifics."
 msgstr ""
+"Narzędzia konserwacyjne takie jak autotools i CMake mogą generować Makefiles "
+"lub pliki Visual Studio za pośrednictwem opisów wysokiego poziomu. Odbiegają "
+"one od specyfiki kompilatora i platformy."
 
 #: ../../source/learn/building_programs/build_tools.md:35
 msgid ""
@@ -4405,6 +4520,11 @@ msgid ""
 "build tools than doing actual development work can quickly become "
 "frustrating."
 msgstr ""
+"To, na które z tych narzędzi będzie najlepsze dla twojego projektu zależy od "
+"wielu czynników. Wybierz narzędzie do kompilacji, z którym będzie ci się "
+"komfortowo pracować, nie powinno przeszkadzać ci podczas programowania. "
+"Poświęcanie większej ilości czasu na walkę z narzędziami do kompilacji niż "
+"na faktycznemu tworzeniu programu może szybko stać się frustrujące."
 
 #: ../../source/learn/building_programs/build_tools.md:40
 msgid ""
@@ -4418,10 +4538,21 @@ msgid ""
 " are using, those you are depending on and those that use (or will use) your "
 "project as dependency."
 msgstr ""
+"Zwróć również uwagę na dostępność twoich narzędzi do kompilacji. Jeśli są "
+"ograniczone do specyficznego zintegrowanego środowiska, czy wszyscy "
+"deweloperzy w twoim projekcie będą mieć dostęp do nich? Jeśli używasz "
+"konkretnego systemu kompilacji, czy działa on na wszystkich platformach, na "
+"które tworzysz program? Jak duża jest bariera wejścia twoich narzędzi do "
+"kompilacji? Rozważ również krzywą uczenia się dla narzędzi do kompilacji, "
+"idealne narzędzie do kompilacji będzie bezużyteczne jeśli najpierw musisz "
+"nauczyć się skomplikowanego języka programowania, aby dodać nowy plik "
+"źródłowy. Na koniec, zobacz czego używają inne projekty, takie, których "
+"używasz jako zależności i te które używają (lub będą używać) twojego "
+"projektu jako zależności."
 
 #: ../../source/learn/building_programs/build_tools.md:51
 msgid "Using make as build tool"
-msgstr ""
+msgstr "Korzystanie z make jako narzędzia do kompilacji"
 
 #: ../../source/learn/building_programs/build_tools.md:53
 msgid ""
@@ -4430,6 +4561,10 @@ msgid ""
 "`Makefile` or `makefile`, which usually leads to compiling a program from the"
 " provided source code."
 msgstr ""
+"Najbardziej znanym i powszechnie używanym systemem kompilacji jest system "
+"`make`. Wykonuje działania na podstawie zasad zdefiniowanych w pliku "
+"konfiguracyjnym nazywanym `Makefile` lub `makefile`, który zazwyczaj "
+"prowadzi do skompilowania programu z dostarczonego kodu źródłowego."
 
 #: ../../source/learn/building_programs/build_tools.md:59
 msgid ""
@@ -4438,18 +4573,26 @@ msgid ""
 "href=\"https://www.gnu.org/software/make/manual/make.html\" target=\"_blank\""
 " rel=\"noopener\">info page</a>, available."
 msgstr ""
+"Aby zobaczyć szczegółowy poradnik do `make` odwiedź jego stronę "
+"informacyjną. Wersja online jego strony informacyjnej jest dostępna <a href="
+"\"https://www.gnu.org/software/make/manual/make.html\" target=\"_blank\" rel="
+"\"noopener\">tutaj</a>."
 
 #: ../../source/learn/building_programs/build_tools.md:62
 msgid ""
 "We will start with the basics from your clean source directory. Create and "
 "open the file `Makefile`, we start with a simple rule called _all_:"
 msgstr ""
+"Zaczniemy od podstaw z początkowego folderu źródłowego. Utwórz i otwórz plik "
+"`Makefile`, zaczniemy od prostej zasady _all_:"
 
 #: ../../source/learn/building_programs/build_tools.md:70
 msgid ""
 "After saving the `Makefile` run it by executing `make` in the same directory."
 " You should see the following output:"
 msgstr ""
+"Po zapisaniu `Makefile` otwórz go poprzez wykonanie `make` w tym samym "
+"folderze. Powinieneś zobaczyć następujący wynik:"
 
 #: ../../source/learn/building_programs/build_tools.md:76
 msgid ""
@@ -4457,12 +4600,17 @@ msgid ""
 " second thing to note is that `make` is always printing the command it is "
 "running, finally, we see the result of running `echo \"all\"`."
 msgstr ""
+"Po pierwsze zauważmy, że `make` zastępuje nazwę reguły `$@`. Po drugie, "
+"zauważmy, że `make` zawsze drukuje polecenie, które wykonuje. Na koniec "
+"widzimy rezultat wykonania `echo \"all\"`."
 
 #: ../../source/learn/building_programs/build_tools.md:81
 msgid ""
 "We call the entry point of our `Makefile` always _all_ by convention, but you"
 " can choose whatever name you like."
 msgstr ""
+"Zgodnie z konwencją punkt wejścia naszego pliku `Makefile` powinien nazywać "
+"się _all_, ale możesz wybrać dowolną nazwę."
 
 #: ../../source/learn/building_programs/build_tools.md:85
 msgid ""
@@ -4470,16 +4618,23 @@ msgid ""
 "have to indent the content of a rule with a tab character. In case you have "
 "problems running the above `Makefile` and see an error like"
 msgstr ""
+"Jeśli twój edytor tekstu działa poprawnie to nie powinieneś tego zauważyć, "
+"ale musisz wciąć zawartość znaku reguły za pomocą tabulatora. W przypadku "
+"problemów z uruchomieniem pliku `Makefile` możesz zobaczyć taki błąd"
 
 #: ../../source/learn/building_programs/build_tools.md:91
 msgid ""
 "The indentation is probably not correct. In this case replace the indentation"
 " in the second line with a tab character."
 msgstr ""
+"Wcięcie jest prawdopodobnie niepoprawne. W tym przypadku zamień wcięcie w "
+"drugiej linii znakiem tabulacji."
 
 #: ../../source/learn/building_programs/build_tools.md:96
 msgid "Now we want to make our rules more complicated, therefore we add another rule:"
 msgstr ""
+"Teraz chcemy stworzyć bardziej skomplikowane zasady, więc dodajemy kolejną "
+"regułę:"
 
 #: ../../source/learn/building_programs/build_tools.md:108
 msgid ""
@@ -4487,6 +4642,9 @@ msgid ""
 " variables with `:=`. To access the content of a variable we use the "
 "`$(...)`, note that we have to enclose the variable name in parenthesis."
 msgstr ""
+"Zauważmy jak deklarujemy zmienne w `make`. Zmienne lokalne powinny być "
+"zawsze zadeklarowane poprzez `:=`. Aby zdobyć dostęp do zawartości zmiennej "
+"używamy `$(...)`, nazwa zmienniej musi być zawarta w nawiasach."
 
 #: ../../source/learn/building_programs/build_tools.md:113
 msgid ""
@@ -4495,6 +4653,11 @@ msgid ""
 "first kind of declaration is wanted, as they are more predictable and do not "
 "have a runtime overhead from the recursive expansion."
 msgstr ""
+"Deklaracja zmiennych zazwyczaj odbywa się za pomocą `:=`, jednak `make` "
+"pozwala zarówno na zmienne `=`, jak i na zmienne _rekursywnie rozbudowane_. "
+"Zwykle, pierwszy typ deklaracji jest bardziej pożądany, ponieważ jest "
+"bardziej przewidywalny i nie mają narzutu czasu wykonania wynikającego z "
+"rekurencyjnej rozbudowy."
 
 #: ../../source/learn/building_programs/build_tools.md:119
 msgid ""
@@ -4505,10 +4668,16 @@ msgid ""
 "same thing we did before for the rule _all_, note how the value of `$@` is "
 "dependent on the rule it is used in."
 msgstr ""
+"Wprowadziliśmy zależność dla reguły all, a mianowicie zawartość zmiennej "
+"`PROG`, zmodyfikowaliśmy również wydruk, a teraz chcemy zobaczyć wszystkie "
+"zależności tej reguły, które są przechowywane w zmiennej `$^`. Teraz dla "
+"nowej reguły, której nadajemy nazwę po wartości zmiennej `PROG`, która robi "
+"to samo, co zrobiliśmy wcześniej dla reguły _all_. Zwróćmy uwagę, jak "
+"wartość `$@` jest zależna od reguły, w której jest używana."
 
 #: ../../source/learn/building_programs/build_tools.md:126
 msgid "Again check by running the `make`, you should see:"
-msgstr ""
+msgstr "Ponownie sprawdzamy poprzez wykonanie `make` i powinniśmy zobaczyć:"
 
 #: ../../source/learn/building_programs/build_tools.md:133
 msgid ""
@@ -4516,12 +4685,18 @@ msgid ""
 "any action on the rule _all_. Let's run only the second rule: type `make "
 "my_prog` and you will only find the first two lines in your terminal."
 msgstr ""
+"Zależność została poprawnie rozwiązana i określona zanim jakakolwiek akcja "
+"na reguły _all_ została wykonana. Teraz wykonajmy tylko drugą regułę: "
+"wpiszmy `make my_prog`, a zobaczymy tylko dwa pierwsze wersy w terminalu."
 
 #: ../../source/learn/building_programs/build_tools.md:138
 msgid ""
 "The next step is to perform some real actions with `make`, we take the source"
 " code from the previous chapter here and add new rules to our `Makefile`:"
 msgstr ""
+"Następnym krokiem jest wykonanie prawdziwych akcji z `make`, weźmy kod "
+"źródłowy z poprzedniego rozdziału i dodajmy nowe reguły do naszego "
+"`Makefile`:"
 
 #: ../../source/learn/building_programs/build_tools.md:155
 msgid ""
@@ -4534,34 +4709,53 @@ msgid ""
 "object file, we do not create an executable yet due to the `-c` flag. Note "
 "the usage of the `$<` for the first element of the dependencies here."
 msgstr ""
+"Definiujemy `OBJS`, które jest skrótem od object files (pliki obiektów). "
+"Nasz program zależy od `OBJS` i dla każdego pliku obiektu tworzymy regułę, "
+"aby stworzyć je z pliku źródłowego. Ostatnia reguła, którą wprowadziliśmy to "
+"reguła dopasowania wzorca, `%` jest wspólnym wzorcem dla `tabulate.o` i "
+"`tabulate.f90`, który łączy nasz plik obiektu `tabulate.o` z plikiem "
+"źródłowym `tabulate.f90`. Mając to ustawione, uruchamiamy nasz kompilator ( "
+"`gfortran` ) i tłumaczymy plik źródłowy na plik obiektu, nie tworzymy "
+"jeszcze pliku wykonywalnego z powodu flagi `-c`. Zwróćmy uwagę na użycie `$<`"
+" dla pierwszego elementu zależności tutaj."
 
 #: ../../source/learn/building_programs/build_tools.md:166
 msgid ""
 "After compiling all the object files we attempt to link the program, we do "
 "not use a linker directly, but `gfortran` to produce the executable."
 msgstr ""
+"Po skompilowaniu wszystkich plików obiektowych próbujemy połączyć program. "
+"Nie używamy bezpośredniego linkera, ale `gfortran` do wygenerowania pliku "
+"wykonywalnego."
 
 #: ../../source/learn/building_programs/build_tools.md:169
 msgid "Now we run the build script with `make`:"
-msgstr ""
+msgstr "Teraz uruchamiamy skrypt kompilacji poleceniem `make`:"
 
 #: ../../source/learn/building_programs/build_tools.md:180
 msgid ""
 "We remember that we have dependencies between our source files, therefore we "
 "add this dependency explicitly to the `Makefile` with"
 msgstr ""
+"Pamiętamy, że mamy zależności pomiędzy naszymi plikami źródłowymi, dlatego "
+"dodajemy zależność jawnie do pliku `Makefile` za pomocą"
 
 #: ../../source/learn/building_programs/build_tools.md:187
 msgid ""
 "Now we can retry and find that the build is working correctly. The output "
 "should look like"
 msgstr ""
+"Teraz możemy ponowić próbę i zobaczyć, że kompilacja przebiegła pomyślnie. "
+"Rezultat powinien być następujący"
 
 #: ../../source/learn/building_programs/build_tools.md:194
 msgid ""
 "You should find _four_ new files in the directory now. Run `my_prog` to make "
 "sure everything works as expected. Let's run `make` again:"
 msgstr ""
+"Powinieneś teraz znaleźć _cztery_ nowe pliki w twoim folderze. Uruchom "
+"`my_prog`, aby upewnić się, że wszystko działa zgodnie z oczekiwaniami. "
+"Teraz wykonajmy ponownie `make` :"
 
 #: ../../source/learn/building_programs/build_tools.md:200
 msgid ""
@@ -4570,10 +4764,14 @@ msgid ""
 "`tabulate.f90` and `functions.f90`. Therefore, the program is already up-to-"
 "date with the latest code and no action has to be performed."
 msgstr ""
+"Korzystając z sygnatur czasowych pliku wykonywalnego `make` udało się nam "
+"ustalić, że jest on nowszy niż `tabulate.o` i `functions.o`, które z kolei "
+"są nowsze niż `tabulate.f90` i `functions.f90`. Dlatego program jest już "
+"aktualny, zawiera najnowszy kod i nie trzeba wykonywać żadnych działań."
 
 #: ../../source/learn/building_programs/build_tools.md:206
 msgid "In the end, we will have a look at a complete `Makefile`."
-msgstr ""
+msgstr "Na koniec, spójrzmy na kompletny plik `Makefile`."
 
 #: ../../source/learn/building_programs/build_tools.md:240
 msgid ""
@@ -4581,6 +4779,10 @@ msgid ""
 "first line, like with Fortran's `implicit none` we do not want to have "
 "implicit rules messing up our `Makefile` in surprising and harmful ways."
 msgstr ""
+"Jako że zaczynasz od `make`, zdecydowanie zalecamy, aby zawsze zawierać "
+"pierwszy wiersz, podobnie jak w przypadku `implicit none` języka Fortran, "
+"nie chcemy, aby niejawne reguły zakłócały działanie naszego `Makefile` w "
+"zaskakujący i szkodliwy sposób."
 
 #: ../../source/learn/building_programs/build_tools.md:244
 msgid ""
@@ -4594,6 +4796,15 @@ msgid ""
 "deletes all the build artifacts again such that we indeed start with a clean "
 "directory."
 msgstr ""
+"Następnie, mamy sekcję konfiguracji, gdzie definiujemy zmienne, w przypadku "
+"jeśli chcemy zmienić nasz kompilator może to być z łatwością zrobione tutaj. "
+"Wprowadzamy także zmienną `SRCS` do przechowywania wszystkich plików "
+"źródłowych, co jest bardziej intuicyjne niż określanie plików obiektowych. "
+"Możemy z łatwością stworzyć plik obiektowy poprzez dodanie sufiksu `.o` przy "
+"użyciu funkcji `addsuffix`. `.PHONY` jest specjalną regułą. która powinna "
+"być używana dla każdego punktu wejścia w `Makefile`, tutaj definiujemy dwa "
+"punkty wejścia, _all_, już znamy, a nowa reguła _clean_ usuwa ponownie "
+"wszystkie artefakty kompilacji, tak że zaczynamy od czystego folderu."
 
 #: ../../source/learn/building_programs/build_tools.md:255
 msgid ""
@@ -4603,6 +4814,11 @@ msgid ""
 "added a dependency for the object files on the `Makefile` itself, in case you"
 " change the compiler, this will allow you to safely rebuild."
 msgstr ""
+"Ponadto, zmieniliśmy odrobinę regułę budowania dla plików obiektowych, aby "
+"uwzględnić dodanie sufiksu `.o` zamiast go zastępować. Zwróćmy uwagę, że "
+"nadal musimy jawnie zadeklarować zależności w `Makefile`. Dodaliśmy również "
+"zależność dla plików obiektowych w samym `Makefile`, w przypadku zmiany "
+"kompilatora pozwoli to na bezpieczną rekompilację."
 
 #: ../../source/learn/building_programs/build_tools.md:261
 msgid ""
@@ -4610,6 +4826,9 @@ msgid ""
 "you plan to use `make` more extensively, we have compiled a few tips for you "
 "as well."
 msgstr ""
+"Teraz wiemy już wystarczająco o `make`, aby używać go do kompilowania "
+"mniejszych projektów. Jeśli planujesz używać `make` bardziej szczegółowo, "
+"zebraliśmy dla ciebie parę wskazówek."
 
 #: ../../source/learn/building_programs/build_tools.md:266
 msgid ""
@@ -4619,6 +4838,11 @@ msgid ""
 "not feel confident working with `make`, but explicitly declare all variables "
 "and rules."
 msgstr ""
+"W tym poradniku pominęliśmy lub wyłączyliśmy wiele z powszechnie używanych "
+"funkcji `make`, które mogą być szczególnie kłopotliwe jeśli zostaną użyte "
+"niewłaściwie. Zalecamy unikanie wbudowanych reguł i zmiennych, jeśli nie "
+"czujesz się pewnie pracując z `make`, a jawne deklarowanie wszystkich "
+"zmiennych i reguł."
 
 #: ../../source/learn/building_programs/build_tools.md:271
 msgid ""
@@ -4628,10 +4852,16 @@ msgid ""
 "therefore not used alone but combined with other tools to generate the "
 "`Makefile` completely or in parts."
 msgstr ""
+"Przekonasz się, że `make` jest dobrym narzędziem do zautomatyzowania "
+"krótkich współzależnych przepływów pracy i kompilowania mniejszych "
+"projektów. Jednak dla większych projektów, prawdopodobnie szybko zetkniesz "
+"się z jego ograniczeniami. Z tego powodu, `make` nie jest używane "
+"samodzielnie, ale połączone z innymi narzędziami, aby wygenerować `Makefile` "
+"w całości lub częściowo."
 
 #: ../../source/learn/building_programs/build_tools.md:278
 msgid "Recursively expanded variables"
-msgstr ""
+msgstr "Zmienne rozszerzane rekurencyjnie"
 
 #: ../../source/learn/building_programs/build_tools.md:280
 msgid ""
@@ -4641,24 +4871,35 @@ msgid ""
 "defined as rules, which are expanded at runtime, rather than being defined "
 "while parsing."
 msgstr ""
+"Często w wielu projektach można zobaczyć zmienne rozszerzane rekurencyjnie ("
+"zadeklarowane za pomocą `=` zamiast `:=`). Rozszerzanie rekurencyjne "
+"zmiennych pozwala na deklarowanie poza kolejnością i inne sprytne sztuczki z "
+"`make`, ponieważ są one zdefiniowane jako reguły, które są rozszerzane w "
+"czasie wykonania , a nie definiowane podczas przetwarzania."
 
 #: ../../source/learn/building_programs/build_tools.md:285
 msgid ""
 "For example, declaring and using your Fortran flags with this snippet will "
 "work completely fine:"
 msgstr ""
+"Na przykład zadeklarowanie i użycie flag Fortranu za pomocą tego fragmentu "
+"kodu będzie działać całkowicie poprawnie:"
 
 #: ../../source/learn/building_programs/build_tools.md:297
 msgid ""
 "You should find the expected (or maybe unexpected) printout after running "
 "`make`"
 msgstr ""
+"Powinieneś znaleźć oczekiwany (lub może nieoczekiwany) rezultat po wykonaniu "
+"`make`"
 
 #: ../../source/learn/building_programs/build_tools.md:303
 msgid ""
 "appending with `+=` to an undefined variable will produce a recursively "
 "expanded variable with this state being inherited for all further appending."
 msgstr ""
+"dołączenie `+=` do niezdefiniowanej zmiennej stworzy zmienną rozszerzoną "
+"rekurencyjnie, a ten stan będzie dziedziczony przy każdym dalszym dołączeniu."
 
 #: ../../source/learn/building_programs/build_tools.md:306
 msgid ""
@@ -4667,16 +4908,22 @@ msgid ""
 "your compiler, there is little reason to actually use the recursive expansion"
 " at all."
 msgstr ""
+"Podczas gdy może się wydawać to interesującą funkcją, czasem prowadzi do "
+"niespodziewanych i nieoczekiwanych rezultatów. Zwykle, podczas definiowania "
+"zmiennych jak twój kompilator, nie ma powodu, aby w ogóle używać "
+"rozszerzenia rekurencyjnego."
 
 #: ../../source/learn/building_programs/build_tools.md:310
 msgid "The same can easily be achieved using the `:=` declaration:"
-msgstr ""
+msgstr "To samo może być z łatwością osiągnięte poprzez użycie deklaracji `:=`:"
 
 #: ../../source/learn/building_programs/build_tools.md:322
 msgid ""
 "always think of a `Makefile` as a whole set of rules, it must be parsed "
 "completely before any rule can be evaluated."
 msgstr ""
+"zawsze myśl o `Makefile` jako o całym zbiorze reguł, musi być przetworzony w "
+"całości zanim jakakolwiek zasada zostanie określona."
 
 #: ../../source/learn/building_programs/build_tools.md:325
 msgid ""
@@ -4684,10 +4931,13 @@ msgid ""
 "done carefully, of course. It is important to be aware of the differences "
 "between the two kinds and the respective implications."
 msgstr ""
+"Możesz używać jakichkolwiek zmiennych, które lubisz, jednak powinieneś być "
+"ostrożny przy mieszaniu ich. Ważnym jest, aby być świadomym różnic pomiędzy "
+"tymi dwoma typami i ich konsekwencjami."
 
 #: ../../source/learn/building_programs/build_tools.md:329
 msgid "Comments and whitespace"
-msgstr ""
+msgstr "Komentarze i znaki białe"
 
 #: ../../source/learn/building_programs/build_tools.md:331
 msgid ""
@@ -4698,6 +4948,13 @@ msgid ""
 "file names. If you encounter such case, renaming the file is possibly the "
 "easiest solution at hand."
 msgstr ""
+"Istnieją pewne zastrzeżenia dotyczące znaków białych i komentarzy, które "
+"mogą się od czasu do czasu pojawiać podczas używania `make`. Po pierwsze, "
+"`make` nie zna żadnego typu danych poza ciągami znaków, a domyślnym "
+"separatorem jest po prostu spacja. Oznacza to, że `make` będzie miał "
+"trudności ze zbudowaniem projektu, który ma spacje w nazwach plików. Jeśli "
+"napotkasz taki przypadek, zmiana nazwy pliku jest prawdopodobnie "
+"najłatwiejszym rozwiązaniem."
 
 #: ../../source/learn/building_programs/build_tools.md:338
 msgid ""
@@ -4705,10 +4962,13 @@ msgid ""
 "`make` will happily carry it along and it does in fact make a difference when"
 " comparing strings in `make`."
 msgstr ""
+"Kolejnym powszechnym problemem są spacje na początku i na końcu. Po ich "
+"wprowadzeniu `make` bez problemu je zachowa, co ma znaczenie przy "
+"porównywaniu ciągów znaków w `make`."
 
 #: ../../source/learn/building_programs/build_tools.md:342
 msgid "Those can be introduced by comments like"
-msgstr ""
+msgstr "Można je wprowadzić przy pomocy komentarzy tak jak tutaj"
 
 #: ../../source/learn/building_programs/build_tools.md:350
 msgid ""
@@ -4716,6 +4976,9 @@ msgid ""
 "spaces are now part of the variable content. Run `make` and check that this "
 "is indeed the case:"
 msgstr ""
+"Podczas gdy komentarz zostanie poprawnie usunięty przez `make`, dwie spacje "
+"na końcu są teraz częścią zawartości zmiennej. Wykonaj `make` i sprawdź czy "
+"tak jest w rzeczywistości:"
 
 #: ../../source/learn/building_programs/build_tools.md:359
 msgid ""
@@ -4723,6 +4986,9 @@ msgid ""
 " with the `strip` function instead. Alternatively, you could try to `join` "
 "the strings."
 msgstr ""
+"Aby rozwiązać ten problem, możesz przesunąć komentarz lub usunąć spację za "
+"pomocą funkcji `strip`. Alternatywnym rozwiązaniem może być spróbowanie na "
+"złączenie ciągu znaków przy użyciu `join`."
 
 #: ../../source/learn/building_programs/build_tools.md:370
 msgid ""
@@ -4730,10 +4996,13 @@ msgid ""
 "therefore, it is prudent to pay extra attention to whitespace and comments "
 "when writing and using `make`."
 msgstr ""
+"Koniec końców, żadne z tych rozwiązań nie sprawią, że twój `Makefile` będzie "
+"bardziej czytelny, dlatego rozsądnym jest, aby zwracać uwagę na znaki białe "
+"i komentarze podczas robienia i używania `make`."
 
 #: ../../source/learn/building_programs/build_tools.md:374
 msgid "The meson build system"
-msgstr ""
+msgstr "System kompilacji Meson"
 
 #: ../../source/learn/building_programs/build_tools.md:376
 msgid ""
@@ -4744,6 +5013,13 @@ msgid ""
 "will deal for you with how and generate build files for a low-level build "
 "system."
 msgstr ""
+"Po tym jak nauczyliśmy się już podstaw `make`, które nazywamy systemem "
+"kompilacji niskiego poziomu, teraz możemy zapoznać się z systemem kompilacji "
+"wysokiego poziomu jakim jest `meson`. Podczas gdy w systemie niskiego "
+"poziomu musimy sprecyzować jak skompilować nasz program, w systemie "
+"wysokiego poziomu precyzujemy co skompilować. System wysokiego poziomu "
+"zajmie się sposobem i wygeneruje pliki kompilacji dla systemu kompilacji "
+"niskiego poziomu."
 
 #: ../../source/learn/building_programs/build_tools.md:383
 msgid ""
@@ -4751,10 +5027,14 @@ msgid ""
 "`meson` because it is constructed to be particularly user friendly. The "
 "default low-level build-system of `meson` is called `ninja`."
 msgstr ""
+"Istnieje wiele systemów kompilacji wysokiego poziomu, ale tutaj skupimy się "
+"na systemie `meson`, ponieważ jest skonstruowany w sposób przyjazny dla "
+"użytkownika. Domyślny, niskopoziomowy system kompilacji `meson` nazywa się "
+"`ninja`."
 
 #: ../../source/learn/building_programs/build_tools.md:387
 msgid "Let's have a look at a complete `meson.build` file:"
-msgstr ""
+msgstr "Spójrzmy na kompletny plik `meson.build`:"
 
 #: ../../source/learn/building_programs/build_tools.md:396
 msgid ""
@@ -4762,6 +5042,9 @@ msgid ""
 "system with `meson setup build`, you should see output somewhat similar to "
 "this"
 msgstr ""
+"I już skończyliśmy, następnym krokiem jest skonfigurowanie naszego systemu "
+"kompilacji niskiego poziomu za pomocą `meson setup build`, powinieneś "
+"zobaczyć dane wyjściowe nieco podobne do tego"
 
 #: ../../source/learn/building_programs/build_tools.md:414
 msgid ""
@@ -4769,6 +5052,10 @@ msgid ""
 " we could have provided in a `Makefile`, let's run the build with `ninja -C "
 "build`, which should show something like"
 msgstr ""
+"Informacje przedstawione tutaj są już w tym momencie dużo bardziej "
+"szczegółowe niż cokolwiek, co moglibyśmy zobaczyć w `Makefile`, teraz "
+"rozpocznijmy kompilację przy pomocy `ninja -C build`, która powinna pokazać "
+"coś takiego"
 
 #: ../../source/learn/building_programs/build_tools.md:423
 msgid ""
@@ -4777,6 +5064,10 @@ msgid ""
 "`Makefile` (including the dependency), yet we did not have to specify them, "
 "have a look at your `meson.build` file again:"
 msgstr ""
+"Znajdź i przetestuj swój program w `build/my_prog`, aby upewnić się, że "
+"działa prawidłowo. Możemy zauważyć, że kroki, które wykonał `ninja` są takie "
+"same, jak te, które zakodowalibyśmy w `Makefile` (w tym zależności), ale nie "
+"musieliśmy ich określać, spójrz ponownie na swój plik `meson.build`:"
 
 #: ../../source/learn/building_programs/build_tools.md:433
 msgid ""
@@ -4786,6 +5077,10 @@ msgid ""
 "We had not to tell `meson` how to build the project, it figured this out by "
 "itself."
 msgstr ""
+"Sprecyzowaliśmy tylko, że program jest projektem Fortran (który wymaga "
+"odpowiedniej wersji `meson`) i kazaliśmy `meson` zbudować plik wykonywalny "
+"`my_prog` z plików `tabulate.f90` i `functions.f90`. Nie musieliśmy "
+"precyzować jak zbudować projekt, `meson` zrobił to sam."
 
 #: ../../source/learn/building_programs/build_tools.md:441
 msgid ""
@@ -4794,6 +5089,11 @@ msgid ""
 " or to cross-compile your project for other platforms. Similarly, the "
 "`meson.build` file is portable and will work on different platforms as well."
 msgstr ""
+"`meson` jest międzyplatformowym systemem kompilacji, projekt, który właśnie "
+"określiłeś dla swojego programu, może być użyty do kompilacji plików "
+"binarnych dla twojego natywnego systemu operacyjnego lub do cross-kompilacji "
+"twojego projektu dla innych platform. Podobnie, plik `meson.build` jest "
+"przenośny i będzie działał również na różnych platformach."
 
 #: ../../source/learn/building_programs/build_tools.md:448
 msgid ""
@@ -4801,16 +5101,22 @@ msgid ""
 "href=\"https://mesonbuild.com/\" target=\"_blank\" rel=\"noopener\">meson-"
 "build webpage</a>."
 msgstr ""
+"Dokumentację systemu `meson` można znaleźć na <a href=\"https://mesonbuild."
+"com/\" target=\"_blank\" rel=\"noopener\">stronie internetowej kompilatora "
+"meson</a>."
 
 #: ../../source/learn/building_programs/build_tools.md:451
 msgid "Creating a CMake project"
-msgstr ""
+msgstr "Tworzenie projektu CMake"
 
 #: ../../source/learn/building_programs/build_tools.md:453
 msgid ""
 "Similar to `meson` CMake is a high-level build system as well and commonly "
 "used to build Fortran projects."
 msgstr ""
+"Podobnie jak `meson` CMake jest również wysokopoziomowym systemem "
+"kompilacji, który jest powszechnie używany do kompilowania projektów w "
+"języku Fortran."
 
 #: ../../source/learn/building_programs/build_tools.md:457
 msgid ""
@@ -4819,10 +5125,15 @@ msgid ""
 "that you can do almost everything with CMake, but your CMake build files can "
 "also become as complex as the program you are building."
 msgstr ""
+"CMake stosuję nieco inna strategię i zapewnia kompletny język programowania "
+"do tworzenia twoich plików kompilacji. Największą zaletą tego rozwiązania "
+"jest to, że możesz zrobić prawie wszystko za pomocą CMake, ale twoje pliki "
+"kompilacji CMake mogą stać się bardzo złożone tak samo jak program, który "
+"kompilujesz."
 
 #: ../../source/learn/building_programs/build_tools.md:464
 msgid "Start by creating the file `CMakeLists.txt` with the content"
-msgstr ""
+msgstr "Rozpocznij przez stworzenie pliku `CMakeLists.txt` z taką zawartością"
 
 #: ../../source/learn/building_programs/build_tools.md:472
 msgid ""
@@ -4830,6 +5141,10 @@ msgid ""
 "configure our low-level build files with `cmake -B build -G Ninja`, you "
 "should see output similar to this"
 msgstr ""
+"Podobnie jak w systemie `meson` już skończyliśmy z naszymi plikami "
+"kompilacji CMake. Konfigurujemy nasze niskopoziomowe pliki kompilacji przy "
+"pomocy `cmake -B build -G Ninja` i powinniśmy zobaczyć rezultat podobny do "
+"tego"
 
 #: ../../source/learn/building_programs/build_tools.md:486
 msgid ""
@@ -4839,12 +5154,19 @@ msgid ""
 " environment variable `FC=gfortran` rerunning should show the correct "
 "compiler name now"
 msgstr ""
+"Możesz być zaskoczony tym, że CMake próbuje używać kompilatora `f95`, na "
+"szczęście jest to tylko symboliczny link do `gfortran` w większości "
+"systemów, a nie rzeczywisty kompilator `f95`. Aby dać CMake lepszą "
+"podpowiedź, możesz wyeksportować zmienną środowiskową `FC=gfortran`, a po "
+"ponownym uruchomieniu powinien teraz pokazać poprawną nazwę kompilatora"
 
 #: ../../source/learn/building_programs/build_tools.md:502
 msgid ""
 "In a similar manner you could use your Intel Fortran compiler instead to "
 "build your project (set `FC=ifort`)."
 msgstr ""
+"W podobny sposób możesz użyć kompilatora Intel Fortran do skompilowania "
+"swojego projektu (ustaw `FC=ifort` )."
 
 #: ../../source/learn/building_programs/build_tools.md:505
 msgid ""
@@ -4852,6 +5174,10 @@ msgid ""
 "is platform specific, we will just use `ninja` since we already used it "
 "together with `meson`. As before, build your project with `ninja -C build`:"
 msgstr ""
+"CMake wspiera kilka plików kompilacyjnych niskiego poziomu. Jako, że "
+"standardowy jest używany dla konkretnych platform, użyjemy po prostu `ninja`"
+", ponieważ już wcześniej użyliśmy go razem z `meson`. Tak jak wcześniej, "
+"kompilujemy nasz program za pomocą `ninja -C build`:"
 
 #: ../../source/learn/building_programs/build_tools.md:516
 msgid ""
@@ -4861,12 +5187,20 @@ msgid ""
 "of building a project. Fortunately, we do not have to concern ourselves but "
 "have our build system handle those details for us."
 msgstr ""
+"Znajdź i przetestuj swój program za pomocą `build/my_prog`, aby upewnić się, "
+"że działa prawidłowo. Kroki, które wykonał `ninja` są w pewnym sensie inne, "
+"ponieważ zazwyczaj istnieje więcej niż jeden sposób na napisanie plików "
+"kompilacyjnych niskiego poziomu, aby skompilować program. Na szczęście, nie "
+"musimy się tym martwić, ponieważ nas system kompilacji może zająć się tymi "
+"detalami za nas."
 
 #: ../../source/learn/building_programs/build_tools.md:522
 msgid ""
 "Finally, we will shortly recap on our complete `CMakeLists.txt` to specify "
 "our project:"
 msgstr ""
+"Na koniec szybko podsumujemy nasz skończony `CMakeLists.txt` żeby "
+"sprecyzować nasz projekt:"
 
 #: ../../source/learn/building_programs/build_tools.md:531
 msgid ""
@@ -4875,6 +5209,11 @@ msgid ""
 " knows the details how to build the executable from the specified sources, so"
 " we do not have to worry about the actual steps in the build process."
 msgstr ""
+"Sprecyzowaliśmy już, że projekt jest projektem Fortran i powiedzieliśmy "
+"CMake, aby stworzył plik wykonywalny `my_prog` z plików `tabulate.f90` i "
+"`functions.f90`. CMake sam wie jak skompilować plik wykonywalny ze "
+"wskazanych źródeł, dlatego nie musimy się martwić żadnymi właściwymi krokami "
+"procesu kompilacji."
 
 #: ../../source/learn/building_programs/build_tools.md:537
 msgid ""
@@ -4885,11 +5224,17 @@ msgid ""
 "While it covers all functionality of CMake, it sometimes covers them only "
 "very briefly."
 msgstr ""
+"Szczegółowe informacje na temat narzędzia CMake znajdują się na oficjalnej "
+"stronie internetowej <a href=\"https://cmake.org/cmake/help/latest/\", "
+"target=\"\\_blank\" rel=\"noopener\">CMake</a>. Strona składa się ze stron "
+"podręcznika ekranowego (manpage), które są dostępne również w lokalnej "
+"wersji CMake po użyciu `man cmake`. Pomimo tego, że opisane są tam wszystkie "
+"funkcje CMake, są one czasami opisane bardzo powierzchownie."
 
 #: ../../source/learn/building_programs/compiling_source.md:1
 #: ../../source/learn/building_programs/index.md:47
 msgid "Compiling the source code"
-msgstr ""
+msgstr "Kompilowanie kodu źródłowego"
 
 #: ../../source/learn/building_programs/compiling_source.md:3
 msgid ""
@@ -4899,10 +5244,16 @@ msgid ""
 "compilers will produce different object codes from the same source code and "
 "the naming conventions are different."
 msgstr ""
+"Pierwszym krokiem procesu tworzenia programów jest skompilowane kodu "
+"źródłowego. Wynikiem tego kroku jest stworzenie pliku obiektowego - "
+"zawierającego zbiór instrukcji dla komputera wygenerowanego z kodu "
+"źródłowego czytelnego dla człowieka. Różne kompilatory mogą tworzyć różne "
+"pliki obiektowe z tego samego kodu źródłowego. Ponadto, nazewnictwo pomiędzy "
+"nimi również może się różnić."
 
 #: ../../source/learn/building_programs/compiling_source.md:9
 msgid "The consequences:"
-msgstr ""
+msgstr "Konsekwencje:"
 
 #: ../../source/learn/building_programs/compiling_source.md:11
 msgid ""
@@ -4911,6 +5262,11 @@ msgid ""
 "program may be built from many different source files and the compiled pieces"
 " have to cooperate."
 msgstr ""
+"Jeśli używasz konkretnego kompilatora dla jednego pliku źródłowego, należy "
+"użyć tego samego kompilatora (lub innego kompatybilnego z nim) dla "
+"pozostałych części kodu. Program może przecież być stworzony z wielu różnych "
+"plików źródłowych, gdzie wszystkie skompilowane pliki muszą ze sobą "
+"współgrać."
 
 #: ../../source/learn/building_programs/compiling_source.md:15
 msgid ""
@@ -4918,6 +5274,9 @@ msgid ""
 "extension like \".o\" or \".obj\". It is these object files that are the "
 "input for the next step: the link process."
 msgstr ""
+"Każdy plik źródłowy będzie skompilowany, a rezultat przechowywany w pliku o "
+"rozszerzeniu \".o\" lub \".obj\". Te pliki będą również danymi wejściowymi "
+"dla następnego kroku: procesu konsolidacji (ang. the link process)."
 
 #: ../../source/learn/building_programs/compiling_source.md:19
 msgid ""
