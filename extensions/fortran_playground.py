@@ -26,7 +26,6 @@ class PlayCodeBlock(CodeBlock):
             f.write(fortran_code)
 
         compile_command = ["gfortran", filename, "-o", f"./build/{code_hash}.out"]
-        # compile_command = ["ls"]
         compile_result = subprocess.run(compile_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
         with open(cache_filename, "w") as f:
