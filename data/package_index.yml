@@ -453,6 +453,13 @@
   categories: programming scientific
   tags: formatter compiler transformer
 
+- name: Fortitude
+  github: PlasmaFAIR/fortitude
+  description: A fast Ruff-like linting tool
+  categories: programming
+  license: MIT
+  tags: linter
+
 # --- Data types ---
 
 - name: Fortran template library
@@ -1561,6 +1568,13 @@
   categories: scientific
   tags: electronic-structure quantum-chemistry casscf
   license: Apache-2.0
+
+- name: raffle
+  github: ExeQuantCode/RAFFLE
+  description: Package for predicting material interface structures
+  categories: scientific
+  tags: material structure phase atomic molecular-modeling
+  license: GPL-3.0
 
 # --- Examples / demos / templates ---
 
