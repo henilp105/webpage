@@ -621,7 +621,7 @@
 <ul class="simple">
 <li><p>Crear un nuevo documento en markdown en el directorio <code class="docutils literal notranslate"><span class="pre">./learn</span></code></p></li>
 <li><p>Escriba el contenido de su tutorial</p></li>
-<li><p>Agregue una entrada a <a class="reference internal" href="#./data/learning.yml"><span class="xref myst">data/learning.yml</span></a> para su nuevo minilibro</p></li>
+<li><p>Add an entry to <a class="reference external" href="https://github.com/fortran-lang/webpage/blob/main/data/learning.yml">data/learning.yml</a> for your new mini-book</p></li>
 <li><p>Abrir una solicitud de integración</p></li>
 </ul>
 <section id="writing-your-mini-book-in-markdown">
@@ -680,7 +680,8 @@
 </section>
 <section id="add-your-mini-book-to-the-learn-page">
 <h3>1.3 Agregue su mini libro a la página de aprendizaje<a class="headerlink" href="#add-your-mini-book-to-the-learn-page" title="Link to this heading">#</a></h3>
-<p>Para agregar su nuevo minilibro a la página <em>Learn</em>, debe agregar una nueva entrada en el archivo de datos <a class="reference internal" href="#./data/learning.yml"><span class="xref myst">data/learning.yml</span></a>.</p>
+<p>To add your new mini-book to the <em>Learn</em> page, you need to add a new entry
+in the <a class="reference external" href="https://github.com/fortran-lang/webpage/blob/main/data/learning.yml">data/learning.yml</a> datafile.</p>
 <p>Abra este archivo y cree una nueva entrada en el campo <code class="docutils literal notranslate"><span class="pre">books:</span></code> con el siguiente formato:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-title</span><span class="p p-Indicator">}}</span>
 <span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-description</span><span class="p p-Indicator">}}</span>
@@ -701,7 +702,7 @@
 </div>
 <p>Guarde el archivo de datos <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code> modificado y ejecute fortran_package.py y reconstruya el sitio web en su máquina local para verificar los resultados. Si tiene éxito, debería aparecer un nuevo enlace en la página _Learn* con el título de su nuevo mini-libro.</p>
 <p>Once you have completed your mini-book and added an entry to the <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code> data file, open a pull request
-at <a class="github reference external" href="https://github.com/fortran-lang/webpage">fortran-lang/webpage</a> (see <a class="reference internal" href="#./CONTRIBUTING.md"><span class="xref myst">CONTRIBUTING</span></a>).</p>
+at <a class="github reference external" href="https://github.com/fortran-lang/webpage">fortran-lang/webpage</a> (see <a class="reference external" href="https://github.com/fortran-lang/webpage/blob/main/CONTRIBUTING.md">CONTRIBUTING</a>).</p>
 </section>
 </section>
 <section id="multi-page-mini-books">
@@ -711,7 +712,7 @@ at <a class="github reference external" href="https://github.com/fortran-lang/we
 <li><p>Crear un nuevo fólder en el directorio <code class="docutils literal notranslate"><span class="pre">./learn/</span></code></p></li>
 <li><p>Cree un archivo <code class="docutils literal notranslate"><span class="pre">index.md</span></code> en el fólder nuevo</p></li>
 <li><p>Escriba el contenido de su tutorial en archivos markdown en el fólder nuevo</p></li>
-<li><p>Agregue una entrada a <a class="reference internal" href="#./data/learning.yml"><span class="xref myst">data/learning.yml</span></a> para su nuevo minilibro</p></li>
+<li><p>Add an entry to <a class="reference external" href="https://github.com/fortran-lang/webpage/blob/main/data/learning.yml">data/learning.yml</a> for your new mini-book</p></li>
 <li><p>Abrir una solicitud de integración</p></li>
 </ul>
 <section id="create-a-new-folder-for-your-mini-book">
@@ -753,7 +754,8 @@ Each heading on the current page will show up in the inpage table-of-contents.</
 </section>
 <section id="id1">
 <h3>2.3 Add your mini-book to the Learn page<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Para agregar su nuevo minilibro a la página <em>Learn</em>, debe agregar una nueva entrada en el archivo de datos <a class="reference internal" href="#./data/learning.yml"><span class="xref myst">data/learning.yml</span></a>.</p>
+<p>To add your new mini-book to the <em>Learn</em> page, you need to add a new entry
+in the <a class="reference external" href="https://github.com/fortran-lang/webpage/blob/main/data/learning.yml">data/learning.yml</a> datafile.</p>
 <p>Abra este archivo y cree una nueva entrada en el campo <code class="docutils literal notranslate"><span class="pre">books:</span></code> con el siguiente formato:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-title</span><span class="p p-Indicator">}}</span>
 <span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{{</span><span class="nv">book-description</span><span class="p p-Indicator">}}</span>
@@ -785,7 +787,7 @@ and should generally be the same as the <code class="docutils literal notranslat
 <p>Save the modified <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code> data file and run fortran<em>package.py and rebuild the website on your local machine to check the results.
 If successful, a new link should appear on the _Learn</em> page with the title of your new mini-book.</p>
 <p>Once you have completed your mini-book and added an entry to the <code class="docutils literal notranslate"><span class="pre">learning.yml</span></code> data file, open a pull request
-at <a class="github reference external" href="https://github.com/fortran-lang/fortran-lang.org">fortran-lang/fortran-lang.org</a> (see <a class="reference internal" href="#./CONTRIBUTING.md"><span class="xref myst">CONTRIBUTING</span></a>).</p>
+at <a class="github reference external" href="https://github.com/fortran-lang/fortran-lang.org">fortran-lang/fortran-lang.org</a> (see <a class="reference external" href="https://github.com/fortran-lang/webpage/blob/main/CONTRIBUTING.md">CONTRIBUTING</a>).</p>
 </section>
 </section>
 </section>

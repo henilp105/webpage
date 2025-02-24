@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh_CN">
   <id>https://fortran-lang.org/en/</id>
   <title>Blog</title>
-  <updated>2025-02-23T03:29:52.338990+00:00</updated>
+  <updated>2025-02-24T03:23:13.429171+00:00</updated>
   <link href="https://fortran-lang.org/en/"/>
   <link href="https://fortran-lang.org/en/news/atom.xml" rel="self"/>
-  <generator uri="https://ablog.readthedocs.io/" version="0.11.11">ABlog</generator>
+  <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
   <entry>
     <id>https://fortran-lang.org/en/news/2022/06-09-Fortran-Newsletter-June-2022/</id>
     <title>Fortran newsletter: June 2022</title>
@@ -117,8 +117,7 @@ Fortran news from the previous month.Here's what's new and ongoing in the fortra
     <author>
       <name>Jérémie Vandenplas</name>
     </author>
-    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;=(Fortran-lang-2021-in-review)&lt;/p&gt;
-&lt;p&gt;With another year behind us, let's review the progress that the
+    <content type="html">&lt;p class="ablog-post-excerpt"&gt;&lt;p&gt;With another year behind us, let's review the progress that the
 Fortran-lang community has made.
 If you're new to Fortran-lang, here's a quick intro:
 We're an open source community that aims to develop modern Fortran tooling and
@@ -130,10 +129,14 @@ If you're first discovering (or re-discovering) Fortran through this article,
 welcome, and we hope it inspires you to try Fortran for one of your projects.
 In this article we summarize new developments from 2021,
 from flagship and new projects to community development and outreach.&lt;/p&gt;
+&lt;p&gt;To date, &lt;a class="reference external" href="https://github.com/fortran-lang/stdlib/graphs/contributors"&gt;33 people&lt;/a&gt;
+have contributed code to stdlib, and more than 100 people have participated in
+discussions.
+More than a dozen new modules have been added in 2021:&lt;/p&gt;
 &lt;/p&gt;
 </content>
     <link href="https://fortran-lang.org/en/news/2021/12-29-Fortran-lang-2021-in-review/"/>
-    <summary>=(Fortran-lang-2021-in-review)With another year behind us, let's review the progress that the
+    <summary>With another year behind us, let's review the progress that the
 Fortran-lang community has made.
 If you're new to Fortran-lang, here's a quick intro:
 We're an open source community that aims to develop modern Fortran tooling and
@@ -144,7 +147,10 @@ We started in late 2019 and have been going ever since.
 If you're first discovering (or re-discovering) Fortran through this article,
 welcome, and we hope it inspires you to try Fortran for one of your projects.
 In this article we summarize new developments from 2021,
-from flagship and new projects to community development and outreach.</summary>
+from flagship and new projects to community development and outreach.To date, 33 people
+have contributed code to stdlib, and more than 100 people have participated in
+discussions.
+More than a dozen new modules have been added in 2021:</summary>
     <published>2021-12-29T00:00:00+00:00</published>
   </entry>
   <entry>

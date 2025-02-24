@@ -675,8 +675,8 @@
                 <article class="bd-article">
                    <section class="tex2jax_ignore mathjax_ignore" id="accessing-external-system-information">
 <h1>Accessing external system information<a class="headerlink" href="#accessing-external-system-information" title="Link to this heading">#</a></h1>
-<section id="command-argument-count">
-<h2>command_argument_count<a class="headerlink" href="#command-argument-count" title="Link to this heading">#</a></h2>
+<section id="id1">
+<h2>command_argument_count<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <section id="name">
 <h3><strong>Name</strong><a class="headerlink" href="#name" title="Link to this heading">#</a></h3>
 <p><strong>command_argument_count</strong>(3) - [SYSTEM:COMMAND LINE] Get number of command line arguments</p>
@@ -749,13 +749,13 @@ does not count as one of the command arguments.</p>
 </section>
 </section>
 <section id="get-command">
-<h2>get_command<a class="headerlink" href="#get-command" title="Link to this heading">#</a></h2>
-<section id="id1">
-<h3><strong>Name</strong><a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<span id="id2"></span><h2>get_command<a class="headerlink" href="#get-command" title="Link to this heading">#</a></h2>
+<section id="id3">
+<h3><strong>Name</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p><strong>get_command</strong>(3) - [SYSTEM:COMMAND LINE] Get the entire command line invocation</p>
 </section>
-<section id="id2">
-<h3><strong>Synopsis</strong><a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
+<section id="id4">
+<h3><strong>Synopsis</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">call </span><span class="nb">get_command</span><span class="p">([</span><span class="n">command</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">length</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">status</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">errmsg</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -768,8 +768,8 @@ does not count as one of the command arguments.</p>
 </pre></div>
 </div>
 </section>
-<section id="id3">
-<h3><strong>Characteristics</strong><a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<section id="id5">
+<h3><strong>Characteristics</strong><a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>a kind designated as ** may be any supported kind for the type
 meeting the conditions described herein.</p></li>
@@ -778,8 +778,8 @@ meeting the conditions described herein.</p></li>
 range of at least four.</p></li>
 </ul>
 </section>
-<section id="id4">
-<h3><strong>Description</strong><a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
+<section id="id6">
+<h3><strong>Description</strong><a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
 <p><strong>get_command</strong>(3) retrieves the entire command line that was used to
 invoke the program.</p>
 <p>Note that what is typed on the command line is often processed by
@@ -789,8 +789,8 @@ turned off by turning off globbing or quoting the command line arguments
 and/or changing the default field separators, but this should rarely
 be necessary.</p>
 </section>
-<section id="id5">
-<h3><strong>Result</strong><a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h3><strong>Result</strong><a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><dl class="simple myst">
 <dt><strong>command</strong></dt><dd><p>If <strong>command</strong> is present, the entire command line that was used
@@ -822,8 +822,8 @@ command retrieval fails. Otherwise, it is unchanged.</p>
 </li>
 </ul>
 </section>
-<section id="id6">
-<h3><strong>Examples</strong><a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id8">
+<h3><strong>Examples</strong><a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
 <p>Sample program:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">demo_get_command</span>
 <span class="k">implicit none</span>
@@ -855,28 +855,28 @@ command retrieval fails. Otherwise, it is unchanged.</p>
 </pre></div>
 </div>
 </section>
-<section id="id7">
-<h3><strong>Standard</strong><a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
+<section id="id9">
+<h3><strong>Standard</strong><a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
 <p>Fortran 2003</p>
 </section>
-<section id="id8">
-<h3><strong>See Also</strong><a class="headerlink" href="#id8" title="Link to this heading">#</a></h3>
+<section id="id10">
+<h3><strong>See Also</strong><a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="#get-command-argument"><strong>get_command_argument</strong>(3)</a>,
 <a class="reference internal" href="#command-argument-count"><strong>command_argument_count</strong>(3)</a></p>
 <p><em>fortran-lang intrinsic descriptions (license: MIT) &#64;urbanjost</em></p>
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id9">
-<h1><a class="headerlink" href="#id9" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="command-argument-count">
+<span id="id11"></span><h1><a class="headerlink" href="#command-argument-count" title="Link to this heading">#</a></h1>
 <section id="get-command-argument">
-<h2>get_command_argument<a class="headerlink" href="#get-command-argument" title="Link to this heading">#</a></h2>
-<section id="id10">
-<h3><strong>Name</strong><a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<span id="id12"></span><h2>get_command_argument<a class="headerlink" href="#get-command-argument" title="Link to this heading">#</a></h2>
+<section id="id13">
+<h3><strong>Name</strong><a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
 <p><strong>get_command_argument</strong>(3) - [SYSTEM:COMMAND LINE] Get command line arguments</p>
 </section>
-<section id="id11">
-<h3><strong>Synopsis</strong><a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<section id="id14">
+<h3><strong>Synopsis</strong><a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="k">call </span><span class="nb">get_command_argument</span><span class="p">(</span><span class="n">number</span><span class="w"> </span><span class="p">[,</span><span class="k">value</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">length</span><span class="p">]</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="w">  </span><span class="p">&amp;</span><span class="w"> </span><span class="p">[,</span><span class="n">status</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">errmsg</span><span class="p">])</span>
 </pre></div>
@@ -892,8 +892,8 @@ command retrieval fails. Otherwise, it is unchanged.</p>
 </pre></div>
 </div>
 </section>
-<section id="id12">
-<h3><strong>Characteristics</strong><a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<section id="id15">
+<h3><strong>Characteristics</strong><a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>a kind designated as ** may be any supported kind for the type
 meeting the conditions described herein.</p></li>
@@ -903,8 +903,8 @@ with a decimal exponent range of at least four.</p></li>
 kind.</p></li>
 </ul>
 </section>
-<section id="id13">
-<h3><strong>Description</strong><a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<section id="id16">
+<h3><strong>Description</strong><a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
 <p><strong>get_command_argument</strong>(3) retrieves or queries the n-th argument that
 was passed on the command line to the current program execution.</p>
 <p>There is not anything specifically stated about what an argument is but
@@ -916,8 +916,8 @@ always the separator.</p>
 passing them to the program, so the strings read are often not exactly
 what the user typed on the command line.</p>
 </section>
-<section id="id14">
-<h3><strong>Options</strong><a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<section id="id17">
+<h3><strong>Options</strong><a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><dl class="simple myst">
 <dt><strong>number</strong></dt><dd><p>is a non-negative number indicating which argument of the current
@@ -938,8 +938,8 @@ left to right.</p>
 </li>
 </ul>
 </section>
-<section id="id15">
-<h3><strong>Result</strong><a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<section id="id18">
+<h3><strong>Result</strong><a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><dl class="simple myst">
 <dt><strong>value</strong></dt><dd><p>The <strong>value</strong> argument holds the command line argument.
@@ -969,8 +969,8 @@ is <strong>-1</strong>; and otherwise the <strong>status</strong> is zero.</p>
 </li>
 </ul>
 </section>
-<section id="id16">
-<h3><strong>Examples</strong><a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<section id="id19">
+<h3><strong>Examples</strong><a class="headerlink" href="#id19" title="Link to this heading">#</a></h3>
 <p>Sample program:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">demo_get_command_argument</span>
 <span class="k">implicit none</span>
@@ -1020,28 +1020,28 @@ is <strong>-1</strong>; and otherwise the <strong>status</strong> is zero.</p>
 </pre></div>
 </div>
 </section>
-<section id="id17">
-<h3><strong>Standard</strong><a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<section id="id20">
+<h3><strong>Standard</strong><a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
 <p>Fortran 2003</p>
 </section>
-<section id="id18">
-<h3><strong>See Also</strong><a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<section id="id21">
+<h3><strong>See Also</strong><a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="#get-command"><strong>get_command</strong>(3)</a>,
 <a class="reference internal" href="#command-argument-count"><strong>command_argument_count</strong>(3)</a></p>
 <p><em>fortran-lang intrinsic descriptions (license: MIT) &#64;urbanjost</em></p>
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id19">
-<h1><a class="headerlink" href="#id19" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id22">
+<h1><a class="headerlink" href="#id22" title="Link to this heading">#</a></h1>
 <section id="cpu-time">
-<h2>cpu_time<a class="headerlink" href="#cpu-time" title="Link to this heading">#</a></h2>
-<section id="id20">
-<h3><strong>Name</strong><a class="headerlink" href="#id20" title="Link to this heading">#</a></h3>
+<span id="id23"></span><h2>cpu_time<a class="headerlink" href="#cpu-time" title="Link to this heading">#</a></h2>
+<section id="id24">
+<h3><strong>Name</strong><a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
 <p><strong>cpu_time</strong>(3) - [SYSTEM:TIME] Return CPU processor time used in seconds</p>
 </section>
-<section id="id21">
-<h3><strong>Synopsis</strong><a class="headerlink" href="#id21" title="Link to this heading">#</a></h3>
+<section id="id25">
+<h3><strong>Synopsis</strong><a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="w">     </span><span class="k">call </span><span class="nb">cpu_time</span><span class="p">(</span><span class="nb">time</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1051,14 +1051,14 @@ is <strong>-1</strong>; and otherwise the <strong>status</strong> is zero.</p>
 </pre></div>
 </div>
 </section>
-<section id="id22">
-<h3><strong>Characteristics</strong><a class="headerlink" href="#id22" title="Link to this heading">#</a></h3>
+<section id="id26">
+<h3><strong>Characteristics</strong><a class="headerlink" href="#id26" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>time</strong> is a <em>real</em> of any kind</p></li>
 </ul>
 </section>
-<section id="id23">
-<h3><strong>Description</strong><a class="headerlink" href="#id23" title="Link to this heading">#</a></h3>
+<section id="id27">
+<h3><strong>Description</strong><a class="headerlink" href="#id27" title="Link to this heading">#</a></h3>
 <p><strong>cpu_time</strong>(3) returns a <em>real</em> value representing the elapsed CPU time
 in seconds. This is useful for testing segments of code to determine
 execution time.</p>
@@ -1077,8 +1077,8 @@ is processor dependent.</p>
 parallel processor) might choose to provide an additional version for
 which <strong>time</strong> is an array.</p>
 </section>
-<section id="id24">
-<h3><strong>Result</strong><a class="headerlink" href="#id24" title="Link to this heading">#</a></h3>
+<section id="id28">
+<h3><strong>Result</strong><a class="headerlink" href="#id28" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><dl class="simple myst">
 <dt><strong>time</strong></dt><dd><p>is assigned a processor-dependent approximation to the processor
@@ -1093,8 +1093,8 @@ include system overhead time.</p>
 </li>
 </ul>
 </section>
-<section id="id25">
-<h3><strong>Examples</strong><a class="headerlink" href="#id25" title="Link to this heading">#</a></h3>
+<section id="id29">
+<h3><strong>Examples</strong><a class="headerlink" href="#id29" title="Link to this heading">#</a></h3>
 <p>Sample program:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">demo_cpu_time</span>
 <span class="k">use</span><span class="p">,</span><span class="w"> </span><span class="k">intrinsic</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">iso_fortran_env</span><span class="p">,</span><span class="w"> </span><span class="k">only</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">real_kinds</span><span class="p">,</span><span class="n">real32</span><span class="p">,</span><span class="n">real64</span><span class="p">,</span><span class="n">real128</span>
@@ -1133,25 +1133,25 @@ may very from system to system. See compiler-specific for details.</p>
 </pre></div>
 </div>
 </section>
-<section id="id26">
-<h3><strong>Standard</strong><a class="headerlink" href="#id26" title="Link to this heading">#</a></h3>
+<section id="id30">
+<h3><strong>Standard</strong><a class="headerlink" href="#id30" title="Link to this heading">#</a></h3>
 <p>Fortran 95</p>
 </section>
-<section id="id27">
-<h3><strong>See Also</strong><a class="headerlink" href="#id27" title="Link to this heading">#</a></h3>
+<section id="id31">
+<h3><strong>See Also</strong><a class="headerlink" href="#id31" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="#system-clock"><strong>system_clock</strong>(3)</a>,
 <a class="reference internal" href="#date-and-time"><strong>date_and_time</strong>(3)</a></p>
 <p><em>fortran-lang intrinsic descriptions (license: MIT) &#64;urbanjost</em></p>
 </section>
 </section>
 <section id="date-and-time">
-<h2>date_and_time<a class="headerlink" href="#date-and-time" title="Link to this heading">#</a></h2>
-<section id="id28">
-<h3><strong>Name</strong><a class="headerlink" href="#id28" title="Link to this heading">#</a></h3>
+<span id="id32"></span><h2>date_and_time<a class="headerlink" href="#date-and-time" title="Link to this heading">#</a></h2>
+<section id="id33">
+<h3><strong>Name</strong><a class="headerlink" href="#id33" title="Link to this heading">#</a></h3>
 <p><strong>date_and_time</strong>(3) - [SYSTEM:TIME] Gets current date time</p>
 </section>
-<section id="id29">
-<h3><strong>Synopsis</strong><a class="headerlink" href="#id29" title="Link to this heading">#</a></h3>
+<section id="id34">
+<h3><strong>Synopsis</strong><a class="headerlink" href="#id34" title="Link to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">call </span><span class="nb">date_and_time</span><span class="p">(</span><span class="w"> </span><span class="p">[</span><span class="n">date</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="nb">time</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">zone</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">values</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1164,8 +1164,8 @@ may very from system to system. See compiler-specific for details.</p>
 </pre></div>
 </div>
 </section>
-<section id="id30">
-<h3><strong>Characteristics</strong><a class="headerlink" href="#id30" title="Link to this heading">#</a></h3>
+<section id="id35">
+<h3><strong>Characteristics</strong><a class="headerlink" href="#id35" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>*<em>date</em> is a default <em>character</em> scalar</p></li>
 <li><p>*<em>time</em> is a default <em>character</em> scalar</p></li>
@@ -1174,8 +1174,8 @@ may very from system to system. See compiler-specific for details.</p>
 exponent range of at least four.</p></li>
 </ul>
 </section>
-<section id="id31">
-<h3><strong>Description</strong><a class="headerlink" href="#id31" title="Link to this heading">#</a></h3>
+<section id="id36">
+<h3><strong>Description</strong><a class="headerlink" href="#id36" title="Link to this heading">#</a></h3>
 <p><strong>date_and_time</strong>(3) gets the corresponding date and time information
 from the real-time system clock.</p>
 <p>Unavailable time and date <em>character</em> parameters return blanks.</p>
@@ -1185,8 +1185,8 @@ from the real-time system clock.</p>
 and Measures (BIPM, i.e. Bureau International des Poids et Mesures)
 and the International Earth Rotation Service (IERS).</p>
 </section>
-<section id="id32">
-<h3><strong>Options</strong><a class="headerlink" href="#id32" title="Link to this heading">#</a></h3>
+<section id="id37">
+<h3><strong>Options</strong><a class="headerlink" href="#id37" title="Link to this heading">#</a></h3>
 <ul>
 <li><dl class="simple myst">
 <dt><strong>date</strong></dt><dd><p>A character string of default kind of the form CCYYMMDD, of length
@@ -1252,8 +1252,8 @@ images and not others. If the date, clock, or time zone information is
 available on more than one image, it is processor dependent whether or
 not those images share the same information.</p>
 </section>
-<section id="id33">
-<h3><strong>Examples</strong><a class="headerlink" href="#id33" title="Link to this heading">#</a></h3>
+<section id="id38">
+<h3><strong>Examples</strong><a class="headerlink" href="#id38" title="Link to this heading">#</a></h3>
 <p>Sample program:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">demo_date_and_time</span>
 <span class="k">implicit none</span>
@@ -1294,12 +1294,12 @@ not those images share the same information.</p>
 </pre></div>
 </div>
 </section>
-<section id="id34">
-<h3><strong>Standard</strong><a class="headerlink" href="#id34" title="Link to this heading">#</a></h3>
+<section id="id39">
+<h3><strong>Standard</strong><a class="headerlink" href="#id39" title="Link to this heading">#</a></h3>
 <p>Fortran 95</p>
 </section>
-<section id="id35">
-<h3><strong>See Also</strong><a class="headerlink" href="#id35" title="Link to this heading">#</a></h3>
+<section id="id40">
+<h3><strong>See Also</strong><a class="headerlink" href="#id40" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="#cpu-time"><strong>cpu_time</strong>(3)</a>,
 <a class="reference internal" href="#system-clock"><strong>system_clock</strong>(3)</a></p>
 </section>
@@ -1315,13 +1315,13 @@ not those images share the same information.</p>
 </section>
 </section>
 <section id="system-clock">
-<h2>system_clock<a class="headerlink" href="#system-clock" title="Link to this heading">#</a></h2>
-<section id="id36">
-<h3><strong>Name</strong><a class="headerlink" href="#id36" title="Link to this heading">#</a></h3>
+<span id="id41"></span><h2>system_clock<a class="headerlink" href="#system-clock" title="Link to this heading">#</a></h2>
+<section id="id42">
+<h3><strong>Name</strong><a class="headerlink" href="#id42" title="Link to this heading">#</a></h3>
 <p><strong>system_clock</strong>(3) - [SYSTEM:TIME] Query system clock</p>
 </section>
-<section id="id37">
-<h3><strong>Synopsis</strong><a class="headerlink" href="#id37" title="Link to this heading">#</a></h3>
+<section id="id43">
+<h3><strong>Synopsis</strong><a class="headerlink" href="#id43" title="Link to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">call </span><span class="nb">system_clock</span><span class="p">([</span><span class="nb">count</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">count_rate</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">count_max</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1333,16 +1333,16 @@ not those images share the same information.</p>
 </pre></div>
 </div>
 </section>
-<section id="id38">
-<h3><strong>Characteristics</strong><a class="headerlink" href="#id38" title="Link to this heading">#</a></h3>
+<section id="id44">
+<h3><strong>Characteristics</strong><a class="headerlink" href="#id44" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>count</strong> is an <em>integer</em> scalar</p></li>
 <li><p><strong>count_rate</strong> is an <em>integer</em> or <em>real</em> scalar</p></li>
 <li><p><strong>count_max</strong> is an <em>integer</em> scalar</p></li>
 </ul>
 </section>
-<section id="id39">
-<h3><strong>Description</strong><a class="headerlink" href="#id39" title="Link to this heading">#</a></h3>
+<section id="id45">
+<h3><strong>Description</strong><a class="headerlink" href="#id45" title="Link to this heading">#</a></h3>
 <p><strong>system_clock</strong>(3) lets you measure durations of time with the
 precision of the smallest time increment generally available on a
 system by returning processor-dependent values based on the current
@@ -1363,8 +1363,8 @@ arguments!</p>
 More specific information may generally be found in compiler-specific
 documentation.</p>
 </section>
-<section id="id40">
-<h3><strong>Options</strong><a class="headerlink" href="#id40" title="Link to this heading">#</a></h3>
+<section id="id46">
+<h3><strong>Options</strong><a class="headerlink" href="#id46" title="Link to this heading">#</a></h3>
 <ul>
 <li><p><strong>count</strong>
 If there is no clock, the returned value for <strong>count</strong> is the negative
@@ -1391,8 +1391,8 @@ there is no clock.</p>
 </li>
 </ul>
 </section>
-<section id="id41">
-<h3><strong>Examples</strong><a class="headerlink" href="#id41" title="Link to this heading">#</a></h3>
+<section id="id47">
+<h3><strong>Examples</strong><a class="headerlink" href="#id47" title="Link to this heading">#</a></h3>
 <p>If the processor clock is a 24-hour clock that registers time at
 approximately 18.20648193 ticks per second, at 11:30 A.M. the reference</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="w">      </span><span class="k">call </span><span class="nb">system_clock</span><span class="w"> </span><span class="p">(</span><span class="nb">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">count_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">count_max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">m</span><span class="p">)</span>
@@ -1467,25 +1467,25 @@ approximately 18.20648193 ticks per second, at 11:30 A.M. the reference</p>
 </pre></div>
 </div>
 </section>
-<section id="id42">
-<h3><strong>Standard</strong><a class="headerlink" href="#id42" title="Link to this heading">#</a></h3>
+<section id="id48">
+<h3><strong>Standard</strong><a class="headerlink" href="#id48" title="Link to this heading">#</a></h3>
 <p>Fortran 95</p>
 </section>
-<section id="id43">
-<h3><strong>See Also</strong><a class="headerlink" href="#id43" title="Link to this heading">#</a></h3>
+<section id="id49">
+<h3><strong>See Also</strong><a class="headerlink" href="#id49" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="#date-and-time"><strong>date_and_time</strong>(3)</a>,
 <a class="reference internal" href="#cpu-time"><strong>cpu_time</strong>(3)</a></p>
 <p><em>fortran-lang intrinsic descriptions</em></p>
 </section>
 </section>
 <section id="execute-command-line">
-<h2>execute_command_line<a class="headerlink" href="#execute-command-line" title="Link to this heading">#</a></h2>
-<section id="id44">
-<h3><strong>Name</strong><a class="headerlink" href="#id44" title="Link to this heading">#</a></h3>
+<span id="id50"></span><h2>execute_command_line<a class="headerlink" href="#execute-command-line" title="Link to this heading">#</a></h2>
+<section id="id51">
+<h3><strong>Name</strong><a class="headerlink" href="#id51" title="Link to this heading">#</a></h3>
 <p><strong>execute_command_line</strong>(3) - [SYSTEM:PROCESSES] Execute a shell command</p>
 </section>
-<section id="id45">
-<h3><strong>Synopsis</strong><a class="headerlink" href="#id45" title="Link to this heading">#</a></h3>
+<section id="id52">
+<h3><strong>Synopsis</strong><a class="headerlink" href="#id52" title="Link to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">call </span><span class="nb">execute_command_line</span><span class="p">(</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="w">    </span><span class="p">&amp;</span><span class="w"> </span><span class="n">command</span><span class="w"> </span><span class="p">[,</span><span class="n">wait</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">exitstat</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">cmdstat</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">cmdmsg</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
@@ -1500,8 +1500,8 @@ approximately 18.20648193 ticks per second, at 11:30 A.M. the reference</p>
 </pre></div>
 </div>
 </section>
-<section id="id46">
-<h3><strong>Characteristics</strong><a class="headerlink" href="#id46" title="Link to this heading">#</a></h3>
+<section id="id53">
+<h3><strong>Characteristics</strong><a class="headerlink" href="#id53" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><strong>command</strong> is a default <em>character</em> scalar</p></li>
 <li><p><strong>wait</strong> is a default <em>logical</em> scalar. If <strong>wait</strong> is present with the</p></li>
@@ -1512,8 +1512,8 @@ The kind of the variable must support at least a decimal exponent range of four.
 <li><p><strong>cmdmsg</strong> is a <em>character</em> scalar of the default kind.</p></li>
 </ul>
 </section>
-<section id="id47">
-<h3><strong>Description</strong><a class="headerlink" href="#id47" title="Link to this heading">#</a></h3>
+<section id="id54">
+<h3><strong>Description</strong><a class="headerlink" href="#id54" title="Link to this heading">#</a></h3>
 <p>For <strong>execute_command_line</strong>(3) the <strong>command</strong> argument is passed
 to the shell and executed. (The shell is generally <strong>sh</strong>(1) on Unix
 systems, and cmd.exe on Windows.) If <strong>wait</strong> is present and has the
@@ -1537,8 +1537,8 @@ SIGQUIT signals will be ignored, and the SIGCHLD will be blocked. As
 such, if the parent process is terminated, the child process might
 not be terminated alongside.</p>
 </section>
-<section id="id48">
-<h3><strong>Options</strong><a class="headerlink" href="#id48" title="Link to this heading">#</a></h3>
+<section id="id55">
+<h3><strong>Options</strong><a class="headerlink" href="#id55" title="Link to this heading">#</a></h3>
 <ul>
 <li><dl class="simple myst">
 <dt><strong>command</strong></dt><dd><p>the command line to be executed. The interpretation is
@@ -1584,8 +1584,8 @@ explanatory message. Otherwise, it is unchanged.</p>
 </li>
 </ul>
 </section>
-<section id="id49">
-<h3><strong>Examples</strong><a class="headerlink" href="#id49" title="Link to this heading">#</a></h3>
+<section id="id56">
+<h3><strong>Examples</strong><a class="headerlink" href="#id56" title="Link to this heading">#</a></h3>
 <p>Sample program:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">demo_exec</span>
 <span class="k">implicit none</span>
@@ -1600,24 +1600,24 @@ explanatory message. Otherwise, it is unchanged.</p>
 </pre></div>
 </div>
 </section>
-<section id="id50">
-<h3><strong>Standard</strong><a class="headerlink" href="#id50" title="Link to this heading">#</a></h3>
+<section id="id57">
+<h3><strong>Standard</strong><a class="headerlink" href="#id57" title="Link to this heading">#</a></h3>
 <p>Fortran 2008</p>
 </section>
-<section id="id51">
-<h3><strong>See also</strong><a class="headerlink" href="#id51" title="Link to this heading">#</a></h3>
+<section id="id58">
+<h3><strong>See also</strong><a class="headerlink" href="#id58" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="#get-environment-variable"><strong>get_environment_variable</strong>(3)</a></p>
 <p><em>fortran-lang intrinsic descriptions (license: MIT) &#64;urbanjost</em></p>
 </section>
 </section>
 <section id="get-environment-variable">
-<h2>get_environment_variable<a class="headerlink" href="#get-environment-variable" title="Link to this heading">#</a></h2>
-<section id="id52">
-<h3><strong>Name</strong><a class="headerlink" href="#id52" title="Link to this heading">#</a></h3>
+<span id="id59"></span><h2>get_environment_variable<a class="headerlink" href="#get-environment-variable" title="Link to this heading">#</a></h2>
+<section id="id60">
+<h3><strong>Name</strong><a class="headerlink" href="#id60" title="Link to this heading">#</a></h3>
 <p><strong>get_environment_variable</strong>(3) - [SYSTEM:ENVIRONMENT] Get value of an environment variable</p>
 </section>
-<section id="id53">
-<h3><strong>Synopsis</strong><a class="headerlink" href="#id53" title="Link to this heading">#</a></h3>
+<section id="id61">
+<h3><strong>Synopsis</strong><a class="headerlink" href="#id61" title="Link to this heading">#</a></h3>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">call </span><span class="nb">get_environment_variable</span><span class="p">(</span><span class="n">name</span><span class="w"> </span><span class="p">[,</span><span class="k">value</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">length</span><span class="p">]</span><span class="w"> </span><span class="p">&amp;</span>
 <span class="w">    </span><span class="p">&amp;</span><span class="w"> </span><span class="p">[,</span><span class="n">status</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">trim_name</span><span class="p">]</span><span class="w"> </span><span class="p">[,</span><span class="n">errmsg</span><span class="p">]</span><span class="w"> </span><span class="p">)</span>
 </pre></div>
@@ -1634,8 +1634,8 @@ explanatory message. Otherwise, it is unchanged.</p>
 </pre></div>
 </div>
 </section>
-<section id="id54">
-<h3><strong>Characteristics</strong><a class="headerlink" href="#id54" title="Link to this heading">#</a></h3>
+<section id="id62">
+<h3><strong>Characteristics</strong><a class="headerlink" href="#id62" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>a kind designated as ** may be any supported kind for the type
 meeting the conditions described herein.</p></li>
@@ -1646,8 +1646,8 @@ range of at least four.</p></li>
 <li><p><strong>trim_name</strong> is a scalar of type <em>logical</em> and of default kind.</p></li>
 </ul>
 </section>
-<section id="id55">
-<h3><strong>Description</strong><a class="headerlink" href="#id55" title="Link to this heading">#</a></h3>
+<section id="id63">
+<h3><strong>Description</strong><a class="headerlink" href="#id63" title="Link to this heading">#</a></h3>
 <p><strong>get_environment_variable</strong>(3) gets the <strong>value</strong> of the environment
 variable <strong>name</strong>.</p>
 <p>Note that <strong>get_environment_variable</strong>(3) need not be thread-safe. It
@@ -1658,8 +1658,8 @@ It is processor dependent whether an environment variable that exists
 on an image also exists on another image, and if it does exist on both
 images whether the values are the same or different.</p>
 </section>
-<section id="id56">
-<h3><strong>Options</strong><a class="headerlink" href="#id56" title="Link to this heading">#</a></h3>
+<section id="id64">
+<h3><strong>Options</strong><a class="headerlink" href="#id64" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><dl class="simple myst">
 <dt><strong>name</strong></dt><dd><p>The name of the environment variable to query.
@@ -1669,8 +1669,8 @@ The interpretation of case is processor dependent.</p>
 </li>
 </ul>
 </section>
-<section id="id57">
-<h3><strong>Result</strong><a class="headerlink" href="#id57" title="Link to this heading">#</a></h3>
+<section id="id65">
+<h3><strong>Result</strong><a class="headerlink" href="#id65" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><dl class="simple myst">
 <dt><strong>value</strong></dt><dd><p>The value of the environment variable being queried. If <strong>value</strong>
@@ -1704,8 +1704,8 @@ the environment variable name.</p>
 </li>
 </ul>
 </section>
-<section id="id58">
-<h3><strong>Examples</strong><a class="headerlink" href="#id58" title="Link to this heading">#</a></h3>
+<section id="id66">
+<h3><strong>Examples</strong><a class="headerlink" href="#id66" title="Link to this heading">#</a></h3>
 <p>Sample program:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">demo_getenv</span>
 <span class="k">implicit none</span>
@@ -1761,20 +1761,20 @@ the environment variable name.</p>
 </pre></div>
 </div>
 </section>
-<section id="id59">
-<h3><strong>Standard</strong><a class="headerlink" href="#id59" title="Link to this heading">#</a></h3>
+<section id="id67">
+<h3><strong>Standard</strong><a class="headerlink" href="#id67" title="Link to this heading">#</a></h3>
 <p>Fortran 2003</p>
 </section>
-<section id="id60">
-<h3><strong>See also</strong><a class="headerlink" href="#id60" title="Link to this heading">#</a></h3>
+<section id="id68">
+<h3><strong>See also</strong><a class="headerlink" href="#id68" title="Link to this heading">#</a></h3>
 <p><a class="reference internal" href="#get-command-argument"><strong>get_command_argument</strong>(3)</a>,
 <a class="reference internal" href="#get-command"><strong>get_command</strong>(3)</a></p>
 <p><em>fortran-lang intrinsic descriptions (license: MIT) &#64;urbanjost</em></p>
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id61">
-<h1><a class="headerlink" href="#id61" title="Link to this heading">#</a></h1>
+<section class="tex2jax_ignore mathjax_ignore" id="id69">
+<h1><a class="headerlink" href="#id69" title="Link to this heading">#</a></h1>
 </section>
 
 <div class="section ablog__blog_comments">
@@ -1804,7 +1804,7 @@ the environment variable name.</p>
 
 <nav id="bd-toc-nav" class="page-toc"><ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Accessing external system information</a><ul class="nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#command-argument-count">command_argument_count</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">command_argument_count</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#name"><strong>Name</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#synopsis"><strong>Synopsis</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics"><strong>Characteristics</strong></a></li>
@@ -1817,94 +1817,94 @@ the environment variable name.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-command">get_command</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><strong>Name</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2"><strong>Synopsis</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>Characteristics</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>Description</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>Result</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>Examples</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>Standard</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>See Also</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3"><strong>Name</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4"><strong>Synopsis</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5"><strong>Characteristics</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6"><strong>Description</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7"><strong>Result</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8"><strong>Examples</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"><strong>Standard</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><strong>See Also</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id9"></a><ul class="nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#command-argument-count"></a><ul class="nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-command-argument">get_command_argument</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10"><strong>Name</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11"><strong>Synopsis</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12"><strong>Characteristics</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><strong>Description</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><strong>Options</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><strong>Result</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><strong>Examples</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17"><strong>Standard</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18"><strong>See Also</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><strong>Name</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><strong>Synopsis</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id15"><strong>Characteristics</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id16"><strong>Description</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id17"><strong>Options</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id18"><strong>Result</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id19"><strong>Examples</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20"><strong>Standard</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21"><strong>See Also</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id19"></a><ul class="nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id22"></a><ul class="nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cpu-time">cpu_time</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id20"><strong>Name</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id21"><strong>Synopsis</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id22"><strong>Characteristics</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id23"><strong>Description</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24"><strong>Result</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25"><strong>Examples</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26"><strong>Standard</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id27"><strong>See Also</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id24"><strong>Name</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id25"><strong>Synopsis</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id26"><strong>Characteristics</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id27"><strong>Description</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id28"><strong>Result</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id29"><strong>Examples</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id30"><strong>Standard</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id31"><strong>See Also</strong></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#date-and-time">date_and_time</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id28"><strong>Name</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id29"><strong>Synopsis</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id30"><strong>Characteristics</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id31"><strong>Description</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id32"><strong>Options</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id33"><strong>Examples</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id34"><strong>Standard</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id35"><strong>See Also</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id33"><strong>Name</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id34"><strong>Synopsis</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id35"><strong>Characteristics</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id36"><strong>Description</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id37"><strong>Options</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id38"><strong>Examples</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id39"><strong>Standard</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id40"><strong>See Also</strong></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resources"><strong>Resources</strong></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-clock">system_clock</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id36"><strong>Name</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id37"><strong>Synopsis</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id38"><strong>Characteristics</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id39"><strong>Description</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id40"><strong>Options</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id41"><strong>Examples</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id42"><strong>Standard</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id43"><strong>See Also</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id42"><strong>Name</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id43"><strong>Synopsis</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id44"><strong>Characteristics</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id45"><strong>Description</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id46"><strong>Options</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id47"><strong>Examples</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id48"><strong>Standard</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id49"><strong>See Also</strong></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#execute-command-line">execute_command_line</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id44"><strong>Name</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id45"><strong>Synopsis</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id46"><strong>Characteristics</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id47"><strong>Description</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id48"><strong>Options</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id49"><strong>Examples</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id50"><strong>Standard</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id51"><strong>See also</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id51"><strong>Name</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id52"><strong>Synopsis</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id53"><strong>Characteristics</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id54"><strong>Description</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id55"><strong>Options</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id56"><strong>Examples</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id57"><strong>Standard</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id58"><strong>See also</strong></a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-environment-variable">get_environment_variable</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id52"><strong>Name</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id53"><strong>Synopsis</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id54"><strong>Characteristics</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id55"><strong>Description</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id56"><strong>Options</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id57"><strong>Result</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id58"><strong>Examples</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id59"><strong>Standard</strong></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id60"><strong>See also</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id60"><strong>Name</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id61"><strong>Synopsis</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id62"><strong>Characteristics</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id63"><strong>Description</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id64"><strong>Options</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id65"><strong>Result</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id66"><strong>Examples</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id67"><strong>Standard</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id68"><strong>See also</strong></a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id61"></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id69"></a></li>
 </ul>
 </nav> </div>
 
