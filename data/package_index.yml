@@ -1640,3 +1640,11 @@
   tags: quasi-newton-optimization stochastic-optimization acm-toms
   license: MIT
   version: none
+
+- name: FLAME
+  gitlab: flame-code/FLAME
+  description: a library for atomistic modeling environments.
+  categories: scientific
+  tags: machine-learning interatomic-potential crystal-structure-prediction electrostatic-energy-forces ions
+  license: GPL-2.0
+  version: none
