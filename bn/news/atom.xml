@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="bn">
   <id>https://fortran-lang.org/en/</id>
   <title>Blog</title>
-  <updated>2025-05-03T03:35:50.449452+00:00</updated>
+  <updated>2025-05-04T03:43:36.437190+00:00</updated>
   <link href="https://fortran-lang.org/en/"/>
   <link href="https://fortran-lang.org/en/news/atom.xml" rel="self"/>
   <generator uri="https://ablog.readthedocs.io/" version="0.11.12">ABlog</generator>
