@@ -123,8 +123,8 @@
   github: Cambridge-ICCS/FTorch
   description: Allows users to interface into the PyTorch machine learning library
   categories: interfaces numerical scientific
-  tags:
-  license:
+  tags: machine-learning
+  license: MIT
   version: none
 
 - name: forpy
@@ -137,7 +137,7 @@
 
 - name: flook
   github: ElectronicStructureLibrary/flook
-  desciption: Library for running an embedded Lua interpreter
+  description: Library for running an embedded Lua interpreter
   categories: interfaces
   tags: lua
 
@@ -150,12 +150,11 @@
   version: none
 
 - name: aotus
-  url: https://osdn.net/projects/apes/scm/hg/aotus/
-  description: Fortran wrapper around the C-API of the Lua scripting language
-  categories: interfaces
-  tags: lua
+  github: apes-suite/aotus
+  description: Advanced Options and Tables in Universal Scripting
+  categories: interfaces io
+  tags: lua configuration
   license: MIT
-  version: none
 
 - name: fortran-curl
   github: interkosmos/fortran-curl
@@ -195,9 +194,8 @@
 
 - name: tcp-client-server
   github: modern-fortran/tcp-client-server
-  description: A minimal Fortran TCP client and server demonstrating c interoperability
+  description: A minimal Fortran TCP client and server demonstrating C interoperability
   categories: interfaces examples
-  tags:
   version: none
 
 - name: clfortran
@@ -212,7 +210,6 @@
   github: urbanjost/M_process
   description: Read and write lines to or from a process from Fortran via a C wrapper
   categories: interfaces
-  tags:
   version: none
 
 - name: M_system
@@ -356,12 +353,18 @@
   license: NASA-1.3
 
 - name: test-drive
-  github: https://github.com/fortran-lang/test-drive
+  github: fortran-lang/test-drive
   description: The simple testing framework
   categories: programming
   tags: unit testing
   version: 0.5.0
   license: MIT AND Apache-2.0
+
+- name: setup-fortran
+  github: fortran-lang/setup-fortran
+  description: GitHub action to setup Fortran compiler and toolchain
+  categories: programming
+  tags: continuous-integration
 
 - name: erloff
   gitlab: everythingfunctional/erloff
@@ -380,7 +383,6 @@
   github: fortesg/fortrancallgraph
   description: Static source code analysis tool for Fortran
   categories: programming
-  tags:
   license: GPL-3.0
 
 - name: Tapenade
@@ -531,14 +533,12 @@
   github: jannisteunissen/lookup_table_fortran
   description: Linear lookup table implemented in modern Fortran
   categories: data-types
-  tags:
   version: none
 
 - name: FyCollections
   url: https://bitbucket.org/aradi/fycollections/src/develop/
   description: generic collection templates for Fortran
   categories: data-types
-  tags:
   license: BSD-2-Clause
 
 # --- Strings ---
@@ -609,7 +609,6 @@
   github: szaghi/VTKFortran
   description: Library to parse and emit files conforming VTK (XML) standard
   categories: io
-  tags:
   license: GPL-3.0
   version: none
 
@@ -624,7 +623,6 @@
   github: andreww/fox
   description: A Fortran XML library
   categories: io
-  tags:
   license: BSD-3-Clause
   version: none
 
@@ -685,7 +683,6 @@
   github: jannisteunissen/config_fortran
   description: Configuration file parser for Fortran
   categories: io
-  tags:
   version: none
 
 - name: parff
@@ -762,7 +759,6 @@
   github: urbanjost/M_draw
   description: Low-level vector graphics library
   categories: graphics
-  tags:
   version: none
 
 - name: fortran-motif
@@ -938,14 +934,12 @@
   github: aamaricci/SciFortran
   description: collection of fortran modules and procedures for scientific calculations.
   categories: numerical
-  tags:
   version: none
 
 - name: Los Alamos Grid Toolbox (LaGriT)
   github: lanl/LaGriT
   description: a library of user callable tools that provide mesh generation, mesh optimization and dynamic mesh maintenance
   categories: numerical
-  tags:
   license: BSD
 
 - name: DBCSR
@@ -1157,7 +1151,7 @@
 
 - name: lesgo
   github: lesgo-jhu/lesgo
-  descriptipon: The Large-Eddy Simulation framework from the Turbulence Research Group at Johns Hopkins University
+  description: The Large-Eddy Simulation framework from the Turbulence Research Group at Johns Hopkins University
   categories: scientific
   version: none
 
@@ -1191,6 +1185,7 @@
 
 - name: fortran-machine
   github: mapmeld/fortran-machine
+  description: A Fortran Model-View-Controller web platform
   categories: other
 
 - name: Nek5000
@@ -1365,6 +1360,14 @@
   tags: finite-difference hydrodynamics magnetic-field particles
   license: GPL-2.0
 
+- name: PHANTOM
+  github: danieljprice/phantom
+  description: Smoothed particle hydrodynamics and magnetohydrodyanmics for astrophysics simulations
+  categories: scientific
+  tags: astrophysics SPH MHD hydrodynamics
+  license: GPL-3.0
+
+
 - name: MOM6
   github: NOAA-GFDL/MOM6
   description: Modular Ocean Model
@@ -1424,7 +1427,7 @@
   github: MITgcm/MITgcm
   description: M.I.T General Circulation Model master code and documentation repository
   categories: scientific
-  keywords: ocean-modelling gfd automatic-differentiation data-assimilation exoplanets climate-science
+  tags: ocean-modelling gfd automatic-differentiation data-assimilation exoplanets climate-science
 
 - name: Specfem3D
   github: geodynamics/specfem3d
@@ -1588,7 +1591,6 @@
   github: farhanjk/FortranPatterns
   description: Popular design patterns implemented in Fortran
   categories: examples
-  tags:
   version: none
 
 - name: Numerical methods in fortran
