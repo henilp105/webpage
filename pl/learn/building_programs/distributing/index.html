@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" sizes="256x256" href="../../../_static/images/favicon.ico" type="image/x-icon">
-    <title>Distributing your programs &#8212; Fortran Programming Language</title>
+    <title>Dystrybucja programów &#8212; Fortran Programming Language</title>
   
   
   
@@ -60,7 +60,7 @@
     <link rel="index" title="Indeks" href="../../../genindex/" />
     <link rel="search" title="Szukaj" href="../../../search/" />
     <link rel="next" title="Najlepsze praktyki Fortran" href="../../best_practices/" />
-    <link rel="prev" title="An introduction to make" href="../project_make/" /> 
+    <link rel="prev" title="Wstęp do make" href="../project_make/" /> 
 <meta
   name="description"
   content="Fortran : High-performance parallel programming language"
@@ -564,15 +564,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../../quickstart/gotchas/">Gotchas</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Building programs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Tworzenie programów</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../compiling_source/">Kompilowanie kodu źródłowego</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linking_pieces/">Linking the objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Run-time libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../include_files/">Include files and modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../managing_libraries/">Managing libraries (static and dynamic libraries)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linking_pieces/">Łączenie obiektów</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Biblioteki środowiska wykonawczego</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../include_files/">Dołącz pliki i moduły</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_libraries/">Zarządzanie bibliotekami (statyczne i dynamiczne biblioteki)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../build_tools/">Narzędzia do kompilacji</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project_make/">An introduction to make</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Distributing your programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project_make/">Wstęp do make</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Dystrybucja programów</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../best_practices/">Najlepsze praktyki Fortran</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -655,9 +655,9 @@
     <li class="breadcrumb-item"><a href="../../" class="nav-link">Naucz się</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../" class="nav-link">Building programs</a></li>
+    <li class="breadcrumb-item"><a href="../" class="nav-link">Tworzenie programów</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Distributing your programs</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Dystrybucja programów</span></li>
   </ul>
 </nav>
 </div>
@@ -674,51 +674,31 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                    <section class="tex2jax_ignore mathjax_ignore" id="distributing-your-programs">
-<h1>Distributing your programs<a class="headerlink" href="#distributing-your-programs" title="Link to this heading">#</a></h1>
-<p>When you distribute your programs, there are a number of options you can
-choose from:</p>
+<h1>Dystrybucja programów<a class="headerlink" href="#distributing-your-programs" title="Link to this heading">#</a></h1>
+<p>Kiedy chcesz dystrybuować swój program, istnieje wiele opcji, z których możesz wybrać:</p>
 <ol class="arabic simple">
-<li><p>Distribute the entire source code</p></li>
-<li><p>Distribute a pre-built executable program</p></li>
-<li><p>Distribute static or dynamic libraries that people can use</p></li>
+<li><p>Dystrybucja całego kodu źródłowego</p></li>
+<li><p>Dystrybucja gotowego wykonywalnego programu</p></li>
+<li><p>Dystrybucja statycznych lub dynamicznych bibliotek, których mogą używać ludzie</p></li>
 </ol>
-<p><strong>Option 1: Distribute the entire source code</strong></p>
-<p>By far the simplest — for you as a programmer — is this one: you leave it
-up to the user to build it on their own machine. Unfortunately, that
-means you will have to have a user-friendly build system in place and
-the user will have to have access to suitable compilers. For build systems:
-see the previous section.</p>
-<p><strong>Option 2: Distribute a pre-built executable program</strong></p>
-<p>A pre-built program that does not need to be customised, other than via its
-input, will still need to come with the various run-time libraries and will
-be specific to the operating system/environment it was built for.</p>
-<p>The set of run-time libraries differs per operating system and compiler version.
-For a freely available compiler like gfortran, the easiest thing is to ask the
-user to install that compiler on their system. In the case of Windows: the Cygwin
-environment may be called for.</p>
-<p>Alternatively, you can supply copies of the run-time libraries together with your
-program. Put them in the directory where they can be found at run-time.</p>
-<p>Note: On Windows, the Intel Fortran comes with a set of <em>redistributable</em> libraries.
-These will need to be made available.</p>
-<p>In general: use a tool like „ldd” or „dependency walker” to find out what
-libraries are required and consult the documentation of the compiler.</p>
-<p>If your program does allow customisation, consider using dynamic libraries for this.
-More is said about this below.</p>
-<p><strong>Option 3: Distribute static or dynamic libraries that people can use</strong></p>
-<p>This option is a combination of the first two options. It does put some burden on
-the user, as they must create a main program that calls your routines in the
-proper way, but they do not need to know much about the build system you used.
-You will have to deal with the run-time libraries, though.</p>
-<p>If you choose this option, besides the compiled libraries, you will also need to
-supply the module intermediate files. These files are compiler-specific, but so are
-the static libraries you build.</p>
+<p><strong>Opcja 1: Dystrybucja całego kodu źródłowego</strong></p>
+<p>Jak dotąd najprostsze rozwiązanie - dla ciebie jako programisty: pozostawiasz kompilację programu na ich własnej maszynie użytkownikom. Niestety, oznacza to również, że musisz mieć przyjazny dla użytkowników system kompilacji oraz będą oni musieli mieć dostęp do odpowiednich kompilatorów. Aby przeczytać więcej o systemach kompilacji: zobacz poprzednią sekcję.</p>
+<p><strong>Opcja 2: Dystrybucja gotowego wykonywalnego programu</strong></p>
+<p>Gotowy wykonywalny program, który nie musi być zmieniany, oprócz danych wejściowych, i tak będzie musiał zawierać różne biblioteki środowiska wykonawczego oraz będzie specyficzny dla systemu operacyjnego/środowiska dla którego został stworzony.</p>
+<p>Zestaw bibliotek środowiska wykonawczego różni się w zależności od systemu operacyjnego i wersji kompilatora. Dla darmowych dostępnych kompilatorów, takich jak gfortran, najłatwiejszym rozwiązaniem jest zasugerowanie użytkownikom, aby zainstalowali ten kompilator w ich systemie. W przypadku Windowsa: środowisko Cygwin może być wymagane.</p>
+<p>Alternatywnie, możesz dołączyć kopie bibliotek środowiska wykonawczego razem z twoim programem. Umieść je w folderze, w którym mogą być znalezione w czasie uruchomienia programu.</p>
+<p>Uwaga: W systemie Windows Intel Fortran jest dostarczany z zestawem bibliotek <em>redystrybuowalnych</em>. Będą one musiały zostać udostępnione.</p>
+<p>Ogólnie mówiąc: używaj narzędzi takich jak „ldd” lub „dependency walker”, aby dowiedzieć się jakie biblioteki są wymagane oraz zapoznaj się z dokumentacją kompilatora.</p>
+<p>Jeśli twój program pozwala na dostosowywanie go do własnych potrzeb, rozważ użycie dynamicznych bibliotek w tym celu. Więcej o tym możesz przeczytać poniżej.</p>
+<p><strong>Opcja 3: Dystrybucja statycznych lub dynamicznych bibliotek, których mogą używać ludzie</strong></p>
+<p>Ta opcja to połączenie dwóch pierwszych opcji. Jest to obciążenie dla użytkowników, ponieważ muszą oni stworzyć program główny, który będzie wywoływał twoje procedury w odpowiedni sposób, jednak nie muszą oni wiedzieć wiele o używanym procesie kompilacji. Jednak będziesz musiał radzić sobie z bibliotekami środowiska wykonawczego.</p>
+<p>Jeśli wybierzesz tę opcję, oprócz skompilowanych bibliotek będziesz musiał dołączyć również pliki pośrednie modułu. Te pliki są specyficzne dla danego kompilatora, ale tak samo jest ze statycznymi bibliotekami, które tworzysz.</p>
 <section id="distributing-the-tabulation-program">
-<h2>Distributing the tabulation program<a class="headerlink" href="#distributing-the-tabulation-program" title="Link to this heading">#</a></h2>
-<p>As shown above, the tabulation program can be built with the user-defined function
-in a dynamic library. This enables you to:</p>
+<h2>Dystrybucjaprogramu tabelarycznego<a class="headerlink" href="#distributing-the-tabulation-program" title="Link to this heading">#</a></h2>
+<p>Jak pokazano powyżej, program tabelaryczny może zostać stworzony za pomocą funkcji stworzonej przez użytkownika w bibliotece dynamicznej. To pozwala ci na:</p>
 <ul class="simple">
-<li><p>Ship the executable (with the appropriate run-time libraries)</p></li>
-<li><p>Provide a skeleton version of the module, something like:</p></li>
+<li><p>Dostarczyć plik wykonywalny (razem z odpowienimi bibliotekami środowiska wykonawczego)</p></li>
+<li><p>Udostępnić szkielet modułu, taki jak:</p></li>
 </ul>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">user_functions</span>
 <span class="w">    </span><span class="k">implicit none</span>
@@ -736,20 +716,17 @@ in a dynamic library. This enables you to:</p>
 </pre></div>
 </div>
 <ul class="simple">
-<li><p>Provide a basic build script with a command like:</p></li>
+<li><p>Zapewnić podstawowy skrypt kompilacji za pomocą komendy takiej jak:</p></li>
 </ul>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>gfortran<span class="w"> </span>-o<span class="w"> </span>functions.dll<span class="w"> </span>functions.f90<span class="w"> </span>-shared
 </pre></div>
 </div>
-<p>or:</p>
+<p>lub:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ifort<span class="w"> </span>-exe:functions.dll<span class="w"> </span>functions.f90<span class="w"> </span>-dll
 </pre></div>
 </div>
-<p>As said, you cannot control that the user has done the right thing — any
-DLL „functions.dll” with a function <code class="docutils literal notranslate"><span class="pre">f</span></code> would be accepted, but not necessarily
-lead to a successful run.</p>
-<p>An alternative set-up would be to change the main program into a subroutine
-and have the function as an argument:</p>
+<p>Tak jak zaznaczono już wcześniej, nie możesz kontrolować czy użytkownik wykonał wszystko poprawnie - dowolna biblioteka współdzielona (DLL) „functions.dll” z funkcją <code class="docutils literal notranslate"><span class="pre">f</span></code> zostanie zaakceptowana, jednak niekoniecznie doprowadzi do jej poprawnego uruchomienia.</p>
+<p>Alternatywnym rozwiązaniem byłoby zamienienie głównego programu na podprogram i przekazanie funkcji jako argument:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">tabulation</span>
 <span class="w">    </span><span class="k">implicit none</span>
 <span class="k">contains</span>
@@ -768,7 +745,7 @@ and have the function as an argument:</p>
 <span class="k">end module </span><span class="n">tabulation</span>
 </pre></div>
 </div>
-<p>Then provide a skeleton main program:</p>
+<p>Następnie dostarcz szkielet programu głównego:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">tabulate_f</span>
 <span class="w">    </span><span class="k">use </span><span class="n">tabulation</span>
 
@@ -786,9 +763,7 @@ and have the function as an argument:</p>
 <span class="k">end program </span><span class="n">tabulate_f</span>
 </pre></div>
 </div>
-<p>The advantage is that the compiler can check the interface of the
-function that is passed and that the user has more freedom in the use of the
-functionality provided by your library.</p>
+<p>Jedną z zalet jest fakt, że kompilator może sprawdzić interfejs funkcji, która jest przekazywana, a ponadto użytkownik ma większą dowolność w użyciu funkcjonalności zapewnioną przez twoją bibliotekę.</p>
 </section>
 </section>
 
@@ -818,7 +793,7 @@ functionality provided by your library.</p>
 </div>
 
 <nav id="bd-toc-nav" class="page-toc"><ul class="nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributing-the-tabulation-program">Distributing the tabulation program</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distributing-the-tabulation-program">Dystrybucjaprogramu tabelarycznego</a></li>
 </ul></nav> </div>
 
 </div></div>

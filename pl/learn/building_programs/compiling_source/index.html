@@ -59,8 +59,8 @@
     <link rel="canonical" href="https://fortran-lang.org/en/learn/building_programs/compiling_source/" />
     <link rel="index" title="Indeks" href="../../../genindex/" />
     <link rel="search" title="Szukaj" href="../../../search/" />
-    <link rel="next" title="Linking the objects" href="../linking_pieces/" />
-    <link rel="prev" title="Building programs" href="../" /> 
+    <link rel="next" title="Łączenie obiektów" href="../linking_pieces/" />
+    <link rel="prev" title="Tworzenie programów" href="../" /> 
 <meta
   name="description"
   content="Fortran : High-performance parallel programming language"
@@ -564,15 +564,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../../quickstart/gotchas/">Gotchas</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Building programs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Tworzenie programów</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Kompilowanie kodu źródłowego</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linking_pieces/">Linking the objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Run-time libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../include_files/">Include files and modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../managing_libraries/">Managing libraries (static and dynamic libraries)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linking_pieces/">Łączenie obiektów</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Biblioteki środowiska wykonawczego</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../include_files/">Dołącz pliki i moduły</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_libraries/">Zarządzanie bibliotekami (statyczne i dynamiczne biblioteki)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../build_tools/">Narzędzia do kompilacji</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project_make/">An introduction to make</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../distributing/">Distributing your programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project_make/">Wstęp do make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributing/">Dystrybucja programów</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../best_practices/">Najlepsze praktyki Fortran</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -655,7 +655,7 @@
     <li class="breadcrumb-item"><a href="../../" class="nav-link">Naucz się</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../" class="nav-link">Building programs</a></li>
+    <li class="breadcrumb-item"><a href="../" class="nav-link">Tworzenie programów</a></li>
     
     <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Kompilowanie kodu źródłowego</span></li>
   </ul>
@@ -682,7 +682,7 @@
 that same compiler (or a compatible one) for all other pieces. After
 all, a program may be built from many different source files and the
 compiled pieces have to cooperate.</p></li>
-<li><p>Każdy plik źródłowy będzie skompilowany, a rezultat przechowywany w pliku o rozszerzeniu „.o” lub „.obj”. Te pliki będą również danymi wejściowymi dla następnego kroku: procesu konsolidacji (ang. the link process).</p></li>
+<li><p>Każdy plik źródłowy będzie skompilowany, a rezultat przechowywany w pliku o rozszerzeniu „.o” lub „.obj”. Te pliki będą również danymi wejściowymi dla następnego kroku: procesu łączenia (ang. the link process).</p></li>
 </ul>
 <p>Compilers are complex pieces of software: they have to understand the
 language in much more detail and depth than the average programmer. They
@@ -697,24 +697,15 @@ assuming the source code is stored in the file „hello.f90”:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>-c<span class="w"> </span>hello.f90
 </pre></div>
 </div>
-<p>This results in a file „hello.o” (as the gfortran compiler uses „.o” as
-the extension for the object files).</p>
-<p>The option „-c” means: only compile the source files. If you were to
-leave it out, then the default action of the compiler is to compile the
-source file and start the linker to build the actual executable program.
-The command:</p>
+<p>Wyniki w pliku „hello.o” (kompilator gfortran używa „.o” jako rozszerzenia plików obiektowych).</p>
+<p>Opcja „-c” oznacza: skompiluj tylko pliki źródłowe. W wypadku nie zastosowania tej opcji, domyślnie kompilator skompilował by plik źródłowy oraz zainicjował program łączący, aby zbudował właściwy wykonywalny program. Komenda:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>hello.f90
 </pre></div>
 </div>
-<p>results in an executable file, „a.out” on Linux or „a.exe” on
-Windows.</p>
-<p>Some remarks:</p>
+<p>będzie skutkowała stworzeniem pliku wykonywalnego , „a.out” na systemie operacyjnym Linux lub „a.exe” na Windowsie.</p>
+<p>Kilka uwag:</p>
 <ul class="simple">
-<li><p>The compiler may complain about the contents of the source file, if it
-finds something wrong with it — a typo for instance or an unknown
-keyword. In that case the compilation process is broken off and you will
-not get an object file or an executable program. For instance, if
-the word „program” was inadvertently typed as „prgoram”:</p></li>
+<li><p>Kompilator może zwracać uwagę na zawartość plików źródłowych jeśli znajdzie w nim jakiś błąd - np. literówkę lub nieznane słowo kluczowe. W tym przypadku proces kompilacji jest zakończony, a rezultatem nie będzie stworzenie żadnego pliku obiektowego lub wykonywalnego programu. Na przykład, jeśli słowo „program” zostało przez przypadek zapisane jako „prgoram”:</p></li>
 </ul>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>hello3.f90
 hello.f90:1:0:
@@ -730,13 +721,9 @@ Error:<span class="w"> </span>Syntax<span class="w"> </span>error<span class="w"
 f951:<span class="w"> </span>Error:<span class="w"> </span>Unexpected<span class="w"> </span>end<span class="w"> </span>of<span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s1">&#39;hello.f90&#39;</span>
 </pre></div>
 </div>
-<p>Using this compilation report you can correct the source code and try
-again.</p>
+<p>Używając tego raportu z kompilacji możesz poprawić kod źródłowy i spróbować jeszcze raz skompilować program.</p>
 <ul class="simple">
-<li><p>The step without „-c” can only succeed if the source file contains a
-main program — characterised by the <code class="docutils literal notranslate"><span class="pre">program</span></code> statement in Fortran.
-Otherwise the link step will complain about a missing „symbol”, something
-along these lines:</p></li>
+<li><p>Komenda kompilacji bez „-c” może zadziałać tylko jeśli plik źródłowy zawiera główny program - charakteryzujący się instrukcją <code class="docutils literal notranslate"><span class="pre">program</span></code> w Fortranie. W innym przypadku zainicjowany program łączący będzie skarżył się na brakujący „symbol”. Może to wyglądać następująco:</p></li>
 </ul>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>hello2.f90
 /usr/lib/../lib64/crt1.o:<span class="w"> </span>In<span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="sb">`</span>_start<span class="s1">&#39;:</span>
@@ -744,20 +731,14 @@ along these lines:</p></li>
 collect2:<span class="w"> </span>error:<span class="w"> </span>ld<span class="w"> </span>returned<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nb">exit</span><span class="w"> </span>status
 </pre></div>
 </div>
-<p>The file „hello2.f90” is almost the same as the file „hello.f90”, except
-that the keyword <code class="docutils literal notranslate"><span class="pre">program</span></code> has been replaced by the keyword <code class="docutils literal notranslate"><span class="pre">subroutine</span></code>.</p>
-<p>The above examples of output from the compiler will differ per compiler
-and platform on which it runs. These examples come from the gfortran
-compiler running in a Cygwin environment on Windows.</p>
-<p>Compilers also differ in the options they support, but in general:</p>
+<p>Plik „hello2.f90” jest praktycznie taki sam jak plik „hello.f90”, z wyjątkiem tego, że słowo kluczowe <code class="docutils literal notranslate"><span class="pre">program</span></code> zostało zastąpione słowem kluczowym <code class="docutils literal notranslate"><span class="pre">subroutine</span></code>.</p>
+<p>Powyższe przykłady wyników kompilatora będą się różniły w zależności od kompilatora oraz platformy, na której działa. Te przykłady pochodzą z kompilatora gfortran działającego w środowisku Cygwin na systemie Windows.</p>
+<p>Kompilatory różnią się również pod względem obsługiwanych opcji, jednak ogólnie rzecz biorąc:</p>
 <ul class="simple">
-<li><p>Options for optimising the code — resulting in faster programs or
-smaller memory footprints;</p></li>
-<li><p>Options for checking the source code — checks that a variable is not
-used before it has been given a value, for instance or checks if some
-extension to the language is used;</p></li>
-<li><p>Options for the location of include or module files, see below;</p></li>
-<li><p>Options for debugging.</p></li>
+<li><p>Opcje optymalizowania kodu - skutkujące szybszymi programami i mniejszym zużyciem pamięci;</p></li>
+<li><p>Opcję sprawdzania kodu źródłowego - na przykład sprawdzanie czy zmienna nie jest użyta zanim nadana jest jej wartość lub sprawdzanie czy jakieś rozszerzenie języka jest użyte;</p></li>
+<li><p>Opcje dotyczące lokalizacji plików lub modułów załączanych, zobacz poniżej;</p></li>
+<li><p>Opcje debugowania.</p></li>
 </ul>
 </section>
 

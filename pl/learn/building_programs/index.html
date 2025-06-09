@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" sizes="256x256" href="../../_static/images/favicon.ico" type="image/x-icon">
-    <title>Building programs &#8212; Fortran Programming Language</title>
+    <title>Tworzenie programów &#8212; Fortran Programming Language</title>
   
   
   
@@ -560,15 +560,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../quickstart/gotchas/">Gotchas</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Building programs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Tworzenie programów</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="compiling_source/">Kompilowanie kodu źródłowego</a></li>
-<li class="toctree-l2"><a class="reference internal" href="linking_pieces/">Linking the objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="runtime_libraries/">Run-time libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="include_files/">Include files and modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="managing_libraries/">Managing libraries (static and dynamic libraries)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linking_pieces/">Łączenie obiektów</a></li>
+<li class="toctree-l2"><a class="reference internal" href="runtime_libraries/">Biblioteki środowiska wykonawczego</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_files/">Dołącz pliki i moduły</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing_libraries/">Zarządzanie bibliotekami (statyczne i dynamiczne biblioteki)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="build_tools/">Narzędzia do kompilacji</a></li>
-<li class="toctree-l2"><a class="reference internal" href="project_make/">An introduction to make</a></li>
-<li class="toctree-l2"><a class="reference internal" href="distributing/">Distributing your programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="project_make/">Wstęp do make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributing/">Dystrybucja programów</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../best_practices/">Najlepsze praktyki Fortran</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -650,7 +650,7 @@
     
     <li class="breadcrumb-item"><a href="../" class="nav-link">Naucz się</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Building programs</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Tworzenie programów</span></li>
   </ul>
 </nav>
 </div>
@@ -667,45 +667,25 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                    <section class="tex2jax_ignore mathjax_ignore" id="building-programs">
-<h1>Building programs<a class="headerlink" href="#building-programs" title="Link to this heading">#</a></h1>
-<p>Languages like Fortran, C, C++ and Java, to name but a few, share
-certain characteristics: you write code in your language of choice but
-then you have to build an executable program from that source code.
-Other languages are interpreted — the source code is analysed by a
-special program and taken as direct instructions. Two very simple
-examples of that type of language: Windows batch files and Linux shell
-scripts.</p>
-<p>In this tutorial we concentrate on the first type of languages, with
-Fortran as the main example. One advantage of compiled languages is that
-the build process that you need to build an executable program, is used
-to transform the human-readable source code into an efficient program
-that can be run on the computer.</p>
-<p>Remark: this tutorial gives examples for the Windows and Linux operating
-systems, however the workflow and general principles still apply to macOS.</p>
+<h1>Tworzenie programów<a class="headerlink" href="#building-programs" title="Link to this heading">#</a></h1>
+<p>Języki takie jak Fortran, C, C++ i Java, żeby wymienić tylko kilka, dzielą wspólne cechy: piszesz kod w swoim wybranym języku, ale później musisz stworzyć program wykonywalny do twojego kodu źródłowego. Inne języki są interpretowane - kod źródłowy jest analizowany przez specjalny program i rozumiany jako bezpośrednie instrukcje. Dwa bardzo proste przykłady takich języków to pliki wsadowe Windows (Windows batch files) oraz skrypty powłoki Linux (Linux shell scripts).</p>
+<p>W tym poradniku koncentrujemy się na pierwszym typie języków, z Fortranem jako głównym przykładem. Jedną z zalet języków kompilowanych jest to, że proces kompilacji potrzebny do stworzenia programu wykonywalnego służy przekształceniu zrozumiałego dla człowieka kodu źródłowego w wydajny program, który można uruchomić na komputerze.</p>
+<p>Uwaga: ten poradnik daje przykłady dla systemów operacyjnych Windows oraz Linux, jednak przepływ pracy oraz główne zasady obowiązują również w macOS.</p>
 <section id="compiled-languages">
-<h2>Compiled languages<a class="headerlink" href="#compiled-languages" title="Link to this heading">#</a></h2>
-<p>Let us have a look at a simple example:</p>
+<h2>Języki kompilowane<a class="headerlink" href="#compiled-languages" title="Link to this heading">#</a></h2>
+<p>Spójrzmy na prosty przykład:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">hello</span>
 <span class="w">    </span><span class="k">write</span><span class="p">(</span><span class="o">*</span><span class="p">,</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="s1">&#39;Hello!&#39;</span>
 <span class="k">end program </span><span class="n">hello</span>
 </pre></div>
 </div>
-<p>This is just about the simplest program you can write in Fortran and it
-is certainly a variation on one of the most famous programs. Even though
-it is simple to express in source code, a lot of things actually happen
-when the executable that is built from this code runs:</p>
+<p>Jest to jeden z najprostszych programów jakie możesz napisać w języku Fortran i jest jedną z wariacji jednego z najbardziej popularnych programów. Pomimo tego, że wydaje się prosty do napisania, wiele rzeczy dzieje się, kiedy plik wykonywalny stworzony z tego kodu jest uruchamiany:</p>
 <ul class="simple">
-<li><p>A process is started on the computer in such a way that it can write
-to the console — the window (DOS-box, xterm, …) at which you type the
-program’s name.</p></li>
-<li><p>It writes the text „Hello!” to the console. To do so it must properly
-interact with the console.</p></li>
-<li><p>When done, it finishes, cleaning up all the resources (memory,
-connection to the console etc.) it took.</p></li>
+<li><p>Proces jest uruchamiany na komputerze w taki sposób, że może on zapisywać dane w konsoli — oknie (DOS-box, xterm, …), w którym wpisujesz nazwę programu.</p></li>
+<li><p>Zapisuje on tekst „Hello!” w konsoli. Aby to zrobić musi poprawnie współpracować z konsolą.</p></li>
+<li><p>Kiedy to jest zrobione, kończy swoje działanie czyszcząc wszystkie zasoby (pamięć, połączenie z konsolą etc.).</p></li>
 </ul>
-<p>Fortunately, as a programmer in a high-level language you do not need to
-consider all these details. In fact, this is the sort of things that is
-taken care of by the build process: the compiler and the linker.</p>
+<p>Na szczęście, jako programista języka wysokiego poziomu nie musisz brać pod uwagę tych wszystkich detali. Właściwie, są to rzeczy, którymi będzie się zajmował proces kompilacji: kompilator oraz program łączący.</p>
 <div class="toctree-wrapper compound">
 </div>
 </section>

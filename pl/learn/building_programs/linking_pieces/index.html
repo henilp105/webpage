@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" sizes="256x256" href="../../../_static/images/favicon.ico" type="image/x-icon">
-    <title>Linking the objects &#8212; Fortran Programming Language</title>
+    <title>Łączenie obiektów &#8212; Fortran Programming Language</title>
   
   
   
@@ -59,7 +59,7 @@
     <link rel="canonical" href="https://fortran-lang.org/en/learn/building_programs/linking_pieces/" />
     <link rel="index" title="Indeks" href="../../../genindex/" />
     <link rel="search" title="Szukaj" href="../../../search/" />
-    <link rel="next" title="Run-time libraries" href="../runtime_libraries/" />
+    <link rel="next" title="Biblioteki środowiska wykonawczego" href="../runtime_libraries/" />
     <link rel="prev" title="Kompilowanie kodu źródłowego" href="../compiling_source/" /> 
 <meta
   name="description"
@@ -564,15 +564,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../../quickstart/gotchas/">Gotchas</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Building programs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Tworzenie programów</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../compiling_source/">Kompilowanie kodu źródłowego</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Linking the objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Run-time libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../include_files/">Include files and modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../managing_libraries/">Managing libraries (static and dynamic libraries)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Łączenie obiektów</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Biblioteki środowiska wykonawczego</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../include_files/">Dołącz pliki i moduły</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_libraries/">Zarządzanie bibliotekami (statyczne i dynamiczne biblioteki)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../build_tools/">Narzędzia do kompilacji</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project_make/">An introduction to make</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../distributing/">Distributing your programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project_make/">Wstęp do make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributing/">Dystrybucja programów</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../best_practices/">Najlepsze praktyki Fortran</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -655,9 +655,9 @@
     <li class="breadcrumb-item"><a href="../../" class="nav-link">Naucz się</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../" class="nav-link">Building programs</a></li>
+    <li class="breadcrumb-item"><a href="../" class="nav-link">Tworzenie programów</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Linking the objects</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Łączenie obiektów</span></li>
   </ul>
 </nav>
 </div>
@@ -674,12 +674,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                    <section class="tex2jax_ignore mathjax_ignore" id="linking-the-objects">
-<h1>Linking the objects<a class="headerlink" href="#linking-the-objects" title="Link to this heading">#</a></h1>
-<p>Almost all programs, except for the simplest, are built up from
-different pieces. We are going to examine such a situation in
-more detail.</p>
-<p>Here is a general program for tabulating a function (source code in
-„tabulate.f90”):</p>
+<h1>Łączenie obiektów<a class="headerlink" href="#linking-the-objects" title="Link to this heading">#</a></h1>
+<p>Prawie wszystkie programy, za wyjątkiem tych najprostszych, są zbudowane z różnych części. Przyjrzymy się takiej sytuacji bardziej szczegółowo.</p>
+<p>Tutaj znajduje się ogólny program służący do ujmowania funkcji w tabeli (kod źródłowy znajduje się w „tabulate.f90”):</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">program </span><span class="n">tabulate</span>
 <span class="w">    </span><span class="k">use </span><span class="n">user_functions</span>
 
@@ -697,14 +694,9 @@ more detail.</p>
 <span class="k">end program </span><span class="n">tabulate</span>
 </pre></div>
 </div>
-<p>Note the <code class="docutils literal notranslate"><span class="pre">use</span></code> statement — this will be where we define the function <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p>
-<p>We want to make the program general, so keep the
-specific source code — the implementation of the function <code class="docutils literal notranslate"><span class="pre">f</span></code> —
-separated from the general source code. There are several ways to
-achieve this, but one is to put it in a different source file. We can
-give the general program to a user and they provide a specific source code.</p>
-<p>Assume for the sake of the example that the function is implemented in a
-source file „functions.f90” as:</p>
+<p>Zwróć uwagę na wyrażenie <code class="docutils literal notranslate"><span class="pre">use</span></code> - będzie to miejsce, gdzie zdefiniujemy funkcję <code class="docutils literal notranslate"><span class="pre">f</span></code>.</p>
+<p>Chcemy, aby program był ogólny, dlatego oddzielimy szczegółowy kod źródłowy - np. implementację funkcji <code class="docutils literal notranslate"><span class="pre">f</span></code> - od głównego kodu źródłowego. Istnieje kilka różnych sposobów na osiągniecie tego, ale jednym z nich jest umieszczenie go w innym pliku źródłowym. Możemy wtedy dać ogólny program użytkownikowi, a on dostarczy mu szczegółowy kod źródłowy.</p>
+<p>Na potrzebę tego przykładu przyjmijmy, że funkcja jest zaimplementowana w pliku źródłowym „functions.f90” jako:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">module </span><span class="n">user_functions</span>
 <span class="w">    </span><span class="k">implicit none</span>
 <span class="k">contains</span>
@@ -717,42 +709,20 @@ source file „functions.f90” as:</p>
 <span class="k">end module </span><span class="n">user_functions</span>
 </pre></div>
 </div>
-<p>To build the program with this specific function, we need to compile two
-source files and combine them via the link step into one executable
-program. Because the program „tabulate” depends on the module
-„function”, we need to compile the source file containing our module
-first. A sequence of commands to do this is:</p>
+<p>Aby stworzyć program z tą specyficzną funkcją, musimy skompilować dwa pliki źródłowe i połączyć je za pomocą procesu łączenia w jeden wykonywalny program. Ponieważ program „tabulate” jest zależny od modułu „function”, musimy najpierw skompilować plik źródłowy zawierający nasz moduł. Sekwencja komend, która to zrobi wygląda następująco:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>-c<span class="w"> </span>functions.f90
 $<span class="w"> </span>gfortran<span class="w"> </span>tabulate.f90<span class="w"> </span>functions.o
 </pre></div>
 </div>
-<p>The first step compiles the module, resulting in an object file
-„functions.o” and a module intermediate file, „user_functions.mod”. This module
-file contains all the information the compiler needs to determine that
-the function <code class="docutils literal notranslate"><span class="pre">f</span></code> is defined in this module and what its interface is. This
-information is important: it enables the compiler to check that you call
-the function in the right way. It might be that you made a mistake and
-called the function with two arguments instead of one. If the compiler
-does not know anything about the function’s interface, then it cannot
-check anything.</p>
-<p>The second step invokes the compiler in such a way that:</p>
+<p>Pierwszym krokiem jest skompilowanie modułu, którego wynikiem jest plik obiektowy „functions.o” oraz plik pośredni modułu „user_functions.mod”. Ten plik modułu zawiera wszystkie informacje, które potrzebuje kompilator do określenia, że funkcja <code class="docutils literal notranslate"><span class="pre">f</span></code> jest zdefiniowana w tym module i jaki jest jej interfejs. Ta informacja jest ważna: pozwala ona kompilatorowi na sprawdzenie czy funkcja jest wywoływana w prawidłowy sposób. Możliwym jest, że popełniłeś błąd i wywołałeś funkcję z dwoma argumentami zamiast jednego. Jeśli kompilator nie wie niczego o interfejsie funkcji, nie może tego sprawdzić.</p>
+<p>Kolejny krok to wywołuje kompilator w taki sposób, że:</p>
 <ul class="simple">
-<li><p>it compiles the file „tabulate.f90” (using the module file);</p></li>
-<li><p>it invokes the linker to combine the object files tabulate.o and functions.o into an
-executable program — with the default name „a.out” or „a.exe” (if you
-want a different name, use the option „-o”).</p></li>
+<li><p>kompiluje on plik „tabulate.f90” (używając pliku modułu);</p></li>
+<li><p>wywołuje program łączący, aby połączyć pliki obiektowe tabulate.o i functions.o w jeden wykonywalny program - używając domyślnej nazwy „a.out” lub „a.exe” (jeśli chcesz użyć innej nazwy, zastosuj opcję „-o”).</p></li>
 </ul>
-<p>What you do not see in general is that the linker also adds a number of
-extra files in this link step, the run-time libraries. These run-time
-libraries contain all the „standard” stuff — low-level routines that do
-the input and output to screen, the <code class="docutils literal notranslate"><span class="pre">sin</span></code> function and much more.</p>
-<p>If you want to see the gory details, add the option „-v”. This instructs
-the compiler to report all the steps that are in detail.</p>
-<p>The end result, the executable program, contains the compiled source
-code and various auxiliary routines that make it work. It also contains
-references to so-called dynamic run-time libraries (in Windows: DLLs, in
-Linux: shared objects or shared libraries). Without these run-time
-libraries the program will not start.</p>
+<p>To, co zazwyczaj nie jest pokazywane to fakt, że program łączący dodaje dodatkowe pliki podczas procesu łączenia, a mianowicie biblioteki środowiska wykonawczego. Biblioteki te zawierają wszystkie „standardowe” rzeczy - procedury niskiego poziomu odpowiedzialne za dane wejściowe i wyjściowa, funkcję <code class="docutils literal notranslate"><span class="pre">sin</span></code> i wiele więcej.</p>
+<p>Aby zobaczyć wszystkie szczegóły, dodaj opcję „-v”. To zleci kompilatorowi szczegółowe raportowanie wszystkich kroków.</p>
+<p>Wynik końcowy, wykonywalny program, zawiera skompilowany kod źródłowy oraz różne procedury pomocnicze, które sprawiają, że działa. Zawiera również odniesienia do tak zwanych dynamicznych bibliotek środowiska wykonawczego (na Windowsie: DLL, na Linuksie: obiekty lub biblioteki współdzielone). Bez tych bibliotek środowiska wykonawczego program nie uruchomi się.</p>
 </section>
 
 <div class="section ablog__blog_comments">

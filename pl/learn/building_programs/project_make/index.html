@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" sizes="256x256" href="../../../_static/images/favicon.ico" type="image/x-icon">
-    <title>An introduction to make &#8212; Fortran Programming Language</title>
+    <title>Wstęp do make &#8212; Fortran Programming Language</title>
   
   
   
@@ -59,7 +59,7 @@
     <link rel="canonical" href="https://fortran-lang.org/en/learn/building_programs/project_make/" />
     <link rel="index" title="Indeks" href="../../../genindex/" />
     <link rel="search" title="Szukaj" href="../../../search/" />
-    <link rel="next" title="Distributing your programs" href="../distributing/" />
+    <link rel="next" title="Dystrybucja programów" href="../distributing/" />
     <link rel="prev" title="Narzędzia do kompilacji" href="../build_tools/" /> 
 <meta
   name="description"
@@ -564,15 +564,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../../quickstart/gotchas/">Gotchas</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Building programs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Tworzenie programów</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../compiling_source/">Kompilowanie kodu źródłowego</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linking_pieces/">Linking the objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Run-time libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../include_files/">Include files and modules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../managing_libraries/">Managing libraries (static and dynamic libraries)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linking_pieces/">Łączenie obiektów</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Biblioteki środowiska wykonawczego</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../include_files/">Dołącz pliki i moduły</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../managing_libraries/">Zarządzanie bibliotekami (statyczne i dynamiczne biblioteki)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../build_tools/">Narzędzia do kompilacji</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">An introduction to make</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../distributing/">Distributing your programs</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Wstęp do make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributing/">Dystrybucja programów</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../best_practices/">Najlepsze praktyki Fortran</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -655,9 +655,9 @@
     <li class="breadcrumb-item"><a href="../../" class="nav-link">Naucz się</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../" class="nav-link">Building programs</a></li>
+    <li class="breadcrumb-item"><a href="../" class="nav-link">Tworzenie programów</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">An introduction to make</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Wstęp do make</span></li>
   </ul>
 </nav>
 </div>
@@ -674,52 +674,32 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                    <section class="tex2jax_ignore mathjax_ignore" id="an-introduction-to-make">
-<h1>An introduction to make<a class="headerlink" href="#an-introduction-to-make" title="Link to this heading">#</a></h1>
-<p>We briefly discussed the basics of <code class="docutils literal notranslate"><span class="pre">make</span></code>. This chapter gives ideas
-and strategies to scale <code class="docutils literal notranslate"><span class="pre">make</span></code> for larger projects.</p>
-<p>Before going into detail with <code class="docutils literal notranslate"><span class="pre">make</span></code>, consider a few points:</p>
+<h1>Wstęp do make<a class="headerlink" href="#an-introduction-to-make" title="Link to this heading">#</a></h1>
+<p>Omówiliśmy już podstawy <code class="docutils literal notranslate"><span class="pre">make</span></code>. W tym rozdziale zaprezentujemy pomysły i strategie skalowania <code class="docutils literal notranslate"><span class="pre">make</span></code> w większych projektach.</p>
+<p>Zanim przejdziemy do szczegółów <code class="docutils literal notranslate"><span class="pre">make</span></code>, rozważmy kilka punktów:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">make</span></code> is a Unix tool and might give you a hard time when porting to non-Unix
-platforms. That said, there are also different flavors of <code class="docutils literal notranslate"><span class="pre">make</span></code> available,
-not all might support the features you want to use.</p></li>
-<li><p>While <code class="docutils literal notranslate"><span class="pre">make</span></code> gives you full control over the build process, it also
-means you are responsible for the entire build process, and you have to specify the rules for every detail of your project.
-You might find yourself spending a significant amount of time writing and
-maintaining your <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> instead of developing your source code.</p></li>
-<li><p>You can work with your <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, but think about other developers
-on your project who may not be familiar with <code class="docutils literal notranslate"><span class="pre">make</span></code>. How much time do you expect them to spend learning your
-<code class="docutils literal notranslate"><span class="pre">Makefile</span></code> and would they be able to debug or add features?</p></li>
-<li><p>Pure <code class="docutils literal notranslate"><span class="pre">make</span></code> will not scale. You will soon add auxiliary programs
-to dynamically or statically generate your <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>. Those introduce
-dependencies and possible sources of errors. The effort needed to test and document those
-tools should not be underestimated.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span></code> jest narzędziem Unix i może sprawiać ci problemy podczas przenoszenia na platformy inne niż Unix. Oprócz tego, są również dostępne różne odmiany <code class="docutils literal notranslate"><span class="pre">make</span></code>, nie wszystkie mogą obsługiwać funkcje, których chcesz użyć.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">make</span></code> daje ci pełną kontrolę nad procesem kompilacji, oznacza to również, że to ty jesteś za niego odpowiedzialny oraz musisz sprecyzować zasady dla każdego szczegółu twojego projektu. Może okazać się, że przeznaczysz znaczną część swojego czasu na pisanie i utrzymywanie twojego <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> zamiast na pisanie kodu źródłowego.</p></li>
+<li><p>Możesz pracować ze swoim <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, jednak pomysł również o innych deweloperach w twoim projekcie, którzy mogą być niezaznajomieni z <code class="docutils literal notranslate"><span class="pre">make</span></code>. Jak dużo czasu będą musieli poświęcić na nauczenie się twojego <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> i czy będą w stanie go debugować i dodawać własne funkcje?</p></li>
+<li><p>Czysty <code class="docutils literal notranslate"><span class="pre">make</span></code> nie będzie się skalował. Wkrótce dodasz programy posiłkowe, aby dynamicznie lub statycznie generować twój <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>. Te z kolei wprowadzają zależności i prawdopodobne źródła błędów. Wysiłek włożony w testowanie i dokumentowanie tych narzędzi powinien być wzięty pod uwagę.</p></li>
 </ol>
-<p>If you think <code class="docutils literal notranslate"><span class="pre">make</span></code> is suitable for your needs, than you can start writing
-your <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>. For this course we will use real world examples from the
-package index, which (at the time of writing) use build systems other
-than <code class="docutils literal notranslate"><span class="pre">make</span></code>. This guide should present a general recommended style to write
-<code class="docutils literal notranslate"><span class="pre">make</span></code>, but also serve as demonstration of useful and interesting features.</p>
+<p>Jeśli myślisz, że <code class="docutils literal notranslate"><span class="pre">make</span></code> jest odpowiedni dla twoich potrzeb, możesz zacząć pisać swój plik <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>. W tym kursie użyjemy rzeczywistych przykładów z indeksu pakietów, który (w czasie pisania tego kursu) używa innych systemów kompilacji niż <code class="docutils literal notranslate"><span class="pre">make</span></code>. Ten poradnik przedstawia ogólny rekomendowany styl pisania <code class="docutils literal notranslate"><span class="pre">make</span></code> oraz powinien służyć jako demonstracja użytecznych i interesujących funkcji.</p>
 <div class="admonition tip">
 <p class="admonition-title">Wskazówka</p>
-<p>Even if you find <code class="docutils literal notranslate"><span class="pre">make</span></code> unsuitable to build your project, it is <em>the</em> tool to automate workflows defined by files. Maybe you can leverage its power in a different context.</p>
+<p>Nawet jeśli <code class="docutils literal notranslate"><span class="pre">make</span></code> nie wydaje ci się odpowiedni do kompilacji twojego projektu, jest to <em>narzędzie</em> do automatyzacji przepływu pracy zdefiniowanej przez pliki. Może uda ci się wykorzystać jego moc w innym kontekście.</p>
 </div>
 <section id="getting-started">
 <h2>Pierwsze kroki<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h2>
-<p>For this part we will work with
-<a href="https://github.com/jacobwilliams/fortran-csv-module/tree/1.2.0" target="_blank" rel="noopener"> the Fortran CSV module (v1.2.0)</a>.
-Our goal is to write a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> to compile this project to a static library.
-Start by cloning the repository</p>
+<p>W tej części będziemy pracowali z <a href="https://github.com/jacobwilliams/fortran-csv-module/tree/1.2.0" target="_blank" rel="noopener"> modułem Fortran CSV (v1.2.0)</a>. Naszym celem jest napisanie <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>, aby skompilować ten projekt do biblioteki statycznej. Zacznij od sklonowania repozytorium</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">jacobwilliams</span><span class="o">/</span><span class="n">fortran</span><span class="o">-</span><span class="n">csv</span><span class="o">-</span><span class="n">module</span> <span class="o">-</span><span class="n">b</span> <span class="mf">1.2.0</span>
 <span class="n">cd</span> <span class="n">fortran</span><span class="o">-</span><span class="n">csv</span><span class="o">-</span><span class="n">module</span>
 </pre></div>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Wskazówka</p>
-<p>For this part we will work with the code from tag <code class="docutils literal notranslate"><span class="pre">1.2.0</span></code>, to make it as reproducible as possible. Feel free to use the latest version or another project instead.</p>
+<p>W tej części będziemy pracowali z kodem o tagu <code class="docutils literal notranslate"><span class="pre">1.2.0</span></code>, aby mógł być z łatwością odtworzony. Jednak możesz użyć też najnowszej wersji lub całkowicie innego projektu.</p>
 </div>
-<p>This project uses FoBiS as build system, and you can check the
-<code class="docutils literal notranslate"><span class="pre">build.sh</span></code> for options used with FoBiS. We are about to write a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>
-for this project. First, we check the directory structure and the source files</p>
+<p>Ten projekt używa FoBiS jako swojego systemu kompilacji, możesz więc sprawdzić <code class="docutils literal notranslate"><span class="pre">build.sh</span></code> aby zobaczyć opcje użyte dla FoBiS. My jednak napiszemy <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> dla tego projektu. Na początek sprawdzamy strukturę folderów oraz pliki źródłowe</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>.
 ├── build.sh
 ├── files
@@ -739,10 +719,8 @@ for this project. First, we check the directory structure and the source files</
         └── csv_write_test.f90
 </pre></div>
 </div>
-<p>We find seven different Fortran source files; the four in <code class="docutils literal notranslate"><span class="pre">src</span></code> should
-be compiled and added to a static library while the three in <code class="docutils literal notranslate"><span class="pre">src/tests</span></code>
-contain individual programs that depend on this static library.</p>
-<p>Start by creating a simple <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>:</p>
+<p>Znaleźliśmy siedem różnych plików źródłowych Fortran; cztery w <code class="docutils literal notranslate"><span class="pre">src</span></code> powinny być skompilowane i dodane do biblioteki statycznej, a trzy pliki w <code class="docutils literal notranslate"><span class="pre">src/tests</span></code> zawierają osobne indywidualne programy, które zależą od tej statycznej biblioteki.</p>
+<p>Zacznij od stworzenia prostego <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>:</p>
 <div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="c"># Disable the default rules</span>
 <span class="nv">MAKEFLAGS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>--no-builtin-rules<span class="w"> </span>--no-builtin-variables
 
@@ -806,8 +784,7 @@ contain individual programs that depend on this static library.</p>
 <span class="w">	</span><span class="k">$(</span>RM<span class="k">)</span><span class="w"> </span><span class="k">$(</span>filter<span class="w"> </span>%.o,<span class="w"> </span><span class="k">$(</span>OBJS<span class="k">)</span><span class="w"> </span><span class="k">$(</span>TEST_OBJS<span class="k">))</span><span class="w"> </span><span class="k">$(</span>filter<span class="w"> </span>%.exe,<span class="w"> </span><span class="k">$(</span>TEST_EXE<span class="k">))</span><span class="w"> </span><span class="k">$(</span>LIB<span class="k">)</span><span class="w"> </span><span class="k">$(</span>wildcard<span class="w"> </span>*.mod<span class="k">)</span>
 </pre></div>
 </div>
-<p>Invoking <code class="docutils literal notranslate"><span class="pre">make</span></code> should build the static library and the test executables as
-expected:</p>
+<p>Wywołanie <code class="docutils literal notranslate"><span class="pre">make</span></code> powinno zbudować bibliotekę statyczną oraz sprawdzić pliki wykonywalne:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gfortran -c -o src/csv_kinds.f90.o src/csv_kinds.f90
 gfortran -c -o src/csv_parameters.f90.o src/csv_parameters.f90
 gfortran -c -o src/csv_utilities.f90.o src/csv_utilities.f90
@@ -821,39 +798,20 @@ gfortran -c -o src/tests/csv_write_test.f90.o src/tests/csv_write_test.f90
 gfortran -o src/tests/csv_write_test.exe src/tests/csv_write_test.f90.o libcsv.a
 </pre></div>
 </div>
-<p>There are a few things to note there, a <code class="docutils literal notranslate"><span class="pre">make</span></code> build usually interlaces the
-build artifacts and the source code, unless you put extra effort into implementing
-a build directory.
-Also, right now the the source files and dependencies are specified explicitly,
-which results in several additional lines even for such a simple project.</p>
+<p>Należy zwrócić tutaj uwagę na kilka rzeczy. Kompilacja za pomocą <code class="docutils literal notranslate"><span class="pre">make</span></code> zazwyczaj przeplata artefakty kompilacji z kodem źródłowym, chyba że włożysz dodatkowy wysiłek w zaimplementowanie folderu kompilacji. Dodatkowo, teraz pliki źródłowe i zależności są określane jawnie, co skutkuje kilkoma dodatkowymi linijkami nawet dla tak małego projektu.</p>
 </section>
 <section id="automatically-generated-dependencies">
-<h2>Automatically generated dependencies<a class="headerlink" href="#automatically-generated-dependencies" title="Link to this heading">#</a></h2>
-<p>The main drawback of <code class="docutils literal notranslate"><span class="pre">make</span></code> for Fortran is the missing capability to
-determine module dependencies. This is usually solved by either adding those
-by hand or automatically scanning the source code with an external tool.
-Some compilers (like the Intel Fortran compiler) also offer to generate dependencies in <code class="docutils literal notranslate"><span class="pre">make</span></code> format.</p>
-<p>Before diving into the dependency generation, we will outline the concept of
-a robust take on the dependency problem.
-First, we want an approach that can process all source files independently,
-while each source file provides (<code class="docutils literal notranslate"><span class="pre">module</span></code>) or requires (<code class="docutils literal notranslate"><span class="pre">use</span></code>) modules.
-When generating the dependencies only the name of the source file and the
-module files are known, and no information on the object file names should be
-required.</p>
-<p>If you check the dependency section above you will note that all dependencies are
-defined between object files rather than source files. To change this, we can
-generate a map from the source files their respective object files:</p>
+<h2>Automatyczne wygenerowane zależności<a class="headerlink" href="#automatically-generated-dependencies" title="Link to this heading">#</a></h2>
+<p>Największa wadą <code class="docutils literal notranslate"><span class="pre">make</span></code> przy kompilacji Fortrana jest brak możliwości określenia zależności modułu. Jest to zwykle rozwiązywane przez dodanie ich ręcznie lub automatycznie skanowanie kodu źródłowego za pomocą narzędzi zewnętrznych. Niektóre kompilatory (tak jak Intel Fortran) oferują również generowanie zależności w formacie <code class="docutils literal notranslate"><span class="pre">make</span></code>.</p>
+<p>Zanim jednak zanurzymy się w generowanie zależności, zarysujmy solidną koncepcję podejścia do problemu zależności. Po pierwsze, chcemy sposobu, który pozwoli na przetworzenie wszystkich plików źródłowych oddzielnie, kiedy każdy plik źródłowy zapewnia (<code class="docutils literal notranslate"><span class="pre">module</span></code>) lub wymaga (<code class="docutils literal notranslate"><span class="pre">use</span></code>) modułów. Podczas generowania zależności tylko nazwy plików źródłowych oraz pliki modułów są znane i żadne informacje o nazwach plików obiektowych nie powinny być wymagane.</p>
+<p>Jeśli sprawdzisz powyższą sekcję zależności zauważysz, że wszystkie zależności są zdefiniowane pomiędzy plikami obiektowymi a nie plikami źródłowymi. Aby to zmienić, możemy wygenerować mapę z plików źródłowych do odpowiednich plików obiektowych:</p>
 <div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="c"># Define a map from each file name to its object file</span>
 <span class="nv">obj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span>src<span class="k">)</span>.o
 <span class="nf">$(foreach src, $(SRCS) $(TEST_SRCS), $(eval $(src) </span><span class="o">:</span>= <span class="k">$(</span><span class="nv">obj</span><span class="k">)</span>))
 </pre></div>
 </div>
-<p>Note the declaration of <code class="docutils literal notranslate"><span class="pre">obj</span></code> as recursively expanded variable, we effectively
-use this mechanism to define a function in <code class="docutils literal notranslate"><span class="pre">make</span></code>. The <code class="docutils literal notranslate"><span class="pre">foreach</span></code> function
-allows us to loop over all source files, while the <code class="docutils literal notranslate"><span class="pre">eval</span></code> function allows us
-to generate <code class="docutils literal notranslate"><span class="pre">make</span></code> statements and evaluate them for this <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>.</p>
-<p>We adjust the dependencies accordingly as we can now define the name of the
-object files through the source file names:</p>
+<p>Zauważ deklarację <code class="docutils literal notranslate"><span class="pre">obj</span></code> jako rekursywnie rozszerzaną zmienną. Używany tego mechanizmu do efektywnego definiowania funkcji w <code class="docutils literal notranslate"><span class="pre">make</span></code>. Funkcja <code class="docutils literal notranslate"><span class="pre">foreach</span></code> pozwala nam na wykonanie pętli po wszystkich plikach źródłowych, a funkcja <code class="docutils literal notranslate"><span class="pre">eval</span></code> na wygenerowanie instrukcji <code class="docutils literal notranslate"><span class="pre">make</span></code> oraz określenie ich dla <code class="docutils literal notranslate"><span class="pre">Makefile</span></code>.</p>
+<p>Odpowiednio dostosowujemy zależności, ponieważ możemy teraz zdefiniować nazwy plików obiektowych poprzez nazwy plików źródłowych:</p>
 <div class="highlight-make notranslate"><div class="highlight"><pre><span></span><span class="c"># Define all module interdependencies</span>
 <span class="nv">csv_kinds.mod</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>src/csv_kinds.f90<span class="k">)</span>
 <span class="nv">csv_module.mod</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">$(</span>src/csv_module.F90<span class="k">)</span>
@@ -870,10 +828,8 @@ object files through the source file names:</p>
 <span class="nf">$(src/tests/csv_write_test.f90)</span><span class="o">:</span><span class="w"> </span><span class="k">$(</span><span class="nv">csv_module.mod</span><span class="k">)</span>
 </pre></div>
 </div>
-<p>The same strategy of creating a map is already used for the module files, now
-it is just expanded to the object files as well.</p>
-<p>To generate the respective dependency map automatically we will use an
-<code class="docutils literal notranslate"><span class="pre">awk</span></code> script here</p>
+<p>Ta sama strategia tworzenia mapy jest już używana dla plików modułowych, teraz jest ona poszerzona też do plików obiektowych.</p>
+<p>Aby automatycznie wygenerować mapę poszczególnych zależności użyjemy skryptu <code class="docutils literal notranslate"><span class="pre">awk</span></code></p>
 <div class="highlight-awk notranslate"><div class="highlight"><pre><span></span><span class="c1">#!/usr/bin/awk -f</span>
 
 <span class="nb">BEGIN</span> <span class="p">{</span>
@@ -932,41 +888,23 @@ it is just expanded to the object files as well.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>This script makes a few assumptions about the source code it parses, so it will
-not work with all Fortran code (namely submodules are not supported), but for
-this example it will suffice.</p>
+<p>Skrypt ten zakłada kilka rzeczy na temat kodu źródłowego, który analizuje, dlatego nie będzie działał poprawnie z każdym kodem Fortran (submoduły nie są wspierane), ale dla tego przykładu jest to wystarczające.</p>
 <div class="admonition tip">
 <p class="admonition-title">Wskazówka</p>
-<p>Using awk</p>
-<p>The above script uses the <code class="docutils literal notranslate"><span class="pre">awk</span></code> language, which is designed for the purpose
-of text stream processing and uses a C-like syntax. In <code class="docutils literal notranslate"><span class="pre">awk</span></code> you can define
-groups which are evaluated on certain events, <em>e.g.</em> when a line matches a
-specific pattern, usually expressed by a
-<a href="https://en.wikipedia.org/wiki/Regular_expression" target="_blank" rel="noopener"> regular expression</a>.</p>
-<p>This <code class="docutils literal notranslate"><span class="pre">awk</span></code> script defines five groups, two of them use the special pattern
-<code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> and <code class="docutils literal notranslate"><span class="pre">END</span></code> which are run before the script starts and after the script
-finishes, respectively.
-Before the script starts we make the script case-insensitive since we are dealing
-with Fortran source code here.
-We also use the special variable <code class="docutils literal notranslate"><span class="pre">FILENAME</span></code> to determine which file we are
-currently parsing and to allow processing multiple files at once.</p>
-<p>With the three patterns defined we are looking for <code class="docutils literal notranslate"><span class="pre">module</span></code>, <code class="docutils literal notranslate"><span class="pre">use</span></code> and
-<code class="docutils literal notranslate"><span class="pre">include</span></code> statements as the first space delimited entry. With the used
-pattern not all valid Fortran code will be parsed correctly.
-A failing example would be:</p>
+<p>Używanie awk</p>
+<p>Powyższy skrypt używa języka <code class="docutils literal notranslate"><span class="pre">awk</span></code>, który został stworzony w celu przetwarzania strumieniowego tekstu (ang. text stream processing) i używa składni podobnej do C. W <code class="docutils literal notranslate"><span class="pre">awk</span></code> możesz definować grupy, które są ewaluowane na podstawie pewnych zdarzeń _np. _ kiedy dany wiersz pasuje do określonego wzorca, zazwyczaj wyrażonego <a href="https://en.wikipedia.org/wiki/Regular_expression" target="_blank" rel="noopener">wyrażeniem regularnym</a>.</p>
+<p>Ten skrypt <code class="docutils literal notranslate"><span class="pre">awk</span></code> definiuje pięć grup, dwie z nich używają specjalnego wzorca <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> oraz <code class="docutils literal notranslate"><span class="pre">END</span></code>, które są uruchamiane odpowiednio zanim skrypt się rozpocznie oraz po skończeniu skryptu. Zanim skrypt się rozpocznie sprawiamy, aby nieuwzględniał wielkości liter, ponieważ mamy tutaj do czynienia z kodem źródłowym Fortran. Używamy również specjalnej zmiennej <code class="docutils literal notranslate"><span class="pre">FILENAME</span></code>, aby określić, który plik jest aktualnie poddawany analizie oraz aby umożliwić przetwarzanie kilku plików na raz.</p>
+<p>Mając określone trzy wzorce, szukamy nimi poleceń<code class="docutils literal notranslate"><span class="pre">module</span></code>, <code class="docutils literal notranslate"><span class="pre">use</span></code> oraz <code class="docutils literal notranslate"><span class="pre">include</span></code> jako pierwszego wpisu rozdzielonego spacją. Przy tym zastosowanym wzorze nie każdy kod Fortran zostanie poprawnie przeanalizowany. Przykładem błędu może być:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">use</span><span class="kd">::</span><span class="n">my_module</span><span class="p">,</span><span class="k">only</span><span class="p">:</span><span class="n">proc</span>
 </pre></div>
 </div>
-<p>To make this parsable by the <code class="docutils literal notranslate"><span class="pre">awk</span></code> script we can add another group directly
-after the <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> group, modifying the stream while processing it with</p>
+<p>Aby ten kod mógł zostać przeanalizowany przez <code class="docutils literal notranslate"><span class="pre">awk</span></code> możemy dodać jeszcze jedną grupę zaraz po grupie <code class="docutils literal notranslate"><span class="pre">BEGIN</span></code> modyfikując tym samym strumień podczas jego przetwarzania za pomocą</p>
 <div class="highlight-awk notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
    <span class="kr">gsub</span><span class="p">(</span><span class="sr">/,|:/</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>In theory you would need a full Fortran parser to deal with continuation lines
-and other difficulties. This might be possible to implement in <code class="docutils literal notranslate"><span class="pre">awk</span></code> but
-would require a huge script in the end.</p>
+<p>Teoretycznie potrzebny byłby pełny parser Fortran, aby poradzić sobie z kontynuacjami wierszy oraz innymi trudnościami. Mogłoby być to możliwe do zaimplementowania w <code class="docutils literal notranslate"><span class="pre">awk</span></code>, ale ostatecznie wymagałoby ogromnego skryptu.</p>
 <p>Also, keep in mind that generating the dependencies should be fast, an expensive
 parser can produce a significant overhead when generating dependencies for a large
 code base. Making reasonable assumptions can simplify and speed up this step, but
@@ -1147,7 +1085,7 @@ them dynamically:</p>
 
 <nav id="bd-toc-nav" class="page-toc"><ul class="nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">Pierwsze kroki</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatically-generated-dependencies">Automatically generated dependencies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatically-generated-dependencies">Automatyczne wygenerowane zależności</a></li>
 </ul></nav> </div>
 
 </div></div>

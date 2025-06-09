@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" sizes="256x256" href="../../../_static/images/favicon.ico" type="image/x-icon">
-    <title>Managing libraries (static and dynamic libraries) &#8212; Fortran Programming Language</title>
+    <title>Zarządzanie bibliotekami (statyczne i dynamiczne biblioteki) &#8212; Fortran Programming Language</title>
   
   
   
@@ -60,7 +60,7 @@
     <link rel="index" title="Indeks" href="../../../genindex/" />
     <link rel="search" title="Szukaj" href="../../../search/" />
     <link rel="next" title="Narzędzia do kompilacji" href="../build_tools/" />
-    <link rel="prev" title="Include files and modules" href="../include_files/" /> 
+    <link rel="prev" title="Dołącz pliki i moduły" href="../include_files/" /> 
 <meta
   name="description"
   content="Fortran : High-performance parallel programming language"
@@ -564,15 +564,15 @@
 <li class="toctree-l2"><a class="reference internal" href="../../quickstart/gotchas/">Gotchas</a></li>
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Building programs</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../">Tworzenie programów</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../compiling_source/">Kompilowanie kodu źródłowego</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../linking_pieces/">Linking the objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Run-time libraries</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../include_files/">Include files and modules</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Managing libraries (static and dynamic libraries)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linking_pieces/">Łączenie obiektów</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../runtime_libraries/">Biblioteki środowiska wykonawczego</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../include_files/">Dołącz pliki i moduły</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Zarządzanie bibliotekami (statyczne i dynamiczne biblioteki)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../build_tools/">Narzędzia do kompilacji</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project_make/">An introduction to make</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../distributing/">Distributing your programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project_make/">Wstęp do make</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../distributing/">Dystrybucja programów</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../best_practices/">Najlepsze praktyki Fortran</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -655,9 +655,9 @@
     <li class="breadcrumb-item"><a href="../../" class="nav-link">Naucz się</a></li>
     
     
-    <li class="breadcrumb-item"><a href="../" class="nav-link">Building programs</a></li>
+    <li class="breadcrumb-item"><a href="../" class="nav-link">Tworzenie programów</a></li>
     
-    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Managing libraries (static and dynamic libraries)</span></li>
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Zarządzanie bibliotekami (statyczne i dynamiczne biblioteki)</span></li>
   </ul>
 </nav>
 </div>
@@ -674,124 +674,79 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                    <section class="tex2jax_ignore mathjax_ignore" id="managing-libraries-static-and-dynamic-libraries">
-<h1>Managing libraries (static and dynamic libraries)<a class="headerlink" href="#managing-libraries-static-and-dynamic-libraries" title="Link to this heading">#</a></h1>
-<p>If you need to manage a program built of dozens of source files (and
-that is not uncommon!), the command-line needed to specify all the
-object files will be very long indeed. This soon becomes tedious or
-even impossible to maintain. So a different solution is called for:
-create your own libraries.</p>
-<p>Libraries contain any number of object files in a compact form, so that
-the command-line becomes far shorter:</p>
+<h1>Zarządzanie bibliotekami (statyczne i dynamiczne biblioteki)<a class="headerlink" href="#managing-libraries-static-and-dynamic-libraries" title="Link to this heading">#</a></h1>
+<p>Jeśli potrzebujesz zarządzać programem złożonym z dziesiątek plików źródłowych (a nie jest to rzadkie!), komendy potrzebne do sprecyzowania wszystkich plików obiektowych będą bardzo długie. To szybko staje się żmudne lub nawet niewykonalne. Potrzebne jest więc inne rozwiązanie: stworzenie własnych bibliotek.</p>
+<p>Biblioteki zawierają pewną ilość plików obiektowych w kompaktowej formie, tak że komendy stają się o wiele krótsze:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>-o<span class="w"> </span>tabulate<span class="w"> </span>tabulate.f90<span class="w"> </span>functions.o<span class="w"> </span>supportlib.a
 </pre></div>
 </div>
-<p>where „supportlib.a” is a collection of one, two or many object files,
-all compiled and then put into a library. The extension „.a” is used by
-Linux and Linux-like platforms. On Windows the extension „.lib” is used.</p>
-<p>Creating your own libraries is not that complicated:
-on Linux, you can achieve this using a utility like <code class="docutils literal notranslate"><span class="pre">ar</span></code>:</p>
+<p>„supportlib.a” jest kolekcją jednej, dwóch lub wielu plików obiektowych, wszystkich skompilowanych i dodanych do biblioteki. Rozszerzenie „.a” jest używane na systemie operacyjnym Linux i innych platformach stworzonych na jego wzór. Na Windowsie używane jest rozszerzenie „.lib”.</p>
+<p>Tworzenie własnych bibliotek nie jest takie skomplikowane: na Linuksie, możesz tego dokonać za pomocą funkcji takich jak <code class="docutils literal notranslate"><span class="pre">ar</span></code>:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>-c<span class="w"> </span>file1.f90<span class="w"> </span>file2.f90
 $<span class="w"> </span>gfortran<span class="w"> </span>-c<span class="w"> </span>file3.f90<span class="w"> </span>...
 $<span class="w"> </span>ar<span class="w"> </span>r<span class="w"> </span>supportlib.a<span class="w"> </span>file1.o<span class="w"> </span>file2.o
 $<span class="w"> </span>ar<span class="w"> </span>r<span class="w"> </span>supportlib.a<span class="w"> </span>file3.o<span class="w"> </span>...
 </pre></div>
 </div>
-<p>or on Windows using the <code class="docutils literal notranslate"><span class="pre">lib</span></code> utility:</p>
+<p>lub na Windowsie używając funkcji <code class="docutils literal notranslate"><span class="pre">lib</span></code>:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>c:<span class="se">\.</span>..&gt;<span class="w"> </span>ifort<span class="w"> </span>-c<span class="w"> </span>file1.f90<span class="w"> </span>file2.f90
 c:<span class="se">\.</span>..&gt;<span class="w"> </span>ifort<span class="w"> </span>-c<span class="w"> </span>file3.f90<span class="w"> </span>...
 c:<span class="se">\.</span>..&gt;<span class="w"> </span>lib<span class="w"> </span>/out:supportlib.lib<span class="w"> </span>file1.obj<span class="w"> </span>file2.obj
 c:<span class="se">\.</span>..&gt;<span class="w"> </span>lib<span class="w"> </span>supportlib.lib<span class="w"> </span>file3.obj<span class="w"> </span>...
 </pre></div>
 </div>
-<p>Note:</p>
+<p>Uwaga:</p>
 <ul class="simple">
-<li><p>The command <code class="docutils literal notranslate"><span class="pre">ar</span></code> with the option <code class="docutils literal notranslate"><span class="pre">r</span></code> either creates the library (the
-name appears after the option) or adds new object files to the library
-(or replaces any existing ones).</p></li>
-<li><p>The command <code class="docutils literal notranslate"><span class="pre">lib</span></code> will create a new library if you use specify the
-option <code class="docutils literal notranslate"><span class="pre">/out:</span></code> with the name of the new library next to it. To add
-object files to an existing library, leave out the <code class="docutils literal notranslate"><span class="pre">/out:</span></code> bit.</p></li>
-<li><p>On platforms like Linux there is a particular convention to name
-libraries. If you name your library like „libname.a” (note the „lib”
-prefix), then you can refer to it as <code class="docutils literal notranslate"><span class="pre">-lname</span></code> in the link step.</p></li>
-<li><p>Libraries are often sought in directories indicated by an option <code class="docutils literal notranslate"><span class="pre">-L</span></code>
-or <code class="docutils literal notranslate"><span class="pre">/LIBPATH</span></code>. This saves you from having to specify the exact path for
-every library.</p></li>
+<li><p>Komenda <code class="docutils literal notranslate"><span class="pre">ar</span></code> razem z opcją <code class="docutils literal notranslate"><span class="pre">r</span></code> albo tworzy bibliotekę (nazwa powinna być po opcji) albo dodaje nowy plik obiektowy do biblioteki (lub zastępuje już istniejące).</p></li>
+<li><p>Komenda <code class="docutils literal notranslate"><span class="pre">lib</span></code> stworzy nową bibliotekę jeśli określisz opcję <code class="docutils literal notranslate"><span class="pre">/out:</span></code> z nazwą nowej biblioteki zaraz po niej. Aby dodać plik obiektowy do istniejącej już biblioteki, pomiń część <code class="docutils literal notranslate"><span class="pre">/out:</span></code>.</p></li>
+<li><p>Na platformach takich jak Linux istnieje szczegółowa praktyka nazywania bibliotek. Jeśli nazwiesz swoją bibliotekę „libname.a” (zwróć uwagę na prefiks „lib”), możesz wtedy odnosić się do niej jako <code class="docutils literal notranslate"><span class="pre">-lname</span></code> podczas procesu łączenia.</p></li>
+<li><p>Biblioteki znajdują się zazwyczaj w folderach określonych przez opcję <code class="docutils literal notranslate"><span class="pre">-L</span></code> lub <code class="docutils literal notranslate"><span class="pre">/LIBPATH</span></code>. Dzięki temu nie musisz za każdym razem precyzować dokładnej ścieżki dla każdej biblioteki.</p></li>
 </ul>
-<p>Using libraries you can build very large programs without
-having to resort to extremely long command lines.</p>
+<p>Używanie własnych bibliotek do bardzo dużych programów może uratować cię przed używaniem bardzo długich komend.</p>
 <section id="static-versus-dynamic-libraries">
-<h2>Static versus dynamic libraries<a class="headerlink" href="#static-versus-dynamic-libraries" title="Link to this heading">#</a></h2>
-<p>The above discussion is tacitly assuming that you are using the so-called
-static libraries. Static libraries (or at least parts of their
-contents) become an integral part of the executable program. The only
-way to change the routines incorporated in the program is by rebuilding
-the program with a new version of the library.</p>
-<p>A flexible alternative is to use the so-called dynamic libraries. These
-libraries remain outside the executable program and as a consequence
-can be replaced without rebuilding the entire program. Compilers and
-indeed the operating system itself rely heavily on such dynamic
-libraries. You could consider dynamic libraries as a sort of executable
-programs that need a bit of help to be run.</p>
-<p>Building dynamic libraries works slightly differently from building
-static libraries: you use the compiler/linker instead of a tool
-like <code class="docutils literal notranslate"><span class="pre">ar</span></code> or <code class="docutils literal notranslate"><span class="pre">lib</span></code>.</p>
-<p>On Linux:</p>
+<h2>Statyczne kontra dynamiczne biblioteki<a class="headerlink" href="#static-versus-dynamic-libraries" title="Link to this heading">#</a></h2>
+<p>Powyższa dyskusja zakłada, że używasz tak zwanych bibliotek statycznych. Statyczne biblioteki (lub przynajmniej części ich zawartości) stają się nieodłączną częścią wykonywalnego programu. Jedynym sposobem na zmienienie tych wkomponowanych procedur jest przez stworzenie programu na nowo z użyciem nowej wersji danej biblioteki.</p>
+<p>Elastyczną alternatywą jest użycie tak zwanych dynamicznych bibliotek. Te biblioteki znajdują się na zewnątrz wykonywalnego programu i wskutek tego mogą być zastąpione bez konieczności tworzenia całego programu od nowa. Kompilatory oraz same systemy operacyjne w znacznym stopniu zależą od dynamicznych bibliotek. Możesz myśleć o dynamicznych bibliotekach jak o rodzaju wykonywalnych programów, które potrzebują trochę pomocy, aby mogły zostać uruchomione.</p>
+<p>Tworzenie dynamicznych bibliotek działa trochę inaczej niż tworzenie bibliotek statycznych: należy użyć kompilatora/programu łączącego zamiast funkcji takich jak <code class="docutils literal notranslate"><span class="pre">ar</span></code> lub <code class="docutils literal notranslate"><span class="pre">lib</span></code>.</p>
+<p>Na a Linuksie:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>-fpic<span class="w"> </span>-c<span class="w"> </span>file1.f90<span class="w"> </span>file2.f90
 $<span class="w"> </span>gfortran<span class="w"> </span>-fpic<span class="w"> </span>-c<span class="w"> </span>file3.f90<span class="w"> </span>...
 $<span class="w"> </span>gfortran<span class="w"> </span>-shared<span class="w"> </span>-o<span class="w"> </span>supportlib.so<span class="w"> </span>file1.o<span class="w"> </span>file2.o<span class="w"> </span>file3.o<span class="w"> </span>...
 </pre></div>
 </div>
-<p>On Windows, with the Intel Fortran compiler:</p>
+<p>Na Windowsie, z kompilatorem Intel Fortran:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ifort<span class="w"> </span>-c<span class="w"> </span>file1.f90<span class="w"> </span>file2.f90
 $<span class="w"> </span>ifort<span class="w"> </span>-c<span class="w"> </span>file3.f90<span class="w"> </span>...
 $<span class="w"> </span>ifort<span class="w"> </span>-dll<span class="w"> </span>-exe:supportlib.dll<span class="w"> </span>file1.obj<span class="w"> </span>file2.obj<span class="w"> </span>file3.obj<span class="w"> </span>...
 </pre></div>
 </div>
-<p>The differences are that:</p>
+<p>Różnice polegają na tym, że:</p>
 <ul class="simple">
-<li><p>You need to specify a compile option on Linux, for gfortran that is <code class="docutils literal notranslate"><span class="pre">-fpic</span></code>,
-because the object code is slightly different.</p></li>
-<li><p>You need to tell in the link step that you want a dynamic library (on
-Linux: a shared object/library, hence the extension „.so”; on Windows:
-a dynamic link library)</p></li>
+<li><p>Musisz określić opcje kompilacji na Linuksie, dla gfortran jest to <code class="docutils literal notranslate"><span class="pre">-fpic</span></code>, ponieważ kod obiektowy troszkę się różni.</p></li>
+<li><p>Musisz określić w programie łączącym, że chcesz stworzyć dynamiczną bibliotekę (na Linuksie: bibliotekę/obiekt współdzielony, z rozszerzeniem „.so”; na Windowsie: dynamiczną bibliotekę łączącą)</p></li>
 </ul>
-<p>There is one more thing to be aware of: On Windows you must
-explicitly specify that a procedure is to be <em>exported</em>, i.e. is visible
-in the dynamic library. There are several ways — depending on the
-compiler you use — to achieve this. One method is via a so-called
-compiler directive:</p>
+<p>Istnieje jeszcze jedna rzecz, której musisz być świadomy. Na Windowsie musisz dokładnie sprecyzować, że procedura ma zostać <em>wyeksportowana</em>, np. widoczna w dynamicznej bibliotece. Jest kilka sposobów na osiągnięcie tego w zależności jakiego kompilatora używasz. Jedną z metod jest zrobienie tego poprzez tak zwaną dyrektywę kompilatora:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">myroutine</span><span class="p">(</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
 <span class="c">!GCC$ ATTRIBUTES DLLEXPORT:: myroutine</span>
 </pre></div>
 </div>
-<p>Or, with the Intel Fortran compiler:</p>
+<p>Lub, przez kompilator Intel Fortran:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="k">subroutine </span><span class="n">myroutine</span><span class="p">(</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">)</span>
 <span class="c">!DEC$ ATTRIBUTES DLLEXPORT:: myroutine</span>
 </pre></div>
 </div>
-<p>Besides a dynamic library (DLL), a so-called import library may be
-generated.</p>
-<p>Because the details differ per compiler, here are two examples:
-gfortran on Cygwin and Intel Fortran on Windows. In both cases
-we look at the <code class="docutils literal notranslate"><span class="pre">tabulate</span></code> program in the file „tabulate.f90”.</p>
+<p>Oprócz dynamicznej biblioteki (DLL), tak zwane biblioteki importowane mogą zostać wygenerowane.</p>
+<p>Z uwagi na to, że detale różnią się w zależności od kompilatora, zamieszczone są tutaj dwa przykłady: gfortran na Cygwinie oraz Intel Fortran na Windowsie. W obu przypadkach pokazujemy program <code class="docutils literal notranslate"><span class="pre">tabulate</span></code> w pliku „tabulate.f90”.</p>
 </section>
 <section id="gnu-linux-and-gfortran">
-<h2>GNU/Linux and gfortran<a class="headerlink" href="#gnu-linux-and-gfortran" title="Link to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">tabulate</span></code> program requires a user-defined routine <code class="docutils literal notranslate"><span class="pre">f</span></code>. If we
-let it reside in a dynamic library, say „functions.dll”, we can simply
-replace the implementation of the function by putting another dynamic
-library in the directory. No need to rebuild the program as such.</p>
-<p>On Cygwin it is not necessary to explicitly export a procedure — all
-publically visible routines are exported when you build a dynamic library.
-Also, no import library is generated.</p>
-<p>Since our dynamic library can be built from a single source file, we
-can take a shortcut:</p>
+<h2>GNU/Linux i gfortran<a class="headerlink" href="#gnu-linux-and-gfortran" title="Link to this heading">#</a></h2>
+<p>Program <code class="docutils literal notranslate"><span class="pre">tabulate</span></code> wymaga zdefiniowanej przez użytkownika procedury <code class="docutils literal notranslate"><span class="pre">f</span></code>. Jeśli pozwolimy na przechowywanie jej w dynamicznej bibliotece, jak „functions.dll”, możemy łatwo zamienić implementację funkcji poprzez dodanie innej dynamicznej biblioteki do folderu. Nie ma potrzeby ponownej kompilacji programu.</p>
+<p>Na systemie Cygwin nie jest konieczne jawne eksportowanie procedury - wszystkie publicznie widoczne rutyny są eksportowane podczas tworzenia dynamicznej biblioteki. Ponadto, nie jest generowana żadna biblioteki importowana.</p>
+<p>Ponieważ nasza dynamiczna biblioteki może być stworzona z jednego pliku źródłowego, możemy zrobić to szybciej:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>-shared<span class="w"> </span>-o<span class="w"> </span>functions.dll<span class="w"> </span>functions.f90
 </pre></div>
 </div>
-<p>This produces the files „functions.dll” and „user_functions.mod”. The
-utility <code class="docutils literal notranslate"><span class="pre">nm</span></code> tells us the exact name of the function <code class="docutils literal notranslate"><span class="pre">f</span></code>:</p>
+<p>Dzięki temu zostały stworzone pliki „functions.dll” i „user_functions.mod”. Funkcja <code class="docutils literal notranslate"><span class="pre">nm</span></code> daje nam dokładną nazwę funkcji <code class="docutils literal notranslate"><span class="pre">f</span></code>:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>nm<span class="w"> </span>functions.dll
 ...
 000000054f9d7000<span class="w"> </span>B<span class="w"> </span>__dynamically_loaded
@@ -803,51 +758,34 @@ utility <code class="docutils literal notranslate"><span class="pre">nm</span></
 ...
 </pre></div>
 </div>
-<p>It has received a prefix <code class="docutils literal notranslate"><span class="pre">__function_MOD_</span></code> to distinguish it from any
-other routine „f” that might be defined in another module.</p>
-<p>The next step is to build the program:</p>
+<p>Otrzymała ona prefiks <code class="docutils literal notranslate"><span class="pre">__function_MOD_</span></code>, aby rozróżnić ją od inny rutyn „f”, które mogą być zdefiniowane w innym module.</p>
+<p>Następnym krokiem jest kompilacja programu:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gfortran<span class="w"> </span>-o<span class="w"> </span>tabulate<span class="w"> </span>tabulate.f90<span class="w"> </span>functions.dll
 </pre></div>
 </div>
-<p>The DLL and the .mod file are used to build the executable program
-with checks on the function’s interface, the right name and the reference
-to „a” DLL, called „functions.dll”.</p>
-<p>You can replace the shared library „functions.dll” by another one, implementing
-a different function „f”. Of course, you need to be careful to use the correct
-interface for this function. The compiler/linker are not invoked anymore, so they
-can do no checking.</p>
+<p>DLL oraz plik .mod będą używane do skompilowania programu wykonywalnego ze sprawdzeniami interfejsu funkcji, poprawną nazwą oraz odniesieniem do „jakiegoś” DLL’a, nazwanego „functions.dll”.</p>
+<p>Możesz zamienić bibliotekę współdzieloną „functions.dll” na inną, implementując inną funkcję „f”. Oczywiście, musisz być ostrożnym i zastosować poprawny interfejs dla tej funkcji. Kompilator/program łączący nie jest uruchamiany, dlatego nie może tego sprawdzić.</p>
 </section>
 <section id="windows-and-intel-fortran">
-<h2>Windows and Intel Fortran<a class="headerlink" href="#windows-and-intel-fortran" title="Link to this heading">#</a></h2>
-<p>The setup is the same as with Linux, but on Windows it is necessary
-to explicitly export the routines. And an import library is generated —
-this is the library that should be used in the link step.</p>
-<p>The source file must contain the compiler directive, otherwise the function <code class="docutils literal notranslate"><span class="pre">f</span></code>
-is not exported:</p>
+<h2>Windows i Intel Fortran<a class="headerlink" href="#windows-and-intel-fortran" title="Link to this heading">#</a></h2>
+<p>Konfiguracja jest taka sama jak na Linuksie, jednak na Windowsie konieczne jest jawne eksportowanie rutyn. Tworzona jest również biblioteki importowana - jest to biblioteki, która powinna zostać użyta w procesie łączenia.</p>
+<p>Plik źródłowy musi zawierać dyrektywę kompilatora, inaczej funkcja <code class="docutils literal notranslate"><span class="pre">f</span></code> nie zostanie wyeksportowana:</p>
 <div class="highlight-fortran notranslate"><div class="highlight"><pre><span></span><span class="kt">real </span><span class="k">function </span><span class="n">f</span><span class="p">(</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="p">)</span>
 <span class="c">!DEC$ ATTRIBUTES DLLEXPORT :: f</span>
 </pre></div>
 </div>
-<p>Again we take a shortcut:</p>
+<p>Ponownie możemy to zrobić szybciej:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>ifort<span class="w"> </span>-exe:functions.dll<span class="w"> </span>functions.f90<span class="w"> </span>-dll
 </pre></div>
 </div>
-<p>This produces the files „functions.dll”, „user_functions.mod” as well as „functions.lib” (and two
-other files of no importance here). The „dependency walker” program tells us
-that the exact name of the function „f” is <code class="docutils literal notranslate"><span class="pre">FUNCTION_mp_F</span></code>. It is also exported, so that
-it can be found by the linker in the next step:</p>
+<p>Dzięki temu zostały stworzone pliki „functions.dll”, „user_functions.mod” oraz „functions.lib” (dwa pozostałe pliki nie są tutaj ważne). Program „dependency walker” daje nam dokładną nazwę funkcji „f”, czyli <code class="docutils literal notranslate"><span class="pre">FUNCTION_mp_F</span></code>. Jest ona również eksportowana, żeby mogła być znaleziona przez program łączący w kolejnym kroku:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ifort tabulate.f90 functions.lib
 </pre></div>
 </div>
-<p>Note that we need to specify the name of the export library, not the DLL!</p>
-<p>(Note also: the Intel Fortran compiler uses the name of the first source file as the
-name for the executable — here we do without the <code class="docutils literal notranslate"><span class="pre">-exe</span></code> option.)</p>
-<p>Just as under Cygwin, the DLL and the .mod file are used to build the executable program
-with checks on the function’s interface, the right name and the reference
-to „a” DLL, called „functions.dll”.</p>
-<p>You can replace the shared library „functions.dll” by another one, but the same
-caution is required: while the implementation can be quite different, the
-function’s interface must be the same.</p>
+<p>Zauważ, że musimy sprecyzować nazwę eksportowanej biblioteki, nie DLL’a!</p>
+<p>(Zauważ również: kompilator Intel Fortran używa nazwy pierwszego pliku źródłowego jaki nazwy pliku wykonywalnego - tutaj bez opcji <code class="docutils literal notranslate"><span class="pre">-exe</span></code>.)</p>
+<p>Tak samo jak na Cygwinie, DLL plik .mod są używane do skompilowanie programu wykonywalnego ze sprawdzeniem interfejsu funkcji, poprawną nazwą oraz odniesieniem do „jakiegoś” DLL’a, nazwanego „functions.dll”.</p>
+<p>Możesz zastąpić bibliotekę współdzieloną „functions.dll” inną, ale musisz być ostrożnym: mimo tego, że implementacja może być inna, interfejs funkcji musi pozostać taki sam.</p>
 </section>
 </section>
 
@@ -877,9 +815,9 @@ function’s interface must be the same.</p>
 </div>
 
 <nav id="bd-toc-nav" class="page-toc"><ul class="nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-versus-dynamic-libraries">Static versus dynamic libraries</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-linux-and-gfortran">GNU/Linux and gfortran</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-and-intel-fortran">Windows and Intel Fortran</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#static-versus-dynamic-libraries">Statyczne kontra dynamiczne biblioteki</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gnu-linux-and-gfortran">GNU/Linux i gfortran</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#windows-and-intel-fortran">Windows i Intel Fortran</a></li>
 </ul></nav> </div>
 
 </div></div>
