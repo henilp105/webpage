@@ -861,6 +861,12 @@
   tags: back propagation coarray
   version: none
 
+- name: fiats
+  github: BerkeleyLab/fiats
+  description: A deep learning library for use in high-performance computing applications in modern Fortran
+  categories: numerical
+  tags: machine-learning
+
 - name: ParaMonte
   github: cdslaborg/paramonte
   description: A general-purpose high-performance MPI/Coarray-parallel Monte Carlo simulation library implemented in Fortran 2018 with interfaces to C/C++/Fortran/MATLAB/Python
