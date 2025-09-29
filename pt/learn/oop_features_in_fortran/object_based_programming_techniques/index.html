@@ -58,7 +58,7 @@
         DOCUMENTATION_OPTIONS.show_version_warning_banner =
             false;
         </script>
-    <link rel="canonical" href="https://fortran-lang.org/en/learn/oop_features_in_fortran/object_based_programming_techniques/" />
+    <link rel="canonical" href="https://fortran-lang.org/learn/oop_features_in_fortran/object_based_programming_techniques/" />
     <link rel="index" title="Índice" href="../../../genindex/" />
     <link rel="search" title="Pesquisar" href="../../../search/" />
     <link rel="next" title="Object-oriented programming techniques" href="../object_oriented_programming_techniques/" />
@@ -332,7 +332,7 @@
           
           
           
-          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+          <a href="https://fortran-lang.org/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
             <span class="sr-only">RSS</span></a>
         </li>
 </ul></div>
@@ -508,7 +508,7 @@
           
           
           
-          <a href="https://fortran-lang.org/en/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
+          <a href="https://fortran-lang.org/news/atom.xml" title="RSS" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fas fa-rss fa-lg" aria-hidden="true"></i>
             <span class="sr-only">RSS</span></a>
         </li>
 </ul></div>
@@ -806,9 +806,9 @@ to be aware of:</p>
 <li><p>If all type components have the <code class="docutils literal notranslate"><span class="pre">private</span></code> attribute i.e., the type
 is <strong>opaque</strong> (not a Fortran term), it can only be used if the type
 declaration is accessed by host association (this is the same as for
-nonallocatable/nonpointer components);</p></li>
-<li><p>especially for container-like types, its semantics may be
-incompatible with the programmers intentions for how the objects
+nonallocatable/nonpointer components).</p></li>
+<li><p>Especially for container-like types, its semantics may be
+incompatible with the programmer’s intentions for how the objects
 should be used.</p></li>
 </ol>
 <p>Item 2 is illustrated by the above object setups, specifically:</p>
@@ -1094,7 +1094,7 @@ case of polymorphic objects.</p>
 <section id="implementing-move-semantics">
 <h3>Implementing move semantics<a class="headerlink" href="#implementing-move-semantics" title="Link to this heading">#</a></h3>
 <p>Sometimes it may be necessary to make use of move instead of copy
-semantics i.e., create a copy of an object and then getting rid of the
+semantics i.e., create a copy of an object and then get rid of the
 original. The simplest way of doing this is to make use of allocatable
 (scalar or array) objects,</p>
 <div class="highlight-f90 notranslate"><div class="highlight"><pre><span></span><span class="k">type</span><span class="p">(</span><span class="n">sorted_list</span><span class="p">),</span><span class="w"> </span><span class="k">allocatable</span><span class="w"> </span><span class="kd">::</span><span class="w"> </span><span class="n">my_list</span><span class="p">,</span><span class="w"> </span><span class="n">your_list</span>
