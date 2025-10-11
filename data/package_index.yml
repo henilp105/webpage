@@ -1193,6 +1193,13 @@
   tags: machine-learning convolutional-neural-networks
   license: MIT
 
+- name: dtFFT
+  github: ShatrovOA/dtFFT
+  description: a high-performance library designed for parallel data transpositions and optional Fast Fourier Transforms (FFTs) in multidimensional computing environments.
+  categories: numerical
+  tags: mpi cuda fft parallel distributed-memory
+  license: GPL-3.0
+
 # --- Scientific codes ---
 
 - name: astro-fortran
