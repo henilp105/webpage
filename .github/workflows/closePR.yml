@@ -22,6 +22,12 @@ jobs:
       - name: Iterate and Check PRs
         id: pr_check
         run: |
+          # Exit early if 'pr/' directory does not exist
+          if [ ! -d "pr" ]; then
+              echo "No 'pr/' directory found. Skipping PR check."
+              exit 0
+          fi
+
           # Get the list of PR folders inside 'pr/' (e.g., pr/123, pr/456)
           pr_folders=($(find pr -mindepth 1 -maxdepth 1 -type d -printf "%f\n"))
           closed_pr=()
