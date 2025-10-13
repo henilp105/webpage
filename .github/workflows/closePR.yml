@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Checkout gh-pages
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: gh-pages
           
@@ -42,7 +42,7 @@ jobs:
           done
 
           # Store closed PRs in GITHUB_STATE for later use
-          echo "${closed_pr[*]}" >> "$GITHUB_STATE"
+          # echo "${closed_pr[*]}" >> "$GITHUB_STATE"
       
       - name: Commit and push to gh-pages
         uses: EndBug/add-and-commit@v9.1.4

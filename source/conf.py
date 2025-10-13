@@ -145,7 +145,7 @@ html_theme_options = {
     "navbar_align": "right",
     "navbar_start": ["navbar-logo","theme-switcher.html"],
     "switcher": {
-        "json_url": "_static/data.json",  # shifted to custom local switcher
+        "json_url": "https://fortran-lang.org/_static/data.json",  # shifted to custom local switcher
         "version_match": language,
     },
     "primary_sidebar_end": [],
